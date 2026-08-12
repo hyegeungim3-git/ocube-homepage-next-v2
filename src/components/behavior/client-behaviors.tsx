@@ -5,6 +5,7 @@ import { CopyToast } from "@/components/behavior/copy-toast";
 import { ScrollProgress } from "@/components/behavior/scroll-progress";
 import { CiTilt } from "@/components/behavior/ci-tilt";
 import { DemoVideos } from "@/components/behavior/demo-videos";
+import { Lightbox } from "@/components/behavior/lightbox";
 import { PinDots } from "@/components/behavior/pin-dots";
 import { Reveal } from "@/components/behavior/reveal";
 import { TableScroll } from "@/components/behavior/table-scroll";
@@ -23,6 +24,7 @@ export function ClientBehaviors({ lang = "ko" }: { lang?: Lang }): JSX.Element {
       <TableScroll lang={lang} />
       <DemoVideos />
       <CiTilt />
+      <Lightbox lang={lang} />
       <ScrollProgress />
       <CopyToast lang={lang} />
       <BackToTop lang={lang} />
