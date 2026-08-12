@@ -41,9 +41,9 @@ export function PageShell({
   return (
     <>
       <SiteHeader slug={slug} lang={lang} hasHero={hasHero} />
-      <MobilePanel lang={lang} />
+      <MobilePanel lang={lang} slug={slug} />
       <main id={mainId}>{children}</main>
-      <SiteFooter lang={lang} id={footerId}>
+      <SiteFooter lang={lang} slug={slug} id={footerId}>
         {cta}
       </SiteFooter>
     </>

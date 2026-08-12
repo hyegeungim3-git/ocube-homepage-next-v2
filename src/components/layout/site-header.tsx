@@ -7,6 +7,8 @@ import { assetPath, ui, type Lang } from "@/config/i18n";
 import { LangToggle } from "@/components/layout/lang-toggle";
 import { revealHeader, useHeaderScroll } from "@/components/behavior/header-scroll";
 import { useMediaQuery } from "@/components/behavior/use-media-query";
+import { toggleMobileMenu, useMobileMenu } from "@/components/behavior/mobile-menu";
+import { currentMark, isCurrentHref } from "@/config/current-page";
 
 // 현재 사이트의 공통 헤더. 메뉴 항목은 src/config/navigation.ts 에서 온다.
 // index.html 만 aria-label 이 영문이라 prop 으로 분리했다(기존 사이트의 표기 불일치 보존).
@@ -15,6 +17,8 @@ import { useMediaQuery } from "@/components/behavior/use-media-query";
 //   05-gnb-state  투명 ↔ 솔리드
 //   20-gnb-hide   하강 시 숨김 · 상승 시 복귀
 //   22-gnb-mega   메뉴에 다가가면 네 갈래가 한꺼번에 펼쳐지는 메가 메뉴
+//   06-mobile-menu 좁은 화면 메뉴 버튼 (패널은 MobilePanel 이 그린다)
+//   07-nav-current 지금 보고 있는 화면 표시 (aria-current · is-current)
 //
 // 포인터로 다룰 수 있는 넓은 화면에서만 메가 메뉴를 연다. 좁은 화면은 모바일 메뉴가 맡는다.
 const DESKTOP_HOVER = "(min-width: 901px) and (hover: hover) and (pointer: fine)";
@@ -41,6 +45,7 @@ export function SiteHeader({
   const scroll = useHeaderScroll();
   const scrolled = hasHero ? scroll.scrolled : true;
   const hoverDesktop = useMediaQuery(DESKTOP_HOVER, false);
+  const menuOpen = useMobileMenu().open;
 
   const gnb = useRef<HTMLElement>(null);
   const closeTimer = useRef<number | null>(null);
@@ -167,8 +172,9 @@ export function SiteHeader({
           >
             {nav.map((item, index) => {
               const panelId = `gnb-panel-${index + 1}`;
+              const here = item.links.some((l) => isCurrentHref(l.href, slug));
               return (
-                <div className="nav-item" key={item.label}>
+                <div className={here ? "nav-item is-current" : "nav-item"} key={item.label}>
                   <a
                     aria-haspopup="true"
                     aria-expanded={megaOpen}
@@ -185,7 +191,7 @@ export function SiteHeader({
                     <div className="dd-group">
                       {item.links.map((l) => (
                         <Fragment key={l.href}>
-                          <a href={l.href}>
+                          <a href={l.href} aria-current={currentMark(l.href, slug)}>
                             {l.label}
                             <small>{l.description}</small>
                           </a>{" "}
@@ -201,8 +207,15 @@ export function SiteHeader({
           <a href="contact.html" className="cta-btn">
             {t.contact}
           </a>{" "}
-          <button type="button" className="m-toggle" aria-label={t.openMenu} aria-expanded="false">
-            Menu
+          <button
+            type="button"
+            className="m-toggle"
+            aria-label={menuOpen ? t.closeMenu : t.openMenu}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            onClick={toggleMobileMenu}
+          >
+            {menuOpen ? "Close" : "Menu"}
           </button>{" "}
         </div>
       </header>

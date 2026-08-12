@@ -1,4 +1,5 @@
 import type { JSX, ReactNode } from "react";
+import { currentMark } from "@/config/current-page";
 import { Fragment } from "react";
 import { footerColumns, footerLogo, legal, offices } from "@/data/site";
 import { assetPath, type Lang } from "@/config/i18n";
@@ -11,10 +12,12 @@ export function SiteFooter({
   children,
   id,
   lang = "ko",
+  slug = "index",
 }: {
   children?: ReactNode;
   id?: string;
   lang?: Lang;
+  slug?: string;
 }): JSX.Element {
   return (
     <footer className="fcta" id={id}>
@@ -45,7 +48,7 @@ export function SiteFooter({
                   <p className="f-h">{c.title}</p>
                   {/* 원본은 제목 뒤에만 줄바꿈이 있고 링크 사이에는 공백이 없다 */}{" "}
                   {c.links.map((l) => (
-                    <a href={l.href} key={l.href}>
+                    <a href={l.href} key={l.href} aria-current={currentMark(l.href, slug)}>
                       {l.label}
                     </a>
                   ))}

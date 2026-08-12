@@ -1,8 +1,1 @@
-[
-  "00-head.js",
-  "01-i18n-strings.js",
-  "06-mobile-menu.js",
-  "07-nav-current.js",
-  "17-iife-close.js",
-  "25-contact-mail.js"
-]
+["00-head.js", "01-i18n-strings.js", "17-iife-close.js", "25-contact-mail.js"]
