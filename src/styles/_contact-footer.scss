@@ -346,7 +346,9 @@ section[id],
 /* 서브 페이지 히어로(다크) */
 .hero.page-hero {
   min-height: 100vh;
-  min-height: 100dvh;
+  @supports (height: 100dvh) {
+    min-height: 100dvh;
+  }
 }
 .page-hero .hero-shot {
   margin: 44px auto 0;

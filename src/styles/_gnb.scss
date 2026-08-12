@@ -16,7 +16,6 @@
 body.m-lock .gnb {
   background: rgba(255, 255, 255, 0.93);
   backdrop-filter: saturate(1.2) blur(14px);
-  -webkit-backdrop-filter: saturate(1.2) blur(14px);
   border-bottom: 1px solid var(--line-soft);
 }
 .gnb .nav {

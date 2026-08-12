@@ -31,7 +31,9 @@
     position: fixed;
     inset: 72px 0 0;
     height: calc(100vh - 72px);
-    height: calc(100dvh - 72px);
+    @supports (height: 100dvh) {
+      height: calc(100dvh - 72px);
+    }
     background: #fff;
     z-index: 110;
     padding: 12px clamp(16px, 5vw, 28px) calc(28px + env(safe-area-inset-bottom));
