@@ -1,8 +1,10 @@
 import type { JSX } from "react";
 import type { Lang } from "@/config/i18n";
+import { AboutExperience } from "@/components/behavior/about-experience";
 import { BackToTop } from "@/components/behavior/back-to-top";
 import { CopyToast } from "@/components/behavior/copy-toast";
 import { ScrollProgress } from "@/components/behavior/scroll-progress";
+import { SolCopyTravel } from "@/components/behavior/sol-copy-travel";
 import { CaseFilter } from "@/components/behavior/case-filter";
 import { CiTilt } from "@/components/behavior/ci-tilt";
 import { DemoVideos } from "@/components/behavior/demo-videos";
@@ -26,6 +28,8 @@ export function ClientBehaviors({ lang = "ko" }: { lang?: Lang }): JSX.Element {
       <DemoVideos />
       <CiTilt />
       <CaseFilter />
+      <SolCopyTravel />
+      <AboutExperience />
       <Lightbox lang={lang} />
       <ScrollProgress />
       <CopyToast lang={lang} />

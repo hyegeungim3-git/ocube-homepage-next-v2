@@ -57,3 +57,29 @@ test.describe("가로로 넓은 표", () => {
     );
   });
 });
+
+test.describe("회사소개 비전 장면", () => {
+  test("스크롤 진행에 따라 장면이 바뀌고 머리글도 따라간다", async ({ page }) => {
+    await page.goto("/about.html", { waitUntil: "load" });
+    const panels = page.locator("[data-vision-panel]");
+    await expect(panels).toHaveCount(3);
+    await expect(panels.nth(0)).toHaveClass(/is-active/);
+
+    const vision = page.locator(".about-vision");
+    const box = await vision.boundingBox();
+    if (!box) throw new Error("비전 구역을 찾지 못했다");
+    await page.evaluate((y) => window.scrollTo(0, y), box.y + box.height * 0.7);
+
+    await expect(panels.nth(0)).not.toHaveClass(/is-active/);
+    const label = await page.locator("[data-vision-head-label]").textContent();
+    expect(label?.trim()).not.toBe("");
+  });
+
+  test("장면 버튼을 누르면 그 장면으로 이동한다", async ({ page }) => {
+    await page.goto("/about.html", { waitUntil: "load" });
+    await page.locator("[data-vision-jump]").nth(2).click();
+    await expect(page.locator("[data-vision-panel]").nth(2)).toHaveClass(/is-active/, {
+      timeout: 8_000,
+    });
+  });
+});
