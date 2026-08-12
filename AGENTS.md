@@ -139,7 +139,7 @@ production build: npm run build
 
 ### 이 판(v2)의 진행 상황 — `docs/refactoring-roadmap.md` 기준
 
-- [x] **Stage 0** `ocube-next@acb8393` 스냅샷 복제 · 인수인계 문서 설치 · 시작점 검증(528/528)
+- [x] **Stage 0** `ocube-next@acb8393` 스냅샷 복제 · 인수인계 문서 설치 · 시작점 검증(576/576)
 - [x] **Stage 0.5** 저장소 전체 포맷 정규화 (`format:check` 가 시작부터 빨간불이었다)
 - [x] **Stage 0.6** 줄바꿈 LF 고정 (clone 직후 `format:check` 가 깨지던 문제)
 - [x] **로드맵 1단계** 테스트 환경 — Vitest 76건 · Playwright e2e 186건 · visual 32장
@@ -193,7 +193,7 @@ production build: npm run build
 
 ### 게이트가 보는 것 (2026-08-05 확장)
 
-- 기준선은 **한국어 25쪽 + 영어 23쪽 = 48쪽 × 11항목 = 528건**을 대조한다.
+- 기준선은 **한국어 25쪽 + 영어 23쪽 = 48쪽 × 12항목 = 576건**을 대조한다.
 - `scripts` 검사가 site2.js·site2.css 등 **관리 자산의 판번호**를 원문 패턴으로 잡는다
   (afterInteractive 스크립트는 `<script src>` 태그로 남지 않아 태그 스캔으론 안 잡힌다).
 - 게이트 밖: 실제 렌더(좌표·대비·콘솔)는 실브라우저 검사로 병행한다.

@@ -156,7 +156,7 @@ Next 의 다중 루트 레이아웃으로 분리했다.
 
 ```text
 baseline/*.html      직전에 승인한 빌드 결과 (한국어 25 + 영어 23 = 48페이지)
-npm run verify       이번 빌드(out/)와 기준선을 대조 — 48페이지 × 11항목 = 528건
+npm run verify       이번 빌드(out/)와 기준선을 대조 — 48페이지 × 12항목 = 576건
 npm run baseline     빌드 후 기준선을 이번 결과로 갱신
 
 tests/visual/__screenshots__/   대표 8쪽 × 2언어 × 2뷰포트 = 32장
