@@ -35,7 +35,10 @@
 
 ### 이 프로젝트의 최우선 제약
 
-**이 저장소가 정본이다.** 회사 홈페이지의 기준이 되는 소스이며, 콘텐츠 변경도 여기서 한다.
+**이 저장소는 아직 정본이 아니다.** `ocube-next` 를 핸드오프 노트 지침으로 다시 리팩터링한
+평행 판이고, 두 판의 화면·기능이 같음은 확인했다(로드맵 '원본과의 대조 검수').
+어느 쪽을 회사 정본으로 쓸지는 사용자 결정 사항이다 — 정해지기 전까지 이 저장소의 변경을
+'회사 홈페이지에 반영됐다' 고 말하지 말 것.
 다만 화면은 이미 검수를 거친 상태이므로 **바꾼 것만 정확히 바꾼다.**
 
 - 요청받지 않은 문구·섹션 순서·마크업·URL 은 건드리지 않는다.
@@ -44,7 +47,8 @@
 
 ## 3. 필수 참고 자료
 
-- 공개 주소(정본): https://hyegeungim3-git.github.io/ocube-homepage-next/
+- 이 판의 공개 주소: https://hyegeungim3-git.github.io/ocube-homepage-next-v2/
+- 먼저 만든 판: https://hyegeungim3-git.github.io/ocube-homepage-next/ (저장소 `ocube-next`)
 - 구버전(참고용, 수정하지 않음): `codex` 저장소 `public/` — https://hyegeungim3-git.github.io/ocube-homepage-final/
 - 구조 문서: `docs/architecture.md`
 - 회귀 기준선: `baseline/` · 검사 도구: `scripts/verify-fidelity.py`

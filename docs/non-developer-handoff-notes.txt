@@ -13,6 +13,11 @@ OCUBE 홈페이지 리팩터링 전달 유의사항
 - docs/architecture.md
 - docs/refactoring-roadmap.md
 - docs/ai-maintenance-playbook.md
+- docs/pitfalls.md  (2026-08-12 추가 — 실제로 밟은 지뢰 모음)
+
+[진행 상황 — 2026-08-12]
+- 위 '아직 구성되지 않은 것'(테스트 환경·SCSS)은 모두 구성됐고 로드맵 1~6단계가 끝났습니다.
+- 단계별 결과와 그때 틀렸던 판단은 docs/refactoring-roadmap.md 에 남겼습니다.
 
 [중요]
 1. 로드맵 전체를 한 번에 실행하지 않습니다.

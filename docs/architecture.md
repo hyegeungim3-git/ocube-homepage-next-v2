@@ -68,6 +68,40 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
 `PageShell` 은 `lang` 하나로 헤더·모바일 메뉴·푸터의 언어를 함께 넘긴다.
 화면에 보이는 글은 `<T>`, 속성값은 `t()` 가 사전을 태운다.
 
+## 컴포넌트 지도 — "그 동작은 어느 파일인가"
+
+화면 동작은 전부 `src/components/behavior/` 에 있고, 네 루트 레이아웃은 `<ClientBehaviors>`
+하나만 부른다. 기능을 옮기거나 고칠 때 레이아웃 네 곳을 다시 손대지 않아도 되는 이유다.
+
+| 파일                   | 무엇을                                              | 어디에 붙나                                                              |
+| ---------------------- | --------------------------------------------------- | ------------------------------------------------------------------------ |
+| `client-behaviors.tsx` | 아래 것들을 화면 전체에 한 번에 건다                | 루트 레이아웃 4곳                                                        |
+| `header-scroll.ts`     | 헤더 투명↔솔리드, 하강 시 숨김·상승 복귀            | `SiteHeader` 가 구독                                                     |
+| `mobile-menu.ts`       | 모바일 메뉴 열림·펼친 갈래 상태                     | 버튼은 헤더, 패널은 `MobilePanel` — **형제라 바깥 저장소로 나눠 갖는다** |
+| `use-media-query.ts`   | 화면 폭·모션 선호 읽기                              | 여러 곳                                                                  |
+| `reveal.tsx`           | 스크롤로 올라온 요소에 `in`                         | `.rv` 요소 전부                                                          |
+| `pin-dots.tsx`         | What We Do 진행 도트                                | `.pinsec`                                                                |
+| `sol-copy-travel.tsx`  | 솔루션 상단 문구가 히어로 → 밝은 영역으로 이동·축소 | `.sol-copy`                                                              |
+| `about-experience.tsx` | 회사소개 비전 장면 전환                             | about                                                                    |
+| `case-filter.tsx`      | 사례·증서 분야 필터 + 빈 상태                       | references · company                                                     |
+| `lightbox.tsx`         | 제품 화면 확대                                      | `img.shot` · `[data-shot]`                                               |
+| `copy-toast.tsx`       | 복사 + 알림                                         | `[data-copy]`                                                            |
+| `demo-videos.tsx`      | 화면에 들어와 있을 때만 재생                        | `video.demovid`                                                          |
+| `table-scroll.tsx`     | 넓은 표를 가로 스크롤 껍데기로                      | `table.cmp`                                                              |
+| `back-to-top.tsx`      | 맨 위로 버튼                                        | 전 화면                                                                  |
+| `scroll-progress.tsx`  | 맨 위 읽기 진행 바                                  | 전 화면                                                                  |
+| `ci-tilt.tsx`          | 홈 CI 로고 기울기                                   | 홈                                                                       |
+
+**구역 컴포넌트**(`src/components/section/`)는 여러 화면이 같은 모양을 쓸 때만 만든다 —
+`sec-head` `dep-cards` `feat-list` `app-cards` `stat-items` `ref-cards` `bcase-cards`
+`pin-steps` `hist-rows` `plogo-items` `subnav` `fcta-top` `sol-copy` `home-hero` `home-slides`
+`contact-form`. 한 화면에만 있는 모양은 그 화면 파일에 그대로 둔다(README "데이터로 빼지
+않은 것" 과 같은 기준 — 억지로 공통화하면 조건 분기만 늘어난다).
+
+**껍데기**(`src/components/layout/`)는 `PageShell`(헤더+모바일메뉴+`<main>`+푸터) ·
+`PageMeta`(title·canonical·hreflang·og) · `SiteHeader` · `MobilePanel` · `SiteFooter` ·
+`LangToggle` · `PageHero`. 새 화면은 이 둘만 부르면 나머지가 따라온다.
+
 ## 확장 원칙
 
 - 새 화면은 `src/components/pages/<slug>-page.tsx` 에 만들고, 주소는 한국어·영어 두 곳에
@@ -93,7 +127,7 @@ Next 의 다중 루트 레이아웃으로 분리했다.
 
 `main` 에 push 하면 GitHub Actions 가 `npm run build` 로 `out/` 을 만들어 Pages 에 올린다.
 
-- 공개 주소: https://hyegeungim3-git.github.io/ocube-homepage-next/
+- 공개 주소: https://hyegeungim3-git.github.io/ocube-homepage-next-v2/
 - 프로젝트 사이트는 **하위 경로**에 올라간다. Next 는 런타임 청크를 절대경로
   `/_next/...` 로 내보내므로 그대로 두면 404 가 나고 하이드레이션이 실패한다.
   워크플로가 `configure-pages` 의 `base_path` 를 `PAGES_BASE_PATH` 로 넘겨
@@ -101,14 +135,20 @@ Next 의 다중 루트 레이아웃으로 분리했다.
 
 ## 이 저장소의 위치
 
-**2026-08-05 부터 이 저장소가 정본이다.** 회사 홈페이지의 기준 소스이고, 콘텐츠 변경도 여기서 한다.
+**정본이 아니라 '평행 판' 이다.** 같은 원본에서 갈라진 두 판이 있다.
 
-- 공개 주소: https://hyegeungim3-git.github.io/ocube-homepage-next/
-- 구버전: `codex` 저장소 `public/` (https://hyegeungim3-git.github.io/ocube-homepage-final/) ·
-  Cloudflare `a/` — **더 이상 갱신하지 않는다.** 참고용으로만 남긴다.
+|              | 저장소                                   | 공개 주소                 | 지침                                   |
+| ------------ | ---------------------------------------- | ------------------------- | -------------------------------------- |
+| 이 판        | `ocube-homepage-next-v2`                 | …/ocube-homepage-next-v2/ | `docs/non-developer-handoff-notes.txt` |
+| 먼저 만든 판 | `ocube-homepage-next`                    | …/ocube-homepage-next/    | `agent-rules`                          |
+| 그 이전      | `ocube-homepage-final` · Cloudflare `a/` | …/ocube-homepage-final/   | — (갱신 안 함)                         |
 
-정본 전환 전에는 구버전과 DOM 이 같은지 검사했지만, 이제 비교 상대가 없으므로
-기준선을 저장소 안(`baseline/`)에 둔다.
+두 판의 **화면과 기능이 같다는 것은 확인했다** — 46쪽을 브라우저로 대조했고 방법과 수치는
+`refactoring-roadmap.md` 의 "원본과의 대조 검수" 절에 있다. 다만 **어느 쪽을 회사 정본으로
+쓸지는 아직 정해지지 않았다.** 정해지면 이 표와 README·AGENTS 의 같은 문장을 함께 고친다.
+
+기준선(`baseline/`)은 저장소 안에 둔다 — 비교 상대를 밖에 두면 그쪽이 바뀔 때 게이트가
+흔들리기 때문이다.
 
 ## 회귀 기준선
 
@@ -137,12 +177,12 @@ npm run test:visual:approve     승인된 화면 변경일 때만 기준선 갱�
 
 ### 지금까지 반영한 콘텐츠 변경
 
-| 날짜 | 화면 | 내용 | 근거 |
-|---|---|---|---|
-| 2026-08-05 | contact | 문의 유형 → `제품 및 라이선스 문의 (Qt, Toradex, VisualOn, Protopie, Tuxera)` | PS그룹 검토 의견 |
-| 2026-08-05 | license-visualon | 코덱 항목 제목 → `모빌리티에 최적화된 소프트웨어 코덱/파서` | 〃 |
-| 2026-08-05 | license-protopie | 하단 파트너십 문구 삭제 | 〃 |
-| 2026-08-05 | license-tuxera | 대표 이미지를 벤더 포트폴리오 도식으로 교체 · `Tuxera Fusion SMB` 항목 추가 | 〃 |
+| 날짜       | 화면             | 내용                                                                          | 근거             |
+| ---------- | ---------------- | ----------------------------------------------------------------------------- | ---------------- |
+| 2026-08-05 | contact          | 문의 유형 → `제품 및 라이선스 문의 (Qt, Toradex, VisualOn, Protopie, Tuxera)` | PS그룹 검토 의견 |
+| 2026-08-05 | license-visualon | 코덱 항목 제목 → `모빌리티에 최적화된 소프트웨어 코덱/파서`                   | 〃               |
+| 2026-08-05 | license-protopie | 하단 파트너십 문구 삭제                                                       | 〃               |
+| 2026-08-05 | license-tuxera   | 대표 이미지를 벤더 포트폴리오 도식으로 교체 · `Tuxera Fusion SMB` 항목 추가   | 〃               |
 
 | 2026-08-05 | references | 필터 결과 0건일 때 안내 문구 표시 (`[data-filter-empty]`) | 공공 분야 사례가 아직 없어 빈 화면만 남던 문제 |
 

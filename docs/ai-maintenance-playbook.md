@@ -23,16 +23,16 @@
 
 ## 2. 현재 문제와 해결 방향
 
-| 문제 | 해결 |
-|---|---|
-| 페이지마다 Header·Footer 배치 반복 | `PageShell`로 통합 |
-| 페이지마다 SEO 태그 반복 | typed metadata 데이터와 공통 출력 사용 |
-| ko/en 전체 TSX 생성·복제 | URL 진입점만 분리하고 실제 Page는 공유 |
-| 글로벌 CSS와 순서 의존 | 전역 SCSS를 역할별 폴더와 단일 진입점으로 관리 |
-| React와 DOM 직접 조작 JS 공존 | 기능별 React 이전 후 해당 JS 제거 |
-| 큰 페이지 파일 | 실제 페이지는 `components/pages`, 동일 반복만 `section`으로 분리 |
-| 코드·데이터·스타일 중복 | 기존 구현 검색 후 단일 원본 재사용 |
-| DOM 검사와 실제 렌더 검사 분리 | 정적 검사 후 1440px·375px 브라우저 확인 |
+| 문제                               | 해결                                                             |
+| ---------------------------------- | ---------------------------------------------------------------- |
+| 페이지마다 Header·Footer 배치 반복 | `PageShell`로 통합                                               |
+| 페이지마다 SEO 태그 반복           | typed metadata 데이터와 공통 출력 사용                           |
+| ko/en 전체 TSX 생성·복제           | URL 진입점만 분리하고 실제 Page는 공유                           |
+| 글로벌 CSS와 순서 의존             | 전역 SCSS를 역할별 폴더와 단일 진입점으로 관리                   |
+| React와 DOM 직접 조작 JS 공존      | 기능별 React 이전 후 해당 JS 제거                                |
+| 큰 페이지 파일                     | 실제 페이지는 `components/pages`, 동일 반복만 `section`으로 분리 |
+| 코드·데이터·스타일 중복            | 기존 구현 검색 후 단일 원본 재사용                               |
+| DOM 검사와 실제 렌더 검사 분리     | 정적 검사 후 1440px·375px 브라우저 확인                          |
 
 ## 3. 목표 폴더 구조
 
@@ -153,16 +153,24 @@ export const aboutContent = {
 
 ```css
 /* 허용 */
-.site-header {}
-.site-header__logo {}
-.about-history {}
-.about-history__year {}
+.site-header {
+}
+.site-header__logo {
+}
+.about-history {
+}
+.about-history__year {
+}
 
 /* 신규 코드에서 금지 */
-.box {}
-.item {}
-.title {}
-.left {}
+.box {
+}
+.item {
+}
+.title {
+}
+.left {
+}
 ```
 
 ### SCSS 전환 원칙

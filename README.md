@@ -1,15 +1,26 @@
-# OCUBE Homepage — 정본
+# OCUBE Homepage — v2 (핸드오프 노트 판)
 
-오큐브 홈페이지의 **정본 저장소**입니다. 한국어 23쪽 + 영어 23쪽(`/en/*`)을
-Next.js(App Router) 정적 내보내기로 만들고 GitHub Pages 로 배포합니다.
+오큐브 홈페이지를 **`docs/non-developer-handoff-notes.txt` 의 지침대로 다시 리팩터링한 판**입니다.
+한국어 23쪽 + 영어 23쪽(`/en/*`)을 Next.js(App Router) 정적 내보내기로 만들어 GitHub Pages 에 올립니다.
 
-- 공개 주소: https://hyegeungim3-git.github.io/ocube-homepage-next/
-- 구버전(참고용, 갱신하지 않음): `codex` 저장소 `public/` — ocube-homepage-final
-- 처음 온 사람은 `AGENTS.md`(작업 규칙) → `docs/architecture.md`(구조) 순서로 읽는다.
+|               | 저장소                                              | 공개 주소                                                 |
+| ------------- | --------------------------------------------------- | --------------------------------------------------------- |
+| **이 판(v2)** | `ocube-homepage-next-v2`                            | https://hyegeungim3-git.github.io/ocube-homepage-next-v2/ |
+| 먼저 만든 판  | `ocube-homepage-next` (로컬 `C:\오큐브\ocube-next`) | https://hyegeungim3-git.github.io/ocube-homepage-next/    |
 
-이 저장소는 원래 "구버전을 1바이트도 바꾸지 않고 옮기는" 이관 프로젝트로 시작했고,
-2026-08-05 정본으로 전환했습니다. 아래 게이트·변환기 설명은 그 이관기의 장치이며
-지금도 회귀 안전망으로 그대로 씁니다.
+**두 판은 화면과 기능이 같습니다.** 같은 원본에서 갈라져 나왔고, 서로 다른 지침으로 리팩터링했을
+뿐입니다. 2026-08-12 에 46쪽을 브라우저로 대조해 확인했습니다 —
+`docs/refactoring-roadmap.md` 의 "원본과의 대조 검수" 절에 방법과 수치가 있습니다.
+
+> ⚠️ **어느 쪽을 회사 정본으로 쓸지는 아직 정해지지 않았습니다.** 프로젝트 기록(`CLAUDE.md`)은
+> 먼저 만든 판을 정본으로 적고 있습니다. 이 저장소를 정본으로 올리려면 그 결정을 먼저 받고,
+> 이 표와 `AGENTS.md`·`docs/architecture.md` 의 같은 문장을 함께 고쳐야 합니다.
+
+처음 온 사람은 아래 **첫 한 시간**을 먼저 해 보고, `AGENTS.md`(작업 규칙) →
+`docs/architecture.md`(구조) → `docs/pitfalls.md`(먼저 밟은 지뢰) 순서로 읽으면 됩니다.
+
+이 저장소는 "먼저 만든 판을 1바이트도 바꾸지 않고 옮기는" 이관 작업으로 시작했습니다.
+아래 게이트·변환기 설명은 그때의 장치이고, 지금은 회귀 안전망으로 그대로 씁니다.
 
 ## 실행
 
@@ -20,6 +31,43 @@ npm run build    # 정적 내보내기 → out/  (한국어 25쪽 + 영어 23쪽
 npm run verify   # 직전 승인본(baseline/)과 DOM 이 같은지 검사 (아래 참조)
 npm run baseline # 의도한 변경을 확인한 뒤 기준선 갱신
 ```
+
+## 첫 한 시간 — 손으로 한 번 돌려보기
+
+읽기 전에 이걸 먼저 해 보면 이 저장소의 작업 방식이 한 번에 이해된다. 30분이면 된다.
+
+```bash
+npm ci                      # npm install 이 아니라 ci — 잠금 파일 그대로 설치한다
+npm run build
+npm run verify              # → 검사 528건 중 통과 528건. 여기서 시작한다
+```
+
+이제 **일부러 화면을 바꿔 보고, 게이트가 그것만 잡는지 확인한다.**
+
+1. `src/data/site.ts` 에서 `SEOUL` 주소 끝에 ` (테스트)` 를 붙인다.
+2. `npm run build && npm run verify` → 불일치가 뜬다.
+3. **목록을 읽는다.** 푸터에 그 주소가 들어가는 쪽마다 `footer` 와 `text` 가 걸릴 것이다.
+   내가 바꾼 그것 말고 다른 게 섞여 있으면, 의도치 않은 곳을 건드린 것이다.
+4. 되돌린다 → `npm run build && npm run verify` → 다시 528/528.
+
+여기서 **`npm run baseline` 을 먼저 눌렀다면** 그게 이 저장소에서 하지 말아야 할 일이다.
+기준선은 "불일치 목록을 읽고 내가 바꾼 것과 정확히 같음을 확인한 뒤" 갱신한다.
+순서를 뒤집으면 놓친 회귀가 그대로 묻힌다.
+
+## 자주 하는 작업 — 어디를 고치고 무엇으로 확인하나
+
+| 하고 싶은 일   | 고칠 곳                                                                                                                  | 확인                                                       |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
+| 화면 문구      | 여러 쪽이 함께 쓰면 `src/data/*.ts`, 한 쪽에만 있으면 `src/components/pages/<slug>-page.tsx`                             | `build` → `verify` 불일치가 그 문구뿐인가                  |
+| 영어 문구      | `i18n/<slug>.json` — **열쇠는 화면에 그려지는 한국어 원문 그대로**                                                       | 영어 쪽에 한국어가 남지 않았는가 (`docs/pitfalls.md` 참조) |
+| 색·간격·반응형 | `src/styles/_*.scss` (전역 진입점은 `site.scss` 하나, `@use` 차례가 곧 캐스케이드)                                       | `npm run test:visual`                                      |
+| 화면 동작      | `src/components/behavior/*.tsx` (지도는 `docs/architecture.md`)                                                          | `npm run test:e2e`                                         |
+| 메뉴 항목      | `src/config/navigation.ts` 한 곳 (데스크톱·모바일·푸터가 모두 여기서 나온다)                                             | e2e `navigation.spec.ts`                                   |
+| 새 화면 추가   | `components/pages/<slug>-page.tsx` + `app/(site)/<slug>/page.tsx` + `app/(en)/en/<slug>/page.tsx` + `public/sitemap.xml` | 전부                                                       |
+| 배포 주소      | `src/config/site.ts` (또는 `NEXT_PUBLIC_SITE_URL`)                                                                       | e2e `metadata.spec.ts`                                     |
+
+새 이미지·영상을 넣을 때는 **영어 화면 경로를 조심할 것** — `assetPath(경로, lang)` 을 태우지
+않으면 `/en/` 아래에서 깨진다. 실제로 두 번 겪었다(`docs/pitfalls.md`).
 
 ## 검사 (전부 통과해야 한 단계가 끝난 것이다)
 
@@ -62,6 +110,16 @@ npm run test:visual   # Playwright — 스크린샷 기준선
 
 영어 문구는 `i18n/<slug>.json` 에 채우면 된다. 화면 코드는 두 언어가 하나를 함께 쓰고,
 그리는 시점에 사전을 조회한다 (`src/i18n/`). 자세한 내용은 `docs/architecture.md`.
+
+### 이 검사는 CI 가 대신 돌린다
+
+`main` push 와 PR 마다 GitHub Actions 가 `npm ci` → typecheck → lint → format:check →
+test:unit → build → **verify** → test:e2e 를 돌린다(`.github/workflows/checks.yml`).
+게이트가 문서 속 약속이 아니라 **실제로 막는 장치**가 되도록 하기 위한 것이다.
+
+`test:visual` 만 CI 에서 빠져 있다. 스크린샷 기준선이 Windows 에서 만들어졌고 글꼴 렌더링이
+OS 마다 달라, Linux 러너에서 돌리면 실제 회귀가 아닌데도 전부 실패한다.
+**화면 그림 검사는 로컬에서 돌릴 것.**
 
 ## URL 규칙
 
