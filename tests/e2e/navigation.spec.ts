@@ -44,6 +44,15 @@ test.describe("데스크톱 GNB", () => {
     await expect(gnb).not.toHaveClass(/gnb-mega/);
   });
 
+  test("펼칠 때 가장 긴 갈래의 높이를 재어 패널 높이로 쓴다", async ({ page }) => {
+    const gnb = page.locator(".gnb");
+    expect(await gnb.evaluate((el) => el.style.getPropertyValue("--mega-h"))).toBe("");
+    await page.locator(".gnb .nav-menu").hover();
+    await expect(gnb).toHaveClass(/gnb-mega/);
+    const h = await gnb.evaluate((el) => parseInt(el.style.getPropertyValue("--mega-h"), 10));
+    expect(h).toBeGreaterThan(100);
+  });
+
   test("키보드 포커스로도 열리고 Esc 로 닫힌다", async ({ page }) => {
     const gnb = page.locator(".gnb");
     await page.locator(".gnb .nav-item > a").first().focus();
