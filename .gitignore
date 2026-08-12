@@ -17,3 +17,6 @@ blob-report/
 .playwright/
 tests/**/*-actual.png
 tests/**/*-diff.png
+
+# 확인용 서버·스크립트가 흘리는 로그 (한 번 커밋에 딸려 들어간 적 있다)
+*.log
