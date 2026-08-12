@@ -7,41 +7,24 @@
      한국어 화면과 영어 화면이 같은 파일을 쓰므로 <html lang> 을 보고 고른다. */
   var EN = (document.documentElement.getAttribute('lang') || 'ko').slice(0, 2) === 'en';
   var T = EN ? {
-    skip: 'Skip to content',
     table: 'comparison table', tableHint: ' — scrolls sideways',
     overview: function (label) { return label + ' overview'; },
     openMenu: 'Open menu', closeMenu: 'Close menu',
     play: 'Resume auto-rotation', pause: 'Pause auto-rotation',
-    copied: function (v) { return 'Copied — ' + v; },
     zoomDialog: 'Enlarged product screen', zoomClose: 'Close enlarged view',
     shot: 'product screen', zoomOpen: function (n) { return n + ' — view larger'; },
     mailSubject: function (type, name) { return '[OCUBE enquiry] ' + type + ' - ' + name; },
     mailType: 'Type: ', mailName: 'Name / company: ', mailFrom: 'Reply to: '
   } : {
-    skip: '본문으로 바로가기',
     table: '비교표', tableHint: ' — 가로로 스크롤할 수 있습니다',
     overview: function (label) { return label + ' 전체 보기'; },
     openMenu: '메뉴 열기', closeMenu: '메뉴 닫기',
     play: '자동 전환 재생', pause: '자동 전환 일시정지',
-    copied: function (v) { return '복사되었습니다 — ' + v; },
     zoomDialog: '제품 화면 확대 보기', zoomClose: '확대 화면 닫기',
     shot: '제품 화면', zoomOpen: function (n) { return n + ' 확대 보기'; },
     mailSubject: function (type, name) { return '[오큐브 홈페이지 문의] ' + type + ' - ' + name; },
     mailType: '문의 유형: ', mailName: '성함 / 회사: ', mailFrom: '회신 이메일: '
   };
-
-  /* --- 0) 전 페이지 본문 바로가기 + main 기준점 보강 --- */
-  (function pageAccessibility() {
-    var main = document.querySelector('main');
-    if (!main) return;
-    if (!main.id) main.id = 'main-content';
-    if (document.querySelector('.skip')) return;
-    var skip = document.createElement('a');
-    skip.className = 'skip';
-    skip.href = '#' + main.id;
-    skip.textContent = T.skip;
-    document.body.insertBefore(skip, document.body.firstChild);
-  })();
 
   /* --- 1) 스크롤 리빌 : IO 우선 + 스크롤 폴백 (IO 미발동 환경에서도 콘텐츠가 숨겨지지 않도록) --- */
   (function reveal() {
@@ -433,29 +416,6 @@
     setTimeout(function () { els.forEach(run); }, 2500);   // IO 미발동 폴백
   })();
 
-  /* --- 3-d) 구축 사례 필터 (references) --- */
-  (function caseFilter() {
-    var bar = document.querySelector('.case-filter');
-    if (!bar) return;
-    var tabs = [].slice.call(bar.querySelectorAll('.case-tab'));
-    var cards = [].slice.call(document.querySelectorAll('.case-card[data-line]'));
-    var domains = [].slice.call(document.querySelectorAll('.case-domain'));
-    bar.addEventListener('click', function (e) {
-      var b = e.target.closest ? e.target.closest('.case-tab') : null;
-      if (!b) return;
-      var line = b.getAttribute('data-line');
-      tabs.forEach(function (t) { t.classList.toggle('active', t === b); t.setAttribute('aria-pressed', t === b ? 'true' : 'false'); });
-      cards.forEach(function (c) {
-        var show = line === 'all' || (c.getAttribute('data-line') || '').split(/\s+/).indexOf(line) > -1;
-        c.classList.toggle('is-hidden', !show);
-      });
-      domains.forEach(function (d) {
-        var any = d.querySelector('.case-card:not(.is-hidden)');
-        d.style.display = any ? '' : 'none';
-      });
-    });
-  })();
-
   /* --- 3-d2) 인증·특허·저작권 갤러리 필터 (company) --- */
   (function certFilter() {
     var bar = document.querySelector('.cert-filter');
@@ -484,30 +444,6 @@
       apply(b.getAttribute('data-cat'));
     });
     apply('all');
-  })();
-
-  /* --- 3-e) 원클릭 복사 [data-copy] + 토스트 --- */
-  (function copyBtns() {
-    if (!document.querySelector('[data-copy]')) return;
-    var toast = document.createElement('div');
-    toast.className = 'toast'; toast.setAttribute('role', 'status');
-    document.body.appendChild(toast);
-    var tid = null;
-    function show(msg) {
-      toast.textContent = msg; toast.classList.add('show');
-      clearTimeout(tid); tid = setTimeout(function () { toast.classList.remove('show'); }, 1800);
-    }
-    document.addEventListener('click', function (e) {
-      var b = e.target.closest ? e.target.closest('[data-copy]') : null;
-      if (!b) return;
-      var v = b.getAttribute('data-copy');
-      function ok() { show(T.copied(v)); }
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(ok, ok);
-      else {
-        var ta = document.createElement('textarea'); ta.value = v; document.body.appendChild(ta);
-        ta.select(); try { document.execCommand('copy'); } catch (err) { } ta.remove(); ok();
-      }
-    });
   })();
 
   /* --- 3-f) 제품 화면 확대 + 기능 카드 포인터 미리보기 --- */
@@ -631,22 +567,6 @@
     });
   }, { threshold: [0, .35] });
   vids.forEach(function (v) { io.observe(v); });
-})();
-
-/* --- 스크롤 프로그레스 바 (마크업 주입, rAF 스로틀) --- */
-(function scrollProgress() {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var bar = document.createElement('div');
-  bar.className = 'scroll-progress'; bar.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(bar);
-  var ticking = false;
-  function paint() {
-    ticking = false;
-    var max = document.documentElement.scrollHeight - innerHeight;
-    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, scrollY / max) : 0) + ')';
-  }
-  addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }, { passive: true });
-  paint();
 })();
 
 /* --- GNB 스마트 숨김: 320px 이상에서 하강 시 숨김, 상승 즉시 복귀 (i-bricks 패턴) --- */
