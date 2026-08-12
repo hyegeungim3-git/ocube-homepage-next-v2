@@ -3,30 +3,35 @@
 ```text
 src/
   app/
-    (site)/          한국어 주소 22개. layout.tsx 는 루트 레이아웃(html/head/body + site2.js)
+    (site)/          한국어 주소 22개. layout.tsx 는 루트 레이아웃(html/head/body)
       <route>/page.tsx   7줄짜리 진입점 — <XxxPage lang="ko" />
     (home)/          한국어 홈. home-refresh.css/js 가 하나 더 붙어 그룹을 분리
+                     (home-refresh.js 는 홈 전용 스크립트 — 남아 있는 유일한 손코딩 JS)
     (en)/ (en-home)/ 영어 주소. 같은 화면 컴포넌트에 lang="en" 만 넘긴다
   components/pages/  실제 화면 23개 — 두 언어가 함께 쓴다
   components/layout/ 공통 셸
     page-shell.tsx   화면 골격 — 헤더+모바일 메뉴+<main>+푸터를 한 번에 (홈 제외)
     page-meta.tsx    검색·공유 메타 한 벌 (title·canonical·hreflang·og·twitter)
     site-header.tsx  skip 링크 + GNB (메뉴는 config/navigation.ts 에서)
-    mobile-panel.tsx 무JS 폴백 모바일 메뉴
+    mobile-panel.tsx 좁은 화면 메뉴 — 무JS 면 납작한 목록, 붙은 뒤 아코디언
     site-footer.tsx  푸터 (하단은 데이터로, CTA 는 children 으로)
   config/
     site.ts          배포 주소 한 곳 (canonical·og·JSON-LD·sitemap 이 참조)
     page-meta.ts     메타의 언어별 고정값(사명·로케일)·공유 이미지·파비콘·주소 규칙
     navigation.ts    GNB 4개 대메뉴 + 20개 중메뉴
+    current-page.ts  지금 보고 있는 화면 표시(aria-current·is-current) 판정
+  components/behavior/  화면 동작 — 예전 site2.js 25모듈이 여기로 왔다
+                     client-behaviors.tsx 가 화면 전체에 걸리는 것들을 한 번에 건다
+                     (리빌·맨 위로·복사 알림·스크롤 진행·표 감싸기·시연 영상·라이트박스 …)
+                     mobile-menu.ts / header-scroll.ts 는 여러 컴포넌트가 나눠 갖는 상태를
+                     담는 작은 바깥 저장소(useSyncExternalStore)
   i18n/              사전(dictionary)·화면 글 번역(<T>·t)·데이터 번역(localized)
   data/              화면 문구·이미지 경로 데이터 — localized() 로 두 언어 (site·heroes·cards·features·steps·
                      cases·refs·solution-intro·cta·subnav·sec-heads·applications·
                      contact·history·logos·home-hero — 목록은 README 표 참조)
   styles/            화면별 SCSS partial 29개 + site.scss (전역 스타일 단일 진입점)
-  scripts/           site2.js 를 기능별로 쪼갠 25개 모듈 + order.json
 public/
-  assets/            현재 사이트의 자산을 그대로 복제 (css/js/img/video/font)
-                     ⚠️site2.js 는 생성물 — 직접 고치면 다음 빌드에서 사라진다
+  assets/            현재 사이트의 자산을 그대로 복제 (css/img/video/font)
   <구 슬러그>/        구 Wix 주소용 리다이렉트 스텁 20개
   sitemap.xml, robots.txt, favicon.svg
 scripts/
@@ -75,11 +80,8 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
   `site.scss` 의 `@use` 차례가 곧 캐스케이드다 — 바꾸면 화면이 조용히 깨진다.
   (예전에는 번들러를 안 태우고 파일을 이어붙였다. 이유였던 CSS 안 `url(...)` 상대경로는
   실측 결과 **0건**이라 더 이상 걸림돌이 아니었다.)
-- 동작(JS)은 `src/scripts/*.js` 를 고친다 — 같은 방식으로 `scripts/build-js.mjs` 가
-  이어붙여 `public/assets/site2.js` 를 만든다. 00-head 가 외곽 IIFE 를 열고
-  17-iife-close 가 닫으므로(01~16 은 그 안, 18 이후는 최상위) 순서를 바꾸면 깨진다.
-  판번호를 올릴 때는 두 레이아웃의 `?v=` 도 함께 올린다(게이트 scripts 검사가 잡는다).
-- 새 라이브러리는 승인 없이 추가하지 않는다. 현재 런타임 의존성은 next·react·react-dom 뿐이다.
+- 동작을 고치려면 `src/components/behavior/` 의 해당 컴포넌트를 고친다. 예전처럼 이어붙이는
+  단계가 없어 빌드 순서를 신경 쓸 필요가 없다.
 
 ## 왜 라우트 그룹이 둘인가
 

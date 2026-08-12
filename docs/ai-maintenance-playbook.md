@@ -17,7 +17,7 @@
 - 스타일은 전역 SCSS 하나로 통일한다. 일반 CSS, CSS Modules, Tailwind, CSS-in-JS를 섞지 않는다.
 - 컴포넌트 props와 export 함수·데이터에 타입을 명시한다.
 - 동일한 화면·동작·데이터·스타일을 복사해 관리하지 않는다.
-- `site2.js` 기능은 하나씩 React로 옮기고 검증 후 제거한다.
+- `site2.js` 기능은 하나씩 React로 옮기고 검증 후 제거한다. **(완료 — 9절 참조)**
 - 승인된 개발 도구는 `sass`, Playwright, Vitest다. 그 외 라이브러리는 사용자 승인 없이 추가하지 않는다.
 - 순수 리팩터링은 `baseline`을 갱신하지 않고 `verify`를 통과해야 한다.
 
@@ -70,7 +70,7 @@ tests/
   visual/                      # Playwright 스크린샷 기준선
 
 i18n/                         # 다국어 공통화 전 번역 사전
-public/assets/                 # 자산과 생성된 site2.css/site2.js
+public/assets/                 # 자산 (site2.css·site2.js 는 이제 없다)
 scripts/                       # 빌드·생성·검증 도구
 baseline/                      # 직전 승인 HTML
 ```
@@ -204,7 +204,7 @@ export function PageShell(props: PageShellProps): JSX.Element {
 
 ```powershell
 rg -n "이름|클래스|문구|데이터키" src
-rg --files src/components src/data src/config src/styles src/scripts
+rg --files src/components src/data src/config src/styles
 ```
 
 다음 중복은 공통화한다.
@@ -260,6 +260,11 @@ rg --files src/components src/data src/config src/styles src/scripts
 - production build, verify, 데스크톱·모바일 렌더가 통과한다.
 
 ## 9. `site2.js` 제거 절차
+
+> **완료 (2026-08-12).** 25개 모듈 전부 이전·제거했고 `site2.js` 는 없다(44,433 바이트 → 0).
+> 아래 절차와 점검 명령은 **끝난 일의 기록**이다 — `src/scripts` 도 `order.json` 도 더 없다.
+> 남은 손코딩 스크립트는 홈 전용 `public/assets/home-refresh.js` 하나뿐이며, 같은 절차로
+> 옮길 수 있다. 실제로 옮기며 알게 된 것은 `refactoring-roadmap.md` 6단계에 적어 두었다.
 
 `site2.js`는 임시 레거시 계층이며 최종 목표는 의존도 0이다.
 
@@ -431,7 +436,7 @@ AGENTS.md, docs/architecture.md, docs/ai-maintenance-playbook.md를 먼저 읽�
 요청 범위 밖의 문구·DOM·URL·스타일 결과를 바꾸지 마라. 기존 구현을 먼저 검색하고 중복 코드를
 만들지 마라. 모든 props와 export 경계에 타입을 명시하고 any를 사용하지 마라. ko/en URL은
 유지하되 실제 화면 코드는 하나만 사용하라. 전역 SCSS 단일 체계를 사용하고 고정 inline style을
-추가하지 마라. site2.css와 site2.js는 기능·영역 하나씩 이전하고 검증 후 대응 레거시 코드를
+추가하지 마라. (site2.css·site2.js 는 그 방식으로 이전을 마쳤다.) 기능·영역 하나씩 이전하고 검증 후 대응 레거시 코드를
 제거하라. 변경 전에 기존 구현에서 통과하는 Playwright/Vitest 특성화 TC를 작성하고, 변경 후
 기대값을 수정하지 않은 같은 TC와 전체 회귀 검사를 통과시켜라. 테스트 통과 후에만 기존 코드를
 제거하고, 순수 리팩터링에서는 baseline과 visual 기준선을 갱신하지 마라.
