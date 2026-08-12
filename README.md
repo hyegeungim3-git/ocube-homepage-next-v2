@@ -21,6 +21,41 @@ npm run verify   # 직전 승인본(baseline/)과 DOM 이 같은지 검사 (아�
 npm run baseline # 의도한 변경을 확인한 뒤 기준선 갱신
 ```
 
+## 검사 (전부 통과해야 한 단계가 끝난 것이다)
+
+```bash
+npm run typecheck
+npm run lint
+npm run format:check
+npm run build
+npm run verify        # DOM 대조 48쪽 x 11항목 = 528건
+npm run test:unit     # Vitest — 순수 함수·데이터 계약
+npm run test:e2e      # Playwright — 건강검진·메뉴·필터·슬라이더·언어·메타
+npm run test:visual   # Playwright — 스크린샷 기준선
+```
+
+`test:e2e` 와 `test:visual` 은 **`out/` 을 보고 검사한다.** 화면을 고쳤으면 `npm run build`
+를 먼저 돌릴 것. (`tests/static-server.mjs` 가 `out/` 을 그대로 내려주고, Playwright 가
+자동으로 띄운다. `next start` 는 `output:"export"` 라 쓸 수 없다.)
+
+| 검사          | 무엇을 보나                                                                                                                                                                                                                      |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `test:unit`   | 주소 규칙(`pageHref`·`counterpartHref`·`assetPath`)·GNB 구조·`src/data` 의 ko/en 대응·사이트 주소 조합                                                                                                                           |
+| `test:e2e`    | 화면 23 x 2언어 x 2뷰포트 **건강검진**(콘솔 오류·하이드레이션·깨진 이미지·가로 오버플로·h1 1개) + 메가 메뉴·모바일 아코디언·본문 바로가기·사례 필터·히어로 슬라이더·언어 전환·복사 토스트·라이트박스·FAB·시연 영상·메타/사이트맵 |
+| `test:visual` | 대표 8쪽 x 2언어 x 2뷰포트 전면 스크린샷                                                                                                                                                                                         |
+
+**기준선을 먼저 고치지 않는다.** 순수 리팩터링이면 `verify` 528 건과 스크린샷이
+**갱신 없이** 통과해야 한다. 화면을 의도적으로 바꿨을 때만, 차이가 바꾼 것과 일치하는지
+확인한 뒤 `npm run baseline` · `npm run test:visual:approve` 를 쓴다.
+
+### 스크린샷에서 사진을 덮는 이유
+
+전면 스크린샷을 그대로 저장하면 사진이 많은 화면 한 장이 4MB 다(32장 46MB). 기준선을
+갱신할 때마다 그만큼 저장소에 쌓인다. 그런데 리팩터링이 깨뜨리는 것은 사진의 화소가 아니라
+**배치·여백·글자**다. 그래서 `img`·`video`·`iframe` 과 CSS 배경 사진을 평평한 색으로 덮고
+찍는다 — 상자의 위치와 크기는 그대로 남는다(46MB → 24MB).
+사진이 엉뚱하게 바뀌는 사고는 `verify`(src 대조)와 건강검진(깨진 이미지)이 맡는다.
+
 영어 화면·영어 데이터는 **생성물**이다 — `src/app/(en)`·`src/data/*.en.ts` 를 직접 고치지
 말고 `i18n/*.json` 사전을 채운 뒤 `node scripts/make-en.mjs && npm run build` 를 돌린다.
 

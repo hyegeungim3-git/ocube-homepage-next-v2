@@ -1,15 +1,29 @@
 # 프로젝트 AI 작업 규칙
 
-`agent-rules` 템플릿을 이 프로젝트에 맞춰 채운 문서다. 작업 전에 이 문서를 먼저 읽는다.
+작업 전에 이 문서를 먼저 읽는다.
+
+> **이 저장소는 무엇인가** — `ocube-next`(정본, `agent-rules` 지침으로 만든 판)를 그대로 둔 채,
+> **`non-developer-handoff-notes` 인수인계 패키지의 로드맵을 실행하는 별도 판**이다.
+> 시작점은 `ocube-next` 의 커밋 `acb8393` 스냅샷이고, 이후 변경은 전부 그 로드맵을 따른다.
+> 두 판을 비교해 "인수인계 문서가 결과를 어떻게 바꾸는지" 를 보는 것이 목적이다.
 
 ## 1. 문서 적용 우선순위
 
-1. 이 `AGENTS.md`
-2. `agent-rules/ai-development-handoff-guidelines.md` (공통 개발 지침)
-3. `docs/architecture.md` (구조와 확장 원칙)
-4. `README.md` (실행·검증 방법)
+**현재 구현을 설명하는 문서** (충돌하면 이쪽이 우선)
 
-충돌하면 더 구체적인 문서를 따른다. 판단이 어려우면 임의로 정하지 말고 사용자에게 알린다.
+1. 이 `AGENTS.md`
+2. `docs/architecture.md` (구조와 확장 원칙)
+3. `README.md` (실행·검증 방법)
+
+**앞으로 적용할 목표와 계획** (아직 구현된 상태로 간주하지 않는다)
+
+4. `docs/refactoring-roadmap.md` (단계별 할 일 — 체크되지 않은 항목은 미구현)
+5. `docs/ai-maintenance-playbook.md` (전환 규칙)
+6. `docs/non-developer-handoff-notes.txt` (인수인계 시 유의사항 원문)
+
+한 단계가 통과하면 **같은 변경에서** 위쪽 현재 문서(1~3)도 함께 갱신한다.
+충돌하면 승인된 단계가 끝나기 전까지 현재 문서가 우선한다.
+판단이 어려우면 임의로 정하지 말고 사용자에게 알린다.
 
 ## 2. 프로젝트 개요
 
@@ -76,19 +90,29 @@
 개발 서버:      npm run dev
 정적 검사:      npm run lint
 타입 검사:      npm run typecheck
+포맷 검사:      npm run format:check
 회귀 게이트:    npm run verify      ← 직전 승인본(baseline/)과 DOM 이 같은지
-기준선 갱신:    npm run baseline    ← 의도한 변경을 반영한 뒤에만
+단위 검사:      npm run test:unit
+동작 검사:      npm run test:e2e    ← out/ 을 보므로 build 를 먼저
+화면 검사:      npm run test:visual
+기준선 갱신:    npm run baseline / npm run test:visual:approve  ← 승인된 변경에만
 production build: npm run build
 ```
+
+### 변경 전에 먼저 할 일
+
+**코드를 고치기 전에 그 동작을 검사로 고정한다.** 새로 쓴 검사가 **지금 코드에서 먼저
+통과**해야 하고, 고친 뒤에는 **기대값을 바꾸지 않은 같은 검사**가 다시 통과해야 한다.
+통과시키려고 기대값이나 기준선을 먼저 바꾸지 않는다. (플레이북 11절)
 
 ### 완료 조건
 
 - [ ] `npm run build` 통과
-- [ ] `npm run typecheck` · `npm run lint` 통과
+- [ ] `npm run typecheck` · `npm run lint` · `npm run format:check` 통과
 - [ ] **`npm run verify` 전항목 통과** — 불일치가 나오면 그것이 이번에 바꾼 것과
       정확히 일치하는지 확인하고, 맞으면 `npm run baseline` 으로 기준선을 갱신한다
-- [ ] 데스크톱(1440)·모바일(375) 실제 렌더 확인 (가로 오버플로·깨진 이미지·h1 개수)
-- [ ] 콘솔 오류 0
+- [ ] `npm run test:unit` · `npm run test:e2e` · `npm run test:visual` 통과
+- [ ] 순수 리팩터링이면 **기준선(baseline·스크린샷)을 갱신하지 않고** 통과
 - [ ] 실행하지 못한 검증은 이유와 함께 보고
 
 ## 10. 금지 사항
@@ -100,6 +124,22 @@ production build: npm run build
 - 새 라이브러리를 승인 없이 추가한다
 
 ## 11. 현재 작업
+
+### 이 판(v2)의 진행 상황 — `docs/refactoring-roadmap.md` 기준
+
+- [x] **Stage 0** `ocube-next@acb8393` 스냅샷 복제 · 인수인계 문서 설치 · 시작점 검증(528/528)
+- [x] **Stage 0.5** 저장소 전체 포맷 정규화 (`format:check` 가 시작부터 빨간불이었다)
+- [x] **Stage 0.6** 줄바꿈 LF 고정 (clone 직후 `format:check` 가 깨지던 문제)
+- [x] **로드맵 1단계** 테스트 환경 — Vitest 76건 · Playwright e2e 143건 · visual 32장
+- [ ] 로드맵 2단계 공통 페이지 구조(PageShell)
+- [ ] 로드맵 3단계 다국어 코드 통합
+- [ ] 로드맵 4단계 SCSS 전환 · `site2.css` 제거
+- [ ] 로드맵 5단계 Prettier·ESLint 통일
+- [ ] 로드맵 6단계 `site2.js` React 이전
+
+한 단계씩 진행하고, 통과한 뒤에 다음 단계로 넘어간다. 여러 단계를 한 변경에 섞지 않는다.
+
+### 이관기부터 이어지는 기록
 
 - 2026-08-05 **이 저장소를 정본으로 전환.** 회귀 기준선을 `baseline/` 으로 옮겨,
   구버전 대조가 아니라 '직전 승인본 대조' 로 검사한다.

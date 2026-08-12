@@ -18,13 +18,14 @@
 
 ## 필요한 변경사항
 
-### 1. 테스트 환경 구성
+### 1. 테스트 환경 구성 — **완료 (2026-08-12)**
 
-- [ ] Playwright E2E·visual 설정
-- [ ] Vitest unit 설정
-- [ ] `test:unit`, `test:e2e`, `test:visual` npm script 추가
-- [ ] 콘솔 오류, hydration, 깨진 이미지, 가로 오버플로 검사
-- [ ] 1440×900·375×812, ko/en 기준 스크린샷 생성
+- [x] Playwright E2E·visual 설정 — `playwright.config.ts`, `tests/static-server.mjs`(out/ 서빙)
+- [x] Vitest unit 설정 — `vitest.config.mts`
+- [x] `test:unit`, `test:e2e`, `test:visual` npm script 추가 (+ `test:visual:approve`)
+- [x] 콘솔 오류, hydration, 깨진 이미지, 가로 오버플로 검사 — `tests/e2e/health.spec.ts`
+      (화면 23 × 2언어 × 2뷰포트 = 92셀, h1 개수·`html lang` 포함)
+- [x] 1440×900·375×812, ko/en 기준 스크린샷 생성 — 대표 8쪽 = 32장
 
 ### 2. 공통 페이지 구조
 

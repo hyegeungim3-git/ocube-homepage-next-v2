@@ -8,3 +8,12 @@ _work/
 /out/
 __pycache__/
 *.pyc
+
+# 테스트 실행 산출물. 스크린샷 기준선(tests/visual/__screenshots__)은 추적 대상이다 —
+# 실패했을 때 나오는 비교 이미지·추적 파일만 제외한다.
+test-results/
+playwright-report/
+blob-report/
+.playwright/
+tests/**/*-actual.png
+tests/**/*-diff.png

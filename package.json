@@ -9,8 +9,12 @@
     "lint": "eslint src *.ts *.mjs",
     "typecheck": "tsc --noEmit",
     "verify": "python scripts/verify-fidelity.py",
-    "format": "prettier --write \"src/**/*.{ts,tsx,css,json,md}\" \"*.{ts,mjs,json,md}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,css,json,md}\" \"*.{ts,mjs,json,md}\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,json,md}\" \"tests/**/*.{ts,mjs}\" \"*.{ts,mjs,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css,json,md}\" \"tests/**/*.{ts,mjs}\" \"*.{ts,mjs,json,md}\"",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test --project=e2e",
+    "test:visual": "playwright test --project=visual",
+    "test:visual:approve": "playwright test --project=visual --update-snapshots",
     "prebuild": "node scripts/build-css.mjs && node scripts/build-js.mjs",
     "build:css": "node scripts/build-css.mjs",
     "baseline": "npm run build && node scripts/snapshot-baseline.mjs",
@@ -22,12 +26,14 @@
     "react-dom": "19.2.6"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.6",
     "prettier": "^3.9.6",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitest": "^4.1.10"
   }
 }

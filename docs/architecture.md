@@ -29,6 +29,12 @@ public/
 scripts/
   convert-from-legacy.py  원본 HTML → TSX 기계 변환기 (재실행 가능)
   verify-fidelity.py      정합성 게이트 (npm run verify)
+tests/
+  helpers/           검사 대상 목록(pages)·건강검진(health)·촬영 준비(stabilize)
+  unit/              Vitest — 순수 함수·데이터 계약
+  e2e/               Playwright — 사용자 동작
+  visual/            Playwright — 스크린샷 기준선 (__screenshots__)
+  static-server.mjs  out/ 을 내려주는 최소 정적 서버 (Playwright 가 자동 기동)
 docs/                개발·운영 문서
 ```
 
@@ -78,11 +84,20 @@ Next 의 다중 루트 레이아웃으로 분리했다.
 
 ## 회귀 기준선
 
+기준선은 두 겹이다 — **DOM**(`baseline/`)과 **화면 그림**(`tests/visual/__screenshots__/`).
+
 ```text
 baseline/*.html      직전에 승인한 빌드 결과 (한국어 25 + 영어 23 = 48페이지)
-npm run verify       이번 빌드(out/)와 기준선을 대조 — 48페이지 × 11항목
+npm run verify       이번 빌드(out/)와 기준선을 대조 — 48페이지 × 11항목 = 528건
 npm run baseline     빌드 후 기준선을 이번 결과로 갱신
+
+tests/visual/__screenshots__/   대표 8쪽 × 2언어 × 2뷰포트 = 32장
+npm run test:visual             이번 빌드와 스크린샷을 대조
+npm run test:visual:approve     승인된 화면 변경일 때만 기준선 갱신
 ```
+
+동작은 `npm run test:e2e`(건강검진 + 사용자 동작), 순수 함수·데이터 계약은
+`npm run test:unit` 이 본다. 자세한 내용은 README 의 "검사" 절.
 
 절차는 **확인 먼저, 갱신은 나중**이다.
 
