@@ -15,8 +15,7 @@
     "test:e2e": "playwright test --project=e2e",
     "test:visual": "playwright test --project=visual",
     "test:visual:approve": "playwright test --project=visual --update-snapshots",
-    "prebuild": "node scripts/build-css.mjs && node scripts/build-js.mjs",
-    "build:css": "node scripts/build-css.mjs",
+    "prebuild": "node scripts/build-js.mjs",
     "baseline": "npm run build && node scripts/snapshot-baseline.mjs",
     "build:js": "node scripts/build-js.mjs"
   },
@@ -33,6 +32,7 @@
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.6",
     "prettier": "^3.9.6",
+    "sass": "^1.102.0",
     "typescript": "5.9.3",
     "vitest": "^4.1.10"
   }

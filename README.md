@@ -35,9 +35,12 @@ npm run test:visual   # Playwright — 스크린샷 기준선
 ```
 
 `verify`·`test:e2e`·`test:visual` 은 **`out/` 을 보고 검사한다.** 화면을 고쳤으면
-`npm run build` 를 먼저 돌릴 것. (빌드가 실패해도 `out/` 에는 지난번 결과가 남아 있어
-거짓 초록불이 뜬다 — `verify` 는 `out/` 이 소스보다 낡으면 아예 멈춘다.) (`tests/static-server.mjs` 가 `out/` 을 그대로 내려주고, Playwright 가
-자동으로 띄운다. `next start` 는 `output:"export"` 라 쓸 수 없다.)
+`npm run build` 를 먼저 돌릴 것.
+
+- 빌드가 실패해도 `out/` 에는 지난번 결과가 남아 거짓 초록불이 뜬다 —
+  `verify` 는 `out/` 이 소스보다 낡으면 아예 멈춘다.
+- `tests/static-server.mjs` 가 `out/` 을 그대로 내려주고 Playwright 가 자동으로 띄운다.
+  `next start` 는 `output:"export"` 라 쓸 수 없다.
 
 | 검사          | 무엇을 보나                                                                                                                                                                                                                      |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -167,7 +170,7 @@ JSX 는 줄바꿈에 붙은 공백을 지운다. 그래서 `<b>설립</b> (2007.
 | `src/data/history.ts`        | 연혁 타임라인 7그룹 28항목                                               |
 | `src/data/logos.ts`          | 고객사·기술 파트너 로고 11장                                             |
 | `src/data/home-hero.ts`      | 홈 히어로 슬라이드 4장 (영상·이미지·타자기 문구)                         |
-| `src/styles/*.css`           | site2.css 를 화면별 29개 모듈로 분리 (`order.json` 이 합치는 순서)       |
+| `src/styles/_*.scss`         | 화면별 29개 SCSS partial. `site.scss` 가 캐스케이드 순서대로 불러온다    |
 | `src/scripts/*.js`           | site2.js 를 기능별 25개 모듈로 분리 (`order.json` 이 합치는 순서)        |
 
 실도메인이 정해지면 `NEXT_PUBLIC_SITE_URL` 환경변수 하나로 전체 주소를 바꿀 수 있다.

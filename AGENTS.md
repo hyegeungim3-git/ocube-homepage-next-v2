@@ -73,8 +73,8 @@
 
 - React + TypeScript(strict). `any`·`@ts-ignore` 로 타입 검사를 우회하지 않는다.
 - 런타임 의존성은 next·react·react-dom **뿐이다.** 승인 없이 라이브러리를 추가하지 않는다.
-- 스타일은 `public/assets/site2.css` 를 그대로 링크한다. Next 의 CSS 파이프라인으로 옮기는 것은
-  화면이 안정된 뒤 별도로 판단한다.
+- 스타일은 **전역 SCSS 하나**다. `src/styles/site.scss` 를 루트 레이아웃이 import 하고
+  Next 가 컴파일한다. 일반 CSS·CSS Modules·Tailwind·CSS-in-JS 를 섞지 않는다.
 
 ## 8. 상태 및 데이터
 
@@ -136,7 +136,7 @@ production build: npm run build
       기준선 갱신 없이 528/528 통과. 화면을 `components/pages` 로 옮기는 두 항목은
       3단계와 함께 한다(로드맵 2절의 메모 참조)
 - [ ] 로드맵 3단계 다국어 코드 통합
-- [ ] 로드맵 4단계 SCSS 전환 · `site2.css` 제거
+- [x] **로드맵 4단계** SCSS 전환 · `site2.css` 제거 — 스크린샷 32장 갱신 없이 통과
 - [ ] 로드맵 5단계 Prettier·ESLint 통일
 - [ ] 로드맵 6단계 `site2.js` React 이전
 

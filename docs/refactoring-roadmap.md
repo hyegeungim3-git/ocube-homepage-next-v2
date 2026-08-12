@@ -49,14 +49,21 @@
 - [ ] 언어별 콘텐츠를 `Record<Lang, ContentType>`으로 관리
 - [ ] 페이지별 전환 후 영어 TSX·`*.en.ts` 생성 로직 제거
 
-### 4. SCSS 전환과 `site2.css` 제거
+### 4. SCSS 전환과 `site2.css` 제거 — **대부분 완료 (2026-08-12)**
 
-- [ ] `sass` 설치 및 전역 `site.scss` 구성
-- [ ] 기존 CSS를 순서 변경 없이 SCSS partial로 이동
-- [ ] 고정 inline style을 SCSS class로 이전
-- [ ] 미사용·중복 선택자를 영역별 제거
-- [ ] root layout에서 SCSS를 직접 import
-- [ ] 검증 후 `site2.css`, `order.json`, `build-css.mjs` 제거
+- [x] `sass` 설치 및 전역 `site.scss` 구성
+- [x] 기존 CSS를 순서 변경 없이 SCSS partial로 이동 (29개, `@use` 차례 = 전 order.json 차례)
+- [x] root layout에서 SCSS를 직접 import
+- [x] 검증 후 `site2.css`, `order.json`, `build-css.mjs` 제거
+- [ ] 고정 inline style을 SCSS class로 이전 → **5단계에서** (린트 규칙과 함께 다뤄야 순서가 맞다)
+- [ ] 미사용·중복 선택자를 영역별 제거 → 별도 작업. 지우려면 어느 화면도 안 쓴다는
+      증거가 필요하고, 그 증거는 화면 단위로 모아야 한다
+
+> 번들러를 안 태우던 이유였던 "CSS 안 `url(...)` 상대경로" 는 실측 결과 **0건**이었다.
+> 그래서 Next 파이프라인으로 바로 넘길 수 있었다.
+> 스타일시트가 `assets/site2.css`(상대경로) 에서 `_next/static`(절대경로) 으로 바뀌었으므로,
+> 하위 경로 배포에서는 `assetPrefix` 가 반드시 제대로 들어가야 한다 — 전체 URL 형태의
+> `PAGES_BASE_PATH` 로 빌드해 CSS·JS 주소에 접두가 붙는 것을 확인했다.
 
 ### 5. Prettier·ESLint 통일
 

@@ -22,11 +22,11 @@ src/
   data/              화면 문구·이미지 경로 데이터 (site·heroes·cards·features·steps·
                      cases·refs·solution-intro·cta·subnav·sec-heads·applications·
                      contact·history·logos·home-hero — 목록은 README 표 참조)
-  styles/            site2.css 를 화면별로 쪼갠 29개 모듈 + order.json
+  styles/            화면별 SCSS partial 29개 + site.scss (전역 스타일 단일 진입점)
   scripts/           site2.js 를 기능별로 쪼갠 25개 모듈 + order.json
 public/
   assets/            현재 사이트의 자산을 그대로 복제 (css/js/img/video/font)
-                     ⚠️site2.css·site2.js 는 생성물 — 직접 고치면 다음 빌드에서 사라진다
+                     ⚠️site2.js 는 생성물 — 직접 고치면 다음 빌드에서 사라진다
   <구 슬러그>/        구 Wix 주소용 리다이렉트 스텁 20개
   sitemap.xml, robots.txt, favicon.svg
 scripts/
@@ -67,11 +67,11 @@ export default function AboutPage() {
 - 화면 문구·이미지 경로 중 **여러 페이지가 공유하는 것**은 `src/data` 에서 관리한다.
 - 페이지 하나만 쓰는 문구는 아직 각 `page.tsx` 안에 있다. 데이터로 옮길 때는
   반드시 `npm run verify` 를 통과시킨 뒤 커밋한다.
-- 스타일은 `src/styles/*.css` 를 고치고, `order.json` 의 순서를 지킨다.
-  `npm run build` 전에 `scripts/build-css.mjs` 가 그 순서대로 이어붙여
-  `public/assets/site2.css` 를 만든다. **브라우저에는 지금까지와 똑같이 파일 하나로 내려간다.**
-  번들러를 태우지 않는 이유는 CSS 안 `url(...)` 이 `assets/` 기준 상대경로이기 때문이다.
-  순서를 바꾸면 캐스케이드가 뒤집혀 화면이 조용히 깨진다.
+- 스타일은 `src/styles/_*.scss` 를 고친다. 전역 진입점은 `site.scss` 하나이고,
+  루트 레이아웃이 그것만 import 한다. Next 가 컴파일·최소화해 `_next/static` 으로 내보낸다.
+  `site.scss` 의 `@use` 차례가 곧 캐스케이드다 — 바꾸면 화면이 조용히 깨진다.
+  (예전에는 번들러를 안 태우고 파일을 이어붙였다. 이유였던 CSS 안 `url(...)` 상대경로는
+  실측 결과 **0건**이라 더 이상 걸림돌이 아니었다.)
 - 동작(JS)은 `src/scripts/*.js` 를 고친다 — 같은 방식으로 `scripts/build-js.mjs` 가
   이어붙여 `public/assets/site2.js` 를 만든다. 00-head 가 외곽 IIFE 를 열고
   17-iife-close 가 닫으므로(01~16 은 그 안, 18 이후는 최상위) 순서를 바꾸면 깨진다.
@@ -152,7 +152,7 @@ npm run test:visual:approve     승인된 화면 변경일 때만 기준선 갱�
 ```text
 src/config/i18n.ts              언어 타입 · 주소 규칙 · 껍데기 문구(ko/en)
 src/components/layout/lang-toggle.tsx   KR/EN 전환 버튼 (링크라 자바스크립트 없이도 동작)
-src/styles/lang-toggle.css      버튼 모양 — 지금 언어는 흰 알약, 반대쪽은 반투명
+src/styles/_lang-toggle.scss    버튼 모양 — 지금 언어는 흰 알약, 반대쪽은 반투명
 src/app/(en)/                   영어 화면 (<html lang="en">)
 scripts/make-en.mjs             한국어 화면 → 영어 화면 생성기
 i18n/<slug>.json                화면별 번역 사전 (한국어 원문 → 영어)

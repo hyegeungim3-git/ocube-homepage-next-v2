@@ -1,5 +1,6 @@
 import type { Viewport } from "next";
 import Script from "next/script";
+import "@/styles/site.scss";
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };
 
@@ -16,7 +17,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
           precedence="site"
         />
-        <link rel="stylesheet" href="assets/site2.css?v=codex-74" precedence="site" />
         <script
           dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
         />

@@ -46,11 +46,14 @@ test.describe("언어 전환", () => {
         failed.push(`${res.status()} ${res.url()}`);
     });
     await page.goto("/en/index.html", { waitUntil: "load" });
-    const cssHref = await page
-      .locator('link[rel="stylesheet"][href*="site2.css"]')
-      .first()
-      .getAttribute("href");
-    expect(cssHref).toMatch(/^\.\.\/assets\//);
+    // 스타일시트는 4단계에서 Next 가 관리하게 바뀌었다(절대 경로). 우리가 직접 거는 자산만 본다.
+    const ours = await page
+      .locator('img[src*="assets/"], script[src*="assets/"], video[src*="assets/"]')
+      .evaluateAll((els) => els.map((el) => el.getAttribute("src") ?? ""));
+    expect(ours.length, "영어 화면이 거는 assets/ 참조").toBeGreaterThan(0);
+    for (const src of ours) {
+      expect(src, "영어 화면은 한 단계 위를 가리켜야 한다").toMatch(/^\.\.\/assets\//);
+    }
     expect(failed).toEqual([]);
   });
 
