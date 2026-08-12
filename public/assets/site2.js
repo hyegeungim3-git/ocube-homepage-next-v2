@@ -66,21 +66,6 @@
     });
   })();
 
-  /* --- 1-c) GNB 상태 : 히어로 위 투명 → 스크롤 시 솔리드 (i-bricks 패턴) --- */
-  (function gnbState() {
-    var g = document.querySelector('.gnb');
-    if (!g) return;
-    if (!document.querySelector('.hero')) {              // 히어로 없는 페이지(privacy 등)
-      g.classList.add('scrolled');
-      document.body.classList.add('no-hero');
-      return;
-    }
-    function upd() { g.classList.toggle('scrolled', (window.scrollY || document.documentElement.scrollTop || 0) > 30); }
-    addEventListener('scroll', upd, { passive: true });
-    addEventListener('resize', upd, { passive: true });
-    upd(); setTimeout(upd, 300);
-  })();
-
   /* --- 2) 모바일 메뉴 --- */
   (function mobileNav() {
     var t = document.querySelector('.m-toggle'), p = document.querySelector('.m-panel');
@@ -567,24 +552,6 @@
     });
   }, { threshold: [0, .35] });
   vids.forEach(function (v) { io.observe(v); });
-})();
-
-/* --- GNB 스마트 숨김: 320px 이상에서 하강 시 숨김, 상승 즉시 복귀 (i-bricks 패턴) --- */
-(function gnbHide() {
-  var gnb = document.querySelector('.gnb');
-  if (!gnb) return;
-  var lastY = scrollY, ticking = false;
-  function paint() {
-    ticking = false;
-    var y = scrollY;
-    if (document.body.classList.contains('m-lock')) { gnb.classList.remove('gnb-hide'); lastY = y; return; }
-    if (y > 320 && y > lastY + 6) gnb.classList.add('gnb-hide');
-    else if (y < lastY - 4 || y <= 320) gnb.classList.remove('gnb-hide');
-    lastY = y;
-  }
-  addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }, { passive: true });
-  /* 키보드 포커스가 헤더로 가면 항상 표시 */
-  gnb.addEventListener('focusin', function () { gnb.classList.remove('gnb-hide'); });
 })();
 
 /* --- CI 로고 포인터 틸트: 커서를 따라 3D 기울기 (fine pointer 전용, lerp) --- */

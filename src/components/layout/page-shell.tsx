@@ -22,6 +22,8 @@ type PageShellProps = {
   mainId?: string;
   /** CTA 가 있는 화면만 푸터에 id 가 붙는다 */
   footerId?: string;
+  /** 히어로가 없는 화면(개인정보처리방침)은 헤더가 처음부터 솔리드다 */
+  hasHero?: boolean;
   /** 푸터 위 CTA 블록. 화면마다 문구가 달라 마크업 그대로 받는다 */
   cta?: ReactNode;
   children: ReactNode;
@@ -32,12 +34,13 @@ export function PageShell({
   lang = "ko",
   mainId,
   footerId,
+  hasHero = true,
   cta,
   children,
 }: PageShellProps): JSX.Element {
   return (
     <>
-      <SiteHeader slug={slug} lang={lang} />
+      <SiteHeader slug={slug} lang={lang} hasHero={hasHero} />
       <MobilePanel lang={lang} />
       <main id={mainId}>{children}</main>
       <SiteFooter lang={lang} id={footerId}>

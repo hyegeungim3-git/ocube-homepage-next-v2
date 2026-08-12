@@ -28,7 +28,7 @@ export function PrivacyPage({ lang }: { lang: Lang }): JSX.Element {
           ),
         }}
       />
-      <PageShell lang={lang} slug="privacy" mainId="top">
+      <PageShell lang={lang} slug="privacy" mainId="top" hasHero={false}>
         <section className="sec deploy">
           <div className="wrap" style={{ maxWidth: "860px" }}>
             {" "}
