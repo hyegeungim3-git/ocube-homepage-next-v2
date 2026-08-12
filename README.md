@@ -34,8 +34,9 @@ npm run test:e2e      # Playwright — 건강검진·메뉴·필터·슬라이�
 npm run test:visual   # Playwright — 스크린샷 기준선
 ```
 
-`test:e2e` 와 `test:visual` 은 **`out/` 을 보고 검사한다.** 화면을 고쳤으면 `npm run build`
-를 먼저 돌릴 것. (`tests/static-server.mjs` 가 `out/` 을 그대로 내려주고, Playwright 가
+`verify`·`test:e2e`·`test:visual` 은 **`out/` 을 보고 검사한다.** 화면을 고쳤으면
+`npm run build` 를 먼저 돌릴 것. (빌드가 실패해도 `out/` 에는 지난번 결과가 남아 있어
+거짓 초록불이 뜬다 — `verify` 는 `out/` 이 소스보다 낡으면 아예 멈춘다.) (`tests/static-server.mjs` 가 `out/` 을 그대로 내려주고, Playwright 가
 자동으로 띄운다. `next start` 는 `output:"export"` 라 쓸 수 없다.)
 
 | 검사          | 무엇을 보나                                                                                                                                                                                                                      |

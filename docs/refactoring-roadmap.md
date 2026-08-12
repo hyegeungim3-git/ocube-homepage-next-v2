@@ -27,12 +27,20 @@
       (화면 23 × 2언어 × 2뷰포트 = 92셀, h1 개수·`html lang` 포함)
 - [x] 1440×900·375×812, ko/en 기준 스크린샷 생성 — 대표 8쪽 = 32장
 
-### 2. 공통 페이지 구조
+### 2. 공통 페이지 구조 — **부분 완료 (2026-08-12)**
 
-- [ ] Header·MobilePanel·Footer를 `PageShell`로 통합
-- [ ] 실제 화면을 `src/components/pages`로 이동
-- [ ] `app/**/page.tsx`는 얇은 URL 진입점으로 축소
-- [ ] 반복 metadata·hreflang을 typed 공통 데이터로 통합
+- [x] Header·MobilePanel·Footer를 `PageShell`로 통합
+      (`src/components/layout/page-shell.tsx`. 홈은 푸터가 전용 마크업이라 제외 — 억지로 넣으면
+      홈에서만 쓰는 선택 항목이 넷 늘어난다, 플레이북 7절)
+- [x] 반복 metadata·hreflang을 typed 공통 데이터로 통합
+      (`src/config/page-meta.ts` + `src/components/layout/page-meta.tsx`, 48쪽 전부 적용)
+- [ ] 실제 화면을 `src/components/pages`로 이동 → **3단계에서 함께 한다**
+- [ ] `app/**/page.tsx`는 얇은 URL 진입점으로 축소 → **3단계에서 함께 한다**
+
+> 뒤 두 항목을 3단계로 미룬 이유: 지금 영어 화면은 `make-en.mjs` 가 한국어 화면을 읽어
+> 생성한다. 화면만 `components/pages` 로 옮기고 언어 통합을 안 하면, 생성기가 그 컴포넌트의
+> 영어 복사본을 또 만들어야 한다 — 3단계에서 바로 지울 코드를 한 번 더 만드는 셈이다.
+> 플레이북 4절의 전환 순서도 "옮기기 → lang 받기 → 라우트 축소" 를 한 화면 단위로 묶어 놓았다.
 
 ### 3. 다국어 코드 통합
 

@@ -1,11 +1,10 @@
-import { applyBase, withBase } from "@/config/site";
+import { applyBase } from "@/config/site";
+import { PageMeta } from "@/components/layout/page-meta";
+import { PageShell } from "@/components/layout/page-shell";
 import { secHeads } from "@/data/sec-heads";
 import { SecHead } from "@/components/section/sec-head";
 import { ctaCopy } from "@/data/cta";
 import { FctaTop } from "@/components/section/fcta-top";
-import { SiteHeader } from "@/components/layout/site-header";
-import { MobilePanel } from "@/components/layout/mobile-panel";
-import { SiteFooter } from "@/components/layout/site-footer";
 import { DepCards } from "@/components/section/dep-cards";
 import { depCards } from "@/data/cards";
 import { PageHero } from "@/components/layout/page-hero";
@@ -14,42 +13,12 @@ import { heroes } from "@/data/heroes";
 export default function LicenseVisualonPage() {
   return (
     <>
-      <title>VisualOn — 멀티미디어 재생 개발도구(SDK) | Global Partners · 오큐브(주)</title>
-      <meta
-        name="description"
-        content="OnStream MediaPlayer+ 등 VisualOn 멀티미디어 제품군 — 오큐브가 공급과 국내 엔지니어링 지원을 제공합니다."
+      <PageMeta
+        path="license-visualon.html"
+        title="VisualOn — 멀티미디어 재생 개발도구(SDK) | Global Partners · 오큐브(주)"
+        description="OnStream MediaPlayer+ 등 VisualOn 멀티미디어 제품군 — 오큐브가 공급과 국내 엔지니어링 지원을 제공합니다."
+        shareImageSize={false}
       />
-      <link rel="canonical" href={withBase("license-visualon.html")} />
-      <link rel="alternate" hrefLang="ko" href={withBase("license-visualon.html")} />
-      <link rel="alternate" hrefLang="en" href={withBase("en/license-visualon.html")} />
-      <link rel="alternate" hrefLang="x-default" href={withBase("license-visualon.html")} />
-      <link
-        rel="icon"
-        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230e1626'/%3E%3Cpath%20d='M16%206.5l7.5%204.3v8.6L16%2023.7l-7.5-4.3v-8.6z'%20fill='none'%20stroke='%230075de'%20stroke-width='1.8'/%3E%3Cpath%20d='M16%206.5v17.2M8.5%2010.8l7.5%204.3%207.5-4.3'%20stroke='%235b9bff'%20stroke-width='1.4'%20fill='none'/%3E%3C/svg%3E"
-      />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="오큐브(주)" />
-      <meta property="og:locale" content="ko_KR" />
-      <meta
-        property="og:title"
-        content="VisualOn — 멀티미디어 재생 개발도구(SDK) | Global Partners · 오큐브(주)"
-      />
-      <meta
-        property="og:description"
-        content="OnStream MediaPlayer+ 등 VisualOn 멀티미디어 제품군 — 오큐브가 공급과 국내 엔지니어링 지원을 제공합니다."
-      />
-      <meta property="og:url" content={withBase("license-visualon.html")} />
-      <meta property="og:image" content={withBase("og-codex.png")} />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta
-        name="twitter:title"
-        content="VisualOn — 멀티미디어 재생 개발도구(SDK) | Global Partners · 오큐브(주)"
-      />
-      <meta
-        name="twitter:description"
-        content="OnStream MediaPlayer+ 등 VisualOn 멀티미디어 제품군 — 오큐브가 공급과 국내 엔지니어링 지원을 제공합니다."
-      />
-      <meta name="twitter:image" content={withBase("og-codex.png")} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -58,9 +27,16 @@ export default function LicenseVisualonPage() {
           ),
         }}
       />
-      <SiteHeader slug="license-visualon" />
-      <MobilePanel />
-      <main id="top">
+      <PageShell
+        slug="license-visualon"
+        mainId="top"
+        footerId="contact"
+        cta={
+          <>
+            <FctaTop copy={ctaCopy["license-visualon"]} />
+          </>
+        }
+      >
         {" "}
         <PageHero data={heroes["license-visualon"]} />{" "}
         <section id="onstream" className="sec">
@@ -181,10 +157,7 @@ export default function LicenseVisualonPage() {
             </div>
           </div>
         </section>
-      </main>
-      <SiteFooter id="contact">
-        <FctaTop copy={ctaCopy["license-visualon"]} />
-      </SiteFooter>
+      </PageShell>
     </>
   );
 }

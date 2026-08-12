@@ -130,8 +130,11 @@ production build: npm run build
 - [x] **Stage 0** `ocube-next@acb8393` 스냅샷 복제 · 인수인계 문서 설치 · 시작점 검증(528/528)
 - [x] **Stage 0.5** 저장소 전체 포맷 정규화 (`format:check` 가 시작부터 빨간불이었다)
 - [x] **Stage 0.6** 줄바꿈 LF 고정 (clone 직후 `format:check` 가 깨지던 문제)
-- [x] **로드맵 1단계** 테스트 환경 — Vitest 76건 · Playwright e2e 143건 · visual 32장
-- [ ] 로드맵 2단계 공통 페이지 구조(PageShell)
+- [x] **로드맵 1단계** 테스트 환경 — Vitest 76건 · Playwright e2e 186건 · visual 32장
+- [x] 영어 생성물 바로잡기 — 구조화 데이터가 한국어로 나가던 것 · 생성기가 포맷을 깨던 것
+- [x] **로드맵 2단계(부분)** `PageShell`·`PageMeta` — 46개 화면 파일에서 1,185줄 감소,
+      기준선 갱신 없이 528/528 통과. 화면을 `components/pages` 로 옮기는 두 항목은
+      3단계와 함께 한다(로드맵 2절의 메모 참조)
 - [ ] 로드맵 3단계 다국어 코드 통합
 - [ ] 로드맵 4단계 SCSS 전환 · `site2.css` 제거
 - [ ] 로드맵 5단계 Prettier·ESLint 통일

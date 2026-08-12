@@ -1,45 +1,17 @@
-import { applyBase, withBase } from "@/config/site";
+import { applyBase } from "@/config/site";
+import { PageMeta } from "@/components/layout/page-meta";
+import { PageShell } from "@/components/layout/page-shell";
 import { Fragment } from "react";
 import { enquiryTypes } from "@/data/contact";
-import { SiteHeader } from "@/components/layout/site-header";
-import { MobilePanel } from "@/components/layout/mobile-panel";
-import { SiteFooter } from "@/components/layout/site-footer";
 
 export default function ContactPage() {
   return (
     <>
-      <title>문의 — 오큐브</title>
-      <meta
-        name="description"
-        content="오큐브(주) 프로젝트 문의 — 산업 AI·임베디드·SI·엔지니어링 지원. 대표전화 053-313-5333, sales@ocube.co.kr."
+      <PageMeta
+        path="contact.html"
+        title="문의 — 오큐브"
+        description="오큐브(주) 프로젝트 문의 — 산업 AI·임베디드·SI·엔지니어링 지원. 대표전화 053-313-5333, sales@ocube.co.kr."
       />
-      <link rel="canonical" href={withBase("contact.html")} />
-      <link rel="alternate" hrefLang="ko" href={withBase("contact.html")} />
-      <link rel="alternate" hrefLang="en" href={withBase("en/contact.html")} />
-      <link rel="alternate" hrefLang="x-default" href={withBase("contact.html")} />
-      <link
-        rel="icon"
-        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230e1626'/%3E%3Cpath%20d='M16%206.5l7.5%204.3v8.6L16%2023.7l-7.5-4.3v-8.6z'%20fill='none'%20stroke='%230075de'%20stroke-width='1.8'/%3E%3Cpath%20d='M16%206.5v17.2M8.5%2010.8l7.5%204.3%207.5-4.3'%20stroke='%235b9bff'%20stroke-width='1.4'%20fill='none'/%3E%3C/svg%3E"
-      />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="오큐브(주)" />
-      <meta property="og:locale" content="ko_KR" />
-      <meta property="og:title" content="문의 — 오큐브" />
-      <meta
-        property="og:description"
-        content="오큐브(주) 프로젝트 문의 — 산업 AI·임베디드·SI·엔지니어링 지원. 대표전화 053-313-5333, sales@ocube.co.kr."
-      />
-      <meta property="og:url" content={withBase("contact.html")} />
-      <meta property="og:image" content={withBase("og-codex.png")} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="문의 — 오큐브" />
-      <meta
-        name="twitter:description"
-        content="오큐브(주) 프로젝트 문의 — 산업 AI·임베디드·SI·엔지니어링 지원. 대표전화 053-313-5333, sales@ocube.co.kr."
-      />
-      <meta name="twitter:image" content={withBase("og-codex.png")} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -48,9 +20,7 @@ export default function ContactPage() {
           ),
         }}
       />
-      <SiteHeader slug="contact" />
-      <MobilePanel />
-      <main>
+      <PageShell slug="contact">
         <section id="top" className="hero page-hero dark">
           <div className="cube-a"></div>
           <div className="wrap">
@@ -202,8 +172,7 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-      </main>
-      <SiteFooter />
+      </PageShell>
     </>
   );
 }

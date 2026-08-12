@@ -1,43 +1,19 @@
-import { applyBase, withBase } from "@/config/site";
-import { SiteHeader } from "@/components/layout/site-header";
-import { MobilePanel } from "@/components/layout/mobile-panel";
-import { SiteFooter } from "@/components/layout/site-footer";
+import { applyBase } from "@/config/site";
+import { PageMeta } from "@/components/layout/page-meta";
+import { PageShell } from "@/components/layout/page-shell";
 import { PageHero } from "@/components/layout/page-hero";
 import { heroes } from "@/data/heroes.en";
 
 export default function LocationPage() {
   return (
     <>
-      <title>Locations — OCUBE CO., LTD.</title>
-      <meta
-        name="description"
-        content="OCUBE locations — addresses, contact details and maps for our three offices in Seoul, Anyang and Daegu."
+      <PageMeta
+        lang="en"
+        path="location.html"
+        title="Locations — OCUBE CO., LTD."
+        description="OCUBE locations — addresses, contact details and maps for our three offices in Seoul, Anyang and Daegu."
+        shareImageSize={false}
       />
-      <link rel="canonical" href={withBase("en/location.html")} />
-      <link rel="alternate" hrefLang="ko" href={withBase("location.html")} />
-      <link rel="alternate" hrefLang="en" href={withBase("en/location.html")} />
-      <link rel="alternate" hrefLang="x-default" href={withBase("location.html")} />
-      <link
-        rel="icon"
-        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230e1626'/%3E%3Cpath%20d='M16%206.5l7.5%204.3v8.6L16%2023.7l-7.5-4.3v-8.6z'%20fill='none'%20stroke='%230075de'%20stroke-width='1.8'/%3E%3Cpath%20d='M16%206.5v17.2M8.5%2010.8l7.5%204.3%207.5-4.3'%20stroke='%235b9bff'%20stroke-width='1.4'%20fill='none'/%3E%3C/svg%3E"
-      />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="OCUBE CO., LTD." />
-      <meta property="og:locale" content="en_US" />
-      <meta property="og:title" content="Locations — OCUBE CO., LTD." />
-      <meta
-        property="og:description"
-        content="OCUBE locations — addresses, contact details and maps for our three offices in Seoul, Anyang and Daegu."
-      />
-      <meta property="og:url" content={withBase("en/location.html")} />
-      <meta property="og:image" content={withBase("og-codex.png")} />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Locations — OCUBE CO., LTD." />
-      <meta
-        name="twitter:description"
-        content="OCUBE locations — addresses, contact details and maps for our three offices in Seoul, Anyang and Daegu."
-      />
-      <meta name="twitter:image" content={withBase("og-codex.png")} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -46,9 +22,7 @@ export default function LocationPage() {
           ),
         }}
       />
-      <SiteHeader slug="location" lang="en" />
-      <MobilePanel lang="en" />
-      <main>
+      <PageShell lang="en" slug="location">
         {" "}
         <PageHero lang="en" data={heroes["location"]} />{" "}
         <section id="location" className="sec">
@@ -476,8 +450,7 @@ export default function LocationPage() {
             </div>
           </div>
         </section>
-      </main>
-      <SiteFooter lang="en" />
+      </PageShell>
     </>
   );
 }

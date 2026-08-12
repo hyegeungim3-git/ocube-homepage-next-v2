@@ -1,43 +1,15 @@
-import { applyBase, withBase } from "@/config/site";
-import { SiteHeader } from "@/components/layout/site-header";
-import { MobilePanel } from "@/components/layout/mobile-panel";
-import { SiteFooter } from "@/components/layout/site-footer";
+import { applyBase } from "@/config/site";
+import { PageMeta } from "@/components/layout/page-meta";
+import { PageShell } from "@/components/layout/page-shell";
 
 export default function PrivacyPage() {
   return (
     <>
-      <title>개인정보처리방침 — 오큐브(주)</title>
-      <meta
-        name="description"
-        content="오큐브(주) 개인정보처리방침 — 문의 시 수집하는 개인정보 항목·이용 목적·보유 기간·이용자 권리 안내."
+      <PageMeta
+        path="privacy.html"
+        title="개인정보처리방침 — 오큐브(주)"
+        description="오큐브(주) 개인정보처리방침 — 문의 시 수집하는 개인정보 항목·이용 목적·보유 기간·이용자 권리 안내."
       />
-      <link rel="canonical" href={withBase("privacy.html")} />
-      <link rel="alternate" hrefLang="ko" href={withBase("privacy.html")} />
-      <link rel="alternate" hrefLang="en" href={withBase("en/privacy.html")} />
-      <link rel="alternate" hrefLang="x-default" href={withBase("privacy.html")} />
-      <link
-        rel="icon"
-        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230e1626'/%3E%3Cpath%20d='M16%206.5l7.5%204.3v8.6L16%2023.7l-7.5-4.3v-8.6z'%20fill='none'%20stroke='%230075de'%20stroke-width='1.8'/%3E%3Cpath%20d='M16%206.5v17.2M8.5%2010.8l7.5%204.3%207.5-4.3'%20stroke='%235b9bff'%20stroke-width='1.4'%20fill='none'/%3E%3C/svg%3E"
-      />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="오큐브(주)" />
-      <meta property="og:locale" content="ko_KR" />
-      <meta property="og:title" content="개인정보처리방침 — 오큐브(주)" />
-      <meta
-        property="og:description"
-        content="오큐브(주) 개인정보처리방침 — 문의 시 수집하는 개인정보 항목·이용 목적·보유 기간·이용자 권리 안내."
-      />
-      <meta property="og:url" content={withBase("privacy.html")} />
-      <meta property="og:image" content={withBase("og-codex.png")} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="개인정보처리방침 — 오큐브(주)" />
-      <meta
-        name="twitter:description"
-        content="오큐브(주) 개인정보처리방침 — 문의 시 수집하는 개인정보 항목·이용 목적·보유 기간·이용자 권리 안내."
-      />
-      <meta name="twitter:image" content={withBase("og-codex.png")} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -46,9 +18,7 @@ export default function PrivacyPage() {
           ),
         }}
       />
-      <SiteHeader slug="privacy" />
-      <MobilePanel />
-      <main id="top">
+      <PageShell slug="privacy" mainId="top">
         <section className="sec deploy">
           <div className="wrap" style={{ maxWidth: "860px" }}>
             {" "}
@@ -139,8 +109,7 @@ export default function PrivacyPage() {
             </p>
           </div>
         </section>
-      </main>
-      <SiteFooter />
+      </PageShell>
     </>
   );
 }

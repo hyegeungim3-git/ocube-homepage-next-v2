@@ -1,4 +1,6 @@
-import { applyBase, withBase } from "@/config/site";
+import { applyBase } from "@/config/site";
+import { PageMeta } from "@/components/layout/page-meta";
+import { PageShell } from "@/components/layout/page-shell";
 import { secHeads } from "@/data/sec-heads.en";
 import { SecHead } from "@/components/section/sec-head";
 import { subnavItems } from "@/data/subnav.en";
@@ -7,9 +9,6 @@ import { ctaCopy } from "@/data/cta.en";
 import { FctaTop } from "@/components/section/fcta-top";
 import { solutionIntros } from "@/data/solution-intro.en";
 import { SolCopy } from "@/components/section/sol-copy";
-import { SiteHeader } from "@/components/layout/site-header";
-import { MobilePanel } from "@/components/layout/mobile-panel";
-import { SiteFooter } from "@/components/layout/site-footer";
 import { DepCards } from "@/components/section/dep-cards";
 import { depCards } from "@/data/cards.en";
 import { FeatItems } from "@/components/section/feat-list";
@@ -18,38 +17,12 @@ import { featLists } from "@/data/features.en";
 export default function SolutionTrafficPage() {
   return (
     <>
-      <title>QVision · Vision AI for Traffic and Safety — OCUBE</title>
-      <meta
-        name="description"
-        content="QVision — vision AI that analyses traffic and detects hazards on the road and at work."
+      <PageMeta
+        lang="en"
+        path="solution-traffic.html"
+        title="QVision · Vision AI for Traffic and Safety — OCUBE"
+        description="QVision — vision AI that analyses traffic and detects hazards on the road and at work."
       />
-      <link rel="canonical" href={withBase("en/solution-traffic.html")} />
-      <link rel="alternate" hrefLang="ko" href={withBase("solution-traffic.html")} />
-      <link rel="alternate" hrefLang="en" href={withBase("en/solution-traffic.html")} />
-      <link rel="alternate" hrefLang="x-default" href={withBase("solution-traffic.html")} />
-      <link
-        rel="icon"
-        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230e1626'/%3E%3Cpath%20d='M16%206.5l7.5%204.3v8.6L16%2023.7l-7.5-4.3v-8.6z'%20fill='none'%20stroke='%230075de'%20stroke-width='1.8'/%3E%3Cpath%20d='M16%206.5v17.2M8.5%2010.8l7.5%204.3%207.5-4.3'%20stroke='%235b9bff'%20stroke-width='1.4'%20fill='none'/%3E%3C/svg%3E"
-      />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="OCUBE CO., LTD." />
-      <meta property="og:locale" content="en_US" />
-      <meta property="og:title" content="QVision · Vision AI for Traffic and Safety — OCUBE" />
-      <meta
-        property="og:description"
-        content="QVision — vision AI that analyses traffic and detects hazards on the road and at work."
-      />
-      <meta property="og:url" content={withBase("en/solution-traffic.html")} />
-      <meta property="og:image" content={withBase("og-codex.png")} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="QVision · Vision AI for Traffic and Safety — OCUBE" />
-      <meta
-        name="twitter:description"
-        content="QVision — vision AI that analyses traffic and detects hazards on the road and at work."
-      />
-      <meta name="twitter:image" content={withBase("og-codex.png")} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -58,9 +31,16 @@ export default function SolutionTrafficPage() {
           ),
         }}
       />
-      <SiteHeader slug="solution-traffic" lang="en" />
-      <MobilePanel lang="en" />
-      <main>
+      <PageShell
+        lang="en"
+        slug="solution-traffic"
+        footerId="contact"
+        cta={
+          <>
+            <FctaTop copy={ctaCopy["solution-traffic"]} />
+          </>
+        }
+      >
         <div className="sol-open">
           <section id="top" className="hero page-hero dark sol-hero">
             <div
@@ -291,10 +271,7 @@ export default function SolutionTrafficPage() {
             </div>
           </div>
         </section>
-      </main>
-      <SiteFooter lang="en" id="contact">
-        <FctaTop copy={ctaCopy["solution-traffic"]} />
-      </SiteFooter>
+      </PageShell>
     </>
   );
 }

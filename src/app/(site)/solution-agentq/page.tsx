@@ -1,4 +1,6 @@
-import { applyBase, withBase } from "@/config/site";
+import { applyBase } from "@/config/site";
+import { PageMeta } from "@/components/layout/page-meta";
+import { PageShell } from "@/components/layout/page-shell";
 import { secHeads } from "@/data/sec-heads";
 import { SecHead } from "@/components/section/sec-head";
 import { subnavItems } from "@/data/subnav";
@@ -7,9 +9,6 @@ import { ctaCopy } from "@/data/cta";
 import { FctaTop } from "@/components/section/fcta-top";
 import { solutionIntros } from "@/data/solution-intro";
 import { SolCopy } from "@/components/section/sol-copy";
-import { SiteHeader } from "@/components/layout/site-header";
-import { MobilePanel } from "@/components/layout/mobile-panel";
-import { SiteFooter } from "@/components/layout/site-footer";
 import { DepCards } from "@/components/section/dep-cards";
 import { depCards } from "@/data/cards";
 import { FeatItems } from "@/components/section/feat-list";
@@ -18,38 +17,11 @@ import { featLists } from "@/data/features";
 export default function SolutionAgentqPage() {
   return (
     <>
-      <title>AgentQ 멀티 AI 에이전트 플랫폼 — 오큐브</title>
-      <meta
-        name="description"
-        content="AgentQ — 문서·음성·데이터베이스를 다루는 전문 AI 에이전트가 업무를 나눠 맡고, 중간 결과를 이어받아 검토 가능한 문서와 실행안까지 완성하는 기업용 멀티 에이전트 플랫폼."
+      <PageMeta
+        path="solution-agentq.html"
+        title="AgentQ 멀티 AI 에이전트 플랫폼 — 오큐브"
+        description="AgentQ — 문서·음성·데이터베이스를 다루는 전문 AI 에이전트가 업무를 나눠 맡고, 중간 결과를 이어받아 검토 가능한 문서와 실행안까지 완성하는 기업용 멀티 에이전트 플랫폼."
       />
-      <link rel="canonical" href={withBase("solution-agentq.html")} />
-      <link rel="alternate" hrefLang="ko" href={withBase("solution-agentq.html")} />
-      <link rel="alternate" hrefLang="en" href={withBase("en/solution-agentq.html")} />
-      <link rel="alternate" hrefLang="x-default" href={withBase("solution-agentq.html")} />
-      <link
-        rel="icon"
-        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230e1626'/%3E%3Cpath%20d='M16%206.5l7.5%204.3v8.6L16%2023.7l-7.5-4.3v-8.6z'%20fill='none'%20stroke='%230075de'%20stroke-width='1.8'/%3E%3Cpath%20d='M16%206.5v17.2M8.5%2010.8l7.5%204.3%207.5-4.3'%20stroke='%235b9bff'%20stroke-width='1.4'%20fill='none'/%3E%3C/svg%3E"
-      />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="오큐브(주)" />
-      <meta property="og:locale" content="ko_KR" />
-      <meta property="og:title" content="AgentQ 멀티 AI 에이전트 플랫폼 — 오큐브" />
-      <meta
-        property="og:description"
-        content="AgentQ — 문서·음성·데이터베이스를 다루는 전문 AI 에이전트가 업무를 나눠 맡고, 중간 결과를 이어받아 검토 가능한 문서와 실행안까지 완성하는 기업용 멀티 에이전트 플랫폼."
-      />
-      <meta property="og:url" content={withBase("solution-agentq.html")} />
-      <meta property="og:image" content={withBase("og-codex.png")} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="AgentQ 멀티 AI 에이전트 플랫폼 — 오큐브" />
-      <meta
-        name="twitter:description"
-        content="AgentQ — 문서·음성·데이터베이스를 다루는 전문 AI 에이전트가 업무를 나눠 맡고, 중간 결과를 이어받아 검토 가능한 문서와 실행안까지 완성하는 기업용 멀티 에이전트 플랫폼."
-      />
-      <meta name="twitter:image" content={withBase("og-codex.png")} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -58,9 +30,15 @@ export default function SolutionAgentqPage() {
           ),
         }}
       />
-      <SiteHeader slug="solution-agentq" />
-      <MobilePanel />
-      <main>
+      <PageShell
+        slug="solution-agentq"
+        footerId="contact"
+        cta={
+          <>
+            <FctaTop copy={ctaCopy["solution-agentq"]} />
+          </>
+        }
+      >
         <div className="sol-open">
           <section id="top" className="hero page-hero dark sol-hero">
             <div
@@ -420,10 +398,7 @@ export default function SolutionAgentqPage() {
             </div>
           </div>
         </section>
-      </main>
-      <SiteFooter id="contact">
-        <FctaTop copy={ctaCopy["solution-agentq"]} />
-      </SiteFooter>
+      </PageShell>
     </>
   );
 }

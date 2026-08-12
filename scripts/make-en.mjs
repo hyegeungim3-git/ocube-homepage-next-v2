@@ -77,8 +77,12 @@ function toEnglish(src, slug) {
   s = s.replace(/<SiteHeader\s+slug="([^"]+)"\s*/, '<SiteHeader slug="$1" lang="en" ');
   s = s.replace(/<MobilePanel\s*\/>/, '<MobilePanel lang="en" />');
   s = s.replace(/<SiteFooter\b/, '<SiteFooter lang="en"');
-  // 데이터에서 이미지 경로를 받는 조각들도 언어를 알아야 ../assets 로 나간다
-  s = s.replace(/<(PageHero|PinSteps|ProjectCards|HomeCaseLinks|AppCards|PlogoItems|HomeSlides)\b/g, '<$1 lang="en"');
+  // 셸·메타와, 데이터에서 이미지 경로를 받는 조각들에 언어를 알린다
+  // (PageShell 하나가 헤더·모바일 메뉴·푸터의 언어를 함께 넘긴다)
+  s = s.replace(
+    /<(PageMeta|PageShell|PageHero|PinSteps|ProjectCards|HomeCaseLinks|AppCards|PlogoItems|HomeSlides)\b/g,
+    '<$1 lang="en"',
+  );
   // 자산은 한 단계 위에 있다
   s = s.replace(/(["'(])assets\//g, "$1../assets/");
   // 주소는 /en/ 아래를 가리킨다

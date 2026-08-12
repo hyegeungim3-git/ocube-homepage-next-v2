@@ -1,9 +1,8 @@
-import { applyBase, withBase } from "@/config/site";
+import { applyBase } from "@/config/site";
+import { PageMeta } from "@/components/layout/page-meta";
+import { PageShell } from "@/components/layout/page-shell";
 import { logoGroups } from "@/data/logos";
 import { PlogoItems } from "@/components/section/plogo-items";
-import { SiteHeader } from "@/components/layout/site-header";
-import { MobilePanel } from "@/components/layout/mobile-panel";
-import { SiteFooter } from "@/components/layout/site-footer";
 import { PageHero } from "@/components/layout/page-hero";
 import { heroes } from "@/data/heroes";
 import { refCards, refMetaLabels } from "@/data/refs";
@@ -12,38 +11,13 @@ import { RefCards } from "@/components/section/ref-cards";
 export default function ReferencesPage() {
   return (
     <>
-      <title>주요 구축 사례 — 오큐브(주)</title>
-      <meta
-        name="description"
-        content="오큐브(주) 주요 구축 사례 — 제조·에너지·모빌리티·공공·금융·홈 AIoT·기업서비스. 산업 분야별 레퍼런스와 AX·임베디드·SI 역량을 과제-해결-성과로 정리했습니다."
+      <PageMeta
+        path="references.html"
+        title="주요 구축 사례 — 오큐브(주)"
+        description="오큐브(주) 주요 구축 사례 — 제조·에너지·모빌리티·공공·금융·홈 AIoT·기업서비스. 산업 분야별 레퍼런스와 AX·임베디드·SI 역량을 과제-해결-성과로 정리했습니다."
+        ogDescription="제조·에너지·모빌리티·공공·금융·홈 AIoT·기업서비스 — 산업 분야별 구축 사례를 과제-해결-성과로 정리했습니다."
+        twitterDescription="제조·에너지·모빌리티·공공·금융·홈 AIoT·기업서비스 — 산업 분야별 구축 사례."
       />
-      <link rel="canonical" href={withBase("references.html")} />
-      <link rel="alternate" hrefLang="ko" href={withBase("references.html")} />
-      <link rel="alternate" hrefLang="en" href={withBase("en/references.html")} />
-      <link rel="alternate" hrefLang="x-default" href={withBase("references.html")} />
-      <link
-        rel="icon"
-        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230e1626'/%3E%3Cpath%20d='M16%206.5l7.5%204.3v8.6L16%2023.7l-7.5-4.3v-8.6z'%20fill='none'%20stroke='%230075de'%20stroke-width='1.8'/%3E%3Cpath%20d='M16%206.5v17.2M8.5%2010.8l7.5%204.3%207.5-4.3'%20stroke='%235b9bff'%20stroke-width='1.4'%20fill='none'/%3E%3C/svg%3E"
-      />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="오큐브(주)" />
-      <meta property="og:locale" content="ko_KR" />
-      <meta property="og:title" content="주요 구축 사례 — 오큐브(주)" />
-      <meta
-        property="og:description"
-        content="제조·에너지·모빌리티·공공·금융·홈 AIoT·기업서비스 — 산업 분야별 구축 사례를 과제-해결-성과로 정리했습니다."
-      />
-      <meta property="og:url" content={withBase("references.html")} />
-      <meta property="og:image" content={withBase("og-codex.png")} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="주요 구축 사례 — 오큐브(주)" />
-      <meta
-        name="twitter:description"
-        content="제조·에너지·모빌리티·공공·금융·홈 AIoT·기업서비스 — 산업 분야별 구축 사례."
-      />
-      <meta name="twitter:image" content={withBase("og-codex.png")} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -52,9 +26,7 @@ export default function ReferencesPage() {
           ),
         }}
       />
-      <SiteHeader slug="references" />
-      <MobilePanel />
-      <main>
+      <PageShell slug="references">
         {" "}
         <PageHero data={heroes["references"]} />{" "}
         <section id="refs" className="sec">
@@ -161,8 +133,7 @@ export default function ReferencesPage() {
             </p>
           </div>
         </section>
-      </main>
-      <SiteFooter />
+      </PageShell>
     </>
   );
 }

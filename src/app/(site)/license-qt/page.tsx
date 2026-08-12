@@ -1,53 +1,22 @@
-import { applyBase, withBase } from "@/config/site";
+import { applyBase } from "@/config/site";
+import { PageMeta } from "@/components/layout/page-meta";
+import { PageShell } from "@/components/layout/page-shell";
 import { secHeads } from "@/data/sec-heads";
 import { SecHead } from "@/components/section/sec-head";
 import { ctaCopy } from "@/data/cta";
 import { FctaTop } from "@/components/section/fcta-top";
-import { SiteHeader } from "@/components/layout/site-header";
-import { MobilePanel } from "@/components/layout/mobile-panel";
-import { SiteFooter } from "@/components/layout/site-footer";
 import { PageHero } from "@/components/layout/page-hero";
 import { heroes } from "@/data/heroes";
 
 export default function LicenseQtPage() {
   return (
     <>
-      <title>Qt — 크로스플랫폼 UI 프레임워크 | Global Partners · 오큐브(주)</title>
-      <meta
-        name="description"
-        content="하나의 프레임워크와 코드베이스로 데스크톱부터 임베디드까지 다양한 플랫폼을 지원하는 Qt — 오큐브가 라이선스 공급과 국내 엔지니어링 지원을 제공합니다."
+      <PageMeta
+        path="license-qt.html"
+        title="Qt — 크로스플랫폼 UI 프레임워크 | Global Partners · 오큐브(주)"
+        description="하나의 프레임워크와 코드베이스로 데스크톱부터 임베디드까지 다양한 플랫폼을 지원하는 Qt — 오큐브가 라이선스 공급과 국내 엔지니어링 지원을 제공합니다."
+        shareImageSize={false}
       />
-      <link rel="canonical" href={withBase("license-qt.html")} />
-      <link rel="alternate" hrefLang="ko" href={withBase("license-qt.html")} />
-      <link rel="alternate" hrefLang="en" href={withBase("en/license-qt.html")} />
-      <link rel="alternate" hrefLang="x-default" href={withBase("license-qt.html")} />
-      <link
-        rel="icon"
-        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230e1626'/%3E%3Cpath%20d='M16%206.5l7.5%204.3v8.6L16%2023.7l-7.5-4.3v-8.6z'%20fill='none'%20stroke='%230075de'%20stroke-width='1.8'/%3E%3Cpath%20d='M16%206.5v17.2M8.5%2010.8l7.5%204.3%207.5-4.3'%20stroke='%235b9bff'%20stroke-width='1.4'%20fill='none'/%3E%3C/svg%3E"
-      />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="오큐브(주)" />
-      <meta property="og:locale" content="ko_KR" />
-      <meta
-        property="og:title"
-        content="Qt — 크로스플랫폼 UI 프레임워크 | Global Partners · 오큐브(주)"
-      />
-      <meta
-        property="og:description"
-        content="하나의 프레임워크와 코드베이스로 데스크톱부터 임베디드까지 다양한 플랫폼을 지원하는 Qt — 오큐브가 라이선스 공급과 국내 엔지니어링 지원을 제공합니다."
-      />
-      <meta property="og:url" content={withBase("license-qt.html")} />
-      <meta property="og:image" content={withBase("og-codex.png")} />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta
-        name="twitter:title"
-        content="Qt — 크로스플랫폼 UI 프레임워크 | Global Partners · 오큐브(주)"
-      />
-      <meta
-        name="twitter:description"
-        content="하나의 프레임워크와 코드베이스로 데스크톱부터 임베디드까지 다양한 플랫폼을 지원하는 Qt — 오큐브가 라이선스 공급과 국내 엔지니어링 지원을 제공합니다."
-      />
-      <meta name="twitter:image" content={withBase("og-codex.png")} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -56,9 +25,16 @@ export default function LicenseQtPage() {
           ),
         }}
       />
-      <SiteHeader slug="license-qt" />
-      <MobilePanel />
-      <main id="top">
+      <PageShell
+        slug="license-qt"
+        mainId="top"
+        footerId="contact"
+        cta={
+          <>
+            <FctaTop copy={ctaCopy["license-qt"]} />
+          </>
+        }
+      >
         {" "}
         <PageHero data={heroes["license-qt"]} />{" "}
         <section id="framework" className="sec">
@@ -242,10 +218,7 @@ export default function LicenseQtPage() {
             </p>
           </div>
         </section>
-      </main>
-      <SiteFooter id="contact">
-        <FctaTop copy={ctaCopy["license-qt"]} />
-      </SiteFooter>
+      </PageShell>
     </>
   );
 }

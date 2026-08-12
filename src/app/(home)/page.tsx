@@ -1,4 +1,5 @@
-import { applyBase, withBase } from "@/config/site";
+import { applyBase } from "@/config/site";
+import { PageMeta } from "@/components/layout/page-meta";
 import { homeSlides } from "@/data/home-hero";
 import { HomeSlides } from "@/components/section/home-slides";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -9,34 +10,11 @@ import { homeCases } from "@/data/cases";
 export default function HomePage() {
   return (
     <>
-      <title>오큐브(주) — Embedded에서 AI까지 · 산업 AI 솔루션 기업</title>
-      <meta
-        name="description"
-        content="오큐브(주)는 임베디드·SI 기술력 위에 자체 산업 AI 플랫폼 Cubeon을 더해 제조·모빌리티·에너지와 기업 운영의 과제를 해결하는 산업 AI 솔루션 기업입니다. Since 2007."
+      <PageMeta
+        path=""
+        title="오큐브(주) — Embedded에서 AI까지 · 산업 AI 솔루션 기업"
+        description="오큐브(주)는 임베디드·SI 기술력 위에 자체 산업 AI 플랫폼 Cubeon을 더해 제조·모빌리티·에너지와 기업 운영의 과제를 해결하는 산업 AI 솔루션 기업입니다. Since 2007."
       />
-      <link rel="canonical" href={withBase("")} />
-      <link rel="alternate" hrefLang="ko" href={withBase("")} />
-      <link rel="alternate" hrefLang="en" href={withBase("en/")} />
-      <link rel="alternate" hrefLang="x-default" href={withBase("")} />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="오큐브(주)" />
-      <meta property="og:locale" content="ko_KR" />
-      <meta property="og:title" content="오큐브(주) — Embedded에서 AI까지 · 산업 AI 솔루션 기업" />
-      <meta
-        property="og:description"
-        content="오큐브(주)는 임베디드·SI 기술력 위에 자체 산업 AI 플랫폼 Cubeon을 더해 제조·모빌리티·에너지와 기업 운영의 과제를 해결하는 산업 AI 솔루션 기업입니다. Since 2007."
-      />
-      <meta property="og:url" content={withBase("")} />
-      <meta property="og:image" content={withBase("og-codex.png")} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="오큐브(주) — Embedded에서 AI까지 · 산업 AI 솔루션 기업" />
-      <meta
-        name="twitter:description"
-        content="오큐브(주)는 임베디드·SI 기술력 위에 자체 산업 AI 플랫폼 Cubeon을 더해 제조·모빌리티·에너지와 기업 운영의 과제를 해결하는 산업 AI 솔루션 기업입니다. Since 2007."
-      />
-      <meta name="twitter:image" content={withBase("og-codex.png")} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -52,10 +30,6 @@ export default function HomePage() {
             '{"@context":"https://schema.org","@type":"WebSite","name":"오큐브(주)","url":"@@BASE@@"}',
           ),
         }}
-      />
-      <link
-        rel="icon"
-        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230e1626'/%3E%3Cpath%20d='M16%206.5l7.5%204.3v8.6L16%2023.7l-7.5-4.3v-8.6z'%20fill='none'%20stroke='%230075de'%20stroke-width='1.8'/%3E%3Cpath%20d='M16%206.5v17.2M8.5%2010.8l7.5%204.3%207.5-4.3'%20stroke='%235b9bff'%20stroke-width='1.4'%20fill='none'/%3E%3C/svg%3E"
       />
       <SiteHeader slug="index" navLabel="Main navigation" />
       <MobilePanel navLabel="Mobile navigation" ctaLabel="Contact" />

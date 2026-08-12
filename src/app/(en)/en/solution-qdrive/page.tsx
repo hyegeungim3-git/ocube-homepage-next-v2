@@ -1,4 +1,6 @@
-import { applyBase, withBase } from "@/config/site";
+import { applyBase } from "@/config/site";
+import { PageMeta } from "@/components/layout/page-meta";
+import { PageShell } from "@/components/layout/page-shell";
 import { secHeads } from "@/data/sec-heads.en";
 import { SecHead } from "@/components/section/sec-head";
 import { subnavItems } from "@/data/subnav.en";
@@ -7,9 +9,6 @@ import { ctaCopy } from "@/data/cta.en";
 import { FctaTop } from "@/components/section/fcta-top";
 import { solutionIntros } from "@/data/solution-intro.en";
 import { SolCopy } from "@/components/section/sol-copy";
-import { SiteHeader } from "@/components/layout/site-header";
-import { MobilePanel } from "@/components/layout/mobile-panel";
-import { SiteFooter } from "@/components/layout/site-footer";
 import { DepCards } from "@/components/section/dep-cards";
 import { depCards } from "@/data/cards.en";
 import { FeatItems } from "@/components/section/feat-list";
@@ -18,38 +17,12 @@ import { featLists } from "@/data/features.en";
 export default function SolutionQdrivePage() {
   return (
     <>
-      <title>QDrive · AI Mobility Operations Platform — OCUBE</title>
-      <meta
-        name="description"
-        content="QDrive — a mobility platform that reads tachograph, diagnostic, location and energy data with AI to improve safe driving, fleet operation, EV charging and carbon performance."
+      <PageMeta
+        lang="en"
+        path="solution-qdrive.html"
+        title="QDrive · AI Mobility Operations Platform — OCUBE"
+        description="QDrive — a mobility platform that reads tachograph, diagnostic, location and energy data with AI to improve safe driving, fleet operation, EV charging and carbon performance."
       />
-      <link rel="canonical" href={withBase("en/solution-qdrive.html")} />
-      <link rel="alternate" hrefLang="ko" href={withBase("solution-qdrive.html")} />
-      <link rel="alternate" hrefLang="en" href={withBase("en/solution-qdrive.html")} />
-      <link rel="alternate" hrefLang="x-default" href={withBase("solution-qdrive.html")} />
-      <link
-        rel="icon"
-        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230e1626'/%3E%3Cpath%20d='M16%206.5l7.5%204.3v8.6L16%2023.7l-7.5-4.3v-8.6z'%20fill='none'%20stroke='%230075de'%20stroke-width='1.8'/%3E%3Cpath%20d='M16%206.5v17.2M8.5%2010.8l7.5%204.3%207.5-4.3'%20stroke='%235b9bff'%20stroke-width='1.4'%20fill='none'/%3E%3C/svg%3E"
-      />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="OCUBE CO., LTD." />
-      <meta property="og:locale" content="en_US" />
-      <meta property="og:title" content="QDrive · AI Mobility Operations Platform — OCUBE" />
-      <meta
-        property="og:description"
-        content="QDrive — a mobility platform that reads tachograph, diagnostic, location and energy data with AI to improve safe driving, fleet operation, EV charging and carbon performance."
-      />
-      <meta property="og:url" content={withBase("en/solution-qdrive.html")} />
-      <meta property="og:image" content={withBase("og-codex.png")} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="QDrive · AI Mobility Operations Platform — OCUBE" />
-      <meta
-        name="twitter:description"
-        content="QDrive — a mobility platform that reads tachograph, diagnostic, location and energy data with AI to improve safe driving, fleet operation, EV charging and carbon performance."
-      />
-      <meta name="twitter:image" content={withBase("og-codex.png")} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -58,9 +31,16 @@ export default function SolutionQdrivePage() {
           ),
         }}
       />
-      <SiteHeader slug="solution-qdrive" lang="en" />
-      <MobilePanel lang="en" />
-      <main>
+      <PageShell
+        lang="en"
+        slug="solution-qdrive"
+        footerId="contact"
+        cta={
+          <>
+            <FctaTop copy={ctaCopy["solution-qdrive"]} />
+          </>
+        }
+      >
         <div className="sol-open">
           <section id="top" className="hero page-hero dark sol-hero">
             <div
@@ -476,10 +456,7 @@ export default function SolutionQdrivePage() {
             </div>
           </div>
         </section>
-      </main>
-      <SiteFooter lang="en" id="contact">
-        <FctaTop copy={ctaCopy["solution-qdrive"]} />
-      </SiteFooter>
+      </PageShell>
     </>
   );
 }

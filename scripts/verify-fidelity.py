@@ -7,7 +7,7 @@
 비교 대상은 '화면에 나오는 것' 전부 — skip/header/m-panel/main/footer + head 메타.
 런타임 스크립트는 비교 대상이 아니다(빌드마다 달라지는 부분이라 별도 보고).
 """
-import os, re, sys, json, difflib
+import os, re, sys, json, time, difflib
 from bs4 import BeautifulSoup, NavigableString, Comment
 
 # 한국어 Windows 콘솔은 기본 코드페이지가 cp949 라 결과표의 ✔/✘ 에서 죽는다.
@@ -187,7 +187,37 @@ def diff(a, b, label, limit=6):
     return (label, len(d), d[:limit])
 
 
+def newest(root, exts):
+    t = 0.0
+    for dirpath, _dirs, files in os.walk(root):
+        for f in files:
+            if exts and not f.endswith(exts):
+                continue
+            t = max(t, os.path.getmtime(os.path.join(dirpath, f)))
+    return t
+
+
+def check_fresh():
+    """out/ 이 지금 소스보다 낡았으면 멈춘다.
+
+    빌드가 실패해도 out/ 에는 지난번 결과가 그대로 남는다. 그걸 모르고 verify 를 돌리면
+    '528/528 통과' 라는 거짓 초록불이 뜬다(실제로 한 번 속았다). 그래서 먼저 물어본다.
+    """
+    if not os.path.isdir(NEW):
+        print("out/ 이 없다. npm run build 를 먼저 실행할 것.")
+        sys.exit(2)
+    src = max(newest(os.path.join(_ROOT, "src"), (".ts", ".tsx", ".css", ".js", ".json")),
+              newest(os.path.join(_ROOT, "public", "assets"), (".css", ".js")))
+    out = newest(NEW, (".html",))
+    if src > out + 1:
+        print("out/ 이 소스보다 낡았다 — npm run build 를 먼저 실행할 것.")
+        print(f"  최신 소스 {time.strftime('%H:%M:%S', time.localtime(src))} > "
+              f"out/ {time.strftime('%H:%M:%S', time.localtime(out))}")
+        sys.exit(2)
+
+
 def main():
+    check_fresh()
     # 한국어 25쪽 + 영어 23쪽(en/) — 영어 화면도 기준선 대조에 포함한다
     pages = sorted(f for f in os.listdir(OLD) if f.endswith(".html"))
     en_dir = os.path.join(OLD, "en")

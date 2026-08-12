@@ -10,11 +10,14 @@ src/
       layout.tsx
       page.tsx
   components/layout/ 공통 셸
+    page-shell.tsx   화면 골격 — 헤더+모바일 메뉴+<main>+푸터를 한 번에 (홈 제외)
+    page-meta.tsx    검색·공유 메타 한 벌 (title·canonical·hreflang·og·twitter)
     site-header.tsx  skip 링크 + GNB (메뉴는 config/navigation.ts 에서)
     mobile-panel.tsx 무JS 폴백 모바일 메뉴
     site-footer.tsx  푸터 (하단은 데이터로, CTA 는 children 으로)
   config/
     site.ts          배포 주소 한 곳 (canonical·og·JSON-LD·sitemap 이 참조)
+    page-meta.ts     메타의 언어별 고정값(사명·로케일)·공유 이미지·파비콘·주소 규칙
     navigation.ts    GNB 4개 대메뉴 + 20개 중메뉴
   data/              화면 문구·이미지 경로 데이터 (site·heroes·cards·features·steps·
                      cases·refs·solution-intro·cta·subnav·sec-heads·applications·
@@ -37,6 +40,26 @@ tests/
   static-server.mjs  out/ 을 내려주는 최소 정적 서버 (Playwright 가 자동 기동)
 docs/                개발·운영 문서
 ```
+
+## 화면 한 장의 생김새
+
+```tsx
+export default function AboutPage() {
+  return (
+    <>
+      <PageMeta path="about.html" title="…" description="…" />
+      <script type="application/ld+json" … />   {/* 화면마다 달라 공통화하지 않는다 */}
+      <PageShell slug="about" mainId="top" footerId="contact" cta={<>…</>}>
+        …본문…
+      </PageShell>
+    </>
+  );
+}
+```
+
+`PageMeta` 는 `lang` 하나로 canonical·hreflang·og:locale·사명을 다 정한다.
+`PageShell` 은 `lang` 하나로 헤더·모바일 메뉴·푸터의 언어를 함께 넘긴다.
+그래서 영어 화면 생성기가 손댈 곳이 `lang="en"` 주입 한 군데로 줄었다.
 
 ## 확장 원칙
 

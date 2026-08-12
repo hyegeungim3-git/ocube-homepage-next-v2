@@ -1,4 +1,5 @@
-import { applyBase, withBase } from "@/config/site";
+import { applyBase } from "@/config/site";
+import { PageMeta } from "@/components/layout/page-meta";
 import { homeSlides } from "@/data/home-hero.en";
 import { HomeSlides } from "@/components/section/home-slides";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -9,34 +10,12 @@ import { homeCases } from "@/data/cases.en";
 export default function HomePage() {
   return (
     <>
-      <title>OCUBE — From Embedded to AI · Industrial AI Solutions</title>
-      <meta
-        name="description"
-        content="OCUBE builds on its embedded and systems integration experience, adding its own industrial AI platform Cubeon to solve problems in manufacturing, mobility, energy and enterprise operations. Since 2007."
+      <PageMeta
+        lang="en"
+        path=""
+        title="OCUBE — From Embedded to AI · Industrial AI Solutions"
+        description="OCUBE builds on its embedded and systems integration experience, adding its own industrial AI platform Cubeon to solve problems in manufacturing, mobility, energy and enterprise operations. Since 2007."
       />
-      <link rel="canonical" href={withBase("en/")} />
-      <link rel="alternate" hrefLang="ko" href={withBase("")} />
-      <link rel="alternate" hrefLang="en" href={withBase("en/")} />
-      <link rel="alternate" hrefLang="x-default" href={withBase("")} />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="OCUBE CO., LTD." />
-      <meta property="og:locale" content="en_US" />
-      <meta property="og:title" content="OCUBE — From Embedded to AI · Industrial AI Solutions" />
-      <meta
-        property="og:description"
-        content="OCUBE builds on its embedded and systems integration experience, adding its own industrial AI platform Cubeon to solve problems in manufacturing, mobility, energy and enterprise operations. Since 2007."
-      />
-      <meta property="og:url" content={withBase("en/")} />
-      <meta property="og:image" content={withBase("og-codex.png")} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="OCUBE — From Embedded to AI · Industrial AI Solutions" />
-      <meta
-        name="twitter:description"
-        content="OCUBE builds on its embedded and systems integration experience, adding its own industrial AI platform Cubeon to solve problems in manufacturing, mobility, energy and enterprise operations. Since 2007."
-      />
-      <meta name="twitter:image" content={withBase("og-codex.png")} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -52,10 +31,6 @@ export default function HomePage() {
             '{"@context":"https://schema.org","@type":"WebSite","name":"OCUBE CO., LTD.","url":"@@BASE@@en/"}',
           ),
         }}
-      />
-      <link
-        rel="icon"
-        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230e1626'/%3E%3Cpath%20d='M16%206.5l7.5%204.3v8.6L16%2023.7l-7.5-4.3v-8.6z'%20fill='none'%20stroke='%230075de'%20stroke-width='1.8'/%3E%3Cpath%20d='M16%206.5v17.2M8.5%2010.8l7.5%204.3%207.5-4.3'%20stroke='%235b9bff'%20stroke-width='1.4'%20fill='none'/%3E%3C/svg%3E"
       />
       <SiteHeader slug="index" lang="en" navLabel="Main navigation" />
       <MobilePanel navLabel="Mobile navigation" ctaLabel="Contact" />
