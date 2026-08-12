@@ -2,6 +2,7 @@ import type { JSX } from "react";
 import type { Lang } from "@/config/i18n";
 import { applyBase } from "@/config/site";
 import { PageMeta } from "@/components/layout/page-meta";
+import { ContactForm } from "@/components/section/contact-form";
 import { PageShell } from "@/components/layout/page-shell";
 import { Fragment } from "react";
 import { enquiryTypes } from "@/data/contact";
@@ -61,12 +62,7 @@ export function ContactPage({ lang }: { lang: Lang }): JSX.Element {
                 <T l={lang}>프로젝트 상담 요청</T>
               </h2>
             </div>
-            <form
-              className="form reveal"
-              data-contact-form=""
-              data-d="1"
-              aria-describedby="form-note form-status"
-            >
+            <ContactForm lang={lang}>
               <p id="form-note" className="form-note">
                 <T l={lang}>
                   입력한 내용은 이 웹사이트에 저장되지 않습니다. 제출하면 이메일 앱에서 내용을
@@ -146,8 +142,7 @@ export function ContactPage({ lang }: { lang: Lang }): JSX.Element {
               <button type="submit" className="btn-primary">
                 <T l={lang}>문의 메일 작성하기</T>
               </button>{" "}
-              <p id="form-status" className="form-status" role="status" aria-live="polite"></p>
-            </form>
+            </ContactForm>
           </div>
         </section>
         <section className="sec deploy">

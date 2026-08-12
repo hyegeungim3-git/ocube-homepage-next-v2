@@ -1,14 +1,14 @@
 import type { JSX } from "react";
 import type { Viewport } from "next";
-import Script from "next/script";
 import { ClientBehaviors } from "@/components/behavior/client-behaviors";
 import "@/styles/site.scss";
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };
 
 // about.html 의 <head> 링크 순서를 그대로 유지한다(캐스케이드 순서 보존).
-// site2.js 는 DOM 을 직접 조작하므로 하이드레이션이 끝난 뒤 실행해야 한다.
-// (인라인 <script> 로 두면 React 가 재삽입해 두 번 실행된다)
+// 화면 동작은 모두 React 컴포넌트가 맡는다(6단계에서 site2.js 를 없앴다).
+// 남은 인라인 <script> 한 줄은 CSS 가 자바스크립트 유무를 구분하는 표시다 —
+// 이것이 없으면 스크롤 리빌 요소가 처음부터 숨어 버린다.
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <html lang="ko" suppressHydrationWarning>
@@ -26,7 +26,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
       <body>
         {children}
         <ClientBehaviors />
-        <Script src="assets/site2.js?v=codex-31" strategy="afterInteractive" />
       </body>
     </html>
   );

@@ -15,9 +15,7 @@
     "test:e2e": "playwright test --project=e2e",
     "test:visual": "playwright test --project=visual",
     "test:visual:approve": "playwright test --project=visual --update-snapshots",
-    "prebuild": "node scripts/build-js.mjs",
-    "baseline": "npm run build && node scripts/snapshot-baseline.mjs",
-    "build:js": "node scripts/build-js.mjs"
+    "baseline": "npm run build && node scripts/snapshot-baseline.mjs"
   },
   "dependencies": {
     "next": "16.2.6",
