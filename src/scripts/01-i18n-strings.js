@@ -11,7 +11,6 @@
     copied: function (v) { return 'Copied — ' + v; },
     zoomDialog: 'Enlarged product screen', zoomClose: 'Close enlarged view',
     shot: 'product screen', zoomOpen: function (n) { return n + ' — view larger'; },
-    toTop: 'Back to top',
     mailSubject: function (type, name) { return '[OCUBE enquiry] ' + type + ' - ' + name; },
     mailType: 'Type: ', mailName: 'Name / company: ', mailFrom: 'Reply to: '
   } : {
@@ -23,7 +22,6 @@
     copied: function (v) { return '복사되었습니다 — ' + v; },
     zoomDialog: '제품 화면 확대 보기', zoomClose: '확대 화면 닫기',
     shot: '제품 화면', zoomOpen: function (n) { return n + ' 확대 보기'; },
-    toTop: '맨 위로',
     mailSubject: function (type, name) { return '[오큐브 홈페이지 문의] ' + type + ' - ' + name; },
     mailType: '문의 유형: ', mailName: '성함 / 회사: ', mailFrom: '회신 이메일: '
   };

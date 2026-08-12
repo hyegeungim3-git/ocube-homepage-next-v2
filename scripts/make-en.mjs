@@ -154,6 +154,9 @@ const toEnLayout = (src, note) =>
   src
     .replace('<html lang="ko"', '<html lang="en"')
     .replace(/(["'])assets\//g, "$1../assets/")
+    // 레이아웃 안의 컴포넌트도 언어를 알아야 한다 (읽어주는 이름이 화면 언어를 따라간다).
+    // 6단계에서 site2.js 기능을 React 로 옮길 때마다 여기 목록에 이름을 더한다.
+    .replace(/<(BackToTop)\b/g, '<$1 lang="en"')
     .replace(/^\/\/[^\n]*/, `// ${note} — 자동 생성(scripts/make-en.mjs), 고치지 말 것`);
 
 for (const [koGroup, enGroup, note] of [

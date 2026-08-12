@@ -1,6 +1,7 @@
 import type { JSX } from "react";
 import type { Viewport } from "next";
 import Script from "next/script";
+import { BackToTop } from "@/components/layout/back-to-top";
 import "@/styles/site.scss";
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };
@@ -24,7 +25,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
       </head>
       <body>
         {children}
-        <Script src="assets/site2.js?v=codex-21" strategy="afterInteractive" />
+        <BackToTop />
+        <Script src="assets/site2.js?v=codex-22" strategy="afterInteractive" />
       </body>
     </html>
   );
