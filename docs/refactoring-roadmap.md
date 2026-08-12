@@ -93,15 +93,43 @@
 > 린트 범위를 저장소 전체로 넓히자 **내가 1단계에서 쓴 테스트 코드에서 오류 2건**이 나왔다
 > (`prefer-const`, `import()` 타입 표기). 규칙은 새 코드에도 똑같이 걸려야 한다.
 
-### 6. `site2.js` React 이전 — **1/25 모듈 (2026-08-12)**
+### 6. `site2.js` React 이전 — **18/25 모듈 (2026-08-12)**
 
-- [x] 기능 하나마다 기존 동작 TC 작성 — 1단계에서 11개 기능을 미리 고정해 두었다
-- [x] 첫 기능 이전: **맨 위로 버튼**(`15-fab.js` → `components/layout/back-to-top.tsx`)
-- [x] 전역 이벤트 cleanup과 접근성 상태 검사 — `useSyncExternalStore` 의 구독 해제,
-      읽어주는 이름이 화면 언어를 따르는지 e2e 로 확인
-- [x] TC 통과 후 대응 `src/scripts` 파일 제거 (25 → 24 모듈, 판번호 codex-22)
-- [ ] 나머지 24개 모듈
+- [x] 기능 하나마다 기존 동작 TC 작성 — 1단계에서 11개, 6단계에서 5개를 더 고정
+- [x] 메뉴·슬라이더 등을 React state/ref 로 이전 — 헤더(투명↔솔리드·숨김·메가 메뉴)는
+      `SiteHeader` 의 상태가 됐다
+- [x] 전역 이벤트 cleanup 과 접근성 상태 검사 — 옮긴 모든 조각이 해제를 책임진다
+- [x] TC 통과 후 대응 `src/scripts` 파일 제거 (25 → 8 모듈, `site2.js` 44KB → 20KB)
+- [ ] 남은 6개 기능 (아래)
 - [ ] 전체 이전 후 layout의 Script와 `build-js` 제거
+
+**옮긴 것 (13개 모듈)** — `src/components/behavior/` + `SiteHeader`
+`15-fab` `13-copy-toast` `19-scroll-progress` `05-gnb-state` `20-gnb-hide` `22-gnb-mega`
+`03-reveal` `24-motion-ready` `16-pin-dots` `04-table-scroll` `18-demo-videos` `21-ci-tilt`
+`14-lightbox` `12-cert-filter`
+
+**옮기지 않고 지운 것 (4개 모듈, 전부 대상 마크업이 이미 없었다)**
+
+| 모듈 | 확인한 사실 |
+|---|---|
+| `02-skip-link` | 바로가기는 서버가 그린다. 스크립트는 곧바로 되돌아 나왔다 |
+| `11-case-filter` | `.case-card[data-line]` 0개 (필터는 `12-cert-filter` 가 한다) |
+| `09-hero-poster` | `.hero` 안 `<video>` 0개 (홈 배너는 슬라이더가 따로 처리) |
+| `10-count-up` | `[data-count]` 0개 |
+| `14` 의 포인터 미리보기 | `[data-preview]` 0개 |
+
+**남은 것 (8개 파일 / 실제 기능 6개)**
+
+| 파일 | 줄 | 메모 |
+|---|---|---|
+| `06-mobile-menu` | 175 | 가장 크다. 데스크톱 메뉴를 읽어 아코디언을 다시 그린다 |
+| `08-hero-slider` | 98 | 홈 4배너. `HomeSlides` 가 이미 React 라 상태로 옮기기 좋다 |
+| `23-sol-copy-travel` | 112 | 솔루션 이동 문구 + 회사소개 히어로 시차 |
+| `07-nav-current` | 20 | **`06` 다음에 옮길 것** — 아코디언이 만들어진 뒤에 표시해야 한다 |
+| `25-contact-mail` | 25 | 문의 폼. 실제 전송 방식이 결정 대기 항목이라 확인 후 |
+| `00-head`·`01-i18n-strings`·`17-iife-close` | 34 | 껍데기. 위가 다 빠지면 함께 사라진다 |
+
+> **한 기능을 옮길 때의 절차** (첫 건에서 확인하고 이후 계속 지킨 순서)
 
 > **한 기능을 옮길 때의 절차** (이 첫 건에서 확인한 순서)
 > 1. 기존 동작이 통과하는 TC 가 있는지 본다 (없으면 먼저 쓴다)
@@ -111,6 +139,10 @@
 >    효과 안에서 상태를 바꾸면 `react-hooks/set-state-in-effect` 가 막는다
 > 4. 읽어주는 이름·문구가 있으면 `lang` 을 받게 한다 (3단계 전에는 생성기의 주입 목록에
 >    이름을 더해야 했고, 실제로 이 건에서 빠뜨려 영어 화면이 한국어로 읽혔다)
+> 4-b. **옮기기 전에 대상 마크업이 실제로 있는지 센다.** 25개 중 4개가 죽은 코드였다 —
+>    옮겼다면 아무 일도 안 하는 React 컴포넌트가 넷 늘었을 것이다
+> 4-c. **브라우저 상태는 `useSyncExternalStore`.** 효과 안에서 setState 하면
+>    `react-hooks/set-state-in-effect` 가 막는다 (세 번 걸렸다)
 > 5. `src/scripts` 에서 대응 파일과 남은 문자열을 지우고 판번호를 올린다
 > 6. verify 불일치가 **`scripts` 항목(판번호)뿐**인지 확인하고 기준선 갱신
 

@@ -3,6 +3,7 @@ import type { Lang } from "@/config/i18n";
 import { BackToTop } from "@/components/behavior/back-to-top";
 import { CopyToast } from "@/components/behavior/copy-toast";
 import { ScrollProgress } from "@/components/behavior/scroll-progress";
+import { CaseFilter } from "@/components/behavior/case-filter";
 import { CiTilt } from "@/components/behavior/ci-tilt";
 import { DemoVideos } from "@/components/behavior/demo-videos";
 import { Lightbox } from "@/components/behavior/lightbox";
@@ -24,6 +25,7 @@ export function ClientBehaviors({ lang = "ko" }: { lang?: Lang }): JSX.Element {
       <TableScroll lang={lang} />
       <DemoVideos />
       <CiTilt />
+      <CaseFilter />
       <Lightbox lang={lang} />
       <ScrollProgress />
       <CopyToast lang={lang} />
