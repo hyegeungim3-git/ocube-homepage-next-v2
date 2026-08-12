@@ -1,8 +1,11 @@
 name: Deploy to GitHub Pages
 
+# ⚠️ 이 저장소는 비공개다. 무료 플랜은 비공개 저장소에 Pages 를 켤 수 없어
+# push 자동 실행을 꺼 두었다(켜 두면 매 push 마다 빨간 X 만 남는다).
+# 공개로 바꾸면 아래 push 두 줄의 주석만 풀면 된다.
 on:
-  push:
-    branches: [main]
+  # push:
+  #   branches: [main]
   workflow_dispatch:
 
 permissions:
