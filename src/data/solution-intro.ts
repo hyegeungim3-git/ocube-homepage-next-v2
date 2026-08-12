@@ -1,3 +1,4 @@
+import { localized } from "@/i18n/localize";
 // 솔루션 상단의 이동 문구(히어로 → 밝은 영역으로 옮겨 오는 블록) — 7개 솔루션 공통 구조.
 import type { RichToken } from "@/components/rich-text";
 
@@ -7,7 +8,7 @@ export interface SolutionIntro {
   lines: readonly [readonly RichToken[], readonly RichToken[]];
 }
 
-export const solutionIntros: Record<string, SolutionIntro> = {
+const solutionIntrosKo: Record<string, SolutionIntro> = {
   "solution-cubeon": {
     badge: "Industrial AI Operating Platform",
     name: "Cubeon",
@@ -65,3 +66,7 @@ export const solutionIntros: Record<string, SolutionIntro> = {
     ],
   },
 };
+
+// 두 언어. 화면에서는 solutionIntros[lang] 처럼 언어로 먼저 고른다.
+// 영어는 i18n/*.json 사전에서 그리는 시점에 만들어진다 (src/i18n/localize.ts).
+export const solutionIntros = localized(solutionIntrosKo);

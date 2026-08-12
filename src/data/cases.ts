@@ -1,3 +1,4 @@
+import { localized } from "@/i18n/localize";
 // 구축 사례 카드(.bcase-card)의 문구와 이미지.
 // projectCards 키는 "페이지:섹션id" (예: "business-ax:projects").
 // homeCases 는 홈 마퀴용 4건 — 원본은 무한 스크롤을 위해 같은 행을 두 번 쓰지만
@@ -17,7 +18,7 @@ export interface HomeCase extends BcaseItem {
   ariaLabel: string;
 }
 
-export const projectCards: Record<string, readonly BcaseItem[]> = {
+const projectCardsKo: Record<string, readonly BcaseItem[]> = {
   "business-ax:projects": [
     {
       image: {
@@ -162,7 +163,7 @@ export const projectCards: Record<string, readonly BcaseItem[]> = {
   ],
 };
 
-export const homeCases: readonly HomeCase[] = [
+const homeCasesKo: readonly HomeCase[] = [
   {
     image: {
       src: "assets/home-refresh/case-robot-line.svg",
@@ -236,3 +237,8 @@ export const homeCases: readonly HomeCase[] = [
     ariaLabel: "EV 충전 플랫폼 구축 자세히 보기",
   },
 ];
+
+// 두 언어. 화면에서는 projectCards[lang] 처럼 언어로 먼저 고른다.
+// 영어는 i18n/*.json 사전에서 그리는 시점에 만들어진다 (src/i18n/localize.ts).
+export const projectCards = localized(projectCardsKo);
+export const homeCases = localized(homeCasesKo);

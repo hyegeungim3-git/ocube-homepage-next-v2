@@ -1,3 +1,4 @@
+import { localized } from "@/i18n/localize";
 // 서브페이지 히어로 문구. 배지·제목·리드·핵심 포인트를 여기서 고친다.
 // lead 는 토큰 배열이다: 문자열은 그대로, "br" 은 문장 구분 줄바꿈, "wbr" 은 줄바꿈 기회.
 export interface HeroData {
@@ -12,7 +13,7 @@ export interface HeroData {
   keys: readonly { k: string; v: string }[];
 }
 
-export const heroes: Record<string, HeroData> = {
+const heroesKo: Record<string, HeroData> = {
   company: {
     id: "top",
     decor: [
@@ -333,3 +334,7 @@ export const heroes: Record<string, HeroData> = {
     ],
   },
 };
+
+// 두 언어. 화면에서는 heroes[lang] 처럼 언어로 먼저 고른다.
+// 영어는 i18n/*.json 사전에서 그리는 시점에 만들어진다 (src/i18n/localize.ts).
+export const heroes = localized(heroesKo);

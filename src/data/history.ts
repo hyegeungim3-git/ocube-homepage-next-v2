@@ -1,3 +1,4 @@
+import { localized } from "@/i18n/localize";
 // 연혁 타임라인 — 연도 그룹과 이정표. cls 는 리빌 스태거 실측값 그대로.
 import type { RichToken } from "@/components/rich-text";
 
@@ -8,7 +9,7 @@ export interface HistoryGroup {
   items: readonly (readonly RichToken[])[];
 }
 
-export const historyGroups: readonly HistoryGroup[] = [
+const historyGroupsKo: readonly HistoryGroup[] = [
   {
     cls: "hist-row rv",
     year: "2025",
@@ -85,3 +86,7 @@ export const historyGroups: readonly HistoryGroup[] = [
     ],
   },
 ];
+
+// 두 언어. 화면에서는 historyGroups[lang] 처럼 언어로 먼저 고른다.
+// 영어는 i18n/*.json 사전에서 그리는 시점에 만들어진다 (src/i18n/localize.ts).
+export const historyGroups = localized(historyGroupsKo);

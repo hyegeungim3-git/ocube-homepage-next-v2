@@ -1,3 +1,4 @@
+import { localized } from "@/i18n/localize";
 // 라벨 + 설명으로 된 항목 목록(.feat-list)의 문구.
 // 키는 "페이지:섹션id" 다. 예) "solution-cubeon:overview".
 // 제목이 h3 인 목록과 번호가 붙은 목록은 형태가 달라 페이지에 그대로 두었다.
@@ -8,7 +9,7 @@ export interface FeatItem {
   body: readonly RichToken[];
 }
 
-export const featLists: Record<string, readonly FeatItem[]> = {
+const featListsKo: Record<string, readonly FeatItem[]> = {
   "solution-agentq:overview": [
     {
       label: ["전문 에이전트 허브"],
@@ -254,3 +255,7 @@ export const featLists: Record<string, readonly FeatItem[]> = {
     },
   ],
 };
+
+// 두 언어. 화면에서는 featLists[lang] 처럼 언어로 먼저 고른다.
+// 영어는 i18n/*.json 사전에서 그리는 시점에 만들어진다 (src/i18n/localize.ts).
+export const featLists = localized(featListsKo);

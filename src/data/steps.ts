@@ -1,3 +1,4 @@
+import { localized } from "@/i18n/localize";
 // What We Do 단계 카드(.pin-item)의 문구와 일러스트.
 // 키는 "페이지:섹션id" 다. 예) "business-ax:whatwedo".
 // 형태가 섞인 목록(solution-cubeon #arch)은 페이지에 그대로 두었다.
@@ -12,7 +13,7 @@ export interface PinStep {
   bullets: readonly (readonly RichToken[])[];
 }
 
-export const pinSteps: Record<string, readonly PinStep[]> = {
+const pinStepsKo: Record<string, readonly PinStep[]> = {
   "business-ax:whatwedo": [
     {
       no: "01",
@@ -819,3 +820,7 @@ export const pinSteps: Record<string, readonly PinStep[]> = {
     },
   ],
 };
+
+// 두 언어. 화면에서는 pinSteps[lang] 처럼 언어로 먼저 고른다.
+// 영어는 i18n/*.json 사전에서 그리는 시점에 만들어진다 (src/i18n/localize.ts).
+export const pinSteps = localized(pinStepsKo);

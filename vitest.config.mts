@@ -9,7 +9,7 @@ export default defineConfig({
   },
   test: {
     environment: "node",
-    include: ["tests/unit/**/*.test.ts"],
+    include: ["tests/unit/**/*.test.{ts,tsx}"],
     // Playwright 스펙을 vitest 가 주워가지 않도록 명시적으로 막는다
     exclude: ["tests/e2e/**", "tests/visual/**", "node_modules/**"],
     reporters: ["default"],

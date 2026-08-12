@@ -1,3 +1,4 @@
+import { localized } from "@/i18n/localize";
 // 섹션 머리(킥커·제목·부제)의 표준형 문구 — 키는 "페이지:섹션id".
 // 표준형이 아닌 섹션 머리는 각 페이지에 인라인으로 남아 있다(README 참고).
 import type { RichToken } from "@/components/rich-text";
@@ -12,7 +13,7 @@ export interface SecHeadCopy {
   subCls?: string;
 }
 
-export const secHeads: Record<string, SecHeadCopy> = {
+const secHeadsKo: Record<string, SecHeadCopy> = {
   "about:greeting": {
     cls: "sec-head rv",
     kicker: "CEO Greeting",
@@ -278,3 +279,7 @@ export const secHeads: Record<string, SecHeadCopy> = {
     subCls: "sec-sub",
   },
 };
+
+// 두 언어. 화면에서는 secHeads[lang] 처럼 언어로 먼저 고른다.
+// 영어는 i18n/*.json 사전에서 그리는 시점에 만들어진다 (src/i18n/localize.ts).
+export const secHeads = localized(secHeadsKo);

@@ -1,3 +1,4 @@
+import { localized } from "@/i18n/localize";
 // 푸터 CTA 밴드의 페이지별 문구 — 템플릿(배지·버튼 위치)은 FctaTop 컴포넌트가 가진다.
 import type { RichToken } from "@/components/rich-text";
 
@@ -9,7 +10,7 @@ export interface CtaCopy {
   badgeLabel: string;
 }
 
-export const ctaCopy: Record<string, CtaCopy> = {
+const ctaCopyKo: Record<string, CtaCopy> = {
   "business-ax": {
     kicker: "CONTACT",
     heading: ["AI 적용 과제와 데이터 준비 상태부터 진단합니다"],
@@ -161,3 +162,7 @@ export const ctaCopy: Record<string, CtaCopy> = {
     badgeLabel: "문의하기",
   },
 };
+
+// 두 언어. 화면에서는 ctaCopy[lang] 처럼 언어로 먼저 고른다.
+// 영어는 i18n/*.json 사전에서 그리는 시점에 만들어진다 (src/i18n/localize.ts).
+export const ctaCopy = localized(ctaCopyKo);

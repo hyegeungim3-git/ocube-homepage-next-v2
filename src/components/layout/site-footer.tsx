@@ -24,14 +24,14 @@ export function SiteFooter({
           <div className="fcta-bot">
             <div>
               <img
-                alt={footerLogo.alt}
+                alt={footerLogo[lang].alt}
                 className="fb-logo"
-                height={footerLogo.height}
-                src={assetPath(footerLogo.src, lang)}
-                width={footerLogo.width}
+                height={footerLogo[lang].height}
+                src={assetPath(footerLogo[lang].src, lang)}
+                width={footerLogo[lang].width}
               />
               <dl className="fb-loc">
-                {offices.map((o) => (
+                {offices[lang].map((o) => (
                   <div className="row" key={o.code}>
                     <dt>{o.code}</dt>
                     <dd>{o.address}</dd>
@@ -40,7 +40,7 @@ export function SiteFooter({
               </dl>
             </div>
             <div className="fb-links">
-              {footerColumns.map((c) => (
+              {footerColumns[lang].map((c) => (
                 <div className="fb-col" key={c.title}>
                   <p className="f-h">{c.title}</p>
                   {/* 원본은 제목 뒤에만 줄바꿈이 있고 링크 사이에는 공백이 없다 */}{" "}
@@ -55,8 +55,8 @@ export function SiteFooter({
           </div>
           <div className="fb-legal">
             {" "}
-            <span>{legal.copyright}</span>
-            {legal.links.map((l) => (
+            <span>{legal[lang].copyright}</span>
+            {legal[lang].links.map((l) => (
               <Fragment key={l.href}>
                 {" "}
                 <a href={l.href}>{l.label}</a>

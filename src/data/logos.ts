@@ -1,3 +1,4 @@
+import { localized } from "@/i18n/localize";
 // 고객사·기술 파트너 로고 — references 로고 그리드 2개.
 
 export interface Logo {
@@ -7,7 +8,7 @@ export interface Logo {
   height: string;
 }
 
-export const logoGroups: Record<"clients" | "vendors", readonly Logo[]> = {
+const logoGroupsKo: Record<"clients" | "vendors", readonly Logo[]> = {
   clients: [
     { src: "assets/img/client/lg-electronics.png", alt: "LG전자", width: "280", height: "90" },
     { src: "assets/img/client/sk-energy.png", alt: "SK에너지", width: "280", height: "90" },
@@ -29,3 +30,7 @@ export const logoGroups: Record<"clients" | "vendors", readonly Logo[]> = {
     { src: "assets/img/vlogo/protopie.png", alt: "ProtoPie", width: "411", height: "94" },
   ],
 };
+
+// 두 언어. 화면에서는 logoGroups[lang] 처럼 언어로 먼저 고른다.
+// 영어는 i18n/*.json 사전에서 그리는 시점에 만들어진다 (src/i18n/localize.ts).
+export const logoGroups = localized(logoGroupsKo);

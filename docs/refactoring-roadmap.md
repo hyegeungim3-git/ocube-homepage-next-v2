@@ -27,27 +27,38 @@
       (화면 23 × 2언어 × 2뷰포트 = 92셀, h1 개수·`html lang` 포함)
 - [x] 1440×900·375×812, ko/en 기준 스크린샷 생성 — 대표 8쪽 = 32장
 
-### 2. 공통 페이지 구조 — **부분 완료 (2026-08-12)**
+### 2. 공통 페이지 구조 — **완료 (2026-08-12)**
 
 - [x] Header·MobilePanel·Footer를 `PageShell`로 통합
       (`src/components/layout/page-shell.tsx`. 홈은 푸터가 전용 마크업이라 제외 — 억지로 넣으면
       홈에서만 쓰는 선택 항목이 넷 늘어난다, 플레이북 7절)
 - [x] 반복 metadata·hreflang을 typed 공통 데이터로 통합
       (`src/config/page-meta.ts` + `src/components/layout/page-meta.tsx`, 48쪽 전부 적용)
-- [ ] 실제 화면을 `src/components/pages`로 이동 → **3단계에서 함께 한다**
-- [ ] `app/**/page.tsx`는 얇은 URL 진입점으로 축소 → **3단계에서 함께 한다**
+- [x] 실제 화면을 `src/components/pages`로 이동 — 23개 (3단계와 함께)
+- [x] `app/**/page.tsx`는 얇은 URL 진입점으로 축소 — 46개 라우트가 각 7줄
 
-> 뒤 두 항목을 3단계로 미룬 이유: 지금 영어 화면은 `make-en.mjs` 가 한국어 화면을 읽어
-> 생성한다. 화면만 `components/pages` 로 옮기고 언어 통합을 안 하면, 생성기가 그 컴포넌트의
-> 영어 복사본을 또 만들어야 한다 — 3단계에서 바로 지울 코드를 한 번 더 만드는 셈이다.
+> 뒤 두 항목은 3단계와 한 묶음으로 했다. 화면만 옮기고 언어 통합을 안 하면 생성기가 그
+> 컴포넌트의 영어 복사본을 또 만들어야 하고, 그 코드는 3단계에서 바로 지운다.
 > 플레이북 4절의 전환 순서도 "옮기기 → lang 받기 → 라우트 축소" 를 한 화면 단위로 묶어 놓았다.
 
-### 3. 다국어 코드 통합
+### 3. 다국어 코드 통합 — **완료 (2026-08-12)**
 
-- [ ] ko/en URL은 현재대로 유지
-- [ ] ko/en이 같은 Page 컴포넌트 사용
-- [ ] 언어별 콘텐츠를 `Record<Lang, ContentType>`으로 관리
-- [ ] 페이지별 전환 후 영어 TSX·`*.en.ts` 생성 로직 제거
+- [x] ko/en URL은 현재대로 유지 (`/about.html` · `/en/about.html`)
+- [x] ko/en이 같은 Page 컴포넌트 사용 — `src/components/pages/<slug>-page.tsx` 23개
+- [x] 언어별 콘텐츠를 `Record<Lang, ContentType>`으로 관리 — `src/data/*.ts` 16개가
+      `localized(…)` 로 두 언어를 내놓는다 (`data[lang][키]`)
+- [x] 영어 TSX·`*.en.ts` 생성 로직 제거 — `scripts/make-en.mjs` 삭제
+
+> **왜 사전 조회 방식인가.** 로드맵의 예시는 화면마다 이름 붙인 콘텐츠 객체지만, 이 저장소의
+> 본문은 화면에 그대로 박힌 한국어 1,369덩어리(27,012자)다. 이름을 기계로 붙이면 `t137` 같은
+> 키가 되어 "문구 수정은 데이터에서" 가 오히려 어려워진다. 그래서 **한국어 원문을 키로 쓰는
+> 사전**(이미 있는 `i18n/*.json`)을 그대로 두고, 그리는 시점에 조회한다.
+> 화면 코드는 한국어를 그대로 품고 있어 읽기 쉽고, 번역을 채우는 자리도 예전과 같다.
+>
+> **막혔던 지점은 `<wbr />`.** 한국어는 `"…(OPC-UA·" <wbr /> "Modbus)…"` 처럼 문장이
+> 갈라져 있고 영어는 이어 붙인 한 문장으로 번역돼 있다. 그래서 `<T>` 는 자식을 한 줄로 펴서
+> (wbr 은 빼고) 찾고, 데이터 쪽 `localized()` 는 `"wbr"` 토큰으로 갈라진 문자열을 먼저 잇는다.
+> 예전 생성기가 하던 일을 그대로 옮긴 것이다.
 
 ### 4. SCSS 전환과 `site2.css` 제거 — **대부분 완료 (2026-08-12)**
 
@@ -69,7 +80,7 @@
 
 - [x] Prettier 대상에 `scss` 포함 (검사 범위도 `tests/**` 까지 넓혔다)
 - [x] props·export 경계 타입 규칙 적용 — `explicit-module-boundary-types: error`,
-      반환 타입 46곳 추가(한국어 원본에만 넣고 영어판은 재생성으로 따라온다)
+      반환 타입 46곳 추가
 - [x] `any`와 타입 검사 우회 금지 — `no-explicit-any: error`, `consistent-type-imports: error`
 - [x] 신규 inline style 금지 — `react/forbid-dom-props`
 - [x] inline style lint를 `warn`으로 시작 (현재 86건). `error` 전환은 기존 inline style 을
@@ -98,8 +109,8 @@
 >    DOM 을 만들어 넣던 것이면, 서버에서 그리는 순간 정적 HTML 이 달라져 게이트가 잡는다
 > 3. 브라우저 상태(스크롤·미디어쿼리)는 `useEffect`+`useState` 대신 `useSyncExternalStore`.
 >    효과 안에서 상태를 바꾸면 `react-hooks/set-state-in-effect` 가 막는다
-> 4. 레이아웃에 쓰는 컴포넌트는 `make-en.mjs` 의 `toEnLayout` 언어 주입 목록에 이름을 더한다
->    (안 하면 영어 화면에서 읽어주는 이름이 한국어로 남는다 — 실제로 이 건에서 걸렸다)
+> 4. 읽어주는 이름·문구가 있으면 `lang` 을 받게 한다 (3단계 전에는 생성기의 주입 목록에
+>    이름을 더해야 했고, 실제로 이 건에서 빠뜨려 영어 화면이 한국어로 읽혔다)
 > 5. `src/scripts` 에서 대응 파일과 남은 문자열을 지우고 판번호를 올린다
 > 6. verify 불일치가 **`scripts` 항목(판번호)뿐**인지 확인하고 기준선 갱신
 

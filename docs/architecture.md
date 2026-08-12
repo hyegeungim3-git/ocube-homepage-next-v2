@@ -3,12 +3,11 @@
 ```text
 src/
   app/
-    (site)/          22개 페이지. 공통 스타일시트 2개를 쓰는 라우트 그룹
-      layout.tsx     루트 레이아웃 (html/head/body + site2.js)
-      <route>/page.tsx
-    (home)/          index 전용. home-refresh.css/js 가 하나 더 붙어 그룹을 분리
-      layout.tsx
-      page.tsx
+    (site)/          한국어 주소 22개. layout.tsx 는 루트 레이아웃(html/head/body + site2.js)
+      <route>/page.tsx   7줄짜리 진입점 — <XxxPage lang="ko" />
+    (home)/          한국어 홈. home-refresh.css/js 가 하나 더 붙어 그룹을 분리
+    (en)/ (en-home)/ 영어 주소. 같은 화면 컴포넌트에 lang="en" 만 넘긴다
+  components/pages/  실제 화면 23개 — 두 언어가 함께 쓴다
   components/layout/ 공통 셸
     page-shell.tsx   화면 골격 — 헤더+모바일 메뉴+<main>+푸터를 한 번에 (홈 제외)
     page-meta.tsx    검색·공유 메타 한 벌 (title·canonical·hreflang·og·twitter)
@@ -19,7 +18,8 @@ src/
     site.ts          배포 주소 한 곳 (canonical·og·JSON-LD·sitemap 이 참조)
     page-meta.ts     메타의 언어별 고정값(사명·로케일)·공유 이미지·파비콘·주소 규칙
     navigation.ts    GNB 4개 대메뉴 + 20개 중메뉴
-  data/              화면 문구·이미지 경로 데이터 (site·heroes·cards·features·steps·
+  i18n/              사전(dictionary)·화면 글 번역(<T>·t)·데이터 번역(localized)
+  data/              화면 문구·이미지 경로 데이터 — localized() 로 두 언어 (site·heroes·cards·features·steps·
                      cases·refs·solution-intro·cta·subnav·sec-heads·applications·
                      contact·history·logos·home-hero — 목록은 README 표 참조)
   styles/            화면별 SCSS partial 29개 + site.scss (전역 스타일 단일 진입점)
@@ -44,13 +44,15 @@ docs/                개발·운영 문서
 ## 화면 한 장의 생김새
 
 ```tsx
-export default function AboutPage() {
+export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
   return (
     <>
-      <PageMeta path="about.html" title="…" description="…" />
+      <PageMeta lang={lang} path="about.html" title={t(lang, "회사소개 — 오큐브(주)")} … />
       <script type="application/ld+json" … />   {/* 화면마다 달라 공통화하지 않는다 */}
-      <PageShell slug="about" mainId="top" footerId="contact" cta={<>…</>}>
-        …본문…
+      <PageShell lang={lang} slug="about" mainId="top" footerId="contact" cta={<>…</>}>
+        <h2>
+          <T l={lang}>회사소개</T>
+        </h2>
       </PageShell>
     </>
   );
@@ -59,14 +61,15 @@ export default function AboutPage() {
 
 `PageMeta` 는 `lang` 하나로 canonical·hreflang·og:locale·사명을 다 정한다.
 `PageShell` 은 `lang` 하나로 헤더·모바일 메뉴·푸터의 언어를 함께 넘긴다.
-그래서 영어 화면 생성기가 손댈 곳이 `lang="en"` 주입 한 군데로 줄었다.
+화면에 보이는 글은 `<T>`, 속성값은 `t()` 가 사전을 태운다.
 
 ## 확장 원칙
 
-- 새 페이지는 `src/app/(site)/<route>/page.tsx` 에 만들고 공통 셸은 `src/components/layout` 을 사용한다.
+- 새 화면은 `src/components/pages/<slug>-page.tsx` 에 만들고, 주소는 한국어·영어 두 곳에
+  7줄짜리 진입점을 둔다. 공통 셸은 `PageShell`·`PageMeta` 를 쓴다.
 - 화면 문구·이미지 경로 중 **여러 페이지가 공유하는 것**은 `src/data` 에서 관리한다.
-- 페이지 하나만 쓰는 문구는 아직 각 `page.tsx` 안에 있다. 데이터로 옮길 때는
-  반드시 `npm run verify` 를 통과시킨 뒤 커밋한다.
+- 화면에 보이는 한국어는 `<T l={lang}>…</T>`, 속성값은 `t(lang, "…")`, 자산 경로는
+  `assetPath(path, lang)` 로 감싼다. 셋 다 빠뜨리면 영어 화면에서만 티가 난다.
 - 스타일은 `src/styles/_*.scss` 를 고친다. 전역 진입점은 `site.scss` 하나이고,
   루트 레이아웃이 그것만 import 한다. Next 가 컴파일·최소화해 `_next/static` 으로 내보낸다.
   `site.scss` 의 `@use` 차례가 곧 캐스케이드다 — 바꾸면 화면이 조용히 깨진다.
@@ -147,34 +150,62 @@ npm run test:visual:approve     승인된 화면 변경일 때만 기준선 갱�
 
 주소는 한국어가 `/about.html`, 영어가 `/en/about.html` 이다. 화면 안의 링크가 상대 경로라
 영어 화면에서 메뉴를 눌러도 그대로 영어 화면으로 이어진다. 자산(`assets/...`)만 한 단계 위에
-있으므로 영어 화면에서는 `../assets/...` 로 나간다.
+있으므로 영어 화면에서는 `../assets/...` 로 나간다(`assetPath(path, lang)`).
+
+**주소는 둘, 화면 코드는 하나다.**
 
 ```text
-src/config/i18n.ts              언어 타입 · 주소 규칙 · 껍데기 문구(ko/en)
-src/components/layout/lang-toggle.tsx   KR/EN 전환 버튼 (링크라 자바스크립트 없이도 동작)
-src/styles/_lang-toggle.scss    버튼 모양 — 지금 언어는 흰 알약, 반대쪽은 반투명
-src/app/(en)/                   영어 화면 (<html lang="en">)
-scripts/make-en.mjs             한국어 화면 → 영어 화면 생성기
-i18n/<slug>.json                화면별 번역 사전 (한국어 원문 → 영어)
+/about.html      ─┐
+                  ├─ src/components/pages/about-page.tsx  (lang 을 받는다)
+/en/about.html   ─┘
 ```
 
-### 영어 화면을 고치는 법
+```text
+src/app/(site)/<slug>/page.tsx   한국어 주소 — 7줄짜리 진입점. <AboutPage lang="ko" />
+src/app/(en)/en/<slug>/page.tsx  영어 주소   — 7줄짜리 진입점. <AboutPage lang="en" />
+src/components/pages/<slug>-page.tsx  실제 화면 23개. 두 언어가 함께 쓴다
+src/config/i18n.ts               언어 타입 · 주소 규칙 · 껍데기 문구(ko/en)
+src/i18n/dictionary.ts           i18n/*.json 을 합친 사전 (한국어 원문 → 영어)
+src/i18n/translate.tsx           <T>(화면 글) · t()(속성값) · localizeLd()(구조화 데이터)
+src/i18n/localize.ts             데이터를 Record<Lang, T> 로 (localized)
+i18n/<slug>.json                 번역을 채우는 자리 — 예전과 같다
+```
 
-영어 화면 파일(`src/app/(en)/...`)을 직접 고치지 않는다. **한국어 화면과 번역 사전을 고치고
-`node scripts/make-en.mjs` 를 다시 돌린다.** 그래야 두 언어의 구조가 어긋나지 않는다.
+### 영어 문구를 고치는 법
 
-### 진행 상태
+**`i18n/<slug>.json` 에 번역을 채우고 빌드하면 끝이다.** 예전에는 생성기를 다시 돌려
+영어 화면 파일을 만들어야 했지만, 지금은 그리는 시점에 사전을 조회한다.
 
-- 완료: 영어 화면 23쪽 · 언어 전환 · hreflang · 사이트맵 46개 URL
-- 영어 화면의 임시 `noindex`는 제거했다.
-- 한국어 25쪽 + 영어 23쪽을 회귀 기준선에서 함께 검사한다.
+```tsx
+<h2>
+  <T l={lang}>산업 데이터를 표준화합니다</T>
+</h2>
+<img alt={t(lang, "설비 데이터를 진단하는 모습")} src={assetPath("assets/img/x.webp", lang)} />
+```
+
+- 한국어 화면에서 `<T>` 는 받은 것을 **그대로** 돌려준다 — DOM 이 달라지지 않는다.
+- 사전에 없으면 한국어를 그대로 둔다. 번역이 빠진 자리가 빈칸이 되는 것보다 낫다.
+- 영어 문장의 곧은 아포스트로피는 활자용(`company’s`)으로 바꿔서 내보낸다.
+
+### `<wbr />` 를 조심할 것
+
+한국어는 줄바꿈 힌트로 문장이 갈라져 있고, 영어 번역은 그것을 **이어 붙인 한 문장**이다.
+
+- `<T>` 는 자식을 한 줄로 펴서(`<wbr />` 는 빼고) 사전과 맞춘다
+- 데이터 쪽 `localized()` 는 `"wbr"` 토큰으로 갈라진 문자열을 먼저 잇는다
+- **`"br"`(문장 구분 줄바꿈)은 잇지 않는다** — 이어 붙이면 두 문장이 한 덩어리가 된다
 
 ### 여러 화면이 함께 쓰는 데이터
 
 히어로 문구·카드·단계 설명은 `src/data/*.ts` 에 있고 여러 화면이 같이 쓴다.
-생성기가 여기서도 영어판(`src/data/*.en.ts`)을 만들고, 영어 화면은 그쪽을 참조한다.
+한국어 원본 하나만 두고 `localized(…)` 가 두 언어로 내놓는다.
 
-- 사전은 `i18n/*.json` 전부를 합쳐 적용한다 (한 문장이 여러 화면에 나와도 한 번만 번역하면 된다)
-- 데이터의 `"wbr"` 토큰과 화면의 `<wbr />` 는 한국어 줄바꿈 힌트라 영어판에서는 걷어내고
-  갈라져 있던 문장을 이어 붙인 뒤 사전과 맞춘다
-- ⚠️ 이 저장소의 줄바꿈은 CRLF 다. `\n` 을 못으로 박은 정규식은 빗나간다 — `\s*` 를 쓸 것
+```ts
+const depCardsKo: Record<string, readonly DepCardItem[]> = { … };
+export const depCards = localized(depCardsKo); // 화면에서는 depCards[lang]["…"]
+```
+
+### 진행 상태
+
+- 영어 화면 23쪽 · 언어 전환 · hreflang · 사이트맵 46개 URL
+- 한국어 25쪽 + 영어 23쪽을 회귀 기준선에서 함께 검사한다.

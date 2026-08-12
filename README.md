@@ -16,7 +16,7 @@ Next.js(App Router) 정적 내보내기로 만들고 GitHub Pages 로 배포합�
 ```bash
 npm install
 npm run dev      # 개발 서버
-npm run build    # 정적 내보내기 → out/  (영어 화면은 scripts/make-en.mjs 로 생성)
+npm run build    # 정적 내보내기 → out/  (한국어 25쪽 + 영어 23쪽)
 npm run verify   # 직전 승인본(baseline/)과 DOM 이 같은지 검사 (아래 참조)
 npm run baseline # 의도한 변경을 확인한 뒤 기준선 갱신
 ```
@@ -60,8 +60,8 @@ npm run test:visual   # Playwright — 스크린샷 기준선
 찍는다 — 상자의 위치와 크기는 그대로 남는다(46MB → 24MB).
 사진이 엉뚱하게 바뀌는 사고는 `verify`(src 대조)와 건강검진(깨진 이미지)이 맡는다.
 
-영어 화면·영어 데이터는 **생성물**이다 — `src/app/(en)`·`src/data/*.en.ts` 를 직접 고치지
-말고 `i18n/*.json` 사전을 채운 뒤 `node scripts/make-en.mjs && npm run build` 를 돌린다.
+영어 문구는 `i18n/<slug>.json` 에 채우면 된다. 화면 코드는 두 언어가 하나를 함께 쓰고,
+그리는 시점에 사전을 조회한다 (`src/i18n/`). 자세한 내용은 `docs/architecture.md`.
 
 ## URL 규칙
 
@@ -73,21 +73,18 @@ npm run test:visual   # Playwright — 스크린샷 기준선
 
 ```text
 src/
-  app/
-    (site)/          22개 페이지 — 공통 스타일시트 2개
-      layout.tsx     루트 레이아웃(html/head/body + site2.js)
-      <route>/page.tsx
-    (home)/          index 전용 — home-refresh.css/js 가 추가로 붙어 그룹을 분리
-      layout.tsx
-      page.tsx
-  components/layout/
-    site-header.tsx  skip 링크 + GNB
-    mobile-panel.tsx 무JS 폴백 모바일 메뉴
-public/              원본 public/ 에서 루트 HTML 23개만 제외하고 그대로 복제
-                     (assets, 구 슬러그 리다이렉트 스텁 20개, sitemap.xml, robots.txt …)
+  app/                 주소만 담당. 화면 하나당 7줄짜리 진입점 두 개(한국어·영어)
+    (site)/ (home)/    한국어 · (en)/ (en-home)/ 영어
+  components/pages/    실제 화면 23개 — 두 언어가 함께 쓴다 (<XxxPage lang=… />)
+  components/layout/   PageShell · PageMeta · 헤더 · 모바일 메뉴 · 푸터
+  components/section/  두 화면 이상이 같은 모양으로 반복하는 조각
+  i18n/                사전 · <T>·t (화면 글) · localized (데이터)
+  data/ config/ styles/ scripts/
+public/                자산 · 구 슬러그 리다이렉트 스텁 20개 · sitemap.xml · robots.txt
 scripts/
-  convert-from-legacy.py  원본 HTML → TSX 기계 변환기 (재실행 가능)
+  convert-from-legacy.py  원본 HTML → TSX 기계 변환기 (이관기 유물, 재실행 가능)
   verify-fidelity.py      정합성 게이트
+tests/                 unit(Vitest) · e2e·visual(Playwright)
 ```
 
 ### 라우트 그룹을 둘로 나눈 이유
@@ -156,6 +153,7 @@ JSX 는 줄바꿈에 붙은 공백을 지운다. 그래서 `<b>설립</b> (2007.
 | `src/config/navigation.ts`   | GNB 4개 대메뉴 + 20개 중메뉴(라벨·주소·설명)                             |
 | `src/data/site.ts`           | 거점 3곳 · 푸터 링크 4컬럼 · 로고 · 법적 표기                            |
 | `src/data/heroes.ts`         | 서브페이지 히어로 9개 (배지·제목·리드·핵심 포인트)                       |
+| `src/i18n/`                  | 사전(`dictionary`)·화면 글 번역(`<T>`·`t`)·데이터 번역(`localized`)      |
 | `src/data/cards.ts`          | 제목+설명 카드 14섹션 55장                                               |
 | `src/data/features.ts`       | 라벨+설명 항목 10목록 39항목                                             |
 | `src/data/steps.ts`          | What We Do 3목록 18단계 (일러스트·불릿 3개 포함)                         |

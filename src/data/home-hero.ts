@@ -1,3 +1,4 @@
+import { localized } from "@/i18n/localize";
 // 홈 히어로 슬라이드 4장 — 순서가 곧 화면 순서(첫 장이 활성).
 // typewriter 는 줄바꿈(\n) 포함 원문, ariaLabel 은 읽어주기용 한 줄 문장.
 
@@ -8,7 +9,7 @@ export interface HomeSlide {
   ariaLabel: string;
 }
 
-export const homeSlides: readonly HomeSlide[] = [
+const homeSlidesKo: readonly HomeSlide[] = [
   {
     media: {
       kind: "video",
@@ -53,3 +54,7 @@ export const homeSlides: readonly HomeSlide[] = [
       "글로벌 기술 솔루션을 제품 환경에 맞게 선정하고, 라이선스 공급부터 통합·엔지니어링 지원까지 책임집니다.",
   },
 ];
+
+// 두 언어. 화면에서는 homeSlides[lang] 처럼 언어로 먼저 고른다.
+// 영어는 i18n/*.json 사전에서 그리는 시점에 만들어진다 (src/i18n/localize.ts).
+export const homeSlides = localized(homeSlidesKo);

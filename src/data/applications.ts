@@ -1,3 +1,4 @@
+import { localized } from "@/i18n/localize";
 // 비즈니스 3쪽의 적용 분야 카드 — 아이콘·제목·2줄 설명.
 import type { RichToken } from "@/components/rich-text";
 
@@ -10,7 +11,7 @@ export interface AppCard {
   line2: readonly RichToken[];
 }
 
-export const appCards: Record<string, readonly AppCard[]> = {
+const appCardsKo: Record<string, readonly AppCard[]> = {
   "business-ax": [
     {
       cardCls: "dep-card ax-app-card",
@@ -158,9 +159,14 @@ export const appCards: Record<string, readonly AppCard[]> = {
 };
 
 // EVCP 히어로 스탯(값 + 라벨) — 표준·연동 지표.
-export const evcpStats: readonly { value: readonly RichToken[]; label: readonly RichToken[] }[] = [
+const evcpStatsKo: readonly { value: readonly RichToken[]; label: readonly RichToken[] }[] = [
   { value: ["OCPP 1.6J"], label: ["충전기 연동·", "wbr", "관제 운영 경험"] },
   { value: ["OCPP 2.0.1"], label: ["사업 요건별 기능 적용"] },
   { value: ["확장 표준"], label: ["충전 로밍 표준(OCPI) · 차량 충전 통신(ISO 15118) 연계 설계"] },
   { value: ["LTE Cat M1"], label: ["자체 통신 모듈(2025)"] },
 ];
+
+// 두 언어. 화면에서는 appCards[lang] 처럼 언어로 먼저 고른다.
+// 영어는 i18n/*.json 사전에서 그리는 시점에 만들어진다 (src/i18n/localize.ts).
+export const appCards = localized(appCardsKo);
+export const evcpStats = localized(evcpStatsKo);

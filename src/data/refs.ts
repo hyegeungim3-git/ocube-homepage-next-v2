@@ -1,3 +1,4 @@
+import { localized } from "@/i18n/localize";
 // 주요 구축 사례 카드(.ref-card) — references 페이지.
 // cls 는 리빌 스태거까지 포함한 원본 클래스 그대로(공식이 아니라 실측값이다 — 계산하지 말 것).
 import type { RichToken } from "@/components/rich-text";
@@ -15,9 +16,9 @@ export interface RefCard {
 }
 
 // 카드 메타 표의 행 이름 — 데이터에 두어 영어판 생성이 함께 따라온다
-export const refMetaLabels = { client: "발주처", sector: "분야" };
+const refMetaLabelsKo = { client: "발주처", sector: "분야" };
 
-export const refCards: readonly RefCard[] = [
+const refCardsKo: readonly RefCard[] = [
   {
     cls: "ref-card rv",
     cat: "mfg",
@@ -242,3 +243,8 @@ export const refCards: readonly RefCard[] = [
     desc: ["질문과 관련된 상담 지식을 먼저 찾아 응대 초안 작성을 돕습니다."],
   },
 ];
+
+// 두 언어. 화면에서는 refMetaLabels[lang] 처럼 언어로 먼저 고른다.
+// 영어는 i18n/*.json 사전에서 그리는 시점에 만들어진다 (src/i18n/localize.ts).
+export const refMetaLabels = localized(refMetaLabelsKo);
+export const refCards = localized(refCardsKo);

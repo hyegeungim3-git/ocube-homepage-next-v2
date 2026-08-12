@@ -1,12 +1,13 @@
+import { localized } from "@/i18n/localize";
 // 전 페이지 푸터가 공유하는 회사 정보. 화면 문구를 바꾸려면 여기만 고친다.
-export const footerLogo = {
+const footerLogoKo = {
   src: "assets/logo_korean_t.png",
   alt: "오큐브(주) | OCUBE CO.,LTD.",
   width: 672,
   height: 70,
 } as const;
 
-export const offices = [
+const officesKo = [
   {
     code: "SEOUL",
     address: "서울 강서구 강서로56가길 141 KM빌딩 2·3층",
@@ -21,7 +22,7 @@ export const offices = [
   },
 ] as const;
 
-export const footerColumns = [
+const footerColumnsKo = [
   {
     title: "Business",
     links: [
@@ -128,7 +129,7 @@ export const footerColumns = [
   },
 ] as const;
 
-export const legal = {
+const legalKo = {
   copyright: "Copyright © OCUBE Co., Ltd. All rights reserved.",
   links: [
     {
@@ -141,3 +142,10 @@ export const legal = {
     },
   ],
 } as const;
+
+// 두 언어. 화면에서는 footerLogo[lang] 처럼 언어로 먼저 고른다.
+// 영어는 i18n/*.json 사전에서 그리는 시점에 만들어진다 (src/i18n/localize.ts).
+export const footerLogo = localized(footerLogoKo);
+export const offices = localized(officesKo);
+export const footerColumns = localized(footerColumnsKo);
+export const legal = localized(legalKo);

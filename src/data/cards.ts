@@ -1,3 +1,4 @@
+import { localized } from "@/i18n/localize";
 // 제목 + 설명만 있는 카드 그리드의 문구.
 // 키는 "페이지:섹션id" 다. 예) "solution-cubeon:fit" → Cubeon 페이지의 "적합한 곳".
 // 아이콘·이미지·링크가 붙은 카드는 형태가 달라 페이지에 그대로 두었다.
@@ -8,7 +9,7 @@ export interface DepCardItem {
   body: readonly RichToken[];
 }
 
-export const depCards: Record<string, readonly DepCardItem[]> = {
+const depCardsKo: Record<string, readonly DepCardItem[]> = {
   "license-protopie:industry": [
     {
       title: ["모바일 · 웹 애플리케이션"],
@@ -438,3 +439,7 @@ export const depCards: Record<string, readonly DepCardItem[]> = {
     },
   ],
 };
+
+// 두 언어. 화면에서는 depCards[lang] 처럼 언어로 먼저 고른다.
+// 영어는 i18n/*.json 사전에서 그리는 시점에 만들어진다 (src/i18n/localize.ts).
+export const depCards = localized(depCardsKo);
