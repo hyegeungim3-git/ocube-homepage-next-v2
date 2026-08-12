@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { applyBase } from "@/config/site";
 import { PageMeta } from "@/components/layout/page-meta";
 import { PageShell } from "@/components/layout/page-shell";
@@ -12,7 +13,7 @@ import { projectCards } from "@/data/cases.en";
 import { PinSteps } from "@/components/section/pin-steps";
 import { pinSteps } from "@/data/steps.en";
 
-export default function BusinessEmbeddedPage() {
+export default function BusinessEmbeddedPage(): JSX.Element {
   return (
     <>
       <PageMeta

@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import type { Page } from "@playwright/test";
 
 // 홈 히어로 4배너 슬라이더. 로드맵 6단계에서 React 로 옮길 대상 중 가장 상태가 많다.
 // 자동 전환은 6.5초 주기라 그대로 두면 검사가 흔들린다 — 먼저 일시정지시켜 고정한 뒤
@@ -10,7 +11,7 @@ test.describe("홈 히어로 슬라이더", () => {
     await expect(page.locator(".hslide")).toHaveCount(4);
   });
 
-  const pauseAuto = async (page: import("@playwright/test").Page) => {
+  const pauseAuto = async (page: Page): Promise<void> => {
     const toggle = page.locator('.hctrl .hnav[data-act="toggle"]');
     await toggle.click();
     await expect(toggle).toHaveAttribute("aria-pressed", "true");

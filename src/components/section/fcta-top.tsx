@@ -1,9 +1,10 @@
+import type { JSX } from "react";
 import { RichText } from "@/components/rich-text";
 import type { CtaCopy } from "@/data/cta";
 
 // 푸터 CTA 밴드의 상단 블록 — 16쪽이 같은 템플릿을 쓰고 문구 4개(킥커·헤드라인·
 // 리드·버튼 라벨)와 배지 읽어주는 이름만 다르다. DOM 은 이관 전 마크업 그대로.
-export function FctaTop({ copy }: { copy: CtaCopy }) {
+export function FctaTop({ copy }: { copy: CtaCopy }): JSX.Element {
   return (
     <div className="fcta-top">
       <div>

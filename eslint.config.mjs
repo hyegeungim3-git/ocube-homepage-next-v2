@@ -13,9 +13,35 @@ export default defineConfig([
     rules: {
       // 원본 마크업을 그대로 옮기는 저장소라 <img> 를 next/image 로 바꾸지 않는다.
       "@next/next/no-img-element": "off",
-      // site2.css 를 원본 그대로(같은 파일·같은 순서) 링크해야 화면이 1픽셀도 안 바뀐다.
-      // Next 의 CSS 파이프라인을 태우는 것은 스타일 분리 단계에서 다시 판단한다.
+      // 홈 전용 home-refresh.css 는 아직 <link> 로 건다 (4단계 대상은 site2.css 였다).
+      // 그것까지 SCSS 로 옮기면 이 예외도 없앤다.
       "@next/next/no-css-tags": "off",
+
+      // ── 플레이북 10절의 목표 규칙 ──────────────────────────────────────────
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/consistent-type-imports": "error",
+      "@typescript-eslint/explicit-module-boundary-types": "error",
+      "prefer-const": "error",
+      // != null 은 "null 도 undefined 도 아니다" 를 뜻하는 관용구다. !== null 로 바꾸면
+      // undefined 가 통과해 동작이 달라진다 — 규칙을 코드에 맞추지 않고 의도를 규칙에 적는다.
+      eqeqeq: ["error", "always", { null: "ignore" }],
+    },
+  },
+  {
+    // 고정 inline style 금지 — 지금은 기존 코드에 많이 남아 있어 warn 으로 시작한다.
+    // 플레이북 10절이 정한 순서: ①신규 코드에 추가하지 않는다 ②warn ③기존 것을 옮긴다
+    // ④경고가 0 이 되면 error 로 올린다. 지금은 ②단계다.
+    files: ["src/**/*.tsx"],
+    rules: {
+      "react/forbid-dom-props": ["warn", { forbid: ["style"] }],
+    },
+  },
+  {
+    // 생성물은 사람이 고치는 파일이 아니다. 원본(한국어 화면·데이터)에서 규칙을 지키면 된다.
+    // 여기까지 규칙을 걸면 생성기가 만든 결과를 손으로 고치게 되어 다음 생성에서 사라진다.
+    files: ["src/app/(en)/**", "src/app/(en-home)/**", "src/data/*.en.ts"],
+    rules: {
+      "react/forbid-dom-props": "off",
     },
   },
 ]);

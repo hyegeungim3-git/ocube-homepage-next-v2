@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { RichText } from "@/components/rich-text";
 import type { RefCard } from "@/data/refs";
 
@@ -9,7 +10,7 @@ export function RefCards({
 }: {
   items: readonly RefCard[];
   labels: { client: string; sector: string };
-}) {
+}): JSX.Element {
   return (
     <>
       {items.map((c, i) => (

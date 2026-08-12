@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { applyBase } from "@/config/site";
 import { PageMeta } from "@/components/layout/page-meta";
 import { PageShell } from "@/components/layout/page-shell";
@@ -8,7 +9,7 @@ import { FctaTop } from "@/components/section/fcta-top";
 import { PageHero } from "@/components/layout/page-hero";
 import { heroes } from "@/data/heroes.en";
 
-export default function LicenseQtPage() {
+export default function LicenseQtPage(): JSX.Element {
   return (
     <>
       <PageMeta

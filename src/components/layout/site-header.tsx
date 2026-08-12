@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { Fragment } from "react";
 import { headerNavigation, headerNavigationEn } from "@/config/navigation";
 import { assetPath, ui, type Lang } from "@/config/i18n";
@@ -13,7 +14,7 @@ export function SiteHeader({
   navLabel?: string;
   lang?: Lang;
   slug?: string;
-}) {
+}): JSX.Element {
   const t = ui[lang];
   const nav = lang === "en" ? headerNavigationEn : headerNavigation;
   return (

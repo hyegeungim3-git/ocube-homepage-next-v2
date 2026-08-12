@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { RichText } from "@/components/rich-text";
 import type { RichToken } from "@/components/rich-text";
 
@@ -6,7 +7,7 @@ export function StatItems({
   items,
 }: {
   items: readonly { value: readonly RichToken[]; label: readonly RichToken[] }[];
-}) {
+}): JSX.Element {
   return (
     <>
       {items.map((s, i) => (

@@ -1,8 +1,9 @@
+import type { JSX } from "react";
 import { applyBase } from "@/config/site";
 import { PageMeta } from "@/components/layout/page-meta";
 import { PageShell } from "@/components/layout/page-shell";
 
-export default function PrivacyPage() {
+export default function PrivacyPage(): JSX.Element {
   return (
     <>
       <PageMeta

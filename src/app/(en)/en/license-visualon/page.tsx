@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { applyBase } from "@/config/site";
 import { PageMeta } from "@/components/layout/page-meta";
 import { PageShell } from "@/components/layout/page-shell";
@@ -10,7 +11,7 @@ import { depCards } from "@/data/cards.en";
 import { PageHero } from "@/components/layout/page-hero";
 import { heroes } from "@/data/heroes.en";
 
-export default function LicenseVisualonPage() {
+export default function LicenseVisualonPage(): JSX.Element {
   return (
     <>
       <PageMeta

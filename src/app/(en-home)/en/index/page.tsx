@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { applyBase } from "@/config/site";
 import { PageMeta } from "@/components/layout/page-meta";
 import { homeSlides } from "@/data/home-hero.en";
@@ -7,7 +8,7 @@ import { MobilePanel } from "@/components/layout/mobile-panel";
 import { HomeCaseLinks } from "@/components/section/bcase-cards";
 import { homeCases } from "@/data/cases.en";
 
-export default function HomePage() {
+export default function HomePage(): JSX.Element {
   return (
     <>
       <PageMeta

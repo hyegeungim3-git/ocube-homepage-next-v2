@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { Fragment } from "react";
 
 // 문구 안에 섞인 인라인 마크업을 토큰으로 다룬다.
@@ -5,7 +6,7 @@ import { Fragment } from "react";
 // { b } 는 굵은 라벨, { em } 은 보조 표기(연혁의 진행 중 표시 등).
 export type RichToken = string | { b: readonly RichToken[] } | { em: readonly RichToken[] };
 
-export function RichText({ value }: { value: readonly RichToken[] }) {
+export function RichText({ value }: { value: readonly RichToken[] }): JSX.Element {
   return (
     <>
       {value.map((t, i) =>

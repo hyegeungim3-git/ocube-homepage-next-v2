@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 // 무JS 폴백용 모바일 메뉴. site2.js 가 데스크톱 메뉴를 읽어 실제 패널을 재구성한다.
 import { ui, type Lang } from "@/config/i18n";
 
@@ -9,7 +10,7 @@ export function MobilePanel({
   navLabel?: string;
   ctaLabel?: string;
   lang?: Lang;
-}) {
+}): JSX.Element {
   const label = navLabel ?? (lang === "en" ? "Mobile menu" : "모바일 메뉴");
   const cta = ctaLabel ?? ui[lang].contact;
   return (

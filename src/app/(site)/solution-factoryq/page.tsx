@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { applyBase } from "@/config/site";
 import { PageMeta } from "@/components/layout/page-meta";
 import { PageShell } from "@/components/layout/page-shell";
@@ -14,7 +15,7 @@ import { depCards } from "@/data/cards";
 import { FeatItems } from "@/components/section/feat-list";
 import { featLists } from "@/data/features";
 
-export default function SolutionFactoryqPage() {
+export default function SolutionFactoryqPage(): JSX.Element {
   return (
     <>
       <PageMeta

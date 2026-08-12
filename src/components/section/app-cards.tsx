@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { RichText } from "@/components/rich-text";
 import { assetPath, type Lang } from "@/config/i18n";
 import type { AppCard } from "@/data/applications";
@@ -6,7 +7,13 @@ import type { AppCard } from "@/data/applications";
 // 아이콘 경로는 데이터에 사이트 루트 기준으로 두고, 영어 화면(/en/*)에서는
 // assetPath 가 한 단계 위(../)로 바꾼다 (make-en 이 lang="en" 을 주입한다).
 // DOM 은 이관 전 마크업 그대로 — 래퍼를 추가하지 않는다(그리드 div 는 페이지에 남는다).
-export function AppCards({ items, lang = "ko" }: { items: readonly AppCard[]; lang?: Lang }) {
+export function AppCards({
+  items,
+  lang = "ko",
+}: {
+  items: readonly AppCard[];
+  lang?: Lang;
+}): JSX.Element {
   return (
     <>
       {items.map((c, i) => (

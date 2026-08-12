@@ -65,13 +65,22 @@
 > 하위 경로 배포에서는 `assetPrefix` 가 반드시 제대로 들어가야 한다 — 전체 URL 형태의
 > `PAGES_BASE_PATH` 로 빌드해 CSS·JS 주소에 접두가 붙는 것을 확인했다.
 
-### 5. Prettier·ESLint 통일
+### 5. Prettier·ESLint 통일 — **완료 (2026-08-12)**
 
-- [ ] Prettier 대상에 `scss` 포함
-- [ ] props·export 경계 타입 규칙 적용
-- [ ] `any`와 타입 검사 우회 금지
-- [ ] 신규 inline style 금지
-- [ ] inline style lint를 `warn`으로 시작해 최종 `error` 전환
+- [x] Prettier 대상에 `scss` 포함 (검사 범위도 `tests/**` 까지 넓혔다)
+- [x] props·export 경계 타입 규칙 적용 — `explicit-module-boundary-types: error`,
+      반환 타입 46곳 추가(한국어 원본에만 넣고 영어판은 재생성으로 따라온다)
+- [x] `any`와 타입 검사 우회 금지 — `no-explicit-any: error`, `consistent-type-imports: error`
+- [x] 신규 inline style 금지 — `react/forbid-dom-props`
+- [x] inline style lint를 `warn`으로 시작 (현재 86건). `error` 전환은 기존 inline style 을
+      SCSS class 로 옮긴 뒤 — 4단계에서 넘어온 항목과 같은 일이다
+
+> `eqeqeq` 는 `{ null: "ignore" }` 로 둔다. `!= null` 은 "null 도 undefined 도 아니다" 를
+> 뜻하는 관용구라, `!== null` 로 바꾸면 undefined 가 통과해 **동작이 달라진다.**
+> 규칙에 맞추려고 코드 뜻을 바꾸지 않고, 의도를 규칙에 적었다.
+>
+> 린트 범위를 저장소 전체로 넓히자 **내가 1단계에서 쓴 테스트 코드에서 오류 2건**이 나왔다
+> (`prefer-const`, `import()` 타입 표기). 규칙은 새 코드에도 똑같이 걸려야 한다.
 
 ### 6. `site2.js` React 이전
 

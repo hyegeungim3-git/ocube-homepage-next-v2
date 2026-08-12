@@ -1,10 +1,11 @@
+import type { JSX } from "react";
 import { Fragment } from "react";
 import { assetPath, type Lang } from "@/config/i18n";
 import type { HeroData } from "@/data/heroes";
 
 // 9개 페이지가 공유하는 서브페이지 히어로.
 // 배경 장식(bg/veil/cube)은 페이지마다 구성이 달라 데이터로 받는다.
-export function PageHero({ data, lang = "ko" }: { data: HeroData; lang?: Lang }) {
+export function PageHero({ data, lang = "ko" }: { data: HeroData; lang?: Lang }): JSX.Element {
   return (
     <section className="hero page-hero dark" id={data.id}>
       {data.decor.map((d, i) =>

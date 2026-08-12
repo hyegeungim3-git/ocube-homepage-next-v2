@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { RichText } from "@/components/rich-text";
 import type { DepCardItem } from "@/data/cards";
 
@@ -10,7 +11,7 @@ export function DepCards({
 }: {
   items: readonly DepCardItem[];
   as?: "div" | "article";
-}) {
+}): JSX.Element {
   return (
     <>
       {items.map((c, i) => (

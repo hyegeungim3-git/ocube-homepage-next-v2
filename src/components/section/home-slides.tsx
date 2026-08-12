@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { Fragment } from "react";
 import { assetPath, type Lang } from "@/config/i18n";
 import type { HomeSlide } from "@/data/home-hero";
@@ -6,7 +7,13 @@ import type { HomeSlide } from "@/data/home-hero";
 // 미디어는 영상(video) 또는 이미지(img) 두 형태다. 타자기 문구(data-typewriter)와
 // 읽어주는 문구(aria-label)는 줄바꿈 유무가 달라 각각 데이터로 둔다.
 // DOM 은 이관 전 마크업 그대로 — 래퍼를 추가하지 않는다.
-export function HomeSlides({ items, lang = "ko" }: { items: readonly HomeSlide[]; lang?: Lang }) {
+export function HomeSlides({
+  items,
+  lang = "ko",
+}: {
+  items: readonly HomeSlide[];
+  lang?: Lang;
+}): JSX.Element {
   return (
     <>
       {items.map((s, i) => (

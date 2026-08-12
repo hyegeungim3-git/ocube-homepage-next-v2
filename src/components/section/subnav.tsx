@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { RichText } from "@/components/rich-text";
 import type { RichToken } from "@/components/rich-text";
 
@@ -8,7 +9,7 @@ export function Subnav({
   items,
 }: {
   items: readonly { href: string; label: readonly RichToken[] }[];
-}) {
+}): JSX.Element {
   return (
     <nav className="subnav" hidden aria-hidden="true">
       <div className="wrap">

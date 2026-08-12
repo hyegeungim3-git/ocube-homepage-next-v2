@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { JSX, ReactNode } from "react";
 import { Fragment } from "react";
 import { footerColumns, footerLogo, legal, offices } from "@/data/site";
 import { assetPath, type Lang } from "@/config/i18n";
@@ -15,7 +15,7 @@ export function SiteFooter({
   children?: ReactNode;
   id?: string;
   lang?: Lang;
-}) {
+}): JSX.Element {
   return (
     <footer className="fcta" id={id}>
       <div className="fcta-box">

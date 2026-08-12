@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { applyBase } from "@/config/site";
 import { PageMeta } from "@/components/layout/page-meta";
 import { PageShell } from "@/components/layout/page-shell";
@@ -6,7 +7,7 @@ import { HistRows } from "@/components/section/hist-rows";
 import { PageHero } from "@/components/layout/page-hero";
 import { heroes } from "@/data/heroes";
 
-export default function CompanyPage() {
+export default function CompanyPage(): JSX.Element {
   return (
     <>
       <PageMeta

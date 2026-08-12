@@ -1,10 +1,11 @@
+import type { JSX } from "react";
 import { applyBase } from "@/config/site";
 import { PageMeta } from "@/components/layout/page-meta";
 import { PageShell } from "@/components/layout/page-shell";
 import { secHeads } from "@/data/sec-heads";
 import { SecHead } from "@/components/section/sec-head";
 
-export default function AboutPage() {
+export default function AboutPage(): JSX.Element {
   return (
     <>
       <PageMeta

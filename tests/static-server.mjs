@@ -38,7 +38,7 @@ const TYPES = {
 http
   .createServer((req, res) => {
     const url = decodeURIComponent((req.url || "/").split("?")[0]);
-    let rel = url.endsWith("/") ? `${url}index.html` : url;
+    const rel = url.endsWith("/") ? `${url}index.html` : url;
     let file = path.join(ROOT, path.normalize(rel).replace(/^([/\\])+/, ""));
 
     // 디렉터리 경로로 들어오면 index.html 로 (구 슬러그 리다이렉트 스텁이 이 형태다)

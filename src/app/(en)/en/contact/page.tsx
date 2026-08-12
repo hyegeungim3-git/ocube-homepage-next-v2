@@ -1,10 +1,11 @@
+import type { JSX } from "react";
 import { applyBase } from "@/config/site";
 import { PageMeta } from "@/components/layout/page-meta";
 import { PageShell } from "@/components/layout/page-shell";
 import { Fragment } from "react";
 import { enquiryTypes } from "@/data/contact.en";
 
-export default function ContactPage() {
+export default function ContactPage(): JSX.Element {
   return (
     <>
       <PageMeta

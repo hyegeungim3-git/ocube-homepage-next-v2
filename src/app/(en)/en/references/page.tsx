@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { applyBase } from "@/config/site";
 import { PageMeta } from "@/components/layout/page-meta";
 import { PageShell } from "@/components/layout/page-shell";
@@ -8,7 +9,7 @@ import { heroes } from "@/data/heroes.en";
 import { refCards, refMetaLabels } from "@/data/refs.en";
 import { RefCards } from "@/components/section/ref-cards";
 
-export default function ReferencesPage() {
+export default function ReferencesPage(): JSX.Element {
   return (
     <>
       <PageMeta

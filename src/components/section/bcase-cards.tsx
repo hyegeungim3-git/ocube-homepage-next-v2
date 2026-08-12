@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { RichText } from "@/components/rich-text";
 import { assetPath, type Lang } from "@/config/i18n";
 import type { BcaseItem, HomeCase } from "@/data/cases";
@@ -36,7 +37,13 @@ function CardBody({ item, lang = "ko" }: { item: BcaseItem; lang?: Lang }) {
 }
 
 /** 비즈니스 페이지의 대표 프로젝트 그리드 */
-export function ProjectCards({ items, lang = "ko" }: { items: readonly BcaseItem[]; lang?: Lang }) {
+export function ProjectCards({
+  items,
+  lang = "ko",
+}: {
+  items: readonly BcaseItem[];
+  lang?: Lang;
+}): JSX.Element {
   return (
     <>
       {items.map((item, i) => (
@@ -57,7 +64,7 @@ export function HomeCaseLinks({
   items: readonly HomeCase[];
   duplicate?: boolean;
   lang?: Lang;
-}) {
+}): JSX.Element {
   return (
     <>
       {items.map((item, i) => (
