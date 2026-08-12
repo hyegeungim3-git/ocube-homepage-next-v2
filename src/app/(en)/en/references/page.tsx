@@ -48,7 +48,7 @@ export default function ReferencesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: applyBase(
-            '{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"@@BASE@@en/"},{"@type":"ListItem","position":2,"name":"회사","item":"@@BASE@@en/company.html"},{"@type":"ListItem","position":3,"name":"주요 구축 사례","item":"@@BASE@@en/references.html"}]}',
+            '{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"@@BASE@@en/"},{"@type":"ListItem","position":2,"name":"회사","item":"@@BASE@@en/company.html"},{"@type":"ListItem","position":3,"name":"Build cases","item":"@@BASE@@en/references.html"}]}',
           ),
         }}
       />

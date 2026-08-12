@@ -4,12 +4,21 @@
 // 본문 번역은 i18n/<slug>.json 에 채워 넣는 대로 이 스크립트가 반영한다.
 import fs from "node:fs";
 import path from "node:path";
+import * as prettier from "prettier";
 
 const root = path.resolve(import.meta.dirname, "..");
 const SITE = path.join(root, "src/app/(site)");
 const HOME = path.join(root, "src/app/(home)/page.tsx");
 const OUT = path.join(root, "src/app/(en)/en");
 const DICT = path.join(root, "i18n");
+
+// 생성물도 저장소 포맷 규칙을 지켜야 한다. 안 그러면 이 스크립트를 돌릴 때마다
+// npm run format:check 가 빨간불이 되고, 다음 사람이 "내가 뭘 깨뜨렸나" 를 먼저 의심하게 된다.
+const prettierConfig = await prettier.resolveConfig(path.join(root, "package.json"));
+const writeFormatted = async (file, code) => {
+  const out = await prettier.format(code, { ...prettierConfig, filepath: file });
+  fs.writeFileSync(file, out, "utf8");
+};
 
 const slugs = fs.readdirSync(SITE).filter((d) => fs.statSync(path.join(SITE, d)).isDirectory());
 
@@ -74,7 +83,9 @@ function toEnglish(src, slug) {
   s = s.replace(/(["'(])assets\//g, "$1../assets/");
   // 주소는 /en/ 아래를 가리킨다
   s = s.replace(/withBase\("([^"]*)"\)/g, (m, p1) => `withBase("${p1 === "" ? "en/" : p1.startsWith("og-") ? p1 : "en/" + p1}")`);
-  s = s.replace(/@@BASE@@(?!")/g, "@@BASE@@en/");
+  // 구조화 데이터 안의 주소도 영어 화면 기준으로. 예전에는 (?!") 로 막아 두어
+  // 빵부스러기의 홈 링크("@@BASE@@")만 한국어 홈을 가리키고 있었다 — 그 예외를 없앤다.
+  s = s.replace(/@@BASE@@/g, "@@BASE@@en/");
   s = s.replace(/content="ko_KR"/g, 'content="en_US"');
   // 언어 연결(hreflang)은 위의 주소 규칙에 함께 휩쓸리므로 되돌린다.
   // ko 는 한국어 화면을, en 은 영어 화면을 가리켜야 한다 — 양쪽 화면에서 같은 값이다.
@@ -99,7 +110,7 @@ let n = 0;
 for (const slug of slugs) {
   const src = fs.readFileSync(path.join(SITE, slug, "page.tsx"), "utf-8");
   fs.mkdirSync(path.join(OUT, slug), { recursive: true });
-  fs.writeFileSync(path.join(OUT, slug, "page.tsx"), toEnglish(src, slug));
+  await writeFormatted(path.join(OUT, slug, "page.tsx"), toEnglish(src, slug));
   n += 1;
 }
 // 홈은 /en/index.html 로 (상대 링크가 /en/ 안에서 그대로 이어지도록).
@@ -109,7 +120,7 @@ for (const slug of slugs) {
 const HOME_OUT = path.join(root, "src/app/(en-home)/en/index");
 const home = fs.readFileSync(HOME, "utf-8");
 fs.mkdirSync(HOME_OUT, { recursive: true });
-fs.writeFileSync(path.join(HOME_OUT, "page.tsx"), toEnglish(home, "index"));
+await writeFormatted(path.join(HOME_OUT, "page.tsx"), toEnglish(home, "index"));
 n += 1;
 // 예전 구조에서 (en) 아래에 만들던 홈이 남아 있으면 같은 주소가 둘이 되어 빌드가 막힌다.
 // 지우지 못하는 환경도 있으니 실패해도 진행하고, 대신 알려 준다.
@@ -129,7 +140,7 @@ const dataFiles = fs.readdirSync(DATA).filter((f) => f.endsWith(".ts") && !f.end
 for (const f of dataFiles) {
   const src = fs.readFileSync(path.join(DATA, f), "utf-8");
   const en = applyDict(joinWbr(src), dict);
-  fs.writeFileSync(path.join(DATA, f.replace(/\.ts$/, ".en.ts")), en);
+  await writeFormatted(path.join(DATA, f.replace(/\.ts$/, ".en.ts")), en);
 }
 console.log(`데이터 ${dataFiles.length}개 영어판 생성 → src/data/*.en.ts`);
 
@@ -147,7 +158,7 @@ for (const [koGroup, enGroup, note] of [
 ]) {
   const src = fs.readFileSync(path.join(root, `src/app/${koGroup}/layout.tsx`), "utf-8");
   fs.mkdirSync(path.join(root, `src/app/${enGroup}`), { recursive: true });
-  fs.writeFileSync(path.join(root, `src/app/${enGroup}/layout.tsx`), toEnLayout(src, note));
+  await writeFormatted(path.join(root, `src/app/${enGroup}/layout.tsx`), toEnLayout(src, note));
 }
 
 console.log(`영어 화면 ${n}개 생성 → src/app/(en)/en/`);

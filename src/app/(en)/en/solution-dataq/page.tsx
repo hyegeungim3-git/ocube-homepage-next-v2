@@ -54,7 +54,7 @@ export default function SolutionDataqPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: applyBase(
-            '{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"@@BASE@@en/"},{"@type":"ListItem","position":2,"name":"QData","item":"@@BASE@@en/solution-dataq.html"}]}',
+            '{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"@@BASE@@en/"},{"@type":"ListItem","position":2,"name":"QData","item":"@@BASE@@en/solution-dataq.html"}]}',
           ),
         }}
       />
@@ -240,9 +240,8 @@ export default function SolutionDataqPage() {
                     <h2>Meaning, not just matching</h2>
                     <span className="sub">Beyond search, to inference</span>{" "}
                     <p>
-                      <b>A shared data format and vocabulary</b>
-                      brings differing names and units into line, and supports search by
-                      relationship as well as by meaning.
+                      <b>A shared data format and vocabulary</b>brings differing names and units
+                      into line, and supports search by relationship as well as by meaning.
                     </p>
                   </div>
                   <div className="ktsum-card">

@@ -54,7 +54,7 @@ export default function SolutionFactoryqPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: applyBase(
-            '{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"@@BASE@@en/"},{"@type":"ListItem","position":2,"name":"QFactory","item":"@@BASE@@en/solution-factoryq.html"}]}',
+            '{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"@@BASE@@en/"},{"@type":"ListItem","position":2,"name":"QFactory","item":"@@BASE@@en/solution-factoryq.html"}]}',
           ),
         }}
       />

@@ -54,7 +54,7 @@ export default function LicenseVisualonPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: applyBase(
-            '{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"@@BASE@@en/"},{"@type":"ListItem","position":2,"name":"VisualOn","item":"@@BASE@@en/license-visualon.html"}]}',
+            '{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"@@BASE@@en/"},{"@type":"ListItem","position":2,"name":"VisualOn","item":"@@BASE@@en/license-visualon.html"}]}',
           ),
         }}
       />
@@ -73,8 +73,8 @@ export default function LicenseVisualonPage() {
                 <h3>A premium player SDK with the streaming features an OTT service needs</h3>
                 <p>
                   The VisualOn Multimedia Player Stack delivers{" "}
-                  <b>consistent delivery and playback</b>
-                  across mobile, PC, smart TV and set-top box.
+                  <b>consistent delivery and playback</b>across mobile, PC, smart TV and set-top
+                  box.
                 </p>
                 <div className="pi-tags">
                   <span className="pill light">HLS</span>{" "}

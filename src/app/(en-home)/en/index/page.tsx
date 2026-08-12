@@ -49,7 +49,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: applyBase(
-            '{"@context":"https://schema.org","@type":"WebSite","name":"오큐브(주)","url":"@@BASE@@en/"}',
+            '{"@context":"https://schema.org","@type":"WebSite","name":"OCUBE CO., LTD.","url":"@@BASE@@en/"}',
           ),
         }}
       />
