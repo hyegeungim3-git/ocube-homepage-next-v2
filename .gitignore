@@ -1,0 +1,10 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+_work/
+/out/
+__pycache__/
+*.pyc

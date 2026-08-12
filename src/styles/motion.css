@@ -1,0 +1,23 @@
+/* ══ 스크롤·모션 인터랙션 보강 (레퍼런스 실측 반영 라운드) ══ */
+/* ① 히어로 배경 슬로우 줌 — renewal `hero-breathe`(scale 1.04) 상응. 정적 이미지에 영상감 부여 */
+.hbg{position:absolute;inset:0;background-size:cover;background-position:center}
+.hero-bg,.hbg{animation:heroBreathe 26s ease-in-out infinite alternate;will-change:transform}
+@keyframes heroBreathe{from{transform:scale(1)}to{transform:scale(1.045) translateX(-.4%)}}
+@media(prefers-reduced-motion:reduce){.hero-bg,.hbg{animation:none}}
+
+/* ② GNB 스마트 숨김 — i-bricks `scrolled hide`(아래 스크롤 시 숨김·위로 복귀, transform .3s) */
+.gnb{transition:height .34s cubic-bezier(.22,.61,.36,1),background .28s,border-color .28s,transform .3s}
+.gnb.gnb-hide{transform:translateY(-100%)}
+
+/* ③ 카드 이미지 hover 줌 통일 — renewal 전 이미지 transform .35~.45s 문법 */
+.cert-thumb img,.ref-feat-media img{transition:transform .4s}
+.cert-card:hover .cert-thumb img{transform:scale(1.03)}
+.ref-feat:hover .ref-feat-media img{transform:scale(1.03)}
+.pcl-logo img{transition:filter .3s,opacity .3s}
+.pcl-logo:hover img{filter:none;opacity:1}
+
+/* ④ 화살표 마이크로 인터랙션 — renewal `.capability-arrow` .25s 문법 */
+.duo-cta i,.bcase-more span{transition:transform .25s}
+.duo-cta:hover i{transform:translateX(3px)}
+.bcase-more:hover span{transform:translateX(3px)}
+

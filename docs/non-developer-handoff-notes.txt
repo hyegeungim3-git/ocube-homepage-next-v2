@@ -1,0 +1,65 @@
+OCUBE 홈페이지 리팩터링 전달 유의사항
+
+[문서 구분]
+- AGENTS.md, docs/architecture.md, README.md: 현재 구현 설명
+- docs/refactoring-roadmap.md, docs/ai-maintenance-playbook.md: 앞으로 적용할 목표와 계획
+- 목표 문서를 현재 이미 구현된 구조로 해석하지 않습니다.
+- 내용이 다르면 승인한 단계가 완료되기 전까지 현재 구현 문서가 우선합니다.
+- 한 단계가 완료되면 AI가 기존 현재 문서도 같은 변경에서 갱신해야 합니다.
+
+[함께 전달할 파일]
+- AGENTS.md
+- README.md
+- docs/architecture.md
+- docs/refactoring-roadmap.md
+- docs/ai-maintenance-playbook.md
+
+[중요]
+1. 로드맵 전체를 한 번에 실행하지 않습니다.
+2. 한 단계씩 진행하고, 테스트가 모두 통과한 뒤 다음 단계로 넘어갑니다.
+3. 변경 전에 AI가 기존 동작을 TC로 작성하고 기존 코드에서 먼저 통과시켜야 합니다.
+4. 변경 후에는 TC 기대값이나 스크린샷을 바꾸지 않고 동일한 TC를 통과시켜야 합니다.
+5. 순수 리팩터링에서는 baseline을 갱신하지 않습니다.
+6. 문제가 발생하면 테스트 기준을 바꾸지 말고 구현 코드를 수정합니다.
+7. 문구·디자인·URL·회사 정보 변경은 별도로 확인받습니다.
+
+[현재 아직 구성되지 않은 것]
+- Playwright E2E·visual 테스트 환경
+- Vitest unit 테스트 환경
+- test:unit, test:e2e, test:visual npm 명령
+- SCSS 전환
+
+따라서 첫 작업은 기존 코드를 고치는 것이 아니라 테스트 환경을 구성하고 대표 기능의 TC가
+기존 코드에서 통과하는지 확인하는 것입니다.
+
+[AI에게 전달할 요청문]
+
+AGENTS.md, README.md, docs/architecture.md, docs/refactoring-roadmap.md,
+docs/ai-maintenance-playbook.md를 모두 읽어라.
+
+로드맵 전체를 한 번에 실행하지 마라. 먼저 현재 코드 상태를 조사하고 1단계 테스트 환경 구성만
+계획하라. 계획과 변경 예정 파일을 보고한 뒤 해당 단계만 실행하라.
+
+코드를 수정하기 전에 기존 동작을 특성화 TC로 작성하고 기존 코드에서 통과시켜라. 변경 후에는
+기대값과 스크린샷 기준을 수정하지 않고 동일 TC를 다시 실행하라.
+
+각 단계에서 typecheck, lint, format:check, build, verify와 구성된 unit, E2E, visual 테스트 결과를
+보고하라. 순수 리팩터링에서는 baseline과 visual 기준선을 갱신하지 마라.
+
+한 단계가 완전히 통과한 뒤 작업을 중단하고 변경 파일, 제거한 레거시 코드, 테스트 결과,
+남은 문제를 보고하라. 다음 단계는 별도 승인을 받은 후 진행하라.
+
+[사용자가 확인할 결과]
+- 변경 전 TC가 기존 코드에서 통과했는가
+- 변경 후 동일 TC가 수정 없이 통과했는가
+- build와 verify가 통과했는가
+- baseline을 임의로 갱신하지 않았는가
+- 요청하지 않은 문구·디자인·URL 변경이 없는가
+- 다음 단계까지 임의로 진행하지 않았는가
+
+[금지]
+- "플레이북 전체를 실행해줘"라고 한 번에 요청하지 않습니다.
+- 테스트를 통과시키기 위해 baseline이나 기대값을 먼저 바꾸지 않습니다.
+- site2.css와 site2.js를 한 번에 제거하지 않습니다.
+- 여러 페이지와 여러 기능을 한 작업에서 동시에 리팩터링하지 않습니다.
+- AI가 제안한 새 라이브러리를 확인 없이 추가하지 않습니다.

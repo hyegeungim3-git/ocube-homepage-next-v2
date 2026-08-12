@@ -1,0 +1,46 @@
+/* ══ 기능 교차 행 확장 — genos 모듈 행 문법 (심화 페이지 #features) ══ */
+/* 잉크 pill CTA — genos 블랙 pill 상응 */
+.duo-cta{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:12px 24px;
+  border-radius:999px;background:var(--ink);color:#fff;font-size:13.5px;font-weight:700;
+  transition:background .2s,transform .15s}
+.duo-cta:hover,.duo-cta:focus-visible{background:var(--accent);color:#fff}
+.duo-cta:active{transform:translateY(1px)}
+.duo-cta i{font-style:normal;font-size:.9em}
+/* 시연 스테이지 미니 프레임 — sol-stage와 동일 어휘(그라디언트 프레임 + 다크 스크린) */
+.duo-media.stage{background:linear-gradient(135deg,#dcecff 0%,#edf4ff 45%,#f5e7f2 100%);
+  border:1px solid #adc9ec;border-radius:18px;padding:clamp(12px,1.6vw,22px);
+  box-shadow:0 20px 55px rgba(28,76,133,.10)}
+.duo-media.stage img{border:1px solid #1e3f66;border-radius:10px;background:#07182f;box-shadow:none}
+/* 그라디언트 프레임(밝은 하늘색) 위라 --fg-3(4.46:1)는 AA 미달 → --fg-muted(5.5:1) */
+.duo-media.stage .fitcap{margin-top:10px;margin-bottom:-2px;color:var(--fg-muted)}
+
+/* ── 대표 소개 하단 요약 카드(아이콘 + 컬러 제목 + 부제 + 본문) ──
+   .sol-body 는 --soft 배경이므로 카드는 흰색(--canvas)이어야 떠 보인다.
+   좌우 기준선은 본문과 같아야 해 .wrap 으로 감싸 쓴다. */
+/* .sol-body 자체 패딩 위에 .wrap 을 겹치면 좌우가 이중이 된다.
+   본문 .wrap 과 같은 기준선이 되도록 안쪽 wrap 의 패딩을 계산식으로 맞춘다.
+   (50% 는 .sol-body 콘텐츠 폭 기준 → 50% + 패딩 - 640px = (100vw - 1280px)/2)
+   ⚠️ 640px 는 --wrap(1280) 의 절반 — --wrap 변경 시 함께 고쳐야 함 */
+.sol-body > .wrap{max-width:none;padding-inline:max(0px, calc(50% + clamp(20px,5vw,40px) - 640px))}
+.ktsum{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.4vw,18px);
+  margin-top:clamp(30px,3.4vw,48px);text-align:left}
+.ktsum-card{display:flex;flex-direction:column;background:var(--canvas);
+  border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh-sm);
+  padding:clamp(22px,2.1vw,28px);transition:transform .2s,box-shadow .2s}
+.ktsum-card:hover{transform:translateY(-3px);box-shadow:var(--sh-md)}
+.ktsum-ic{display:block;width:30px;height:30px;margin-bottom:16px;color:var(--accent)}
+.ktsum-ic svg{width:100%;height:100%;display:block}
+/* h3→h2 로 올리며(제목 위계) .sol-intro h2 의 margin·max-width 가 얹히지 않게 원래 값(0)을 명시 */
+.ktsum-card h2{margin:0;max-width:none;font-size:16.5px;font-weight:800;line-height:1.35;letter-spacing:-.02em;color:var(--accent-text)}
+.ktsum-card .sub{display:block;margin-top:6px;padding-bottom:14px;border-bottom:1px solid var(--line-soft);
+  font-size:13.5px;line-height:1.5;color:var(--fg-3)}
+.ktsum-card p{margin-top:14px;font-size:15.5px;line-height:1.7;color:var(--fg-muted)}
+.ktsum-card p b{color:var(--accent-ink);font-weight:750}
+@media(max-width:1000px){.ktsum{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.ktsum{grid-template-columns:1fr}}
+
+/* ══ 시연 영상 지원 — duo-media에서 video를 img와 동일하게 렌더 ══ */
+/* 영상 교체 시 마크업만 img→video로 바꾸면 됨(CSS 무수정 원칙, sol-stage와 동일) */
+.duo-media video{width:100%;border-radius:14px;border:1px solid var(--border);box-shadow:var(--sh);display:block}
+.duo-media.stage video{border:1px solid #1e3f66;border-radius:10px;background:#07182f;box-shadow:none}
+

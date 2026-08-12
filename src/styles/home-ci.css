@@ -1,0 +1,21 @@
+/* ══ HOME CI — 좌측 대형 인터랙티브 로고 + 우측 카피 (스탯 카드 제거판) ══ */
+.ci-duo{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(36px,6vw,88px);align-items:center}
+.ci-stage{position:relative;display:grid;place-items:center;min-height:clamp(280px,30vw,420px)}
+.ci-glow{position:absolute;inset:8%;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(0,117,222,.14),rgba(0,117,222,.05) 55%,transparent 75%)}
+.ci-tilt{will-change:transform;transform-style:preserve-3d;animation:ciFloat 7s ease-in-out infinite alternate}
+.ci-tilt img{width:clamp(220px,26vw,380px);display:block;filter:drop-shadow(0 24px 44px rgba(14,22,38,.16))}
+@keyframes ciFloat{from{translate:0 -8px}to{translate:0 8px}}
+.ci-txt .ci-big{text-align:left}
+.ci-txt .ci-copy{margin-left:0;text-align:left}
+.ci-txt .more{display:inline-block;margin-top:22px}
+@media(max-width:900px){
+  .ci-duo{grid-template-columns:1fr;gap:30px}
+  .ci-stage{min-height:230px}
+  .ci-tilt img{width:min(52vw,230px)}
+  .ci-txt{text-align:center}
+  .ci-txt .ci-big,.ci-txt .ci-copy{text-align:center}
+  .ci-txt .ci-copy{margin-inline:auto}
+}
+@media(prefers-reduced-motion:reduce){.ci-tilt{animation:none}}
+

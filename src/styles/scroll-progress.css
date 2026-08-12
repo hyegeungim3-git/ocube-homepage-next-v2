@@ -1,0 +1,20 @@
+/* ══ 스크롤 프로그레스 바 — 3px 블루, 최상단 fixed (ocube-ai-renewal 벤치마크) ══ */
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;background:var(--accent);
+  transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.scroll-progress{display:none}}
+
+/* GNB CTA 화살표 (레퍼런스 Contact Us → 디테일) */
+.cta-btn::after{content:"→";display:inline-block;margin-left:8px;font-size:.92em;transition:transform .2s}
+.cta-btn:hover::after{transform:translateX(3px)}
+
+/* 저높이 뷰포트: 히어로 콘텐츠·컨트롤 압축 (CTA-페이지네이션 겹침 방지) */
+@media(max-height:660px){
+  .h-title{font-size:clamp(26px,3vw,42px)}
+  .h-support{margin-bottom:12px}
+  .h-badge{margin-top:16px}
+  .h-badge span{min-height:34px}
+  .h-cta{margin-top:22px}
+  .hero-ctrl{bottom:20px}
+  .hero-ctrl .wrap{gap:10px}
+}
+
