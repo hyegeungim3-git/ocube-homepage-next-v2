@@ -7,7 +7,6 @@
      한국어 화면과 영어 화면이 같은 파일을 쓰므로 <html lang> 을 보고 고른다. */
   var EN = (document.documentElement.getAttribute('lang') || 'ko').slice(0, 2) === 'en';
   var T = EN ? {
-    table: 'comparison table', tableHint: ' — scrolls sideways',
     overview: function (label) { return label + ' overview'; },
     openMenu: 'Open menu', closeMenu: 'Close menu',
     play: 'Resume auto-rotation', pause: 'Pause auto-rotation',
@@ -16,7 +15,6 @@
     mailSubject: function (type, name) { return '[OCUBE enquiry] ' + type + ' - ' + name; },
     mailType: 'Type: ', mailName: 'Name / company: ', mailFrom: 'Reply to: '
   } : {
-    table: '비교표', tableHint: ' — 가로로 스크롤할 수 있습니다',
     overview: function (label) { return label + ' 전체 보기'; },
     openMenu: '메뉴 열기', closeMenu: '메뉴 닫기',
     play: '자동 전환 재생', pause: '자동 전환 일시정지',
@@ -25,46 +23,6 @@
     mailSubject: function (type, name) { return '[오큐브 홈페이지 문의] ' + type + ' - ' + name; },
     mailType: '문의 유형: ', mailName: '성함 / 회사: ', mailFrom: '회신 이메일: '
   };
-
-  /* --- 1) 스크롤 리빌 : IO 우선 + 스크롤 폴백 (IO 미발동 환경에서도 콘텐츠가 숨겨지지 않도록) --- */
-  (function reveal() {
-    var els = [].slice.call(document.querySelectorAll('.rv, .reveal'));
-    if (!els.length) return;
-    function show(el) { el.classList.add('in'); }
-    function drop(el) { var k = els.indexOf(el); if (k > -1) els.splice(k, 1); }
-    function check() {
-      var vh = window.innerHeight || document.documentElement.clientHeight;
-      for (var i = els.length - 1; i >= 0; i--) {
-        var r = els[i].getBoundingClientRect();
-        if (r.top < vh * 0.92) { show(els[i]); els.splice(i, 1); }   // 지나간 요소도 반드시 표시
-      }
-    }
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (es) {
-        es.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); drop(e.target); } });
-      }, { threshold: .1, rootMargin: '0px 0px -6% 0px' });
-      els.slice().forEach(function (el) { io.observe(el); });
-    }
-    var last = 0;
-    function onScroll() { var n = Date.now(); if (n - last < 120) return; last = n; check(); }
-    addEventListener('scroll', onScroll, { passive: true });
-    addEventListener('resize', onScroll, { passive: true });
-    check(); setTimeout(check, 600); setTimeout(check, 1800);
-  })();
-
-  /* --- 1-b) 광폭 비교표: 가로 스크롤 래퍼 자동 적용(모바일 오버플로 방지) --- */
-  (function wrapTables() {
-    document.querySelectorAll('table.cmp').forEach(function (tb) {
-      if (tb.parentElement && tb.parentElement.classList.contains('cmp-scroll')) return;
-      var wrap = document.createElement('div');
-      wrap.className = 'cmp-scroll';
-      wrap.tabIndex = 0;
-      var caption = tb.querySelector('caption');
-      wrap.setAttribute('aria-label', (caption ? caption.textContent.trim() : T.table) + T.tableHint);
-      tb.parentNode.insertBefore(wrap, tb);
-      wrap.appendChild(tb);
-    });
-  })();
 
   /* --- 2) 모바일 메뉴 --- */
   (function mobileNav() {
@@ -359,48 +317,6 @@
     show(0); start();
   })();
 
-  /* --- 3-b) 모바일/reduced-motion : 단일 히어로 영상 제거 + 포스터 배경 대체(데이터·LCP) --- */
-  (function heroVideoMobile() {
-    var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!(reduced || matchMedia('(max-width:900px)').matches)) return;
-    document.querySelectorAll('.hero video').forEach(function (v) {
-      if (v.closest('.hslide')) return;                  // 4배너 슬라이더는 자체 처리
-      var hero = v.closest('.hero'), poster = v.getAttribute('poster');
-      if (hero && poster) {
-        hero.style.backgroundImage = 'url("' + poster + '")';
-        hero.style.backgroundSize = 'cover';
-        hero.style.backgroundPosition = 'center';
-      }
-      v.remove();
-    });
-  })();
-
-  /* --- 3-c) KPI 카운트업 : [data-count] — 미발동 환경에서도 최종값 보장 --- */
-  (function counters() {
-    var els = [].slice.call(document.querySelectorAll('[data-count]'));
-    if (!els.length) return;
-    function run(el) {
-      if (el.__done) return; el.__done = true;
-      var to = parseFloat(el.getAttribute('data-count')) || 0;
-      var t0 = null, DUR = 900;
-      function step(ts) {
-        if (!t0) t0 = ts;
-        var p = Math.min((ts - t0) / DUR, 1);
-        el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))).toLocaleString();
-        if (p < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-      setTimeout(function () { el.textContent = to.toLocaleString(); }, DUR + 250); // rAF 정지 대비 최종값 보장
-    }
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (es) {
-        es.forEach(function (e) { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
-      }, { threshold: .4 });
-      els.forEach(function (el) { io.observe(el); });
-    }
-    setTimeout(function () { els.forEach(run); }, 2500);   // IO 미발동 폴백
-  })();
-
   /* --- 3-d2) 인증·특허·저작권 갤러리 필터 (company) --- */
   (function certFilter() {
     var bar = document.querySelector('.cert-filter');
@@ -514,66 +430,6 @@
     });
   })();
 
-  /* --- 4) What We Do 핀드 : 진행 도트를 항목 리빌과 동기화 --- */
-  (function pinDots() {
-    var secs = [].slice.call(document.querySelectorAll('.pinsec'));
-    if (!secs.length) return;
-    secs.forEach(function (sec) {
-      var items = [].slice.call(sec.querySelectorAll('.pin-item'));
-      var dots = [].slice.call(sec.querySelectorAll('.pin-progress i'));
-      if (!items.length || !dots.length) return;
-      function sync() {
-        var vh = window.innerHeight || document.documentElement.clientHeight;
-        var cur = -1;
-        items.forEach(function (it, i) { if (it.getBoundingClientRect().top < vh * 0.75) cur = i; });
-        dots.forEach(function (d, i) { d.classList.toggle('on', i <= cur); });
-      }
-      var last = 0;
-      addEventListener('scroll', function () { var n = Date.now(); if (n - last < 110) return; last = n; sync(); }, { passive: true });
-      addEventListener('resize', sync, { passive: true });
-      sync(); setTimeout(sync, 600);
-    });
-  })();
-
-})();
-
-/* --- 시연 영상 IO 재생: video.demovid — 화면에 보일 때만 재생, 벗어나면 정지 --- */
-(function demoVids() {
-  var vids = [].slice.call(document.querySelectorAll('video.demovid'));
-  if (!vids.length) return;
-  var rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (rm) return; /* 모션 최소화: 포스터만 표시 */
-  if (!('IntersectionObserver' in window)) { vids.forEach(function (v) { v.play && v.play().catch(function(){}); }); return; }
-  var io = new IntersectionObserver(function (es) {
-    es.forEach(function (e) {
-      var v = e.target;
-      if (e.isIntersecting && e.intersectionRatio >= .35) { v.play && v.play().catch(function(){}); }
-      else { v.pause && v.pause(); }
-    });
-  }, { threshold: [0, .35] });
-  vids.forEach(function (v) { io.observe(v); });
-})();
-
-/* --- CI 로고 포인터 틸트: 커서를 따라 3D 기울기 (fine pointer 전용, lerp) --- */
-(function ciTilt() {
-  var stage = document.querySelector('.ci-stage'), el = document.querySelector('.ci-tilt');
-  if (!stage || !el) return;
-  if (!matchMedia('(pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var tx = 0, ty = 0, cx = 0, cy = 0, raf = null, over = false;
-  function loop() {
-    cx += (tx - cx) * .12; cy += (ty - cy) * .12;
-    el.style.transform = 'perspective(900px) rotateX(' + (-cy).toFixed(2) + 'deg) rotateY(' + cx.toFixed(2) + 'deg)';
-    if (over || Math.abs(cx) > .05 || Math.abs(cy) > .05) raf = requestAnimationFrame(loop);
-    else { el.style.transform = ''; raf = null; }
-  }
-  stage.addEventListener('pointerenter', function () { over = true; });
-  stage.addEventListener('pointermove', function (e) {
-    var r = stage.getBoundingClientRect();
-    tx = ((e.clientX - r.left) / r.width - .5) * 18;   /* ±9deg */
-    ty = ((e.clientY - r.top) / r.height - .5) * 14;
-    if (!raf) raf = requestAnimationFrame(loop);
-  });
-  stage.addEventListener('pointerleave', function () { over = false; tx = 0; ty = 0; if (!raf) raf = requestAnimationFrame(loop); });
 })();
 
   /* --- 솔루션 상단: 이동한 문구가 밝은 영역에 올라오면 색 전환 --- */
@@ -688,8 +544,6 @@
   updateVision();
 })();
 
-/* 모션 초기화가 끝난 경우에만 리빌 요소를 숨긴다. 스크립트 실패 시 본문은 기본적으로 보인다. */
-document.documentElement.classList.add('motion-ready');
 /* 문의 폼: 서버 저장 없이 사용자의 이메일 앱에 작성 내용을 전달한다. */
 (function contactMail() {
   var form = document.querySelector('[data-contact-form]');

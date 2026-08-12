@@ -1,20 +1,12 @@
 [
   "00-head.js",
   "01-i18n-strings.js",
-  "03-reveal.js",
-  "04-table-scroll.js",
   "06-mobile-menu.js",
   "07-nav-current.js",
   "08-hero-slider.js",
-  "09-hero-poster.js",
-  "10-count-up.js",
   "12-cert-filter.js",
   "14-lightbox.js",
-  "16-pin-dots.js",
   "17-iife-close.js",
-  "18-demo-videos.js",
-  "21-ci-tilt.js",
   "23-sol-copy-travel.js",
-  "24-motion-ready.js",
   "25-contact-mail.js"
 ]

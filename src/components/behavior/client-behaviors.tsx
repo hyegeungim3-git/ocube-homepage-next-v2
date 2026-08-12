@@ -3,6 +3,11 @@ import type { Lang } from "@/config/i18n";
 import { BackToTop } from "@/components/behavior/back-to-top";
 import { CopyToast } from "@/components/behavior/copy-toast";
 import { ScrollProgress } from "@/components/behavior/scroll-progress";
+import { CiTilt } from "@/components/behavior/ci-tilt";
+import { DemoVideos } from "@/components/behavior/demo-videos";
+import { PinDots } from "@/components/behavior/pin-dots";
+import { Reveal } from "@/components/behavior/reveal";
+import { TableScroll } from "@/components/behavior/table-scroll";
 
 // 6단계에서 `site2.js` 로부터 React 로 옮겨 온 동작들을 한 자리에 모은다.
 //
@@ -13,6 +18,11 @@ import { ScrollProgress } from "@/components/behavior/scroll-progress";
 export function ClientBehaviors({ lang = "ko" }: { lang?: Lang }): JSX.Element {
   return (
     <>
+      <Reveal />
+      <PinDots />
+      <TableScroll lang={lang} />
+      <DemoVideos />
+      <CiTilt />
       <ScrollProgress />
       <CopyToast lang={lang} />
       <BackToTop lang={lang} />
