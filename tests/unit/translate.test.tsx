@@ -98,7 +98,21 @@ describe("localizeLd — 구조화 데이터", () => {
     expect(out).toContain('"item":"@@BASE@@en/privacy.html"');
   });
 
-  it("사전에 없는 이름은 한국어로 남는다 (지금 영어 화면과 같은 상태)", () => {
-    expect(localizeLd("en", '{"name":"오큐브 주식회사"}')).toContain('"name":"오큐브 주식회사"');
+  it("사전에 없는 이름은 한국어로 그대로 남는다", () => {
+    // 사전에 없으면 원문을 돌려주는 것이 이 함수의 동작이다. 오류를 내지 않으므로
+    // '번역이 빠진 것' 과 '일부러 그대로 둔 것' 이 겉으로 구분되지 않는다는 뜻이기도 하다.
+    expect(localizeLd("en", '{"name":"사전에 없는 이름"}')).toContain('"name":"사전에 없는 이름"');
+  });
+
+  it("회사 이름·주소는 영어 화면에서 번역된다", () => {
+    // 예전에는 여기가 한국어로 남아, 화면 푸터는 영문인데 검색엔진에 보내는 주소만
+    // 한국어인 상태였다. 사전에 넣어 맞췄다.
+    const ld = localizeLd(
+      "en",
+      '{"name":"오큐브 주식회사","address":{"streetAddress":"수성구 알파시티1로31길 18","addressLocality":"대구광역시"}}',
+    );
+    expect(ld).toContain('"name":"OCUBE CO., LTD."');
+    expect(ld).toContain("Alpha City 1-ro 31-gil");
+    expect(ld).toContain('"addressLocality":"Daegu"');
   });
 });
