@@ -21,6 +21,40 @@ const COVERED: { slug: Slug; why: string }[] = [
   { slug: "contact", why: "폼 · 연락처 카드" },
 ];
 
+// 스크롤한 뒤의 헤더는 위 32장 어디에도 없다 — `.gnb` 는 position:fixed 라 전면 스크린샷에도
+// 스크롤 전(투명) 모습만 담긴다. 유리 효과(backdrop-filter)가 죽었을 때 시각 검사가 초록으로
+// 지나간 구조적 이유가 이것이었다. 헤더 띠만 잘라 한 장 더 찍어 그 자리를 덮는다.
+const SCROLLED_HEADER: Slug[] = ["references", "solution-cubeon"];
+
+test.describe("스크롤한 뒤의 헤더", () => {
+  test.use({ viewport: { width: 1440, height: 900 } });
+
+  for (const slug of SCROLLED_HEADER) {
+    test(`ko ${slug}`, async ({ page }) => {
+      await page.goto(pageUrl(slug, "ko"), { waitUntil: "load" });
+      await freezeForShot(page);
+      await blankMedia(page);
+      // 아래로 크게 내리면 헤더가 스스로 숨는다(gnb-hide) — 살짝 올려 되띄운 뒤 찍는다
+      await page.evaluate(() => window.scrollTo(0, 1200));
+      await page.waitForTimeout(120);
+      await page.evaluate(() => window.scrollTo(0, 1160));
+      // 클래스가 실제로 붙고 헤더가 제자리에 올 때까지 기다린다(스크롤 직후 즉시 재면 오탐)
+      await page.waitForFunction(() => {
+        const gnb = document.querySelector(".gnb");
+        return !!gnb?.classList.contains("scrolled") && gnb.getBoundingClientRect().top === 0;
+      });
+
+      // 허용오차를 조인다. 헤더는 93% 불투명이라 뒤 내용의 흐림이 아주 옅게만 비치는데,
+      // 기본 threshold(0.2)로는 유리 효과가 통째로 죽어도 '같다' 고 나온다(실제로 그랬다).
+      await expect(page).toHaveScreenshot(`${slug}-ko-scrolled-header.png`, {
+        clip: { x: 0, y: 0, width: 1440, height: 72 },
+        threshold: 0,
+        maxDiffPixels: 0,
+      });
+    });
+  }
+});
+
 for (const viewport of VIEWPORTS) {
   test.describe(`${viewport.name} ${viewport.width}x${viewport.height}`, () => {
     test.use({ viewport: { width: viewport.width, height: viewport.height } });

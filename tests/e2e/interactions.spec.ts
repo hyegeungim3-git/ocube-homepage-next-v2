@@ -50,6 +50,38 @@ test.describe("연락처 복사", () => {
   });
 });
 
+test.describe("복사 알림 — 원본이 하던 동작", () => {
+  // 아래 둘은 v2 에서 실제로 깨져 있던 것이다. 원본은 매 클릭마다 1.8초를 다시 셌고,
+  // 빈 알림 상자를 로드 시점에 만들어 두었다.
+
+  test("로드 시점에 이미 라이브 리전이 있다 (내용만 나중에 채워진다)", async ({ page }) => {
+    await page.goto("/contact.html");
+    const toast = page.locator(".toast[role='status']");
+    await expect(toast).toHaveCount(1);
+    await expect(toast).toHaveText("");
+    await expect(toast).not.toHaveClass(/show/);
+  });
+
+  test("다시 누르면 사라지는 시간이 다시 시작된다", async ({ page }) => {
+    await page.goto("/contact.html");
+    const button = page.locator('[data-copy="sales@ocube.co.kr"]').first();
+    const toast = page.locator(".toast");
+
+    await button.click();
+    await expect(toast).toHaveClass(/show/);
+
+    await page.waitForTimeout(1300); // 첫 타이머(1.8초)가 끝나기 전에 다시 누른다
+    await button.click();
+    await expect(toast).toHaveClass(/show/);
+
+    // 첫 클릭 기준이면 여기서 이미 사라졌을 시점 — 두 번째 클릭 기준이면 아직 보인다
+    await page.waitForTimeout(900);
+    await expect(toast).toHaveClass(/show/);
+
+    await expect(toast).not.toHaveClass(/show/, { timeout: 2000 });
+  });
+});
+
 test.describe("제품 화면 확대(라이트박스)", () => {
   test("이미지를 누르면 열리고 Esc 로 닫히며 초점이 돌아온다", async ({ page }) => {
     await page.goto("/solution-cubeon.html");

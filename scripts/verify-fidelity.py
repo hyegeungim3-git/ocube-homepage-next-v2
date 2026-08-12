@@ -216,6 +216,27 @@ def check_fresh():
         sys.exit(2)
 
 
+def body_extra_sig(soup):
+    """<body> 바로 아래에 있는 것 중 header·main·footer·모바일패널·스크립트를 뺀 나머지.
+
+    이것들(토스트·맨 위로 버튼·스크롤 진행 바)은 화면에 보이는데도 위 검사들이
+    아무도 보지 않던 자리였다 — 실제로 토스트를 상시 렌더로 바꿨는데 게이트가 528/528 을 줬다.
+    """
+    out = []
+    for el in soup.body.find_all(recursive=False):
+        if el.name in ("script", "template", "noscript"):
+            continue
+        if el.name in ("header", "main", "footer"):
+            continue
+        classes = el.get("class") or []
+        if el.name == "nav" and "m-panel" in classes:
+            continue
+        if el.name == "a" and "skip" in classes:
+            continue
+        out.extend(flat(el))
+    return out
+
+
 def main():
     check_fresh()
     # 한국어 25쪽 + 영어 23쪽(en/) — 영어 화면도 기준선 대조에 포함한다
@@ -225,7 +246,7 @@ def main():
         pages += sorted("en/" + f for f in os.listdir(en_dir) if f.endswith(".html"))
     total_ok = 0
     problems = []
-    print(f"{'page':30} skip hdr mpnl main ftr text head  ld  js attr scr")
+    print(f"{'page':30} skip hdr mpnl main ftr xtra text head  ld  js attr scr")
     for f in pages:
         o_raw = open(os.path.join(OLD, f), encoding="utf-8").read()
         o = BeautifulSoup(o_raw, "html.parser")
@@ -243,6 +264,7 @@ def main():
             ("m-panel", flat(o.body.find("nav", class_="m-panel")), flat(n.body.find("nav", class_="m-panel"))),
             ("main", flat(o.body.find("main")), flat(n.body.find("main"))),
             ("footer", flat(o.body.find("footer")), flat(n.body.find("footer"))),
+            ("body-extra", body_extra_sig(o), body_extra_sig(n)),
             ("text", text_sig(o.body.find("main")) + text_sig(o.body.find("footer")) + text_sig(o.body.find("header")),
                      text_sig(n.body.find("main")) + text_sig(n.body.find("footer")) + text_sig(n.body.find("header"))),
             ("head", head_sig(o), head_sig(n)),
@@ -267,7 +289,7 @@ def main():
                 problems.append((f, label, r[1], r[2]))
         print(f"{f:30} " + " ".join(m.rjust(4) for m in marks))
 
-    print(f"\n검사 {len(pages)*11}건 중 통과 {total_ok}건 / 불일치 {len(problems)}건")
+    print(f"\n검사 {len(pages)*12}건 중 통과 {total_ok}건 / 불일치 {len(problems)}건")
     for p in problems[:25]:
         print(f"\n--- {p[0]} :: {p[1]} (차이 {p[2]}줄) ---")
         for l in p[3]:
