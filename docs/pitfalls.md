@@ -20,6 +20,13 @@
   같은 자리에서 `--package-lock-only` 를 돌리면 아무것도 안 바뀌거나 오히려 더 줄어든다.
 - **재발 방지** 의존성을 건드렸으면 **빈 디렉터리에서 `npm ci` 가 되는지** 확인하고 커밋한다.
 
+### `npm run verify` 가 `ModuleNotFoundError: No module named 'bs4'` 로 죽는다
+
+- 게이트는 **파이썬 스크립트**다. Node 만 깔아서는 돌지 않는다.
+- `pip install -r scripts/requirements.txt`.
+- 이 요구사항이 어디에도 적혀 있지 않아 CI 를 처음 켰을 때 바로 걸렸다. 지금은 README
+  '실행' 절과 CI 워크플로 양쪽에 적혀 있다.
+
 ### 클론하자마자 `format:check` 가 빨간불
 
 - **원인** Windows 가 CRLF 로 체크아웃한다. Prettier 는 LF 를 기대한다.

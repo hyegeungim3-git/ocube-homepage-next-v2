@@ -24,8 +24,11 @@
 
 ## 실행
 
+필요한 것: **Node 22** 와 **Python 3**(정합성 게이트가 파이썬 스크립트다).
+
 ```bash
-npm install
+npm ci
+pip install -r scripts/requirements.txt   # verify 가 쓰는 beautifulsoup4
 npm run dev      # 개발 서버
 npm run build    # 정적 내보내기 → out/  (한국어 25쪽 + 영어 23쪽)
 npm run verify   # 직전 승인본(baseline/)과 DOM 이 같은지 검사 (아래 참조)

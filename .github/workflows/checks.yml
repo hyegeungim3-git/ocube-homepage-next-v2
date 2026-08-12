@@ -19,6 +19,12 @@ jobs:
           node-version: 22
           cache: npm
 
+      # verify 는 파이썬 스크립트다 — Node 만으로는 돌지 않는다
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r scripts/requirements.txt
+
       # install 이 아니라 ci — 잠금 파일이 package.json 과 어긋나면 여기서 걸린다.
       # (실제로 이 검사가 없어서 클론한 사람만 막히는 결함을 늦게 발견했다)
       - run: npm ci
