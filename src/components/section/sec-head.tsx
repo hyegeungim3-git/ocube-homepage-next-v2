@@ -7,8 +7,7 @@ import type { SecHeadCopy } from "@/data/sec-heads";
 export function SecHead({ copy }: { copy: SecHeadCopy }) {
   return (
     <div className={copy.cls}>
-      <span className="kicker">{copy.kicker}</span>
-      {" "}
+      <span className="kicker">{copy.kicker}</span>{" "}
       <h2 style={copy.titleWhite ? { color: "#fff" } : undefined} className={copy.titleCls}>
         <RichText value={copy.title} />
       </h2>

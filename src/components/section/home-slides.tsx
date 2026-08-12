@@ -12,14 +12,26 @@ export function HomeSlides({ items, lang = "ko" }: { items: readonly HomeSlide[]
       {items.map((s, i) => (
         <div className={i === 0 ? "hslide on" : "hslide"} key={i}>
           {s.media.kind === "video" ? (
-            <video muted loop playsInline poster={assetPath(s.media.poster, lang)} preload={i === 0 ? "auto" : "none"} aria-hidden="true">
+            <video
+              muted
+              loop
+              playsInline
+              poster={assetPath(s.media.poster, lang)}
+              preload={i === 0 ? "auto" : "none"}
+              aria-hidden="true"
+            >
               <source src={assetPath(s.media.src, lang)} type="video/mp4" />
             </video>
           ) : (
             <Fragment>
               {" "}
-              <img className="home-hero-poster" src={assetPath(s.media.src, lang)} alt="" width="1920" height="1080" />
-              {" "}
+              <img
+                className="home-hero-poster"
+                src={assetPath(s.media.src, lang)}
+                alt=""
+                width="1920"
+                height="1080"
+              />{" "}
             </Fragment>
           )}
           <div className="hveil" aria-hidden="true"></div>
@@ -28,7 +40,13 @@ export function HomeSlides({ items, lang = "ko" }: { items: readonly HomeSlide[]
             {i === 0 ? (
               <h1 className="h-title" data-typewriter={s.typewriter} aria-label={s.ariaLabel}></h1>
             ) : (
-              <div className="h-title" role="heading" aria-level={1} data-typewriter={s.typewriter} aria-label={s.ariaLabel}></div>
+              <div
+                className="h-title"
+                role="heading"
+                aria-level={1}
+                data-typewriter={s.typewriter}
+                aria-label={s.ariaLabel}
+              ></div>
             )}
           </div>
         </div>

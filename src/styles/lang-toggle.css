@@ -3,30 +3,75 @@
    상단 메뉴는 히어로 위에서 투명하고 스크롤하면 흰색이 되므로 상태별로 색을 나눈다. */
 /* 순서가 [KR/EN][문의하기] 라 오른쪽으로 미는 auto 여백은 앞에 오는 이쪽이 가진다.
    (모바일에서는 문의하기가 숨고 아래 미디어쿼리가 이 값을 8px 로 덮는다) */
-.lang { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+.lang {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
 .lang-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-width: 44px; height: 26px; padding: 0 12px;
-  border-radius: 30px; font-size: 13px; font-weight: 500; letter-spacing: .02em;
-  text-decoration: none; white-space: nowrap;
-  transition: background .2s ease, color .2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 26px;
+  padding: 0 12px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 /* 투명 헤더 (히어로 위) */
-.gnb:not(.scrolled) .lang-btn { background: rgba(255, 255, 255, .15); color: rgba(255, 255, 255, .62); }
-.gnb:not(.scrolled) .lang-btn.active { background: #fff; color: var(--ink); font-weight: 600; }
-.gnb:not(.scrolled) .lang-btn:hover { color: #fff; }
+.gnb:not(.scrolled) .lang-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.62);
+}
+.gnb:not(.scrolled) .lang-btn.active {
+  background: #fff;
+  color: var(--ink);
+  font-weight: 600;
+}
+.gnb:not(.scrolled) .lang-btn:hover {
+  color: #fff;
+}
 /* 흰 헤더 (스크롤 후·모바일 메뉴 열림) */
 .gnb.scrolled .lang-btn,
-body.m-lock .gnb .lang-btn { background: rgba(20, 20, 20, .06); color: var(--fg-muted); }
+body.m-lock .gnb .lang-btn {
+  background: rgba(20, 20, 20, 0.06);
+  color: var(--fg-muted);
+}
 .gnb.scrolled .lang-btn.active,
-body.m-lock .gnb .lang-btn.active { background: var(--ink); color: #fff; font-weight: 600; }
-.gnb.scrolled .lang-btn:hover { color: var(--fg); }
-.lang-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+body.m-lock .gnb .lang-btn.active {
+  background: var(--ink);
+  color: #fff;
+  font-weight: 600;
+}
+.gnb.scrolled .lang-btn:hover {
+  color: var(--fg);
+}
+.lang-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 
 @media (max-width: 900px) {
-  .lang { margin-left: 8px; }
-  .lang-btn { min-width: 40px; padding: 0 9px; font-size: 12px; }
+  .lang {
+    margin-left: 8px;
+  }
+  .lang-btn {
+    min-width: 40px;
+    padding: 0 9px;
+    font-size: 12px;
+  }
 }
 @media (max-width: 380px) {
-  .lang-btn { min-width: 36px; padding: 0 7px; }
+  .lang-btn {
+    min-width: 36px;
+    padding: 0 7px;
+  }
 }

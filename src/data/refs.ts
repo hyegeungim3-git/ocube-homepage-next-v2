@@ -108,7 +108,9 @@ export const refCards: readonly RefCard[] = [
     title: ["Toyota CCS·", "wbr", "TSP 사이버보안 산출"],
     client: "Toyota",
     sector: "모빌리티",
-    desc: ["커넥티드 서비스와 텔레매틱스 플랫폼의 위협을 분석하고 보안 관리 체계 산출물을 작성했습니다."],
+    desc: [
+      "커넥티드 서비스와 텔레매틱스 플랫폼의 위협을 분석하고 보안 관리 체계 산출물을 작성했습니다.",
+    ],
   },
   {
     cls: "ref-card rv d1",
@@ -128,7 +130,11 @@ export const refCards: readonly RefCard[] = [
     title: ["차량 IVI CarPlay·", "wbr", "AndroidAuto 개발·", "wbr", "인증"],
     client: "글로벌 완성차 OEM",
     sector: "모빌리티",
-    desc: ["유무선 CarPlay·", "wbr", "AndroidAuto를 다수 개발하고 인증했으며, 클러스터 CarPlay Ultra도 개발했습니다."],
+    desc: [
+      "유무선 CarPlay·",
+      "wbr",
+      "AndroidAuto를 다수 개발하고 인증했으며, 클러스터 CarPlay Ultra도 개발했습니다.",
+    ],
   },
   {
     cls: "ref-card rv",
@@ -138,7 +144,11 @@ export const refCards: readonly RefCard[] = [
     title: ["차량 제어기 기능 개발·", "wbr", "솔루션 공급"],
     client: "자동차 부품사(Tier 2)",
     sector: "모빌리티",
-    desc: ["(H)OTA 리프로그래밍과 UDS·", "wbr", "CAN 진단 통신을 포함해 차량 제어기 기능을 개발하고 솔루션을 공급했습니다."],
+    desc: [
+      "(H)OTA 리프로그래밍과 UDS·",
+      "wbr",
+      "CAN 진단 통신을 포함해 차량 제어기 기능을 개발하고 솔루션을 공급했습니다.",
+    ],
   },
   {
     cls: "ref-card rv d1",
@@ -158,7 +168,11 @@ export const refCards: readonly RefCard[] = [
     title: ["EV 충전 플랫폼 구축"],
     client: "SK에너지",
     sector: "에너지",
-    desc: ["충전기 연동부터 지도 관제, 회원·", "wbr", "결제까지 하나로 구축했습니다. 그 경험은 자체 제품 EVCP에 담았습니다."],
+    desc: [
+      "충전기 연동부터 지도 관제, 회원·",
+      "wbr",
+      "결제까지 하나로 구축했습니다. 그 경험은 자체 제품 EVCP에 담았습니다.",
+    ],
   },
   {
     cls: "ref-card rv",
@@ -168,7 +182,13 @@ export const refCards: readonly RefCard[] = [
     title: ["EV 충전기 앱 (북미·유럽향)"],
     client: "LG전자",
     sector: "에너지",
-    desc: ["급속·", "wbr", "완속 충전기용 사용자·", "wbr", "엔지니어 앱을 여러 나라에 맞춰 공급했습니다."],
+    desc: [
+      "급속·",
+      "wbr",
+      "완속 충전기용 사용자·",
+      "wbr",
+      "엔지니어 앱을 여러 나라에 맞춰 공급했습니다.",
+    ],
   },
   {
     cls: "ref-card rv d1",

@@ -15,26 +15,9 @@ export function MobilePanel({
   return (
     <nav className="m-panel" aria-label={label}>
       {" "}
-      <a href="business-ax.html">
-        Business
-      </a>
-      {" "}
-      <a href="solution-cubeon.html">
-        Solution
-      </a>
-      {" "}
-      <a href="license-qt.html">
-        Global Partners
-      </a>
-      {" "}
-      <a href="about.html">
-        Company
-      </a>
-      {" "}
-      <a href="contact.html">
-        {cta}
-      </a>
-      {" "}
+      <a href="business-ax.html">Business</a> <a href="solution-cubeon.html">Solution</a>{" "}
+      <a href="license-qt.html">Global Partners</a> <a href="about.html">Company</a>{" "}
+      <a href="contact.html">{cta}</a>{" "}
     </nav>
   );
 }

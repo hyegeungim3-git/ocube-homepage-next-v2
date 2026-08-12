@@ -9,59 +9,57 @@ export function SiteHeader({
   navLabel,
   lang = "ko",
   slug = "index",
-}: { navLabel?: string; lang?: Lang; slug?: string }) {
+}: {
+  navLabel?: string;
+  lang?: Lang;
+  slug?: string;
+}) {
   const t = ui[lang];
   const nav = lang === "en" ? headerNavigationEn : headerNavigation;
   return (
     <>
-    <a className="skip" href="#top">
-      {t.skip}
-    </a>
-    <header className="gnb">
-      <div className="wrap nav">
-        {" "}
-        <a href="index.html" className="logo" aria-label={t.home}>
-          <img src={assetPath("assets/ci_01.avif", lang)} alt="OCUBE" width="462" height="140" />
-        </a>
-        {" "}
-        <nav className="nav-menu" aria-label={navLabel ?? t.mainNav}>
-        {nav.map((item) => (
-          <div className="nav-item" key={item.label}>
-            <a aria-haspopup="true" role="button" tabIndex={0}>
-              {item.label}
-              {" "}
-              <span aria-hidden="true" className="badge-caret">▾</span>
-            </a>
-            {" "}
-            <div className="dropdown">
-              <div className="dd-group">
-                {item.links.map((l) => (
-                  <Fragment key={l.href}>
-                    <a href={l.href}>
-                      {l.label}
-                      <small>{l.description}</small>
-                    </a>
-                    {" "}
-                  </Fragment>
-                ))}
+      <a className="skip" href="#top">
+        {t.skip}
+      </a>
+      <header className="gnb">
+        <div className="wrap nav">
+          {" "}
+          <a href="index.html" className="logo" aria-label={t.home}>
+            <img src={assetPath("assets/ci_01.avif", lang)} alt="OCUBE" width="462" height="140" />
+          </a>{" "}
+          <nav className="nav-menu" aria-label={navLabel ?? t.mainNav}>
+            {nav.map((item) => (
+              <div className="nav-item" key={item.label}>
+                <a aria-haspopup="true" role="button" tabIndex={0}>
+                  {item.label}{" "}
+                  <span aria-hidden="true" className="badge-caret">
+                    ▾
+                  </span>
+                </a>{" "}
+                <div className="dropdown">
+                  <div className="dd-group">
+                    {item.links.map((l) => (
+                      <Fragment key={l.href}>
+                        <a href={l.href}>
+                          {l.label}
+                          <small>{l.description}</small>
+                        </a>{" "}
+                      </Fragment>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
-        </nav>
-        {" "}
-        <LangToggle slug={slug} lang={lang} />
-        {" "}
-        <a href="contact.html" className="cta-btn">
-          {t.contact}
-        </a>
-        {" "}
-        <button type="button" className="m-toggle" aria-label={t.openMenu} aria-expanded="false">
-          Menu
-        </button>
-        {" "}
-      </div>
-    </header>
+            ))}
+          </nav>{" "}
+          <LangToggle slug={slug} lang={lang} />{" "}
+          <a href="contact.html" className="cta-btn">
+            {t.contact}
+          </a>{" "}
+          <button type="button" className="m-toggle" aria-label={t.openMenu} aria-expanded="false">
+            Menu
+          </button>{" "}
+        </div>
+      </header>
     </>
   );
 }

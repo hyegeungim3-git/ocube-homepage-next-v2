@@ -12,7 +12,13 @@ export function PlogoItems({ items, lang = "ko" }: { items: readonly Logo[]; lan
         <Fragment key={l.src}>
           {" "}
           <span className="plogo">
-            <img src={assetPath(l.src, lang)} alt={l.alt} loading="lazy" width={l.width} height={l.height} />
+            <img
+              src={assetPath(l.src, lang)}
+              alt={l.alt}
+              loading="lazy"
+              width={l.width}
+              height={l.height}
+            />
           </span>
         </Fragment>
       ))}

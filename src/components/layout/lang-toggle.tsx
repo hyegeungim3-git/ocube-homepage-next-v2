@@ -4,7 +4,8 @@ import { counterpartHref, pageHref, ui, type Lang } from "@/config/i18n";
 // 링크로 만든 이유: 자바스크립트가 없어도 동작하고, 검색엔진이 두 언어를 각각 수집한다.
 export function LangToggle({ slug, lang }: { slug: string; lang: Lang }) {
   const koHref = lang === "ko" ? pageHref(slug, "ko") : counterpartHref(slug, "en");
-  const enHref = lang === "en" ? pageHref(slug, "en").replace(/^en\//, "") : counterpartHref(slug, "ko");
+  const enHref =
+    lang === "en" ? pageHref(slug, "en").replace(/^en\//, "") : counterpartHref(slug, "ko");
   return (
     <div className="lang" role="group" aria-label={ui[lang].langLabel}>
       <a

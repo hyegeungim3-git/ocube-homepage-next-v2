@@ -10,19 +10,33 @@ export interface HomeSlide {
 
 export const homeSlides: readonly HomeSlide[] = [
   {
-    media: { kind: "video", poster: "assets/videos/home/ax-poster.jpg", src: "assets/videos/home/ax.mp4" },
+    media: {
+      kind: "video",
+      poster: "assets/videos/home/ax-poster.jpg",
+      src: "assets/videos/home/ax.mp4",
+    },
     support: "AX, From Intelligence to Action.",
     typewriter: "We turn scattered business data into intelligence AI can act on.",
     ariaLabel: "We turn scattered business data into intelligence AI can act on.",
   },
   {
-    media: { kind: "video", poster: "assets/videos/home/embedded-poster.jpg", src: "assets/videos/home/embedded.mp4" },
+    media: {
+      kind: "video",
+      poster: "assets/videos/home/embedded-poster.jpg",
+      src: "assets/videos/home/embedded.mp4",
+    },
     support: "Embedded, Built for Reliability.",
-    typewriter: "From mobility to industrial devices, we set the standard for integrated embedded solutions.",
-    ariaLabel: "From mobility to industrial devices, we set the standard for integrated embedded solutions.",
+    typewriter:
+      "From mobility to industrial devices, we set the standard for integrated embedded solutions.",
+    ariaLabel:
+      "From mobility to industrial devices, we set the standard for integrated embedded solutions.",
   },
   {
-    media: { kind: "video", poster: "assets/videos/home/si-poster.png", src: "assets/videos/home/si.mp4" },
+    media: {
+      kind: "video",
+      poster: "assets/videos/home/si-poster.png",
+      src: "assets/videos/home/si.mp4",
+    },
     support: "SI, Engineered for Reliability.",
     typewriter: "We turn complex B2B and B2G work into stable systems we keep running.",
     ariaLabel: "We turn complex B2B and B2G work into stable systems we keep running.",
@@ -30,7 +44,9 @@ export const homeSlides: readonly HomeSlide[] = [
   {
     media: { kind: "img", src: "assets/videos/home/global-tech-poster.jpg" },
     support: "Global Tech, Integrated for Production.",
-    typewriter: "We match global technology to your product, from licence supply to integration and support.",
-    ariaLabel: "We match global technology to your product, from licence supply to integration and support.",
+    typewriter:
+      "We match global technology to your product, from licence supply to integration and support.",
+    ariaLabel:
+      "We match global technology to your product, from licence supply to integration and support.",
   },
 ];

@@ -1,19 +1,72 @@
 /* ══ 파트너 & 고객사 2단 로고 그리드 (references, Seegene/회사 P&P 문법) ══ */
-.plogo-sec{background:#fff}
-.plogo-rows{margin-top:clamp(24px,3vw,42px);display:flex;flex-direction:column}
-.plogo-row{display:grid;grid-template-columns:210px 1fr;gap:clamp(20px,3vw,52px);align-items:center;
-  padding:clamp(28px,3.2vw,44px) 0;border-top:1px solid var(--border)}
-.plogo-row:first-child{border-top:0}
-.plogo-label{display:flex;flex-direction:column;gap:4px;font-size:15px;font-weight:800;color:var(--fg);letter-spacing:-.01em}
-.plogo-label small{font-size:12px;font-weight:700;letter-spacing:.09em;color:var(--accent-text);text-transform:uppercase}
-.plogo-grid{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(26px,3.6vw,56px)}
-.plogo{display:inline-flex;align-items:center;justify-content:center;height:40px}
-.plogo img{max-height:34px;max-width:148px;width:auto;object-fit:contain;
-  transition:transform .3s}
-.plogo:hover img{transform:scale(1.05)}
-@media(max-width:760px){
-  .plogo-row{grid-template-columns:1fr;gap:16px;padding:26px 0}
-  .plogo-grid{gap:22px 34px}
-  .plogo img{max-height:30px;max-width:120px}
+.plogo-sec {
+  background: #fff;
 }
-
+.plogo-rows {
+  margin-top: clamp(24px, 3vw, 42px);
+  display: flex;
+  flex-direction: column;
+}
+.plogo-row {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: clamp(20px, 3vw, 52px);
+  align-items: center;
+  padding: clamp(28px, 3.2vw, 44px) 0;
+  border-top: 1px solid var(--border);
+}
+.plogo-row:first-child {
+  border-top: 0;
+}
+.plogo-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+}
+.plogo-label small {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: var(--accent-text);
+  text-transform: uppercase;
+}
+.plogo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(26px, 3.6vw, 56px);
+}
+.plogo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+.plogo img {
+  max-height: 34px;
+  max-width: 148px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+.plogo:hover img {
+  transform: scale(1.05);
+}
+@media (max-width: 760px) {
+  .plogo-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 26px 0;
+  }
+  .plogo-grid {
+    gap: 22px 34px;
+  }
+  .plogo img {
+    max-height: 30px;
+    max-width: 120px;
+  }
+}

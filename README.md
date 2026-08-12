@@ -63,14 +63,14 @@ Next 의 다중 루트 레이아웃(라우트 그룹)으로 분리했습니다.
 대조합니다. 불일치가 나오면 그것이 이번에 바꾼 것과 정확히 일치하는지 확인한 뒤에만
 `npm run baseline` 으로 기준선을 갱신합니다.
 
-| 항목 | 내용 |
-|---|---|
-| skip / header / m-panel / main / footer | DOM 트리 전체(태그·속성·텍스트) 완전 일치 |
-| **text** | 하위 트리 텍스트를 이어붙여 비교 — **인라인 요소 경계의 띄어쓰기**까지 검사 |
-| head | title·meta·link 를 순서 무관 집합으로 비교 |
-| ld+json | 구조화 데이터 내용 비교(위치 무관) |
-| root-attr | `<html>`·`<body>` 자체 속성 |
-| scripts | 관리 자산(site2.js·css)의 **판번호**를 원문 패턴으로 비교 — afterInteractive 스크립트는 `<script src>` 태그로 남지 않아 태그 스캔으론 안 잡힌다 |
+| 항목                                    | 내용                                                                                                                                            |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| skip / header / m-panel / main / footer | DOM 트리 전체(태그·속성·텍스트) 완전 일치                                                                                                       |
+| **text**                                | 하위 트리 텍스트를 이어붙여 비교 — **인라인 요소 경계의 띄어쓰기**까지 검사                                                                     |
+| head                                    | title·meta·link 를 순서 무관 집합으로 비교                                                                                                      |
+| ld+json                                 | 구조화 데이터 내용 비교(위치 무관)                                                                                                              |
+| root-attr                               | `<html>`·`<body>` 자체 속성                                                                                                                     |
+| scripts                                 | 관리 자산(site2.js·css)의 **판번호**를 원문 패턴으로 비교 — afterInteractive 스크립트는 `<script src>` 태그로 남지 않아 태그 스캔으론 안 잡힌다 |
 
 **현재 상태: 48페이지 × 11항목 = 528/528 통과.**
 콘텐츠를 손대면 이 게이트가 즉시 깨지므로, 의도하지 않은 회귀를 막는 안전망입니다.
@@ -111,28 +111,28 @@ JSX 는 줄바꿈에 붙은 공백을 지운다. 그래서 `<b>설립</b> (2007.
 
 ## 데이터로 뺀 것
 
-| 파일 | 내용 |
-|---|---|
-| `src/config/site.ts` | 배포 주소. canonical·og:url·og:image·JSON-LD·sitemap·robots 가 모두 참조 |
-| `src/config/navigation.ts` | GNB 4개 대메뉴 + 20개 중메뉴(라벨·주소·설명) |
-| `src/data/site.ts` | 거점 3곳 · 푸터 링크 4컬럼 · 로고 · 법적 표기 |
-| `src/data/heroes.ts` | 서브페이지 히어로 9개 (배지·제목·리드·핵심 포인트) |
-| `src/data/cards.ts` | 제목+설명 카드 14섹션 55장 |
-| `src/data/features.ts` | 라벨+설명 항목 10목록 39항목 |
-| `src/data/steps.ts` | What We Do 3목록 18단계 (일러스트·불릿 3개 포함) |
-| `src/data/cases.ts` | 구축 사례 — 프로젝트 9장 + 홈 마퀴 4장 |
-| `src/data/refs.ts` | references 카드 14장 (배지·발주처·분야·설명) |
-| `src/data/solution-intro.ts` | 솔루션 7쪽 이동 문구 (배지·제품명·2줄 설명) |
-| `src/data/cta.ts` | 푸터 CTA 밴드 문구 16쪽 (킥커·헤드라인·리드·버튼) |
-| `src/data/subnav.ts` | 솔루션 서브 내비 7쪽 (앵커·라벨) |
-| `src/data/sec-heads.ts` | 섹션 머리 표준형 36곳 (킥커·제목·부제) |
-| `src/data/applications.ts` | 비즈니스 적용 분야 카드 16장 + EVCP 스탯 4 |
-| `src/data/contact.ts` | 문의 유형 옵션 7개 |
-| `src/data/history.ts` | 연혁 타임라인 7그룹 28항목 |
-| `src/data/logos.ts` | 고객사·기술 파트너 로고 11장 |
-| `src/data/home-hero.ts` | 홈 히어로 슬라이드 4장 (영상·이미지·타자기 문구) |
-| `src/styles/*.css` | site2.css 를 화면별 29개 모듈로 분리 (`order.json` 이 합치는 순서) |
-| `src/scripts/*.js` | site2.js 를 기능별 25개 모듈로 분리 (`order.json` 이 합치는 순서) |
+| 파일                         | 내용                                                                     |
+| ---------------------------- | ------------------------------------------------------------------------ |
+| `src/config/site.ts`         | 배포 주소. canonical·og:url·og:image·JSON-LD·sitemap·robots 가 모두 참조 |
+| `src/config/navigation.ts`   | GNB 4개 대메뉴 + 20개 중메뉴(라벨·주소·설명)                             |
+| `src/data/site.ts`           | 거점 3곳 · 푸터 링크 4컬럼 · 로고 · 법적 표기                            |
+| `src/data/heroes.ts`         | 서브페이지 히어로 9개 (배지·제목·리드·핵심 포인트)                       |
+| `src/data/cards.ts`          | 제목+설명 카드 14섹션 55장                                               |
+| `src/data/features.ts`       | 라벨+설명 항목 10목록 39항목                                             |
+| `src/data/steps.ts`          | What We Do 3목록 18단계 (일러스트·불릿 3개 포함)                         |
+| `src/data/cases.ts`          | 구축 사례 — 프로젝트 9장 + 홈 마퀴 4장                                   |
+| `src/data/refs.ts`           | references 카드 14장 (배지·발주처·분야·설명)                             |
+| `src/data/solution-intro.ts` | 솔루션 7쪽 이동 문구 (배지·제품명·2줄 설명)                              |
+| `src/data/cta.ts`            | 푸터 CTA 밴드 문구 16쪽 (킥커·헤드라인·리드·버튼)                        |
+| `src/data/subnav.ts`         | 솔루션 서브 내비 7쪽 (앵커·라벨)                                         |
+| `src/data/sec-heads.ts`      | 섹션 머리 표준형 36곳 (킥커·제목·부제)                                   |
+| `src/data/applications.ts`   | 비즈니스 적용 분야 카드 16장 + EVCP 스탯 4                               |
+| `src/data/contact.ts`        | 문의 유형 옵션 7개                                                       |
+| `src/data/history.ts`        | 연혁 타임라인 7그룹 28항목                                               |
+| `src/data/logos.ts`          | 고객사·기술 파트너 로고 11장                                             |
+| `src/data/home-hero.ts`      | 홈 히어로 슬라이드 4장 (영상·이미지·타자기 문구)                         |
+| `src/styles/*.css`           | site2.css 를 화면별 29개 모듈로 분리 (`order.json` 이 합치는 순서)       |
+| `src/scripts/*.js`           | site2.js 를 기능별 25개 모듈로 분리 (`order.json` 이 합치는 순서)        |
 
 실도메인이 정해지면 `NEXT_PUBLIC_SITE_URL` 환경변수 하나로 전체 주소를 바꿀 수 있다.
 
@@ -144,8 +144,9 @@ JSX 는 줄바꿈에 붙은 공백을 지운다. 그래서 `<b>설립</b> (2007.
 인라인 마크업이 섞인 문구는 `RichToken` 배열로 담는다.
 
 ```ts
-["산업 통신 규격(OPC-UA·", "wbr", "Modbus)으로 설비 연결"]
-[{ b: ["데이터 진단"] }, " 학습 가능성 판정"]   // 굵은 라벨 안에도 wbr 이 들어간다
+["산업 통신 규격(OPC-UA·", "wbr", "Modbus)으로 설비 연결"][
+  ({ b: ["데이터 진단"] }, " 학습 가능성 판정")
+]; // 굵은 라벨 안에도 wbr 이 들어간다
 ```
 
 `"br"` 은 문장 구분 줄바꿈(`<br class="sb">`), `"wbr"` 은 줄바꿈 기회다.
@@ -155,12 +156,12 @@ JSX 는 줄바꿈에 붙은 공백을 지운다. 그래서 `<b>설립</b> (2007.
 `agent-rules` 8절 "의미와 동작이 동일하게 반복될 때만 분리" 기준을 적용했다.
 아래는 형태가 섞여 있어, 데이터로 빼면 플래그가 늘어나 오히려 읽기 어려워진다.
 
-| 대상 | 개수 | 이유 |
-|---|---|---|
-| `.duo` 교차 행 | 149 | 좌우 배치·이미지·불릿·CTA 조합이 페이지마다 다름 |
-| 아이콘·이미지·링크가 붙은 카드 | 43 | 같은 `.dep-card` 지만 내부 구성이 4종으로 갈림 |
-| `.feat` 의 `h3+p` 형태 | 16 | 헤딩이라 의미가 다름(문서 개요에 잡힘) |
-| `solution-cubeon #arch` | 8 | 목록 안에서 항목 형태가 섞임 |
+| 대상                           | 개수 | 이유                                             |
+| ------------------------------ | ---- | ------------------------------------------------ |
+| `.duo` 교차 행                 | 149  | 좌우 배치·이미지·불릿·CTA 조합이 페이지마다 다름 |
+| 아이콘·이미지·링크가 붙은 카드 | 43   | 같은 `.dep-card` 지만 내부 구성이 4종으로 갈림   |
+| `.feat` 의 `h3+p` 형태         | 16   | 헤딩이라 의미가 다름(문서 개요에 잡힘)           |
+| `solution-cubeon #arch`        | 8    | 목록 안에서 항목 형태가 섞임                     |
 
 ## 남은 일
 

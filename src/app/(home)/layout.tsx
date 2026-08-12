@@ -11,10 +11,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" precedence="site" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+          precedence="site"
+        />
         <link rel="stylesheet" href="assets/site2.css?v=codex-74" precedence="site" />
         <link rel="stylesheet" href="assets/home-refresh.css?v=codex-15" precedence="site" />
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <script
+          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
+        />
       </head>
       <body className="home-page">
         {children}

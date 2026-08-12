@@ -23,9 +23,7 @@ export function PageHero({ data, lang = "ko" }: { data: HeroData; lang?: Lang })
       )}
       <div className="wrap" style={data.wrapStyle}>
         {" "}
-        <span className="hero-badge">{data.badge}</span>
-        {" "}
-        <h1>{data.title}</h1>
+        <span className="hero-badge">{data.badge}</span> <h1>{data.title}</h1>
         <p>
           {data.lead.map((t, i) =>
             t === "br" ? (

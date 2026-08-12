@@ -151,6 +151,11 @@ export const appCards: Record<string, readonly AppCard[]> = {
 export const evcpStats: readonly { value: readonly RichToken[]; label: readonly RichToken[] }[] = [
   { value: ["OCPP 1.6J"], label: ["Experience integrating and operating chargers"] },
   { value: ["OCPP 2.0.1"], label: ["Features fitted to each business"] },
-  { value: ["Extension standards"], label: ["Designed to work with the roaming standard (OCPI) and vehicle-to-charger communication (ISO 15118)"] },
+  {
+    value: ["Extension standards"],
+    label: [
+      "Designed to work with the roaming standard (OCPI) and vehicle-to-charger communication (ISO 15118)",
+    ],
+  },
   { value: ["LTE Cat M1"], label: ["Our own communication module (2025)"] },
 ];

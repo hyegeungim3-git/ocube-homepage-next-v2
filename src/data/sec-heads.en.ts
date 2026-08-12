@@ -34,21 +34,27 @@ export const secHeads: Record<string, SecHeadCopy> = {
     cls: "reveal",
     kicker: "Applications",
     title: ["Where it applies"],
-    sub: ["We connect data and AI to real industry work so that the way you operate actually changes."],
+    sub: [
+      "We connect data and AI to real industry work so that the way you operate actually changes.",
+    ],
     subCls: "sec-sub",
   },
   "business-embedded:applications": {
     cls: "reveal",
     kicker: "Applications",
     title: ["Where it applies"],
-    sub: ["From vehicles to industrial equipment and IoT edge devices — embedded software matched to the product environment."],
+    sub: [
+      "From vehicles to industrial equipment and IoT edge devices — embedded software matched to the product environment.",
+    ],
     subCls: "sec-sub",
   },
   "business-si:applications": {
     cls: "reveal",
     kicker: "Applications",
     title: ["Where it applies"],
-    sub: ["From finance to enterprise, public sector, energy, smart home and mobility — work and services built as systems that stay up."],
+    sub: [
+      "From finance to enterprise, public sector, energy, smart home and mobility — work and services built as systems that stay up.",
+    ],
     subCls: "sec-sub",
   },
   "license-protopie:tech": {
@@ -75,7 +81,9 @@ export const secHeads: Record<string, SecHeadCopy> = {
     cls: "reveal",
     kicker: "Partnership",
     title: ["OCUBE × The Qt Company"],
-    sub: ["OCUBE is an official partner of The Qt Company, and in 2010 was the first in Korea to become a Nokia Qt Certified Partner."],
+    sub: [
+      "OCUBE is an official partner of The Qt Company, and in 2010 was the first in Korea to become a Nokia Qt Certified Partner.",
+    ],
     subCls: "sec-sub",
   },
   "license-qt:portfolio": {
@@ -107,7 +115,9 @@ export const secHeads: Record<string, SecHeadCopy> = {
     cls: "reveal",
     kicker: "Why Toradex",
     title: ["Why Toradex"],
-    sub: ["Performance, engineering support, long-term supply and upkeep considered together — the range and support hold well past production."],
+    sub: [
+      "Performance, engineering support, long-term supply and upkeep considered together — the range and support hold well past production.",
+    ],
     subCls: "sec-sub",
   },
   "license-tuxera:products": {
@@ -134,21 +144,27 @@ export const secHeads: Record<string, SecHeadCopy> = {
     cls: "reveal",
     kicker: "Overview",
     title: ["One request, passed between specialists, finished as a deliverable"],
-    sub: ["Ask through the portal and the right agents work through documents, knowledge and data in sequence — a workflow you can run again and again."],
+    sub: [
+      "Ask through the portal and the right agents work through documents, knowledge and data in sequence — a workflow you can run again and again.",
+    ],
     subCls: "sec-sub",
   },
   "solution-agentq:proof": {
     cls: "reveal",
     kicker: "Prototype Workflows",
     title: ["Each agent takes its part, and the result comes together"],
-    sub: ["The prototype shows separate capabilities chained in order, producing work a person can then review."],
+    sub: [
+      "The prototype shows separate capabilities chained in order, producing work a person can then review.",
+    ],
     subCls: "sec-sub",
   },
   "solution-agentq:scenarios": {
     cls: "reveal",
     kicker: "Ideal Use Cases",
     title: ["Where it makes the most difference"],
-    sub: ["For work where documents, data and rules are tangled together, and the output needs both evidence and control."],
+    sub: [
+      "For work where documents, data and rules are tangled together, and the output needs both evidence and control.",
+    ],
     subCls: "sec-sub",
   },
   "solution-cubeon:overview": {
@@ -156,21 +172,27 @@ export const secHeads: Record<string, SecHeadCopy> = {
     kicker: "Overview",
     title: ["Data and AI, connected to how your organisation actually acts"],
     titleWhite: true,
-    sub: ["Cubeon handles it all in one place — connecting data, running AI models and agents, taking approval from the person responsible, and checking what the action produced."],
+    sub: [
+      "Cubeon handles it all in one place — connecting data, running AI models and agents, taking approval from the person responsible, and checking what the action produced.",
+    ],
     subCls: "sec-sub",
   },
   "solution-cubeon:fit": {
     cls: "reveal",
     kicker: "Ideal Use Cases",
     title: ["It suits organisations like these"],
-    sub: ["For organisations that want scattered data and AI services brought under one operating standard — and carried through to action."],
+    sub: [
+      "For organisations that want scattered data and AI services brought under one operating standard — and carried through to action.",
+    ],
     subCls: "sec-sub",
   },
   "solution-dataq:overview": {
     cls: "reveal",
     kicker: "Overview",
     title: ["Data piled up in different formats and to different rules, brought together"],
-    sub: ["QData connects what is scattered across systems and teams, and puts it in a form analysis and AI can work with."],
+    sub: [
+      "QData connects what is scattered across systems and teams, and puts it in a form analysis and AI can work with.",
+    ],
     subCls: "sec-sub",
   },
   "solution-dataq:fit": {
@@ -184,7 +206,9 @@ export const secHeads: Record<string, SecHeadCopy> = {
     cls: "reveal",
     kicker: "Overview",
     title: ["Charging data, turned into steadier and leaner operation"],
-    sub: ["EVCP brings together charger integration, membership, payment and monitoring, and adds AI analysis for fault response and energy management."],
+    sub: [
+      "EVCP brings together charger integration, membership, payment and monitoring, and adds AI analysis for fault response and energy management.",
+    ],
     subCls: "sec-sub",
   },
   "solution-evcp:fit": {
@@ -198,7 +222,9 @@ export const secHeads: Record<string, SecHeadCopy> = {
     cls: "reveal",
     kicker: "Overview",
     title: ["Not one machine — the whole plant"],
-    sub: ["QFactory leaves your equipment as it is, gathers data from the processes that matter, and carries predictions through into action on the line."],
+    sub: [
+      "QFactory leaves your equipment as it is, gathers data from the processes that matter, and carries predictions through into action on the line.",
+    ],
     subCls: "sec-sub",
   },
   "solution-factoryq:fit": {
@@ -213,7 +239,9 @@ export const secHeads: Record<string, SecHeadCopy> = {
     kicker: "Overview",
     title: ["Turning what the vehicles record into better operation"],
     titleWhite: true,
-    sub: ["Driving and diagnostic data show risky driving — and how you are doing on cost and carbon."],
+    sub: [
+      "Driving and diagnostic data show risky driving — and how you are doing on cost and carbon.",
+    ],
     subCls: "sec-sub",
   },
   "solution-qdrive:fit": {
@@ -227,7 +255,9 @@ export const secHeads: Record<string, SecHeadCopy> = {
     cls: "reveal",
     kicker: "Overview",
     title: ["Cameras you already have, working as traffic and safety sensors"],
-    sub: ["CCTV footage gives traffic counts by vehicle type, and potholes and incidents are detected live and passed to the control room."],
+    sub: [
+      "CCTV footage gives traffic counts by vehicle type, and potholes and incidents are detected live and passed to the control room.",
+    ],
     subCls: "sec-sub",
   },
   "solution-traffic:fit": {

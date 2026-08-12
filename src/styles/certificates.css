@@ -1,14 +1,73 @@
 /* ═══ 인증 · 특허 · 저작권 갤러리 ═══ */
-.cert-grid{margin-top:clamp(24px,3vw,38px);display:grid;grid-template-columns:repeat(auto-fill,minmax(214px,1fr));gap:clamp(16px,2vw,24px)}
-.cert-card{display:flex;flex-direction:column;background:var(--canvas);border:1px solid var(--border);
-  border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
-.cert-card:hover{transform:translateY(-3px);box-shadow:var(--sh);border-color:var(--accent)}
-.cert-card.is-hidden{display:none}
-.cert-thumb{background:var(--soft);aspect-ratio:1/1.32;overflow:hidden;display:block;border-bottom:1px solid var(--border)}
-.cert-thumb img{width:100%;height:100%;object-fit:contain;object-position:center;padding:10px;background:#fff;display:block}
-.cert-meta{padding:14px 15px 16px;display:flex;flex-direction:column;gap:5px}
-.cert-meta .iss{font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--accent-text)}
-.cert-meta h3{font-size:14.5px;font-weight:700;line-height:1.45;letter-spacing:-.01em}
-.cert-meta .dt{margin-top:2px;font-size:12px;color:var(--fg-3);font-variant-numeric:tabular-nums}
-.cert-note{margin-top:clamp(20px,2.4vw,30px);font-size:13px;color:var(--fg-3);line-height:1.7}
-
+.cert-grid {
+  margin-top: clamp(24px, 3vw, 38px);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(214px, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+}
+.cert-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    border-color 0.2s;
+}
+.cert-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sh);
+  border-color: var(--accent);
+}
+.cert-card.is-hidden {
+  display: none;
+}
+.cert-thumb {
+  background: var(--soft);
+  aspect-ratio: 1/1.32;
+  overflow: hidden;
+  display: block;
+  border-bottom: 1px solid var(--border);
+}
+.cert-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 10px;
+  background: #fff;
+  display: block;
+}
+.cert-meta {
+  padding: 14px 15px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.cert-meta .iss {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--accent-text);
+}
+.cert-meta h3 {
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+.cert-meta .dt {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--fg-3);
+  font-variant-numeric: tabular-nums;
+}
+.cert-note {
+  margin-top: clamp(20px, 2.4vw, 30px);
+  font-size: 13px;
+  color: var(--fg-3);
+  line-height: 1.7;
+}

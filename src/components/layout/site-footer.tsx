@@ -43,8 +43,7 @@ export function SiteFooter({
               {footerColumns.map((c) => (
                 <div className="fb-col" key={c.title}>
                   <p className="f-h">{c.title}</p>
-                  {/* 원본은 제목 뒤에만 줄바꿈이 있고 링크 사이에는 공백이 없다 */}
-                  {" "}
+                  {/* 원본은 제목 뒤에만 줄바꿈이 있고 링크 사이에는 공백이 없다 */}{" "}
                   {c.links.map((l) => (
                     <a href={l.href} key={l.href}>
                       {l.label}

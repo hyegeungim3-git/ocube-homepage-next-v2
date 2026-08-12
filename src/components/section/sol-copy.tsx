@@ -9,14 +9,11 @@ export function SolCopy({ intro }: { intro: SolutionIntro }) {
       <div className="sol-copy page-hero">
         <div className="wrap">
           {" "}
-          <span className="hero-badge">{intro.badge}</span>
-          {" "}
-          <h1>{intro.name}</h1>
+          <span className="hero-badge">{intro.badge}</span> <h1>{intro.name}</h1>
           <p className="sol-desc">
             <span>
               <RichText value={intro.lines[0]} />
-            </span>
-            {" "}
+            </span>{" "}
             <span>
               <RichText value={intro.lines[1]} />
             </span>

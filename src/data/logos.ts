@@ -13,7 +13,12 @@ export const logoGroups: Record<"clients" | "vendors", readonly Logo[]> = {
     { src: "assets/img/client/sk-energy.png", alt: "SK에너지", width: "280", height: "90" },
     { src: "assets/img/client/ls-electric.png", alt: "LS ELECTRIC", width: "170", height: "45" },
     { src: "assets/img/client/doosan.png", alt: "두산", width: "280", height: "90" },
-    { src: "assets/img/client/dgb-financial-group.png", alt: "DGB금융지주", width: "280", height: "90" },
+    {
+      src: "assets/img/client/dgb-financial-group.png",
+      alt: "DGB금융지주",
+      width: "280",
+      height: "90",
+    },
   ],
   vendors: [
     { src: "assets/img/vlogo/qt.png", alt: "Qt", width: "240", height: "70" },

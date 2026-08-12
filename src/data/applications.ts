@@ -125,7 +125,17 @@ export const appCards: Record<string, readonly AppCard[]> = {
       iconCls: "ax-app-icon",
       icon: "assets/img/business/applications/si-energy-charging-white.webp",
       title: "Energy & Charging",
-      line1: ["충전기·", "wbr", "회원·", "wbr", "결제·", "wbr", "정산·", "wbr", "관제 기능을 통합하여"],
+      line1: [
+        "충전기·",
+        "wbr",
+        "회원·",
+        "wbr",
+        "결제·",
+        "wbr",
+        "정산·",
+        "wbr",
+        "관제 기능을 통합하여",
+      ],
       line2: ["전기차 충전 및 에너지 운영 플랫폼 구축"],
     },
     {

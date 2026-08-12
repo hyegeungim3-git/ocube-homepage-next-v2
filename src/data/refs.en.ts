@@ -26,7 +26,9 @@ export const refCards: readonly RefCard[] = [
     title: ["Factory Insight AI — spotting assembly line faults early"],
     client: "SL",
     sector: "Manufacturing",
-    desc: ["Fastening signals read as they happen, so defects that used to surface downstream are caught the moment they occur."],
+    desc: [
+      "Fastening signals read as they happen, so defects that used to surface downstream are caught the moment they occur.",
+    ],
   },
   {
     cls: "ref-card rv d1",
@@ -47,7 +49,9 @@ export const refCards: readonly RefCard[] = [
     title: ["Autonomous operation of a paper mill with AI-OT"],
     client: "Undisclosed",
     sector: "Manufacturing",
-    desc: ["Scattered process data is brought together to cut energy use and to predict when equipment needs replacing."],
+    desc: [
+      "Scattered process data is brought together to cut energy use and to predict when equipment needs replacing.",
+    ],
     note: "(project ongoing)",
   },
   {
@@ -58,7 +62,9 @@ export const refCards: readonly RefCard[] = [
     title: ["AI agent for material lookup"],
     client: "LG Electronics",
     sector: "Manufacturing",
-    desc: ["Material information spread across several systems, brought together so one conversation finds it."],
+    desc: [
+      "Material information spread across several systems, brought together so one conversation finds it.",
+    ],
   },
   {
     cls: "ref-card rv d1",
@@ -78,7 +84,9 @@ export const refCards: readonly RefCard[] = [
     title: ["PLC development, verification and test automation"],
     client: "LS ELECTRIC",
     sector: "Manufacturing",
-    desc: ["PLC functions developed and verified, with an AI-based test automation solution built."],
+    desc: [
+      "PLC functions developed and verified, with an AI-based test automation solution built.",
+    ],
   },
   {
     cls: "ref-card rv d1",
@@ -108,7 +116,9 @@ export const refCards: readonly RefCard[] = [
     title: ["Cybersecurity deliverables for Toyota CCS and TSP"],
     client: "Toyota",
     sector: "Mobility",
-    desc: ["Threats to the connected service and telematics platform analysed, and the security management deliverables written."],
+    desc: [
+      "Threats to the connected service and telematics platform analysed, and the security management deliverables written.",
+    ],
   },
   {
     cls: "ref-card rv d1",
@@ -118,7 +128,9 @@ export const refCards: readonly RefCard[] = [
     title: ["Infotainment and cluster software in mass production"],
     client: "Korean automakers and suppliers",
     sector: "Mobility",
-    desc: ["Infotainment and instrument cluster software supplied in production over several years."],
+    desc: [
+      "Infotainment and instrument cluster software supplied in production over several years.",
+    ],
   },
   {
     cls: "ref-card rv d2",
@@ -138,7 +150,9 @@ export const refCards: readonly RefCard[] = [
     title: ["Vehicle controller functions and solutions"],
     client: "Automotive supplier (Tier 2)",
     sector: "Mobility",
-    desc: ["Controller functions developed and supplied, with (H)OTA reprogramming and UDS and CAN diagnostics."],
+    desc: [
+      "Controller functions developed and supplied, with (H)OTA reprogramming and UDS and CAN diagnostics.",
+    ],
   },
   {
     cls: "ref-card rv d1",
@@ -189,7 +203,9 @@ export const refCards: readonly RefCard[] = [
     title: ["Integrated financial SI · Group communication app"],
     client: "DGB Financial Group",
     sector: "Finance",
-    desc: ["From a prepaid card to an app across eight group companies — years as their SI partner."],
+    desc: [
+      "From a prepaid card to an app across eight group companies — years as their SI partner.",
+    ],
   },
   {
     cls: "ref-card rv d1",
@@ -219,6 +235,8 @@ export const refCards: readonly RefCard[] = [
     title: ["AI support for customer service"],
     client: "LG Electronics",
     sector: "Enterprise services",
-    desc: ["The knowledge relevant to the question is found first, and the reply is drafted from it."],
+    desc: [
+      "The knowledge relevant to the question is found first, and the reply is drafted from it.",
+    ],
   },
 ];

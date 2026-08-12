@@ -20,42 +20,61 @@ import { featLists } from "@/data/features";
 export default function SolutionEvcpPage() {
   return (
     <>
-      <title>
-        EVCP AI 전기차 충전 운영 플랫폼 — 오큐브
-      </title>
-      <meta name="description" content="EVCP — 충전기·이용·결제·에너지 데이터를 연결하고 AI로 장애와 수요를 예측해 전기차 충전 운영을 최적화하는 플랫폼." />
+      <title>EVCP AI 전기차 충전 운영 플랫폼 — 오큐브</title>
+      <meta
+        name="description"
+        content="EVCP — 충전기·이용·결제·에너지 데이터를 연결하고 AI로 장애와 수요를 예측해 전기차 충전 운영을 최적화하는 플랫폼."
+      />
       <link rel="canonical" href={withBase("solution-evcp.html")} />
       <link rel="alternate" hrefLang="ko" href={withBase("solution-evcp.html")} />
       <link rel="alternate" hrefLang="en" href={withBase("en/solution-evcp.html")} />
       <link rel="alternate" hrefLang="x-default" href={withBase("solution-evcp.html")} />
-      <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230e1626'/%3E%3Cpath%20d='M16%206.5l7.5%204.3v8.6L16%2023.7l-7.5-4.3v-8.6z'%20fill='none'%20stroke='%230075de'%20stroke-width='1.8'/%3E%3Cpath%20d='M16%206.5v17.2M8.5%2010.8l7.5%204.3%207.5-4.3'%20stroke='%235b9bff'%20stroke-width='1.4'%20fill='none'/%3E%3C/svg%3E" />
+      <link
+        rel="icon"
+        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230e1626'/%3E%3Cpath%20d='M16%206.5l7.5%204.3v8.6L16%2023.7l-7.5-4.3v-8.6z'%20fill='none'%20stroke='%230075de'%20stroke-width='1.8'/%3E%3Cpath%20d='M16%206.5v17.2M8.5%2010.8l7.5%204.3%207.5-4.3'%20stroke='%235b9bff'%20stroke-width='1.4'%20fill='none'/%3E%3C/svg%3E"
+      />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="오큐브(주)" />
       <meta property="og:locale" content="ko_KR" />
       <meta property="og:title" content="EVCP AI 전기차 충전 운영 플랫폼 — 오큐브" />
-      <meta property="og:description" content="EVCP — 충전기·이용·결제·에너지 데이터를 연결하고 AI로 장애와 수요를 예측해 전기차 충전 운영을 최적화하는 플랫폼." />
+      <meta
+        property="og:description"
+        content="EVCP — 충전기·이용·결제·에너지 데이터를 연결하고 AI로 장애와 수요를 예측해 전기차 충전 운영을 최적화하는 플랫폼."
+      />
       <meta property="og:url" content={withBase("solution-evcp.html")} />
       <meta property="og:image" content={withBase("og-codex.png")} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="EVCP AI 전기차 충전 운영 플랫폼 — 오큐브" />
-      <meta name="twitter:description" content="EVCP — 충전기·이용·결제·에너지 데이터를 연결하고 AI로 장애와 수요를 예측해 전기차 충전 운영을 최적화하는 플랫폼." />
+      <meta
+        name="twitter:description"
+        content="EVCP — 충전기·이용·결제·에너지 데이터를 연결하고 AI로 장애와 수요를 예측해 전기차 충전 운영을 최적화하는 플랫폼."
+      />
       <meta name="twitter:image" content={withBase("og-codex.png")} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: applyBase("{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"홈\",\"item\":\"@@BASE@@\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"EVCP\",\"item\":\"@@BASE@@solution-evcp.html\"}]}") }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: applyBase(
+            '{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"@@BASE@@"},{"@type":"ListItem","position":2,"name":"EVCP","item":"@@BASE@@solution-evcp.html"}]}',
+          ),
+        }}
+      />
       <SiteHeader slug="solution-evcp" />
       <MobilePanel />
       <main>
         <div className="sol-open">
           <section id="top" className="hero page-hero dark sol-hero">
-            <div className="hero-bg" style={{backgroundImage: "url('assets/video/sec_autonomous.jpg')"}} aria-hidden="true"></div>
+            <div
+              className="hero-bg"
+              style={{ backgroundImage: "url('assets/video/sec_autonomous.jpg')" }}
+              aria-hidden="true"
+            ></div>
             <div className="hero-veil" aria-hidden="true"></div>
             <div className="hero-scroll" aria-hidden="true">
               <div className="wrap">
                 <i></i>
-                <span>
-                  SCROLL
-                </span>
+                <span>SCROLL</span>
               </div>
             </div>
           </section>
@@ -64,8 +83,13 @@ export default function SolutionEvcpPage() {
             <div className="sol-body">
               <figure className="sol-stage rv d3">
                 {" "}
-                <img src="assets/img/evcp.png" alt="EVCP 화면 — 프로토타입 예시" loading="lazy" width="1746" height="748" />
-                {" "}
+                <img
+                  src="assets/img/evcp.png"
+                  alt="EVCP 화면 — 프로토타입 예시"
+                  loading="lazy"
+                  width="1746"
+                  height="748"
+                />{" "}
               </figure>
             </div>
           </section>
@@ -76,8 +100,14 @@ export default function SolutionEvcpPage() {
             <SecHead copy={secHeads["solution-evcp:overview"]} />
             <div className="media-duo overview-balanced reveal" data-d="1">
               <figure>
-                <img className="shot" src="assets/img/overview-evcp.png" alt="EVCP가 전기차 충전기의 실시간 관제와 사용자·결제·정산·분석·안전 관리를 연결하는 모습" loading="lazy" width="1565" height="1005" />
-                {" "}
+                <img
+                  className="shot"
+                  src="assets/img/overview-evcp.png"
+                  alt="EVCP가 전기차 충전기의 실시간 관제와 사용자·결제·정산·분석·안전 관리를 연결하는 모습"
+                  loading="lazy"
+                  width="1565"
+                  height="1005"
+                />{" "}
               </figure>
               <div className="feat-list">
                 {" "}
@@ -90,30 +120,21 @@ export default function SolutionEvcpPage() {
         <section id="features" className="sec-anchor">
           <div className="wrap">
             <div className="sec-head rv">
-              <span className="kicker">
-                AI Operations Console
-              </span>
-              {" "}
-              <h2>
-                충전 운영과 AI 분석을 한 화면에서 확인합니다
-              </h2>
+              <span className="kicker">AI Operations Console</span>{" "}
+              <h2>충전 운영과 AI 분석을 한 화면에서 확인합니다</h2>
               <p className="lead">
                 충전소·
                 <wbr />
-                충전기 상태와 이용 데이터를 함께 분석해 장애 대응과 운영 최적화에 필요한 정보를 제공합니다.
+                충전기 상태와 이용 데이터를 함께 분석해 장애 대응과 운영 최적화에 필요한 정보를
+                제공합니다.
               </p>
             </div>
             <div className="duo">
               <div className="duo-txt rv">
-                <span className="pill">
-                  Monitoring
-                </span>
-                {" "}
-                <h3>
-                  충전소 통합 관제
-                </h3>
+                <span className="pill">Monitoring</span> <h3>충전소 통합 관제</h3>
                 <p>
-                  운영 중인 충전소와 충전기 상태를 지도에서 확인하고, 상세 정보와 이용 이력을 바로 조회합니다.
+                  운영 중인 충전소와 충전기 상태를 지도에서 확인하고, 상세 정보와 이용 이력을 바로
+                  조회합니다.
                 </p>
                 <ul className="pi-bul">
                   <li>
@@ -121,8 +142,8 @@ export default function SolutionEvcpPage() {
                       사업자·
                       <wbr />
                       지역별 선택
-                    </b>
-                    {" "}사업자별·
+                    </b>{" "}
+                    사업자별·
                     <wbr />
                     지역별 목록에서 운영 충전소 선택
                   </li>
@@ -131,32 +152,28 @@ export default function SolutionEvcpPage() {
                       충전기별 상태·
                       <wbr />
                       이력
-                    </b>
-                    {" "}충전기 상태와 최근 이용 이력을 한 화면에서 확인
+                    </b>{" "}
+                    충전기 상태와 최근 이용 이력을 한 화면에서 확인
                   </li>
                   <li>
-                    <b>
-                      지도에서 직접 선택
-                    </b>
-                    {" "}원하는 충전소를 지도에서 바로 선택
+                    <b>지도에서 직접 선택</b> 원하는 충전소를 지도에서 바로 선택
                   </li>
                 </ul>
               </div>
               <div className="duo-media stage rv d1">
                 {" "}
-                <img src="assets/img/evcp.png" alt="EVCP 충전소 관제 화면 — 지도 기반 운영 충전소·충전기 상태" loading="lazy" width="1746" height="748" />
-                {" "}
+                <img
+                  src="assets/img/evcp.png"
+                  alt="EVCP 충전소 관제 화면 — 지도 기반 운영 충전소·충전기 상태"
+                  loading="lazy"
+                  width="1746"
+                  height="748"
+                />{" "}
               </div>
             </div>
             <div className="duo rev">
               <div className="duo-txt rv">
-                <span className="pill">
-                  Dashboard
-                </span>
-                {" "}
-                <h3>
-                  운영 현황 대시보드
-                </h3>
+                <span className="pill">Dashboard</span> <h3>운영 현황 대시보드</h3>
                 <p>
                   필요한 차트를 선택해 배치하고, 충전기 상태와 매출·
                   <wbr />
@@ -164,22 +181,13 @@ export default function SolutionEvcpPage() {
                 </p>
                 <ul className="pi-bul">
                   <li>
-                    <b>
-                      월별 매출
-                    </b>
-                    {" "}기간별 매출 추이 차트
+                    <b>월별 매출</b> 기간별 매출 추이 차트
                   </li>
                   <li>
-                    <b>
-                      충전량 통계
-                    </b>
-                    {" "}월별 충전량 집계로 운영 규모 파악
+                    <b>충전량 통계</b> 월별 충전량 집계로 운영 규모 파악
                   </li>
                   <li>
-                    <b>
-                      가동 충전기 수
-                    </b>
-                    {" "}지역별 충전가능·
+                    <b>가동 충전기 수</b> 지역별 충전가능·
                     <wbr />
                     충전중·
                     <wbr />
@@ -191,16 +199,18 @@ export default function SolutionEvcpPage() {
               </div>
               <div className="duo-media stage rv d1">
                 {" "}
-                <img src="assets/img/evcp-dash.jpg" alt="EVCP 다이나믹 대시보드 — 월별 매출·충전량·가동 충전기 수 차트" loading="lazy" width="1400" height="298" />
-                {" "}
+                <img
+                  src="assets/img/evcp-dash.jpg"
+                  alt="EVCP 다이나믹 대시보드 — 월별 매출·충전량·가동 충전기 수 차트"
+                  loading="lazy"
+                  width="1400"
+                  height="298"
+                />{" "}
               </div>
             </div>
             <div className="duo">
               <div className="duo-txt rv">
-                <span className="pill">
-                  AI Insight
-                </span>
-                {" "}
+                <span className="pill">AI Insight</span>{" "}
                 <h3>
                   장애·
                   <wbr />
@@ -219,69 +229,53 @@ export default function SolutionEvcpPage() {
                 </p>
                 <ul className="pi-bul">
                   <li>
-                    <b>
-                      이상 징후 예측
-                    </b>
-                    {" "}반복 오류와 상태 변화를 분석해 장애 가능성이 높은 충전기 우선 점검
+                    <b>이상 징후 예측</b> 반복 오류와 상태 변화를 분석해 장애 가능성이 높은 충전기
+                    우선 점검
                   </li>
                   <li>
-                    <b>
-                      충전 수요 예측
-                    </b>
-                    {" "}시간·
+                    <b>충전 수요 예측</b> 시간·
                     <wbr />
                     요일·
                     <wbr />
                     지역별 이용 패턴으로 예상 수요와 혼잡 구간 파악
                   </li>
                   <li>
-                    <b>
-                      에너지 운영 권고
-                    </b>
-                    {" "}전력 사용량과 요금 조건을 고려해 부하 분산과 운영 시간 조정 지원
+                    <b>에너지 운영 권고</b> 전력 사용량과 요금 조건을 고려해 부하 분산과 운영 시간
+                    조정 지원
                   </li>
                 </ul>
               </div>
               <div className="duo-media stage rv d1">
                 {" "}
-                <img src="assets/img/overview-evcp.png" alt="충전기 상태와 이용 통계를 분석해 이상 징후·수요·에너지 운영을 지원하는 EVCP 구성" loading="lazy" width="1565" height="1005" />
-                {" "}
+                <img
+                  src="assets/img/overview-evcp.png"
+                  alt="충전기 상태와 이용 통계를 분석해 이상 징후·수요·에너지 운영을 지원하는 EVCP 구성"
+                  loading="lazy"
+                  width="1565"
+                  height="1005"
+                />{" "}
               </div>
             </div>
             <div className="duo rev">
               <div className="duo-txt rv">
-                <span className="pill">
-                  Event
-                </span>
-                {" "}
-                <h3>
-                  실시간 이벤트 관제
-                </h3>
+                <span className="pill">Event</span> <h3>실시간 이벤트 관제</h3>
                 <p>
-                  충전기 상태 이벤트를 실시간으로 수집해 목록과 지도에 함께 표시하고, 상태 변경 시각까지 추적합니다.
+                  충전기 상태 이벤트를 실시간으로 수집해 목록과 지도에 함께 표시하고, 상태 변경
+                  시각까지 추적합니다.
                 </p>
                 <ul className="pi-bul">
                   <li>
-                    <b>
-                      이벤트 실시간 표시
-                    </b>
-                    {" "}충전 시작·
+                    <b>이벤트 실시간 표시</b> 충전 시작·
                     <wbr />
                     대기·
                     <wbr />
                     연결 해제 등 상태 변경을 발생 순서대로 기록
                   </li>
                   <li>
-                    <b>
-                      지도 기반 위치 확인
-                    </b>
-                    {" "}이벤트가 발생한 충전소 위치를 지도에 동시 표시
+                    <b>지도 기반 위치 확인</b> 이벤트가 발생한 충전소 위치를 지도에 동시 표시
                   </li>
                   <li>
-                    <b>
-                      상태 변경 이력 추적
-                    </b>
-                    {" "}충전기 아이디·
+                    <b>상태 변경 이력 추적</b> 충전기 아이디·
                     <wbr />
                     충전소명·
                     <wbr />
@@ -291,21 +285,21 @@ export default function SolutionEvcpPage() {
               </div>
               <div className="duo-media stage rv d1">
                 {" "}
-                <img src="assets/img/evcp-event.jpg" alt="EVCP 실시간 이벤트 관제 — 충전기 상태 이벤트 목록과 지도 표시" loading="lazy" width="1400" height="446" />
-                {" "}
+                <img
+                  src="assets/img/evcp-event.jpg"
+                  alt="EVCP 실시간 이벤트 관제 — 충전기 상태 이벤트 목록과 지도 표시"
+                  loading="lazy"
+                  width="1400"
+                  height="446"
+                />{" "}
               </div>
             </div>
             <div className="duo">
               <div className="duo-txt rv">
-                <span className="pill">
-                  Search
-                </span>
-                {" "}
-                <h3>
-                  지도 기반 충전소 검색
-                </h3>
+                <span className="pill">Search</span> <h3>지도 기반 충전소 검색</h3>
                 <p>
-                  로밍 제휴 충전소와 충전기의 상세 정보를 지도에서 검색합니다. 사용자 앱과 관리자 앱이 같은 지도 모듈을 사용합니다.
+                  로밍 제휴 충전소와 충전기의 상세 정보를 지도에서 검색합니다. 사용자 앱과 관리자
+                  앱이 같은 지도 모듈을 사용합니다.
                 </p>
                 <ul className="pi-bul">
                   <li>
@@ -313,24 +307,21 @@ export default function SolutionEvcpPage() {
                       충전소·
                       <wbr />
                       충전기 상세
-                    </b>
-                    {" "}지도 기반 충전소·
+                    </b>{" "}
+                    지도 기반 충전소·
                     <wbr />
                     충전기 상세 정보 제공
                   </li>
                   <li>
-                    <b>
-                      주소 기반 검색
-                    </b>
-                    {" "}주소로 충전소를 찾는 검색 기능
+                    <b>주소 기반 검색</b> 주소로 충전소를 찾는 검색 기능
                   </li>
                   <li>
                     <b>
                       운영기관·
                       <wbr />
                       종류별 필터
-                    </b>
-                    {" "}운영기관·
+                    </b>{" "}
+                    운영기관·
                     <wbr />
                     충전기 종류(완속·
                     <wbr />
@@ -342,8 +333,13 @@ export default function SolutionEvcpPage() {
               </div>
               <div className="duo-media stage rv d1">
                 {" "}
-                <img src="assets/img/evcp-search.jpg" alt="EVCP 지도 기반 충전소 검색 — 충전소·충전기 상세 정보와 주소 검색" loading="lazy" width="1200" height="348" />
-                {" "}
+                <img
+                  src="assets/img/evcp-search.jpg"
+                  alt="EVCP 지도 기반 충전소 검색 — 충전소·충전기 상세 정보와 주소 검색"
+                  loading="lazy"
+                  width="1200"
+                  height="348"
+                />{" "}
               </div>
             </div>
           </div>
@@ -352,15 +348,11 @@ export default function SolutionEvcpPage() {
         <section id="msa" className="sec-anchor deploy">
           <div className="wrap">
             <div className="sec-head rv">
-              <span className="kicker">
-                Service Architecture
-              </span>
-              {" "}
-              <h2>
-                기능별 서비스를 분리해 장애 영향은 줄이고 확장은 쉽게 합니다
-              </h2>
+              <span className="kicker">Service Architecture</span>{" "}
+              <h2>기능별 서비스를 분리해 장애 영향은 줄이고 확장은 쉽게 합니다</h2>
               <p className="lead">
-                회원·충전기 연동(OCPP)·결제·로밍을 독립 서비스로 구성해 장애 영향을 줄이고 필요한 기능을 쉽게 확장합니다.
+                회원·충전기 연동(OCPP)·결제·로밍을 독립 서비스로 구성해 장애 영향을 줄이고 필요한
+                기능을 쉽게 확장합니다.
               </p>
             </div>
             <div className="dep-grid reveal" data-d="1">
@@ -368,9 +360,7 @@ export default function SolutionEvcpPage() {
                 <div className="ic" aria-hidden="true">
                   👤
                 </div>
-                <h3>
-                  회원 관리
-                </h3>
+                <h3>회원 관리</h3>
                 <p>
                   회원 가입·
                   <wbr />
@@ -385,9 +375,7 @@ export default function SolutionEvcpPage() {
                 <div className="ic" aria-hidden="true">
                   🔌
                 </div>
-                <h3>
-                  충전기 연동(OCPP)
-                </h3>
+                <h3>충전기 연동(OCPP)</h3>
                 <p>
                   충전기별 OCPP 버전·
                   <wbr />
@@ -398,9 +386,7 @@ export default function SolutionEvcpPage() {
                 <div className="ic" aria-hidden="true">
                   💳
                 </div>
-                <h3>
-                  결제
-                </h3>
+                <h3>결제</h3>
                 <p>
                   충전 세션별 과금·
                   <wbr />
@@ -411,49 +397,41 @@ export default function SolutionEvcpPage() {
                 <div className="ic" aria-hidden="true">
                   🔗
                 </div>
-                <h3>
-                  로밍
-                </h3>
-                <p>
-                  사업자 간 로밍으로 이용 가능한 충전소 범위 확대
-                </p>
+                <h3>로밍</h3>
+                <p>사업자 간 로밍으로 이용 가능한 충전소 범위 확대</p>
               </div>
             </div>
-            <figure className="shot-fig reveal" data-d="2" style={{marginTop: "clamp(26px,3vw,42px)"}}>
+            <figure
+              className="shot-fig reveal"
+              data-d="2"
+              style={{ marginTop: "clamp(26px,3vw,42px)" }}
+            >
               {" "}
-              <img className="shot fit" src="assets/img/evcp-msa.jpg" alt="EVCP 서비스 구조도 — 클라이언트(WEB·WAS)와 퍼블릭 클라우드의 회원·충전기연동(OCPP)·App·결제·로밍 서비스" loading="lazy" width="1000" height="862" />
-              {" "}
+              <img
+                className="shot fit"
+                src="assets/img/evcp-msa.jpg"
+                alt="EVCP 서비스 구조도 — 클라이언트(WEB·WAS)와 퍼블릭 클라우드의 회원·충전기연동(OCPP)·App·결제·로밍 서비스"
+                loading="lazy"
+                width="1000"
+                height="862"
+              />{" "}
             </figure>
           </div>
         </section>
         <section id="proof" className="sec-anchor">
           <div className="wrap">
             <div className="reveal">
-              <span className="kicker">
-                Reference
-              </span>
-              {" "}
-              <h2>
-                구축 경험을 제품 자산으로 전환했습니다
-              </h2>
+              <span className="kicker">Reference</span>{" "}
+              <h2>구축 경험을 제품 자산으로 전환했습니다</h2>
             </div>
             <div className="hero-stats reveal">
               <StatItems items={evcpStats} />
             </div>
             <div className="case-grid two">
               <article className="case-card reveal" data-d="1">
-                <span className="dom">
-                  에너지 · SK에너지
-                </span>
-                {" "}
-                <h3>
-                  EV 충전 플랫폼 구축
-                </h3>
+                <span className="dom">에너지 · SK에너지</span> <h3>EV 충전 플랫폼 구축</h3>
                 <p className="csi">
-                  <b>
-                    과제
-                  </b>
-                  {" "}충전 사업 진출에 필요한 회원·
+                  <b>과제</b> 충전 사업 진출에 필요한 회원·
                   <wbr />
                   연동·
                   <wbr />
@@ -462,39 +440,25 @@ export default function SolutionEvcpPage() {
                   관제 플랫폼 부재
                 </p>
                 <p className="csi">
-                  <b>
-                    해결
-                  </b>
-                  {" "}국제 충전 통신 표준(OCPP) 기반 마이크로서비스 구축·
+                  <b>해결</b> 국제 충전 통신 표준(OCPP) 기반 마이크로서비스 구축·
                   <wbr />
                   운영 → 자체 제품 EVCP로 자산화
                 </p>
                 <p className="csi">
-                  <b>
-                    성과
-                  </b>
-                  {" "}충전 사업에 필요한 기능 전체를 재사용 가능한 자체 플랫폼으로 확보
+                  <b>성과</b> 충전 사업에 필요한 기능 전체를 재사용 가능한 자체 플랫폼으로 확보
                 </p>
               </article>
               <article className="case-card reveal" data-d="2">
-                <span className="dom">
-                  자체 모듈
-                </span>
-                {" "}
-                <h3>
-                  OCPP LTE 모듈
-                </h3>
+                <span className="dom">자체 모듈</span> <h3>OCPP LTE 모듈</h3>
                 <p className="csi">
-                  Mini PCI LTE Cat M1 통신 모듈(2025) 자체 개발 — 충전 통신 하드웨어까지 직접 개발한 경험
+                  Mini PCI LTE Cat M1 통신 모듈(2025) 자체 개발 — 충전 통신 하드웨어까지 직접 개발한
+                  경험
                 </p>
               </article>
             </div>
-            <div className="rv" style={{marginTop: "36px", textAlign: "center"}}>
+            <div className="rv" style={{ marginTop: "36px", textAlign: "center" }}>
               <a href="references.html" className="btn btn-ghost">
-                전체 구축 사례 보기{" "}
-                <span aria-hidden="true">
-                  →
-                </span>
+                전체 구축 사례 보기 <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
@@ -502,7 +466,7 @@ export default function SolutionEvcpPage() {
         <section id="fit" className="sec-anchor deploy">
           <div className="wrap">
             <SecHead copy={secHeads["solution-evcp:fit"]} />
-            <div className="dep-grid g2 reveal" data-d="1" style={{marginTop: "24px"}}>
+            <div className="dep-grid g2 reveal" data-d="1" style={{ marginTop: "24px" }}>
               {" "}
               <DepCards items={depCards["solution-evcp:fit"]} />
             </div>

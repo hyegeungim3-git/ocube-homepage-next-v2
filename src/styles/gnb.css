@@ -1,39 +1,207 @@
 /* ---- GNB : 히어로 위 투명 오버레이 → 스크롤 시 라이트 솔리드 (i-bricks 패턴) ---- */
-.gnb{position:fixed;top:0;left:0;right:0;height:72px;z-index:120;background:transparent;border-bottom:1px solid transparent;transition:background .28s,border-color .28s}
-.gnb.scrolled,body.m-lock .gnb{background:rgba(255,255,255,.93);backdrop-filter:saturate(1.2) blur(14px);-webkit-backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid var(--line-soft)}
-.gnb .nav{display:flex;align-items:center;gap:20px;height:72px;position:relative}
-.logo img{height:28px;width:auto;filter:brightness(0) invert(1);transition:filter .28s}   /* 투명 상태: 흰 로고 */
-.gnb.scrolled .logo img,body.m-lock .gnb .logo img{filter:none}
+.gnb {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  z-index: 120;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background 0.28s,
+    border-color 0.28s;
+}
+.gnb.scrolled,
+body.m-lock .gnb {
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: saturate(1.2) blur(14px);
+  -webkit-backdrop-filter: saturate(1.2) blur(14px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.gnb .nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 72px;
+  position: relative;
+}
+.logo img {
+  height: 28px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  transition: filter 0.28s;
+} /* 투명 상태: 흰 로고 */
+.gnb.scrolled .logo img,
+body.m-lock .gnb .logo img {
+  filter: none;
+}
 /* 메뉴 가운데 정렬 — 로고 좌·CTA 우 유지, 메가 확장 시에도 중앙 고정 */
-.nav-menu{display:flex;justify-content:center;gap:2px;width:min(540px,calc(100vw - 420px));position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);transition:width .34s cubic-bezier(.22,.61,.36,1)}
-.nav-item{position:relative;flex:0 0 auto}
-.nav-item>a{display:flex;align-items:center;justify-content:center;gap:6px;min-width:clamp(94px,8vw,116px);padding:10px 15px;font-weight:600;font-size:17px;color:#fff;border-radius:10px;white-space:nowrap;transition:background .15s,color .28s}
-.nav-item>a:hover{background:rgba(255,255,255,.14)}
-.gnb.scrolled .nav-item>a,body.m-lock .gnb .nav-item>a{color:var(--fg)}
-.gnb.scrolled .nav-item>a:hover,body.m-lock .gnb .nav-item>a:hover{background:var(--soft)}
-.badge-caret{font-size:10px;color:rgba(255,255,255,.65);transition:color .28s}
-.gnb.scrolled .badge-caret,body.m-lock .gnb .badge-caret{color:var(--fg-3)}
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  width: min(540px, calc(100vw - 420px));
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.34s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.nav-item {
+  position: relative;
+  flex: 0 0 auto;
+}
+.nav-item > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: clamp(94px, 8vw, 116px);
+  padding: 10px 15px;
+  font-weight: 600;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition:
+    background 0.15s,
+    color 0.28s;
+}
+.nav-item > a:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+.gnb.scrolled .nav-item > a,
+body.m-lock .gnb .nav-item > a {
+  color: var(--fg);
+}
+.gnb.scrolled .nav-item > a:hover,
+body.m-lock .gnb .nav-item > a:hover {
+  background: var(--soft);
+}
+.badge-caret {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.65);
+  transition: color 0.28s;
+}
+.gnb.scrolled .badge-caret,
+body.m-lock .gnb .badge-caret {
+  color: var(--fg-3);
+}
 /* 히어로 없는 페이지: 항상 솔리드 + 본문 오프셋 */
-body.no-hero{padding-top:72px}
-.dropdown{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--sh-lg);padding:12px;display:flex;gap:8px;opacity:0;visibility:hidden;transform:translateY(7px);transition:opacity .18s,transform .18s,visibility .18s}
-html:not(.js) .nav-item:hover .dropdown,html:not(.js) .nav-item:focus-within .dropdown{opacity:1;visibility:visible;transform:none}
-.dd-group{display:flex;flex-direction:column;min-width:230px}
-.dd-h{font-size:12px;font-weight:800;letter-spacing:.13em;color:var(--fg-3);padding:8px 12px 6px}
-.dropdown a{padding:9px 12px;border-radius:10px;font-weight:600;font-size:16px;color:var(--fg);display:flex;flex-direction:column;transition:background .14s,color .14s}
-.dropdown a small{font-weight:500;font-size:13.5px;color:var(--fg-3);margin-top:2px}
-.dropdown a:hover{background:var(--accent-soft);color:var(--accent-ink)}
-.dropdown a:hover small{color:var(--accent-ink)}
+body.no-hero {
+  padding-top: 72px;
+}
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--sh-lg);
+  padding: 12px;
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(7px);
+  transition:
+    opacity 0.18s,
+    transform 0.18s,
+    visibility 0.18s;
+}
+html:not(.js) .nav-item:hover .dropdown,
+html:not(.js) .nav-item:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.dd-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 230px;
+}
+.dd-h {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  color: var(--fg-3);
+  padding: 8px 12px 6px;
+}
+.dropdown a {
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--fg);
+  display: flex;
+  flex-direction: column;
+  transition:
+    background 0.14s,
+    color 0.14s;
+}
+.dropdown a small {
+  font-weight: 500;
+  font-size: 13.5px;
+  color: var(--fg-3);
+  margin-top: 2px;
+}
+.dropdown a:hover {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+.dropdown a:hover small {
+  color: var(--accent-ink);
+}
 /* 오른쪽으로 미는 auto 여백은 앞에 오는 .lang 이 가진다 — 여기는 둘 사이 간격만(gap 20 + 14 = 34px).
    min-width 는 KR/EN 토글이 언어에 따라 흔들리지 않게 하려는 것이다. 이 버튼이 토글보다 뒤에 있어
    라벨 폭이 달라지면(실측: 문의하기 115.8px / Contact us 140.1px) 앞의 토글이 그만큼 밀린다.
    두 언어 중 넓은 쪽을 덮는 값으로 고정한다 — 라벨을 바꾸면 이 값도 다시 재서 맞출 것. */
-.cta-btn{margin-left:14px;min-width:141px;text-align:center;background:var(--accent);color:#fff;font-weight:700;padding:11px 22px;border-radius:var(--pill);font-size:15px;transition:background .2s}
-.cta-btn:hover{background:var(--accent-ink)}
+.cta-btn {
+  margin-left: 14px;
+  min-width: 141px;
+  text-align: center;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  padding: 11px 22px;
+  border-radius: var(--pill);
+  font-size: 15px;
+  transition: background 0.2s;
+}
+.cta-btn:hover {
+  background: var(--accent-ink);
+}
 /* 모바일 메뉴 버튼 — 윤곽만 있는 고스트 버튼이라 잘 안 보인다는 지적.
    ①투명 상태 보더 .5 -> .72 ②솔리드 상태 보더가 var(--border)(#e6e6e6)라 흰 헤더에서 1.1~1.2:1
    (비텍스트 3:1 미달, 사실상 안 보임) -> rgba(20,20,20,.5) + soft 배경으로 버튼 형태를 드러냄. */
-.m-toggle{display:none;margin-left:auto;background:none;border:1px solid rgba(255,255,255,.72);color:#fff;border-radius:10px;padding:9px 14px;font-weight:700;font-size:14px;cursor:pointer;transition:color .28s,border-color .28s,background .28s}
-.gnb.scrolled .m-toggle,body.m-lock .gnb .m-toggle{border-color:rgba(20,20,20,.5);color:var(--fg);background:var(--soft)}
-.m-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.m-panel{display:none}   /* 모바일 전용 패널 — 데스크톱에서는 항상 숨김(미디어쿼리 안에서만 열림) */
-
+.m-toggle {
+  display: none;
+  margin-left: auto;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  color: #fff;
+  border-radius: 10px;
+  padding: 9px 14px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    color 0.28s,
+    border-color 0.28s,
+    background 0.28s;
+}
+.gnb.scrolled .m-toggle,
+body.m-lock .gnb .m-toggle {
+  border-color: rgba(20, 20, 20, 0.5);
+  color: var(--fg);
+  background: var(--soft);
+}
+.m-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.m-panel {
+  display: none;
+} /* 모바일 전용 패널 — 데스크톱에서는 항상 숨김(미디어쿼리 안에서만 열림) */

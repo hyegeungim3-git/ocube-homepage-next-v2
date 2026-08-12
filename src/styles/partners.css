@@ -1,25 +1,108 @@
 /* ══ PARTNERS & CLIENTS — 고객사 로고 마퀴 (ocube-ai-renewal 벤치마크) ══ */
-.pcl{background:var(--canvas);border-bottom:1px solid var(--border);padding:56px 0;overflow:hidden}
-.pcl-head{display:flex;justify-content:space-between;align-items:center;gap:40px;margin-bottom:32px}
-.pcl-head .eb{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--accent-text)}
-.pcl-head p{margin:0;font-size:14px;color:var(--fg-muted)}
-.pcl-mq{position:relative;overflow:hidden}
-.pcl-mq::before,.pcl-mq::after{content:"";position:absolute;top:0;bottom:0;width:clamp(20px,5vw,40px);z-index:2;pointer-events:none}
-.pcl-mq::before{left:0;background:linear-gradient(90deg,var(--canvas) 25%,rgba(255,255,255,0))}
-.pcl-mq::after{right:0;background:linear-gradient(270deg,var(--canvas) 25%,rgba(255,255,255,0))}
+.pcl {
+  background: var(--canvas);
+  border-bottom: 1px solid var(--border);
+  padding: 56px 0;
+  overflow: hidden;
+}
+.pcl-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+.pcl-head .eb {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--accent-text);
+}
+.pcl-head p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--fg-muted);
+}
+.pcl-mq {
+  position: relative;
+  overflow: hidden;
+}
+.pcl-mq::before,
+.pcl-mq::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(20px, 5vw, 40px);
+  z-index: 2;
+  pointer-events: none;
+}
+.pcl-mq::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--canvas) 25%, rgba(255, 255, 255, 0));
+}
+.pcl-mq::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--canvas) 25%, rgba(255, 255, 255, 0));
+}
 /* 선두 여백은 margin으로 — padding은 트랙 폭에 포함돼 translateX(-50%) 계산을 어긋나게 함 */
-.pcl-track{display:flex;gap:16px;width:max-content;margin-left:16px;animation:pcl-roll 28s linear infinite}
-.pcl-mq:hover .pcl-track,.pcl-mq:focus-within .pcl-track{animation-play-state:paused}
-.pcl-logo{flex:0 0 auto;display:grid;place-items:center;width:210px;height:98px;padding:24px;
-  border:1px solid var(--border);background:#fafbfd;border-radius:12px}
-.pcl-logo img{max-width:145px;max-height:46px;filter:grayscale(1);opacity:.72}
+.pcl-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  margin-left: 16px;
+  animation: pcl-roll 28s linear infinite;
+}
+.pcl-mq:hover .pcl-track,
+.pcl-mq:focus-within .pcl-track {
+  animation-play-state: paused;
+}
+.pcl-logo {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 210px;
+  height: 98px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  background: #fafbfd;
+  border-radius: 12px;
+}
+.pcl-logo img {
+  max-width: 145px;
+  max-height: 46px;
+  filter: grayscale(1);
+  opacity: 0.72;
+}
 /* 4그룹 구성: 한 주기 = 그룹폭+gap = 25%+gap/4. 역방향(-주기→0) = 좌→우 흐름.
    그룹이 4개라 와이드 화면에서도 트랙 잔여폭이 항상 뷰포트보다 넓어 빈틈이 없다 */
-@keyframes pcl-roll{from{transform:translateX(0)}to{transform:translateX(calc(-25% - 4px))}}
-@media(max-width:720px){
-  .pcl-head{display:block}
-  .pcl-head p{margin-top:10px;line-height:1.6}
-  .pcl-logo{width:170px;height:84px;padding:20px}
+@keyframes pcl-roll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-25% - 4px));
+  }
 }
-@media(prefers-reduced-motion:reduce){.pcl-track{animation:none}.pcl-mq{overflow-x:auto}}
-
+@media (max-width: 720px) {
+  .pcl-head {
+    display: block;
+  }
+  .pcl-head p {
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+  .pcl-logo {
+    width: 170px;
+    height: 84px;
+    padding: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pcl-track {
+    animation: none;
+  }
+  .pcl-mq {
+    overflow-x: auto;
+  }
+}

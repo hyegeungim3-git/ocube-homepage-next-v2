@@ -15,18 +15,14 @@ function CardBody({ item, lang = "ko" }: { item: BcaseItem; lang?: Lang }) {
           width={item.image.width}
         />
       </div>
-      {/* cat·sum 은 인라인 span 이라 원본의 줄바꿈 공백이 렌더에 반영된다 */}
-      {" "}
-      <span className="cat">{item.cat}</span>
-      {" "}
+      {/* cat·sum 은 인라인 span 이라 원본의 줄바꿈 공백이 렌더에 반영된다 */}{" "}
+      <span className="cat">{item.cat}</span>{" "}
       <h3>
         <RichText value={item.title} />
-      </h3>
-      {" "}
+      </h3>{" "}
       <span className="sum">
         <RichText value={item.sum} />
-      </span>
-      {" "}
+      </span>{" "}
       <ul>
         {item.bullets.map((b, i) => (
           <li key={i}>
@@ -40,13 +36,7 @@ function CardBody({ item, lang = "ko" }: { item: BcaseItem; lang?: Lang }) {
 }
 
 /** 비즈니스 페이지의 대표 프로젝트 그리드 */
-export function ProjectCards({
-  items,
-  lang = "ko",
-}: {
-  items: readonly BcaseItem[];
-  lang?: Lang;
-}) {
+export function ProjectCards({ items, lang = "ko" }: { items: readonly BcaseItem[]; lang?: Lang }) {
   return (
     <>
       {items.map((item, i) => (

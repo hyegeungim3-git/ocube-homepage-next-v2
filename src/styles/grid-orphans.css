@@ -1,265 +1,743 @@
 /* ══════════ 그리드 고아 행 제거 — 항목 수 균등/중앙 배치 (대표 보고 검수 2026-07-24) ══════════ */
 /* .tl 프로세스 타임라인: 4단계→2+2 / 5~6단계→3+3, 태블릿 2열, 모바일 1열 */
-.tl{grid-template-columns:repeat(2,1fr)}
-@media(min-width:1000px){ .tl:has(> :nth-child(5)){grid-template-columns:repeat(3,1fr)} }
-@media(max-width:600px){ .tl{grid-template-columns:1fr} }
+.tl {
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 1000px) {
+  .tl:has(> :nth-child(5)) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .tl {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* .mod-grid 표준·프로토콜 배지: 중앙 정렬 클라우드 → 마지막 줄 고아가 가운데로 */
-.mod-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
-.mod-grid > .mod{flex:0 1 auto;min-width:132px;padding-left:16px;padding-right:16px}
+.mod-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.mod-grid > .mod {
+  flex: 0 1 auto;
+  min-width: 132px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
 
 /* .kmod-grid 모듈 카드: 6→3+3 / 8→4+4 */
-.kmod-grid{grid-template-columns:repeat(2,1fr)}
-@media(min-width:900px){
-  .kmod-grid{grid-template-columns:repeat(3,1fr)}
-  .kmod-grid:has(> :nth-child(7)){grid-template-columns:repeat(4,1fr)}
+.kmod-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 900px) {
+  .kmod-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .kmod-grid:has(> :nth-child(7)) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /* .dep-grid 배포·가치 카드: 3→3열 / 4→2+2 / 6→3+3 (g2 모디파이어 제외) */
-@media(min-width:1000px){
-  .dep-grid:not(.g2):has(> :nth-child(4)):not(:has(> :nth-child(5))){grid-template-columns:repeat(2,1fr)}
-  .dep-grid:not(.g2):has(> :nth-child(6)):not(:has(> :nth-child(7))){grid-template-columns:repeat(3,1fr)}
+@media (min-width: 1000px) {
+  .dep-grid:not(.g2):has(> :nth-child(4)):not(:has(> :nth-child(5))) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dep-grid:not(.g2):has(> :nth-child(6)):not(:has(> :nth-child(7))) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
-@media(min-width:760px) and (max-width:999px){
-  .dep-grid:not(.g2){grid-template-columns:repeat(2,1fr)}
-  .dep-grid:not(.g2):has(> :nth-child(3)):not(:has(> :nth-child(4))){grid-template-columns:repeat(3,1fr)}
+@media (min-width: 760px) and (max-width: 999px) {
+  .dep-grid:not(.g2) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dep-grid:not(.g2):has(> :nth-child(3)):not(:has(> :nth-child(4))) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* .feat-list: 2→2 / 3→3 / 4→2+2. min 낮춰 3개 한 줄, 4개는 2+2 */
-.feat-list{grid-template-columns:repeat(auto-fit,minmax(184px,1fr))}
-@media(min-width:900px){
-  .feat-list:has(> :nth-child(4)):not(:has(> :nth-child(5))){grid-template-columns:repeat(2,1fr)}
+.feat-list {
+  grid-template-columns: repeat(auto-fit, minmax(184px, 1fr));
 }
-@media(max-width:820px){ .feat-list{grid-template-columns:1fr} }
+@media (min-width: 900px) {
+  .feat-list:has(> :nth-child(4)):not(:has(> :nth-child(5))) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 820px) {
+  .feat-list {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* .plogo-grid: 간격 축소로 로고 균등 수용 */
-.plogo-grid{gap:clamp(20px,2.6vw,42px)}
+.plogo-grid {
+  gap: clamp(20px, 2.6vw, 42px);
+}
 
 /* .ref-grid 필터 카드(가변): flex 중앙 → 어떤 개수든 마지막 줄 중앙 */
-.ref-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(16px,2vw,22px)}
-.ref-grid > .ref-card{flex:1 1 300px;max-width:520px}
-@media(min-width:1000px){ .ref-grid > .ref-card{flex-basis:calc(33.333% - 15px);max-width:calc(33.333% - 15px)} }
-@media(min-width:1280px){ .ref-grid > .ref-card{flex-basis:calc(25% - 17px);max-width:calc(25% - 17px)} }
+.ref-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(16px, 2vw, 22px);
+}
+.ref-grid > .ref-card {
+  flex: 1 1 300px;
+  max-width: 520px;
+}
+@media (min-width: 1000px) {
+  .ref-grid > .ref-card {
+    flex-basis: calc(33.333% - 15px);
+    max-width: calc(33.333% - 15px);
+  }
+}
+@media (min-width: 1280px) {
+  .ref-grid > .ref-card {
+    flex-basis: calc(25% - 17px);
+    max-width: calc(25% - 17px);
+  }
+}
 
 /* ══════ 그리드 고아 행 제거 — 항목 수 기반 균등 열 (:has 수량 쿼리, 2026-07-25) ══════ */
 /* 원칙: 마지막 줄에 1개만 외따로 남는 배치를 없애고 항상 균등/중앙 배치 */
 
 /* .tl 프로세스 타임라인: 4→2+2, 5→3+2, 6→3+3 */
-.tl{grid-template-columns:1fr}
-@media(min-width:600px){.tl{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1000px){.tl:has(>:nth-child(5)){grid-template-columns:repeat(3,1fr)}}
+.tl {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 600px) {
+  .tl {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1000px) {
+  .tl:has(> :nth-child(5)) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
 /* .kmod-grid 모듈 카드: 6→3열(3+3), 8→4열(4+4) */
-.kmod-grid{grid-template-columns:repeat(2,1fr)}
-@media(min-width:900px){
-  .kmod-grid{grid-template-columns:repeat(3,1fr)}
-  .kmod-grid:has(>:nth-child(7)){grid-template-columns:repeat(4,1fr)}
+.kmod-grid {
+  grid-template-columns: repeat(2, 1fr);
 }
-@media(max-width:520px){
-  .kmod-grid{grid-template-columns:1fr}
-  .kmod{min-width:0;overflow-wrap:anywhere}
+@media (min-width: 900px) {
+  .kmod-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .kmod-grid:has(> :nth-child(7)) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .kmod-grid {
+    grid-template-columns: 1fr;
+  }
+  .kmod {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
 }
 
 /* .dep-grid 배포·가치 카드(.g2 제외): 3→3열, 4→2열(넓으면 4열), 6→3열(3+3) */
-.dep-grid:not(.g2){grid-template-columns:1fr}
-@media(min-width:560px){
-  .dep-grid:not(.g2){grid-template-columns:repeat(2,1fr)}
-  .dep-grid:not(.g2):has(>:nth-child(3)):not(:has(>:nth-child(4))){grid-template-columns:repeat(3,1fr)}
+.dep-grid:not(.g2) {
+  grid-template-columns: 1fr;
 }
-@media(min-width:1000px){
-  .dep-grid:not(.g2):has(>:nth-child(4)):not(:has(>:nth-child(5))){grid-template-columns:repeat(4,1fr)}
-  .dep-grid:not(.g2):has(>:nth-child(6)):not(:has(>:nth-child(7))){grid-template-columns:repeat(3,1fr)}
+@media (min-width: 560px) {
+  .dep-grid:not(.g2) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dep-grid:not(.g2):has(> :nth-child(3)):not(:has(> :nth-child(4))) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1000px) {
+  .dep-grid:not(.g2):has(> :nth-child(4)):not(:has(> :nth-child(5))) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .dep-grid:not(.g2):has(> :nth-child(6)):not(:has(> :nth-child(7))) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* .case-grid: 3→3열, 4→2열(넓으면 4열) — .two(2열)는 유지 */
-@media(min-width:900px){
-  .case-grid:not(.two):has(>:nth-child(3)):not(:has(>:nth-child(4))){grid-template-columns:repeat(3,1fr)}
-  .case-grid:not(.two):has(>:nth-child(4)):not(:has(>:nth-child(5))){grid-template-columns:repeat(2,1fr)}
+@media (min-width: 900px) {
+  .case-grid:not(.two):has(> :nth-child(3)):not(:has(> :nth-child(4))) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .case-grid:not(.two):has(> :nth-child(4)):not(:has(> :nth-child(5))) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
-@media(min-width:1180px){
-  .case-grid:not(.two):has(>:nth-child(4)):not(:has(>:nth-child(5))){grid-template-columns:repeat(4,1fr)}
+@media (min-width: 1180px) {
+  .case-grid:not(.two):has(> :nth-child(4)):not(:has(> :nth-child(5))) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /* .feat-list: minmax 크게 → 좁은 열에선 세로 스택(2+1 방지), 넓으면 균등 */
-.feat-list{grid-template-columns:repeat(auto-fit,minmax(272px,1fr))}
+.feat-list {
+  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+}
 /* 정확히 3개는 좁은 열에서도 3열로 (2+1 고아 방지), 좁으면 세로 스택 */
-.feat-list:has(>:nth-child(3)):not(:has(>:nth-child(4))){grid-template-columns:1fr}
-@media(min-width:900px){
-  .feat-list:has(>:nth-child(3)):not(:has(>:nth-child(4))){grid-template-columns:repeat(3,1fr)}
+.feat-list:has(> :nth-child(3)):not(:has(> :nth-child(4))) {
+  grid-template-columns: 1fr;
 }
-@media(min-width:1000px){
-  .feat-list:has(>:nth-child(6)):not(:has(>:nth-child(7))){grid-template-columns:repeat(3,1fr)}
-  .feat-list:has(>:nth-child(5)):not(:has(>:nth-child(6))){grid-template-columns:repeat(6,1fr)}
-  .feat-list:has(>:nth-child(5)):not(:has(>:nth-child(6))) > *{grid-column:span 2}
-  .feat-list:has(>:nth-child(5)):not(:has(>:nth-child(6))) > :nth-child(4){grid-column:2/span 2}
-  .feat-list:has(>:nth-child(5)):not(:has(>:nth-child(6))) > :nth-child(5){grid-column:4/span 2}
+@media (min-width: 900px) {
+  .feat-list:has(> :nth-child(3)):not(:has(> :nth-child(4))) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
-@media(min-width:600px) and (max-width:999px){
-  .feat-list:has(>:nth-child(5)):not(:has(>:nth-child(6))){grid-template-columns:repeat(2,1fr)}
-  .feat-list:has(>:nth-child(5)):not(:has(>:nth-child(6))) > :last-child{
-    grid-column:1/-1;width:calc(50% - 7px);justify-self:center
+@media (min-width: 1000px) {
+  .feat-list:has(> :nth-child(6)):not(:has(> :nth-child(7))) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .feat-list:has(> :nth-child(5)):not(:has(> :nth-child(6))) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .feat-list:has(> :nth-child(5)):not(:has(> :nth-child(6))) > * {
+    grid-column: span 2;
+  }
+  .feat-list:has(> :nth-child(5)):not(:has(> :nth-child(6))) > :nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+  .feat-list:has(> :nth-child(5)):not(:has(> :nth-child(6))) > :nth-child(5) {
+    grid-column: 4 / span 2;
+  }
+}
+@media (min-width: 600px) and (max-width: 999px) {
+  .feat-list:has(> :nth-child(5)):not(:has(> :nth-child(6))) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .feat-list:has(> :nth-child(5)):not(:has(> :nth-child(6))) > :last-child {
+    grid-column: 1/-1;
+    width: calc(50% - 7px);
+    justify-self: center;
   }
 }
 
 /* .dep-grid 5개(예: 적합 조직): 넓을 때 5열 1줄 */
-@media(min-width:1000px){
-  .dep-grid:not(.g2):has(>:nth-child(5)):not(:has(>:nth-child(6))){grid-template-columns:repeat(6,1fr)}
-  .dep-grid:not(.g2):has(>:nth-child(5)):not(:has(>:nth-child(6))) > *{grid-column:span 2}
-  .dep-grid:not(.g2):has(>:nth-child(5)):not(:has(>:nth-child(6))) > :nth-child(4){grid-column:2/span 2}
-  .dep-grid:not(.g2):has(>:nth-child(5)):not(:has(>:nth-child(6))) > :nth-child(5){grid-column:4/span 2}
-  .tl:has(> :nth-child(5)):not(:has(> :nth-child(6))){grid-template-columns:repeat(6,1fr)}
-  .tl:has(> :nth-child(5)):not(:has(> :nth-child(6))) > *{grid-column:span 2}
-  .tl:has(> :nth-child(5)):not(:has(> :nth-child(6))) > :nth-child(4){grid-column:2/span 2}
-  .tl:has(> :nth-child(5)):not(:has(> :nth-child(6))) > :nth-child(5){grid-column:4/span 2}
+@media (min-width: 1000px) {
+  .dep-grid:not(.g2):has(> :nth-child(5)):not(:has(> :nth-child(6))) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .dep-grid:not(.g2):has(> :nth-child(5)):not(:has(> :nth-child(6))) > * {
+    grid-column: span 2;
+  }
+  .dep-grid:not(.g2):has(> :nth-child(5)):not(:has(> :nth-child(6))) > :nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+  .dep-grid:not(.g2):has(> :nth-child(5)):not(:has(> :nth-child(6))) > :nth-child(5) {
+    grid-column: 4 / span 2;
+  }
+  .tl:has(> :nth-child(5)):not(:has(> :nth-child(6))) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .tl:has(> :nth-child(5)):not(:has(> :nth-child(6))) > * {
+    grid-column: span 2;
+  }
+  .tl:has(> :nth-child(5)):not(:has(> :nth-child(6))) > :nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+  .tl:has(> :nth-child(5)):not(:has(> :nth-child(6))) > :nth-child(5) {
+    grid-column: 4 / span 2;
+  }
 }
 
 /* 5개짜리 tl·dep: 태블릿 이하에선 세로 스택(2+2+1 고아 방지) */
-@media(min-width:600px) and (max-width:999px){
-  .tl:has(>:nth-child(5)):not(:has(>:nth-child(6))),
-  .dep-grid:not(.g2):has(>:nth-child(5)):not(:has(>:nth-child(6))){grid-template-columns:repeat(2,1fr)}
-  .tl:has(>:nth-child(5)):not(:has(>:nth-child(6))) > :last-child,
-  .dep-grid:not(.g2):has(>:nth-child(5)):not(:has(>:nth-child(6))) > :last-child{
-    grid-column:1/-1;width:calc(50% - 7px);justify-self:center
+@media (min-width: 600px) and (max-width: 999px) {
+  .tl:has(> :nth-child(5)):not(:has(> :nth-child(6))),
+  .dep-grid:not(.g2):has(> :nth-child(5)):not(:has(> :nth-child(6))) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .tl:has(> :nth-child(5)):not(:has(> :nth-child(6))) > :last-child,
+  .dep-grid:not(.g2):has(> :nth-child(5)):not(:has(> :nth-child(6))) > :last-child {
+    grid-column: 1/-1;
+    width: calc(50% - 7px);
+    justify-self: center;
   }
 }
-@media(max-width:599px){
-  .tl:has(>:nth-child(5)):not(:has(>:nth-child(6))),
-  .dep-grid:not(.g2):has(>:nth-child(5)):not(:has(>:nth-child(6))){grid-template-columns:1fr}
-  .tl:has(>:nth-child(5)):not(:has(>:nth-child(6))) > :last-child,
-  .dep-grid:not(.g2):has(>:nth-child(5)):not(:has(>:nth-child(6))) > :last-child{width:auto}
+@media (max-width: 599px) {
+  .tl:has(> :nth-child(5)):not(:has(> :nth-child(6))),
+  .dep-grid:not(.g2):has(> :nth-child(5)):not(:has(> :nth-child(6))) {
+    grid-template-columns: 1fr;
+  }
+  .tl:has(> :nth-child(5)):not(:has(> :nth-child(6))) > :last-child,
+  .dep-grid:not(.g2):has(> :nth-child(5)):not(:has(> :nth-child(6))) > :last-child {
+    width: auto;
+  }
 }
 
 /* .case-grid.two: 항상 2열 유지(auto-fit 오버라이드 차단) */
-.case-grid.two{grid-template-columns:repeat(2,1fr)}
-@media(max-width:640px){.case-grid.two{grid-template-columns:1fr}}
-
-/* .plogo-grid: 태블릿에서 gap 축소 + 마지막 줄 고아 중앙정렬 */
-@media(max-width:1080px){.plogo-grid{gap:clamp(18px,2.6vw,32px);justify-content:center}}
-
-/* .ref-grid 필터 사례 갤러리: flex 중앙배치로 마지막 줄 고아를 중앙정렬 */
-.ref-grid{display:flex;flex-wrap:wrap;justify-content:center}
-.ref-grid>.ref-card{flex:1 1 clamp(260px,23%,300px);max-width:360px}
-@media(min-width:600px){
-  .ref-grid:has(>:nth-child(13)):not(:has(>:nth-child(14))):not(:has(>.ref-card.is-hidden))>.ref-card:last-child{
-    flex-basis:100%;max-width:100%
+.case-grid.two {
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (max-width: 640px) {
+  .case-grid.two {
+    grid-template-columns: 1fr;
   }
 }
-@media(min-width:1000px){
-  .ref-grid:has(>:nth-child(13)):not(:has(>:nth-child(14))):not(:has(>.ref-card.is-hidden))>.ref-card:last-child{
-    flex-basis:calc(50% - 11px);max-width:calc(50% - 11px)
+
+/* .plogo-grid: 태블릿에서 gap 축소 + 마지막 줄 고아 중앙정렬 */
+@media (max-width: 1080px) {
+  .plogo-grid {
+    gap: clamp(18px, 2.6vw, 32px);
+    justify-content: center;
+  }
+}
+
+/* .ref-grid 필터 사례 갤러리: flex 중앙배치로 마지막 줄 고아를 중앙정렬 */
+.ref-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ref-grid > .ref-card {
+  flex: 1 1 clamp(260px, 23%, 300px);
+  max-width: 360px;
+}
+@media (min-width: 600px) {
+  .ref-grid:has(> :nth-child(13)):not(:has(> :nth-child(14))):not(:has(> .ref-card.is-hidden))
+    > .ref-card:last-child {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+@media (min-width: 1000px) {
+  .ref-grid:has(> :nth-child(13)):not(:has(> :nth-child(14))):not(:has(> .ref-card.is-hidden))
+    > .ref-card:last-child {
+    flex-basis: calc(50% - 11px);
+    max-width: calc(50% - 11px);
   }
 }
 
 /* Production QA: 3-card groups stay readable below desktop width. */
-@media(max-width:899px){
-  .dep-grid:not(.g2):has(>:nth-child(3)):not(:has(>:nth-child(4))){grid-template-columns:1fr}
+@media (max-width: 899px) {
+  .dep-grid:not(.g2):has(> :nth-child(3)):not(:has(> :nth-child(4))) {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Production readability QA — 숫자·설명 위계를 분리하고 본문성 텍스트를 15px 이상으로 유지 */
-.stat b>span{display:inline;margin:0;font:inherit;color:inherit}
-.stat b .u{display:inline;margin:0 0 0 3px;font-size:.52em;font-style:normal;line-height:1;vertical-align:baseline}
-.stat>span{margin-top:12px;font-size:15.5px;line-height:1.55}
-.dropdown a small,.m-acc-panel a small{font-size:13.5px;line-height:1.45}
-.h-badge span,.hpag-item{font-size:13.5px}
-.shot-cap,.duo-media .fitcap,.sol-stage figcaption,.hover-preview figcaption,.pin-cover figcaption{font-size:14.5px;line-height:1.55}
-.sec-note,.stack-layer small,.case-card p,.ref-card p,.dep-card p,.case-card .csi,.feat span,
-.pi-bul li,.tl-card p,.cmp,.kmod p,.faq-a,.rung b,.rung span,.prod-card p,.oem-band .row,
-.kt-card>p,.kt-chk li,.vision-card .v-m,.form label,.form .agree,.form-note,.form-status,
-.bcase-card .sum,.bcase-card li,.pcl-head p,.lb-cap{font-size:15.5px}
-.cmp thead th,.case-tab,.bcase-more,.loc-dl dd,.loc-btn,.fb-links a{font-size:15px}
-.stack-prods span small,.prod-card .sub,.ref-note,.cert-note{font-size:14px;line-height:1.55}
-.loc-note{font-size:15px;line-height:1.6}
+.stat b > span {
+  display: inline;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+.stat b .u {
+  display: inline;
+  margin: 0 0 0 3px;
+  font-size: 0.52em;
+  font-style: normal;
+  line-height: 1;
+  vertical-align: baseline;
+}
+.stat > span {
+  margin-top: 12px;
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+.dropdown a small,
+.m-acc-panel a small {
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+.h-badge span,
+.hpag-item {
+  font-size: 13.5px;
+}
+.shot-cap,
+.duo-media .fitcap,
+.sol-stage figcaption,
+.hover-preview figcaption,
+.pin-cover figcaption {
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+.sec-note,
+.stack-layer small,
+.case-card p,
+.ref-card p,
+.dep-card p,
+.case-card .csi,
+.feat span,
+.pi-bul li,
+.tl-card p,
+.cmp,
+.kmod p,
+.faq-a,
+.rung b,
+.rung span,
+.prod-card p,
+.oem-band .row,
+.kt-card > p,
+.kt-chk li,
+.vision-card .v-m,
+.form label,
+.form .agree,
+.form-note,
+.form-status,
+.bcase-card .sum,
+.bcase-card li,
+.pcl-head p,
+.lb-cap {
+  font-size: 15.5px;
+}
+.cmp thead th,
+.case-tab,
+.bcase-more,
+.loc-dl dd,
+.loc-btn,
+.fb-links a {
+  font-size: 15px;
+}
+.stack-prods span small,
+.prod-card .sub,
+.ref-note,
+.cert-note {
+  font-size: 14px;
+  line-height: 1.55;
+}
+.loc-note {
+  font-size: 15px;
+  line-height: 1.6;
+}
 
 /* Business applications */
-.ax-app-grid{align-items:stretch;gap:16px;margin-top:32px}
-.ax-app-card{
-  min-height:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  padding:22px 20px 18px;
-  text-align:center;
-  overflow:hidden;
+.ax-app-grid {
+  align-items: stretch;
+  gap: 16px;
+  margin-top: 32px;
 }
-.ax-app-icon{
-  width:122px;
-  height:122px;
-  flex:0 0 auto;
-  margin-bottom:17px;
-  border:1px solid rgba(38,128,222,.16);
-  border-radius:22px;
-  overflow:hidden;
-  background:#fff;
-  box-shadow:0 9px 24px rgba(7,19,35,.08);
+.ax-app-card {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 22px 20px 18px;
+  text-align: center;
+  overflow: hidden;
 }
-.ax-app-icon img{width:100%;height:100%;display:block;object-fit:cover}
-.ax-app-card h3{margin-top:0;font-size:20px;letter-spacing:-.02em;line-height:1.3}
-.ax-app-card p{margin-top:9px;font-size:15.5px;line-height:1.62;text-wrap:balance}
-.ax-app-card p span{display:block}
-@media(max-width:599px){
-  .ax-app-grid{gap:14px;margin-top:28px}
-  .ax-app-card{min-height:0;padding:20px 18px 18px}
-  .ax-app-icon{width:108px;height:108px;margin-bottom:15px;border-radius:19px}
-  .ax-app-card h3{font-size:19px}
-  .ax-app-card p{margin-top:8px;font-size:15px;line-height:1.6}
+.ax-app-icon {
+  width: 122px;
+  height: 122px;
+  flex: 0 0 auto;
+  margin-bottom: 17px;
+  border: 1px solid rgba(38, 128, 222, 0.16);
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 9px 24px rgba(7, 19, 35, 0.08);
 }
-
+.ax-app-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.ax-app-card h3 {
+  margin-top: 0;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+.ax-app-card p {
+  margin-top: 9px;
+  font-size: 15.5px;
+  line-height: 1.62;
+  text-wrap: balance;
+}
+.ax-app-card p span {
+  display: block;
+}
+@media (max-width: 599px) {
+  .ax-app-grid {
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .ax-app-card {
+    min-height: 0;
+    padding: 20px 18px 18px;
+  }
+  .ax-app-icon {
+    width: 108px;
+    height: 108px;
+    margin-bottom: 15px;
+    border-radius: 19px;
+  }
+  .ax-app-card h3 {
+    font-size: 19px;
+  }
+  .ax-app-card p {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+}
 
 /* QFactory AI Smart Factory scope — source-verified 2026-07-26 */
-.factory-apps{background:linear-gradient(180deg,#f6f8fb 0%,#fff 100%)}
-#overview.sec-anchor,
-#applications.sec-anchor{padding-top:clamp(84px,8vw,116px)}
-.factory-apps .sec-head{max-width:900px}
-.factory-app-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px}
-.factory-app{position:relative;min-width:0;padding:28px;border:1px solid #dce3ec;border-radius:22px;background:#fff;box-shadow:0 12px 34px rgba(14,22,38,.055);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
-.factory-app:hover{transform:translateY(-4px);border-color:#8fbdf0;box-shadow:0 18px 42px rgba(14,22,38,.1)}
-.factory-app-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:18px;border-bottom:1px solid #e8edf3}
-.factory-app-top span{font-size:26px;font-weight:800;letter-spacing:-.04em;color:#0877d8}
-.factory-app-top b{font-size:13px;line-height:1.3;letter-spacing:.08em;text-transform:uppercase;color:#5d6b7b}
-.factory-app h3{margin:22px 0 12px;font-size:clamp(21px,1.65vw,25px);line-height:1.3;letter-spacing:-.035em;color:#111827}
-.factory-app>p{min-height:74px;margin:0;color:#536170;font-size:15.5px;line-height:1.62}
-.factory-app dl{margin:22px 0 0;padding-top:4px;border-top:1px solid #edf1f5}
-.factory-app dl div{display:grid;grid-template-columns:78px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid #edf1f5}
-.factory-app dt{font-size:13.5px;font-weight:750;line-height:1.55;color:#0877d8}
-.factory-app dd{min-width:0;margin:0;font-size:14.5px;line-height:1.55;color:#344152;overflow-wrap:anywhere}
-.factory-flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;margin:42px 0 0;padding:0;overflow:hidden;border:1px solid #cfd9e5;border-radius:18px;background:#0e1626;list-style:none}
-.factory-flow li{position:relative;display:flex;align-items:center;justify-content:center;gap:9px;min-height:74px;padding:14px 12px;color:#fff;text-align:center}
-.factory-flow li+li{border-left:1px solid rgba(255,255,255,.16)}
-.factory-flow li:not(:last-child)::after{content:'›';position:absolute;right:-6px;z-index:2;color:#70b8ff;font-size:23px;font-weight:700}
-.factory-flow b{color:#70b8ff;font-size:13px;letter-spacing:.05em}
-.factory-flow span{font-size:15px;font-weight:700;line-height:1.35}
-.factory-note{display:flex;align-items:flex-start;gap:14px;margin:16px 0 0;padding:18px 22px;border-radius:14px;background:#eaf4ff;color:#354354;font-size:15.5px;line-height:1.6}
-.factory-note b{flex:0 0 auto;color:#0068c9}
-@media(max-width:980px){
-  .factory-app-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .factory-flow{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .factory-flow li:nth-child(4){border-left:0;border-top:1px solid rgba(255,255,255,.16)}
-  .factory-flow li:nth-child(5),.factory-flow li:nth-child(6){border-top:1px solid rgba(255,255,255,.16)}
-  .factory-flow li:nth-child(3)::after{display:none}
+.factory-apps {
+  background: linear-gradient(180deg, #f6f8fb 0%, #fff 100%);
 }
-@media(max-width:640px){
+#overview.sec-anchor,
+#applications.sec-anchor {
+  padding-top: clamp(84px, 8vw, 116px);
+}
+.factory-apps .sec-head {
+  max-width: 900px;
+}
+.factory-app-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 36px;
+}
+.factory-app {
+  position: relative;
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid #dce3ec;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 12px 34px rgba(14, 22, 38, 0.055);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.factory-app:hover {
+  transform: translateY(-4px);
+  border-color: #8fbdf0;
+  box-shadow: 0 18px 42px rgba(14, 22, 38, 0.1);
+}
+.factory-app-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e8edf3;
+}
+.factory-app-top span {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #0877d8;
+}
+.factory-app-top b {
+  font-size: 13px;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5d6b7b;
+}
+.factory-app h3 {
+  margin: 22px 0 12px;
+  font-size: clamp(21px, 1.65vw, 25px);
+  line-height: 1.3;
+  letter-spacing: -0.035em;
+  color: #111827;
+}
+.factory-app > p {
+  min-height: 74px;
+  margin: 0;
+  color: #536170;
+  font-size: 15.5px;
+  line-height: 1.62;
+}
+.factory-app dl {
+  margin: 22px 0 0;
+  padding-top: 4px;
+  border-top: 1px solid #edf1f5;
+}
+.factory-app dl div {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #edf1f5;
+}
+.factory-app dt {
+  font-size: 13.5px;
+  font-weight: 750;
+  line-height: 1.55;
+  color: #0877d8;
+}
+.factory-app dd {
+  min-width: 0;
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #344152;
+  overflow-wrap: anywhere;
+}
+.factory-flow {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0;
+  margin: 42px 0 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #cfd9e5;
+  border-radius: 18px;
+  background: #0e1626;
+  list-style: none;
+}
+.factory-flow li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 74px;
+  padding: 14px 12px;
+  color: #fff;
+  text-align: center;
+}
+.factory-flow li + li {
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+}
+.factory-flow li:not(:last-child)::after {
+  content: "›";
+  position: absolute;
+  right: -6px;
+  z-index: 2;
+  color: #70b8ff;
+  font-size: 23px;
+  font-weight: 700;
+}
+.factory-flow b {
+  color: #70b8ff;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+.factory-flow span {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.factory-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 16px 0 0;
+  padding: 18px 22px;
+  border-radius: 14px;
+  background: #eaf4ff;
+  color: #354354;
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+.factory-note b {
+  flex: 0 0 auto;
+  color: #0068c9;
+}
+@media (max-width: 980px) {
+  .factory-app-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .factory-flow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .factory-flow li:nth-child(4) {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .factory-flow li:nth-child(5),
+  .factory-flow li:nth-child(6) {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .factory-flow li:nth-child(3)::after {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
   #overview.sec-anchor,
-  #applications.sec-anchor{padding-top:72px}
-  .factory-app-grid{grid-template-columns:1fr;gap:14px;margin-top:26px}
-  .factory-app{padding:23px 21px;border-radius:18px}
-  .factory-app>p{min-height:0}
-  .factory-app dl div{grid-template-columns:74px minmax(0,1fr)}
-  .factory-flow{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:28px}
-  .factory-flow li{min-height:68px;padding:12px 8px}
-  .factory-flow li:nth-child(3),.factory-flow li:nth-child(5){border-left:0}
-  .factory-flow li:nth-child(3),.factory-flow li:nth-child(4),.factory-flow li:nth-child(5),.factory-flow li:nth-child(6){border-top:1px solid rgba(255,255,255,.16)}
-  .factory-flow li:nth-child(2)::after,.factory-flow li:nth-child(4)::after{display:none}
-  .factory-flow li:nth-child(3)::after{display:block}
-  .factory-note{display:block;padding:17px 18px}
-  .factory-note b{display:block;margin-bottom:5px}
+  #applications.sec-anchor {
+    padding-top: 72px;
+  }
+  .factory-app-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 26px;
+  }
+  .factory-app {
+    padding: 23px 21px;
+    border-radius: 18px;
+  }
+  .factory-app > p {
+    min-height: 0;
+  }
+  .factory-app dl div {
+    grid-template-columns: 74px minmax(0, 1fr);
+  }
+  .factory-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 28px;
+  }
+  .factory-flow li {
+    min-height: 68px;
+    padding: 12px 8px;
+  }
+  .factory-flow li:nth-child(3),
+  .factory-flow li:nth-child(5) {
+    border-left: 0;
+  }
+  .factory-flow li:nth-child(3),
+  .factory-flow li:nth-child(4),
+  .factory-flow li:nth-child(5),
+  .factory-flow li:nth-child(6) {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .factory-flow li:nth-child(2)::after,
+  .factory-flow li:nth-child(4)::after {
+    display: none;
+  }
+  .factory-flow li:nth-child(3)::after {
+    display: block;
+  }
+  .factory-note {
+    display: block;
+    padding: 17px 18px;
+  }
+  .factory-note b {
+    display: block;
+    margin-bottom: 5px;
+  }
 }
 
 /* 문장 경계 줄바꿈 — 데스크톱에서만 적용(모바일은 자연 줄바꿈) */
-br.sb{display:block}
-@media(max-width:900px){br.sb{display:none}}
+br.sb {
+  display: block;
+}
+@media (max-width: 900px) {
+  br.sb {
+    display: none;
+  }
+}
 
 /* 카드·요약 텍스트는 줄을 고르게 나눠 마지막 줄에 한 단어만 남는 것을 방지 */
-.ref-card p,.ref-feat p,.ref-sum,.sum,.bcase-card p,.dep-card p,.feat span,.ktsum-card p,.cap-desc,.kmod p,
-.pi-bul li,.qeff-card p,.loc-card .note,.case-card p,.mis-card p,.tl-card p{text-wrap:balance}
-
+.ref-card p,
+.ref-feat p,
+.ref-sum,
+.sum,
+.bcase-card p,
+.dep-card p,
+.feat span,
+.ktsum-card p,
+.cap-desc,
+.kmod p,
+.pi-bul li,
+.qeff-card p,
+.loc-card .note,
+.case-card p,
+.mis-card p,
+.tl-card p {
+  text-wrap: balance;
+}

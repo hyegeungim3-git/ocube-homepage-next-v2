@@ -1,16 +1,50 @@
 /* ══ 대표 프로젝트 — BUILD CASES 3열 그리드 변형 ══ */
-.bcase-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.bcase-grid .bcase-card{width:auto;min-height:550px;padding:24px}
-.bcase-grid .bcase-card .sum{min-height:92px}
-@media(max-width:1000px){
-  .bcase-grid{grid-template-columns:1fr}
-  .bcase-grid .bcase-card{display:grid;grid-template-columns:.85fr 1.15fr;gap:0 28px;min-height:0}
-  .bcase-grid .bcase-visual{grid-row:1/6;height:auto;min-height:0;margin-bottom:0;align-self:start}
+.bcase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
 }
-@media(max-width:720px){
-  .bcase-grid{gap:16px}
-  .bcase-grid .bcase-card{display:flex;min-height:500px;padding:22px}
-  .bcase-grid .bcase-visual{height:auto;min-height:0;margin-bottom:24px}
-  .bcase-grid .bcase-card .sum{min-height:0}
+.bcase-grid .bcase-card {
+  width: auto;
+  min-height: 550px;
+  padding: 24px;
 }
-
+.bcase-grid .bcase-card .sum {
+  min-height: 92px;
+}
+@media (max-width: 1000px) {
+  .bcase-grid {
+    grid-template-columns: 1fr;
+  }
+  .bcase-grid .bcase-card {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 0 28px;
+    min-height: 0;
+  }
+  .bcase-grid .bcase-visual {
+    grid-row: 1/6;
+    height: auto;
+    min-height: 0;
+    margin-bottom: 0;
+    align-self: start;
+  }
+}
+@media (max-width: 720px) {
+  .bcase-grid {
+    gap: 16px;
+  }
+  .bcase-grid .bcase-card {
+    display: flex;
+    min-height: 500px;
+    padding: 22px;
+  }
+  .bcase-grid .bcase-visual {
+    height: auto;
+    min-height: 0;
+    margin-bottom: 24px;
+  }
+  .bcase-grid .bcase-card .sum {
+    min-height: 0;
+  }
+}

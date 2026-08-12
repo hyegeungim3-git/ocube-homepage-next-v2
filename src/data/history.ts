@@ -13,9 +13,7 @@ export const historyGroups: readonly HistoryGroup[] = [
     cls: "hist-row rv",
     year: "2025",
     sub: "~",
-    items: [
-      [{ b: ["Mini PCI LTE Cat M1 모듈"] }, " 출시"],
-    ],
+    items: [[{ b: ["Mini PCI LTE Cat M1 모듈"] }, " 출시"]],
   },
   {
     cls: "hist-row rv d1",
