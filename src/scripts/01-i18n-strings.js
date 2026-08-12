@@ -5,13 +5,11 @@
   var T = EN ? {
     overview: function (label) { return label + ' overview'; },
     openMenu: 'Open menu', closeMenu: 'Close menu',
-    play: 'Resume auto-rotation', pause: 'Pause auto-rotation',
     mailSubject: function (type, name) { return '[OCUBE enquiry] ' + type + ' - ' + name; },
     mailType: 'Type: ', mailName: 'Name / company: ', mailFrom: 'Reply to: '
   } : {
     overview: function (label) { return label + ' 전체 보기'; },
     openMenu: '메뉴 열기', closeMenu: '메뉴 닫기',
-    play: '자동 전환 재생', pause: '자동 전환 일시정지',
     mailSubject: function (type, name) { return '[오큐브 홈페이지 문의] ' + type + ' - ' + name; },
     mailType: '문의 유형: ', mailName: '성함 / 회사: ', mailFrom: '회신 이메일: '
   };

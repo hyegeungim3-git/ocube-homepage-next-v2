@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
       <body>
         {children}
         <ClientBehaviors lang="en" />
-        <Script src="../assets/site2.js?v=codex-29" strategy="afterInteractive" />
+        <Script src="../assets/site2.js?v=codex-30" strategy="afterInteractive" />
       </body>
     </html>
   );

@@ -4,7 +4,7 @@ import type { Lang } from "@/config/i18n";
 import { applyBase } from "@/config/site";
 import { PageMeta } from "@/components/layout/page-meta";
 import { homeSlides } from "@/data/home-hero";
-import { HomeSlides } from "@/components/section/home-slides";
+import { HomeHero } from "@/components/section/home-hero";
 import { SiteHeader } from "@/components/layout/site-header";
 import { MobilePanel } from "@/components/layout/mobile-panel";
 import { HomeCaseLinks } from "@/components/section/bcase-cards";
@@ -48,120 +48,23 @@ export function IndexPage({ lang }: { lang: Lang }): JSX.Element {
       <SiteHeader lang={lang} slug="index" navLabel="Main navigation" />
       <MobilePanel lang={lang} navLabel="Mobile navigation" ctaLabel="Contact" />
       <main>
-        <section id="top" className="hero">
-          <div className="home-hero-shell">
-            <div className="hslides">
-              <HomeSlides lang={lang} items={homeSlides[lang]} />
-            </div>
-            <div className="hero-ctrl">
-              <div className="wrap">
-                <div className="hctrl">
-                  {" "}
-                  <button
-                    className="hnav"
-                    type="button"
-                    data-act="prev"
-                    aria-label={t(lang, "이전 슬라이드")}
-                  >
-                    {" "}
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path
-                        d="M15 5l-7 7 7 7"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.7"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></path>
-                    </svg>{" "}
-                  </button>{" "}
-                  <button
-                    className="hnav"
-                    type="button"
-                    data-act="toggle"
-                    aria-label={t(lang, "자동 전환 일시정지")}
-                    aria-pressed="false"
-                  >
-                    {" "}
-                    <svg className="i-pause" viewBox="0 0 24 24" aria-hidden="true">
-                      <path
-                        d="M9.5 5.5v13M14.5 5.5v13"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                      ></path>
-                    </svg>{" "}
-                    <svg className="i-play" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M8.5 5.6l10 6.4-10 6.4z" fill="currentColor"></path>
-                    </svg>{" "}
-                  </button>{" "}
-                  <button
-                    className="hnav"
-                    type="button"
-                    data-act="next"
-                    aria-label={t(lang, "다음 슬라이드")}
-                  >
-                    {" "}
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path
-                        d="M9 5l7 7-7 7"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.7"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></path>
-                    </svg>{" "}
-                  </button>{" "}
-                </div>
-                <div className="hpag" role="tablist" aria-label={t(lang, "히어로 배너 선택")}>
-                  {" "}
-                  <button
-                    className="hbar hpag-item on"
-                    type="button"
-                    data-i="0"
-                    aria-label={t(lang, "AX 슬라이드")}
-                  >
-                    <i></i>
-                    <span>01</span>
-                    <b>AX</b>
-                  </button>{" "}
-                  <button
-                    className="hbar hpag-item"
-                    type="button"
-                    data-i="1"
-                    aria-label={t(lang, "Embedded 슬라이드")}
-                  >
-                    <i></i>
-                    <span>02</span>
-                    <b>EMBEDDED</b>
-                  </button>{" "}
-                  <button
-                    className="hbar hpag-item"
-                    type="button"
-                    data-i="2"
-                    aria-label={t(lang, "SI 슬라이드")}
-                  >
-                    <i></i>
-                    <span>03</span>
-                    <b>SI</b>
-                  </button>{" "}
-                  <button
-                    className="hbar hpag-item"
-                    type="button"
-                    data-i="3"
-                    aria-label={t(lang, "GLOBAL TECH 슬라이드")}
-                  >
-                    <i></i>
-                    <span>04</span>
-                    <b>GLOBAL TECH</b>
-                  </button>{" "}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <HomeHero
+          lang={lang}
+          items={homeSlides[lang]}
+          labels={{
+            prev: t(lang, "이전 슬라이드"),
+            next: t(lang, "다음 슬라이드"),
+            pause: t(lang, "자동 전환 일시정지"),
+            play: t(lang, "자동 전환 재생"),
+            tablist: t(lang, "히어로 배너 선택"),
+            bars: [
+              { no: "01", name: "AX", label: t(lang, "AX 슬라이드") },
+              { no: "02", name: "EMBEDDED", label: t(lang, "Embedded 슬라이드") },
+              { no: "03", name: "SI", label: t(lang, "SI 슬라이드") },
+              { no: "04", name: "GLOBAL TECH", label: t(lang, "GLOBAL TECH 슬라이드") },
+            ],
+          }}
+        />
         {/* CI */}
         <section id="ci" className="typo-section">
           <div className="typo-layout">
