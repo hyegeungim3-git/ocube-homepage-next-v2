@@ -2,7 +2,13 @@
 .gnb.gnb-mega .nav-menu {
   justify-content: space-between;
   gap: 2px;
-  width: min(720px, calc(100vw - 420px));
+  /* 메뉴는 wrap 정중앙에 절대배치라, 넓어지면 양쪽으로 똑같이 벌어진다.
+     오른쪽에는 KR/EN + 문의하기가 있고 그 묶음은 어느 폭에서나 307px 를 차지한다(실측).
+     따라서 반폭은 `wrap/2 - 307 - 여백24` 이하여야 한다 → 전체 폭 ≤ 100% - 662px.
+     넘기면 마지막 항목(Company)이 KR 알약과 겹친다 — 실제로 27px 겹쳐 있었다.
+     max() 로 하한(=평상시 폭 540)도 둔다. 상한만 걸면 좁은 화면에서 박스가 내용보다 작아지고,
+     space-between 이 항목을 오른쪽으로 밀어내 오히려 더 겹친다(901px 에서 247px). */
+  width: min(618px, max(540px, calc(100% - 662px)));
 }
 /* 헤더는 흰 솔리드로 (히어로 위 투명 상태에서도) */
 .gnb.gnb-mega {

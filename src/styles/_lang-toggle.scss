@@ -26,32 +26,36 @@
     background 0.2s ease,
     color 0.2s ease;
 }
-/* 투명 헤더 (히어로 위) */
-.gnb:not(.scrolled) .lang-btn {
+/* 투명 헤더 (히어로 위) — 메가 메뉴가 열리면 헤더가 흰색이 되므로 그때는 제외한다.
+   이걸 빠뜨려서 맨 위에서 메뉴를 펼치면 흰 헤더 위에 흰 알약·흰 글자가 나왔다. */
+.gnb:not(.scrolled):not(.gnb-mega) .lang-btn {
   background: rgba(255, 255, 255, 0.15);
   color: rgba(255, 255, 255, 0.62);
 }
-.gnb:not(.scrolled) .lang-btn.active {
+.gnb:not(.scrolled):not(.gnb-mega) .lang-btn.active {
   background: #fff;
   color: var(--ink);
   font-weight: 600;
 }
-.gnb:not(.scrolled) .lang-btn:hover {
+.gnb:not(.scrolled):not(.gnb-mega) .lang-btn:hover {
   color: #fff;
 }
-/* 흰 헤더 (스크롤 후·모바일 메뉴 열림) */
+/* 흰 헤더 (스크롤 후 · 모바일 메뉴 열림 · 메가 메뉴 펼침) */
 .gnb.scrolled .lang-btn,
+.gnb.gnb-mega .lang-btn,
 body.m-lock .gnb .lang-btn {
   background: rgba(20, 20, 20, 0.06);
   color: var(--fg-muted);
 }
 .gnb.scrolled .lang-btn.active,
+.gnb.gnb-mega .lang-btn.active,
 body.m-lock .gnb .lang-btn.active {
   background: var(--ink);
   color: #fff;
   font-weight: 600;
 }
-.gnb.scrolled .lang-btn:hover {
+.gnb.scrolled .lang-btn:hover,
+.gnb.gnb-mega .lang-btn:hover {
   color: var(--fg);
 }
 .lang-btn:focus-visible {

@@ -44,6 +44,58 @@ test.describe("데스크톱 GNB", () => {
     await expect(gnb).not.toHaveClass(/gnb-mega/);
   });
 
+  // 메가 메뉴가 펼쳐지면 메뉴가 양쪽으로 벌어진다. 그때 오른쪽의 KR/EN 을 침범하면
+  // 마지막 항목(Company)과 알약이 겹쳐 보인다 — 실제로 27px 겹쳐 있었다.
+  // 그리고 헤더가 흰색이 되므로 KR/EN 도 '흰 헤더' 색을 써야 한다(안 그러면 흰 위에 흰 글자).
+  for (const width of [1280, 1440, 1920]) {
+    test(`${width}px 에서 펼쳐도 메뉴가 KR/EN 을 침범하지 않는다`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      // 메뉴 폭은 전환 애니메이션을 타므로, 끄지 않으면 '아직 안 벌어진' 중간값을 잰다
+      // (이걸 빠뜨려 처음엔 일부러 되돌려도 통과했다 — docs/pitfalls.md 6절)
+      await page.addStyleTag({ content: "*,*::before,*::after{transition:none!important}" });
+      await page.locator(".gnb .nav-menu").hover();
+      await expect(page.locator(".gnb")).toHaveClass(/gnb-mega/);
+
+      const gap = await page.evaluate(() => {
+        const items = [...document.querySelectorAll(".nav-item")];
+        const last = items[items.length - 1]!.getBoundingClientRect();
+        const lang = document.querySelector(".lang")!.getBoundingClientRect();
+        return Math.round(lang.left - last.right);
+      });
+      expect(gap, "마지막 메뉴 항목과 KR/EN 사이 간격").toBeGreaterThanOrEqual(16);
+    });
+  }
+
+  test("펼친 상태의 KR/EN 은 흰 헤더용 색을 쓴다", async ({ page }) => {
+    await page.addStyleTag({ content: "*,*::before,*::after{transition:none!important}" });
+    await page.locator(".gnb .nav-menu").hover();
+    await expect(page.locator(".gnb")).toHaveClass(/gnb-mega/);
+
+    // 헤더 배경은 전환 애니메이션을 타므로 최종값이 될 때까지 기다린다
+    // (바로 읽으면 rgba(0,0,0,0) 이 나온다 — docs/pitfalls.md 6절의 그 함정이다)
+    await expect
+      .poll(() =>
+        page.evaluate(() => getComputedStyle(document.querySelector(".gnb")!).backgroundColor),
+      )
+      .toContain("255, 255, 255");
+
+    const seen = await page.evaluate(() => {
+      const [kr, en] = [...document.querySelectorAll(".lang-btn")];
+      const s = (el: Element) => getComputedStyle(el);
+      return {
+        header: s(document.querySelector(".gnb")!).backgroundColor,
+        krBg: s(kr!).backgroundColor,
+        enColor: s(en!).color,
+      };
+    });
+    // 헤더는 흰색이 된다 → 지금 언어(KR)는 잉크로 채우고, 나머지(EN)는 어두운 글자여야 한다
+    expect(seen.header).toContain("255, 255, 255");
+    expect(seen.krBg, "지금 언어 알약이 흰 헤더 위에서 보여야 한다").not.toContain("255, 255, 255");
+    expect(seen.enColor, "다른 언어 글자가 흰 헤더 위에서 보여야 한다").not.toContain(
+      "255, 255, 255",
+    );
+  });
+
   test("펼칠 때 가장 긴 갈래의 높이를 재어 패널 높이로 쓴다", async ({ page }) => {
     const gnb = page.locator(".gnb");
     expect(await gnb.evaluate((el) => el.style.getPropertyValue("--mega-h"))).toBe("");
