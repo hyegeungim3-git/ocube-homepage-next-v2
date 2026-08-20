@@ -201,7 +201,7 @@ export function LocationPage({ lang }: { lang: Lang }): JSX.Element {
                 <div className="loc-map">
                   <iframe
                     src="https://www.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%8F%99%EC%95%88%EA%B5%AC%20LS%EB%A1%9C%20142%20%EA%B8%88%EC%A0%95%EC%97%AD%20SKV1%20%EC%84%BC%ED%84%B0&z=16&hl=ko&output=embed"
-                    title={t(lang, "오큐브 안양사옥 위치 지도")}
+                    title={t(lang, "오큐브 안양(사옥) 위치 지도")}
                     loading="lazy"
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
@@ -211,7 +211,7 @@ export function LocationPage({ lang }: { lang: Lang }): JSX.Element {
                   <div className="loc-card-head">
                     <div>
                       <h3 className="loc-name">
-                        <T l={lang}>오큐브 안양사옥</T>
+                        <T l={lang}>오큐브 안양(사옥)</T>
                       </h3>
                     </div>{" "}
                     <span className="loc-pin">
@@ -352,7 +352,7 @@ export function LocationPage({ lang }: { lang: Lang }): JSX.Element {
                 <div className="loc-map">
                   <iframe
                     src="https://www.google.com/maps?q=%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%88%98%EC%84%B1%EA%B5%AC%20%EC%95%8C%ED%8C%8C%EC%8B%9C%ED%8B%B01%EB%A1%9C%2031%EA%B8%B8%2018&z=16&hl=ko&output=embed"
-                    title={t(lang, "오큐브 대구사옥 위치 지도")}
+                    title={t(lang, "오큐브 대구(사옥) 위치 지도")}
                     loading="lazy"
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
@@ -362,7 +362,7 @@ export function LocationPage({ lang }: { lang: Lang }): JSX.Element {
                   <div className="loc-card-head">
                     <div>
                       <h3 className="loc-name">
-                        <T l={lang}>오큐브 대구사옥</T>
+                        <T l={lang}>오큐브 대구(사옥)</T>
                       </h3>
                     </div>{" "}
                     <span className="loc-pin">

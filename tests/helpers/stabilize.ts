@@ -25,6 +25,14 @@ const FREEZE = `
  * 1) 애니메이션 정지 2) lazy 이미지까지 전부 로드 3) 폰트 로드 대기 4) 영상 첫 프레임 고정
  */
 export async function freezeForShot(page: Page): Promise<void> {
+  // 감축 모션을 여기서 **직접** 건다.
+  //
+  // playwright.config 의 visual 프로젝트에도 reducedMotion:"reduce" 가 있고 옵션은 실제로
+  // 해석되지만(testInfo.project.use 로 확인), 페이지에서 matchMedia 는 false 로 나왔다.
+  // 그 바람에 히어로 타자기가 계속 타이핑 중이었고, 연속 두 장이 매번 달라
+  // 스크린샷 허용치를 조이는 순간 "두 장이 안정되지 않는다" 로 실패했다.
+  // 설정 배관에 기대지 말고 촬영 직전에 못을 박는다.
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.addStyleTag({ content: FREEZE });
 
   await page.evaluate(async () => {
@@ -41,6 +49,20 @@ export async function freezeForShot(page: Page): Promise<void> {
         /* 재생 준비 전이면 무시 */
       }
     });
+    // 타자기(home-refresh.js)는 setTimeout 으로 글자를 하나씩 드러낸다 — CSS 로는 못 멈춘다.
+    // 남은 타이머를 끄고 전부 드러낸 상태로 고정한다(감축 모션일 때와 같은 결과).
+    document.querySelectorAll("[data-typewriter]").forEach((title) => {
+      const holder = title as unknown as { __typewriterTimers?: number[] };
+      if (holder.__typewriterTimers) {
+        holder.__typewriterTimers.forEach((id) => window.clearTimeout(id));
+        holder.__typewriterTimers = [];
+      }
+      title.querySelectorAll(".typewriter-caret").forEach((caret) => caret.remove());
+      title.querySelectorAll(".typewriter-character").forEach((span) => {
+        span.classList.add("is-visible");
+        span.classList.remove("is-current");
+      });
+    });
     const step = Math.round(window.innerHeight * 0.9);
     for (let y = 0; y < document.body.scrollHeight; y += step) {
       window.scrollTo(0, y);
@@ -50,7 +72,24 @@ export async function freezeForShot(page: Page): Promise<void> {
     await document.fonts.ready;
   });
 
-  await page.waitForLoadState("networkidle");
+  // 이미지가 다 들어왔는지를 직접 기다린다.
+  //
+  // 전에는 networkidle 을 썼는데, 배경 요청이 끊이지 않으면 영영 idle 이 되지 않아
+  // 60초 시한을 넘기며 산발적으로 실패했다(en/index 모바일에서 실제로 났다).
+  // '무엇을 기다리는지' 가 분명한 조건으로 바꾼다.
+  await page.evaluate(() =>
+    Promise.all(
+      Array.from(document.images)
+        .filter((img) => !img.complete)
+        .map(
+          (img) =>
+            new Promise((done) => {
+              img.addEventListener("load", () => done(null), { once: true });
+              img.addEventListener("error", () => done(null), { once: true });
+            }),
+        ),
+    ),
+  );
   // 스크롤 위치 복귀 후 마지막 레이아웃 확정
   await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => r(null))));
 }

@@ -388,21 +388,21 @@ export function IndexPage({ lang }: { lang: Lang }): JSX.Element {
                 </div>
                 <dl>
                   <div>
-                    <dt>DAEGU</dt>
-                    <dd>
-                      <T l={lang}>대구광역시 수성구 알파시티1로 31길 18</T>
-                    </dd>
-                  </div>
-                  <div>
                     <dt>SEOUL</dt>
                     <dd>
-                      <T l={lang}>서울 강서구 강서로56가길 141 KM빌딩 2·3층</T>
+                      <T l={lang}>서울특별시 강서구 강서로 56가길 141, 케이엠빌딩 3층</T>
                     </dd>
                   </div>
                   <div>
                     <dt>ANYANG</dt>
                     <dd>
-                      <T l={lang}>안양 동안구 LS로 142 금정역SKV1센터 722·723·710호</T>
+                      <T l={lang}>경기도 안양시 동안구 LS로 142, 금정역SKV1 CENTER 722·723·710호</T>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>DAEGU</dt>
+                    <dd>
+                      <T l={lang}>대구광역시 수성구 알파시티1로 31길 18</T>
                     </dd>
                   </div>
                 </dl>
