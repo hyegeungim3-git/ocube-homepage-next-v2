@@ -97,7 +97,10 @@ function bindVisionScenes(): (() => void) | undefined {
   const unbindJumps = buttons.map((button, index) => {
     const onClick = (): void => {
       const top = window.scrollY + vision.getBoundingClientRect().top;
-      const ratio = index === panels.length - 1 ? LAST_STOP : index / panels.length;
+      // 각 장면이 차지하는 구간의 **한가운데**로 보낸다. 시작 경계(index/개수)로 보내면
+      // 1px만 덜 굴러도 floor 가 한 칸 내려가 앞 장면이 잡힌다 — 장면이 4개가 되면서 실제로
+      // 03 버튼이 02 에 서는 일이 생겼다.
+      const ratio = index === panels.length - 1 ? LAST_STOP : (index + 0.5) / panels.length;
       window.scrollTo({ top: top + travel() * ratio, behavior: "smooth" });
     };
     button.addEventListener("click", onClick);

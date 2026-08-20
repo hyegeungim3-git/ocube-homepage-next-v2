@@ -10,15 +10,15 @@ const footerLogoKo = {
 const officesKo = [
   {
     code: "SEOUL",
-    address: "서울 강서구 강서로56가길 141 KM빌딩 2·3층",
+    address: "서울특별시 강서구 강서로 56가길 141, 케이엠빌딩 3층",
   },
   {
     code: "ANYANG",
-    address: "안양 동안구 LS로 142 금정역SKV1센터 722·723·710호",
+    address: "경기도 안양시 동안구 LS로 142, 금정역SKV1 CENTER 722·723·710호",
   },
   {
     code: "DAEGU",
-    address: "대구광역시 수성구 알파시티1로31길 18",
+    address: "대구광역시 수성구 알파시티1로 31길 18",
   },
 ] as const;
 

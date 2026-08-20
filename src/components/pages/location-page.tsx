@@ -98,7 +98,7 @@ export function LocationPage({ lang }: { lang: Lang }): JSX.Element {
                         </span>
                       </dt>
                       <dd>
-                        <T l={lang}>서울특별시 강서구 강서로 56가길 141, 케이엠빌딩 2·3층</T>
+                        <T l={lang}>서울특별시 강서구 강서로 56가길 141, 케이엠빌딩 3층</T>
                       </dd>
                     </div>
                     <div className="row">

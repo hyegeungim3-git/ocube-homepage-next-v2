@@ -53,18 +53,19 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
             <h1 className="about-hero-title">
               {" "}
               <span>
-                <T l={lang}>산업의 데이터와 기술을 잇고</T>
+                <T l={lang}>기술과 사람을 연결해</T>
               </span>{" "}
               <span>
-                <T l={lang}>사람과 기술을 연결해</T>
-              </span>{" "}
-              <span>
-                <T l={lang}>데이터 그 이상의 가치를 만듭니다.</T>
+                <T l={lang}>새로운 가치를 만듭니다.</T>
               </span>{" "}
             </h1>
             <p className="about-hero-lead">
-              <T l={lang}>오큐브는 임베디드 소프트웨어와 시스템 통합에서 쌓은 역량을 바탕으로</T>
-              <br className="sb" /> <T l={lang}>산업 AI 전환까지 수행합니다.</T>
+              <T l={lang}>
+                오큐브는 창립부터 임베디드에서 AI까지, 산업의 기술을 사람이 실제로 쓸 수 있는 제품과
+                시스템으로 만들어 왔습니다.
+              </T>
+              <br className="sb" />{" "}
+              <T l={lang}>우리가 다루는 기술로 사람과 비즈니스의 더 나은 내일을 만듭니다.</T>
             </p>
           </div>
           <div className="hero-scroll" aria-hidden="true">
@@ -94,35 +95,33 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
                 <div className="greet-body rv d1">
                   <p>
                     <T l={lang}>
-                      오큐브에 변함없는 사랑과 신뢰를 보내주시는 고객 여러분께 감사드립니다.
+                      오큐브에 늘 변함없는 사랑과 신뢰를 보내주시는 고객 여러분께 깊은 감사의 말씀을
+                      드립니다.
                     </T>
                   </p>
                   <p>
                     <T l={lang}>
-                      오큐브는 임베디드 플랫폼과 시스템 구축(SI) 기술을 기반으로 모바일·이동통신
-                      분야에서 출발했습니다.
+                      오큐브는 임베디드 솔루션과 시스템 구축(SI) 기술을 바탕으로 모바일·이동통신
+                      분야를 시작으로 자동차·로봇·제조·금융·에너지 등 폭넓은 산업 영역에 AX(AI 전환)
+                      기술을 접목하여, 고객에게 꼭 필요한 솔루션으로 새로운 부가가치를 창출해 나가고
+                      있습니다.
                     </T>
                   </p>
                   <p>
                     <T l={lang}>
-                      현재는 자동차·로봇·제조·금융·에너지 분야에서 쌓은 AI 전환 경험을 더해 고객에게
-                      필요한 솔루션과 소프트웨어를 제공합니다.
+                      사용자에게 편리함과 실질적인 가치를 더하는 기술로 고객과 함께 시장을 개척하고,
+                      그 지평을 넓혀가며 함께 성장하겠습니다.
                     </T>
                   </p>
                   <p>
                     <T l={lang}>
-                      고객의 요구를 실제로 사용할 수 있는 제품과 시스템으로 구현해, 고객의 사업
-                      확장과 새로운 시장 개척을 함께하겠습니다.
-                    </T>
-                  </p>
-                  <p>
-                    <T l={lang}>
-                      고객·주주·임직원 모두가 행복하고, 믿음과 신뢰를 기반으로 묵묵히 바른 길을 가는
+                      고객과 주주, 그리고 모든 임직원이 함께 행복할 수 있도록, 믿음과 신뢰를
+                      바탕으로 우직하게 바른 길을 걸어가는
                     </T>{" "}
                     <b>
                       <T l={lang}>건실한 100년 기업</T>
                     </b>
-                    <T l={lang}>의 역사를 만들어 가겠습니다.</T>
+                    <T l={lang}>으로 나아가겠습니다.</T>
                   </p>
                   <p>
                     <T l={lang}>감사합니다.</T>
@@ -166,22 +165,39 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
                 >
                   <div className="about-vision-copy">
                     {" "}
-                    <span className="kicker">Vision 2026</span>{" "}
+                    <span className="kicker">Vision</span>{" "}
                     <h3>
-                      <T l={lang}>지금, AI 융합의 중심으로</T>
+                      <T l={lang}>100년 기업, 글로벌 지주회사</T>
                     </h3>
-                    <p>
-                      <T l={lang}>
-                        산업 데이터와 업무 시스템, 실행 과정을 연결하는 AI 융합 기업으로
-                        성장하겠습니다.
-                      </T>
-                    </p>
                   </div>{" "}
                   <b aria-hidden="true">01</b>{" "}
                 </article>
                 <article
                   className="about-vision-card"
                   data-vision-panel="1"
+                  data-vision-label="Vision 2030"
+                  data-vision-title={t(lang, "비전 2030")}
+                  style={{
+                    backgroundImage: `url('${assetPath("assets/video/business_robot_arm.jpg", lang)}')`,
+                  }}
+                >
+                  <div className="about-vision-copy">
+                    {" "}
+                    <span className="kicker">Vision 2030</span>{" "}
+                    <h3>
+                      <T l={lang}>지금, AI 융합의 중심으로</T>
+                    </h3>
+                    <p>
+                      <T l={lang}>
+                        산업의 기술과 사람의 일을 잇는 AI 융합 기업으로 성장해 나가겠습니다.
+                      </T>
+                    </p>
+                  </div>{" "}
+                  <b aria-hidden="true">02</b>{" "}
+                </article>
+                <article
+                  className="about-vision-card"
+                  data-vision-panel="2"
                   data-vision-label="Mission"
                   data-vision-title={t(lang, "미션")}
                   style={{
@@ -192,22 +208,19 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
                     {" "}
                     <span className="kicker">Mission</span>{" "}
                     <h3>
-                      <T l={lang}>AI로 산업의 기준을 바꾸고,</T>
-                      <br />
-                      <T l={lang}>사람의 일과 삶에 가치를 더합니다.</T>
+                      <T l={lang}>불편함을 기술로 해결하고, 삶의 가치를 더합니다.</T>
                     </h3>
                     <p>
                       <T l={lang}>
-                        AI 융합 기술로 새로운 산업 표준을 만들고, 사람에게 더 중요한 판단과 창의적인
-                        일을 남깁니다.
+                        고객의 만족, 주주의 가치, 임직원의 행복 — 그 성장을 함께 만들어갑니다.
                       </T>
                     </p>
                   </div>{" "}
-                  <b aria-hidden="true">02</b>{" "}
+                  <b aria-hidden="true">03</b>{" "}
                 </article>
                 <article
                   className="about-vision-card"
-                  data-vision-panel="2"
+                  data-vision-panel="3"
                   data-vision-label="Slogan"
                   data-vision-title={t(lang, "슬로건")}
                   style={{
@@ -216,18 +229,12 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
                 >
                   <div className="about-vision-copy">
                     {" "}
-                    <span className="kicker">Slogan</span>{" "}
-                    <h3>
-                      <T l={lang}>사람은 더 중요한 일에</T>
-                    </h3>
+                    <span className="kicker">Slogan</span> <h3>Always in your life.</h3>
                     <p>
-                      <T l={lang}>
-                        반복적이고 정형화된 업무는 AI가 맡고, 사람은 더 중요한 판단과 창의적인 일에
-                        집중하도록 돕습니다.
-                      </T>
+                      <T l={lang}>사람은 더 중요한 일에</T>
                     </p>
                   </div>{" "}
-                  <b aria-hidden="true">03</b>{" "}
+                  <b aria-hidden="true">04</b>{" "}
                 </article>
               </div>
               <div className="about-vision-nav" aria-label={t(lang, "비전 장면 선택")}>
@@ -245,7 +252,7 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
                 <button
                   type="button"
                   data-vision-jump="1"
-                  aria-label={t(lang, "미션 보기")}
+                  aria-label={t(lang, "비전 2030 보기")}
                   aria-pressed="false"
                 >
                   <span>02</span>
@@ -254,10 +261,19 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
                 <button
                   type="button"
                   data-vision-jump="2"
-                  aria-label={t(lang, "슬로건 보기")}
+                  aria-label={t(lang, "미션 보기")}
                   aria-pressed="false"
                 >
                   <span>03</span>
+                  <i></i>
+                </button>{" "}
+                <button
+                  type="button"
+                  data-vision-jump="3"
+                  aria-label={t(lang, "슬로건 보기")}
+                  aria-pressed="false"
+                >
+                  <span>04</span>
                   <i></i>
                 </button>{" "}
               </div>
@@ -313,9 +329,9 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
                 </div>
                 <h3>Challenge</h3>
                 <p>
-                  <T l={lang}>새로운 가능성에 과감히 도전하고,</T>
+                  <T l={lang}>과감히 도전하십시오.</T>
                   <br />
-                  <T l={lang}>실행의 책임은 회사가 함께 집니다.</T>
+                  <T l={lang}>책임은 회사가 집니다.</T>
                 </p>
               </div>
               <div className="cv-item rv d1">
@@ -360,9 +376,7 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
                 </div>
                 <h3>Passion</h3>
                 <p>
-                  <T l={lang}>결정한 일에 끝까지 집중해,</T>
-                  <br />
-                  <T l={lang}>완성도 높은 결과를 만듭니다.</T>
+                  <T l={lang}>시작했으면 끝까지</T>
                 </p>
               </div>
               <div className="cv-item rv d2">
@@ -403,9 +417,7 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
                 </div>
                 <h3>Customer</h3>
                 <p>
-                  <T l={lang}>고객과 사용자의 목소리에 귀 기울여,</T>
-                  <br />
-                  <T l={lang}>올바른 방향을 찾습니다.</T>
+                  <T l={lang}>답은 고객에게 있다.</T>
                 </p>
               </div>
             </div>
@@ -440,17 +452,15 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
                 <dt>Identity</dt>
                 <dd>
                   <b>
-                    <T l={lang}>OCUBE는 새로운 가능성(Cube)을 연다(Open)</T>
+                    <T l={lang}>OCUBE는 Open과 Cube의 합성어로, 미지의 세상(Cube)을 연다(Open)</T>
                   </b>
-                  <T l={lang}>
-                    는 뜻으로, O와 C를 큐브 형태로 형상화했습니다. 심벌마크는 가로형과 세로형 두
-                    가지를 사용합니다.
-                  </T>
+                  <T l={lang}>는 뜻으로, O와 C를 큐브 형태로 형상화했습니다.</T>
                 </dd>
               </div>
               <div className="row">
                 <dt>Symbol Mark</dt>
                 <dd>
+                  <T l={lang}>심벌마크는 가로형과 세로형 두 가지를 사용합니다.</T>{" "}
                   <T l={lang}>
                     심벌마크와 로고타입을 조합한 정식 표기형태입니다. 비례·간격·크기를 임의로 변경할
                     수 없으며, 주변 요소와 충분한 여백을 확보해 독립성을 유지해야 합니다.
@@ -460,8 +470,7 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
               <div className="row">
                 <dt>Slogan</dt>
                 <dd>
-                  <b>Always in your life.</b>{" "}
-                  <T l={lang}>— 고객의 삶 속에 항상 함께하는 기술을 만듭니다.</T>
+                  <b>Always in your life.</b> <T l={lang}>— 사람은 더 중요한 일에</T>
                 </dd>
               </div>
             </dl>

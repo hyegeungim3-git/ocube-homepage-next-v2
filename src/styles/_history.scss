@@ -59,7 +59,28 @@
   background: var(--accent);
   box-shadow: 0 0 0 4px var(--canvas);
 }
+/* 시기 이름과 설명 — 이정표와 같은 셋째 칸에 위로 쌓는다.
+   (그리드가 3칸이라 새 칸을 만들지 않고 grid-column 으로 같은 칸에 넣는다) */
+.hist-era {
+  grid-column: 3;
+  padding-bottom: 10px;
+}
+.hist-era h3 {
+  font-size: clamp(17px, 1.7vw, 20px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+.hist-era p {
+  margin-top: 6px;
+  max-width: 60ch;
+  font-size: 14.5px;
+  line-height: 1.72;
+  color: var(--fg-muted);
+}
 .hist-items {
+  grid-column: 3;
+
   padding: 0 0 clamp(34px, 4vw, 54px) 26px;
   margin: 0;
   list-style: none;
@@ -104,7 +125,13 @@
   .hist-yr span {
     font-size: 15px;
   }
+  .hist-era {
+    grid-column: auto;
+    padding-bottom: 8px;
+  }
   .hist-items {
+    grid-column: auto;
+
     padding-left: 16px;
   }
   .hist-items li {

@@ -62,7 +62,8 @@ test.describe("회사소개 비전 장면", () => {
   test("스크롤 진행에 따라 장면이 바뀌고 머리글도 따라간다", async ({ page }) => {
     await page.goto("/about.html", { waitUntil: "load" });
     const panels = page.locator("[data-vision-panel]");
-    await expect(panels).toHaveCount(3);
+    // 문서 반영으로 장면이 4개가 됐다 — 장기 Vision · Vision 2030 · Mission · Slogan
+    await expect(panels).toHaveCount(4);
     await expect(panels.nth(0)).toHaveClass(/is-active/);
 
     const vision = page.locator(".about-vision");
@@ -75,11 +76,15 @@ test.describe("회사소개 비전 장면", () => {
     expect(label?.trim()).not.toBe("");
   });
 
-  test("장면 버튼을 누르면 그 장면으로 이동한다", async ({ page }) => {
-    await page.goto("/about.html", { waitUntil: "load" });
-    await page.locator("[data-vision-jump]").nth(2).click();
-    await expect(page.locator("[data-vision-panel]").nth(2)).toHaveClass(/is-active/, {
-      timeout: 8_000,
+  // 버튼마다 확인한다. 예전에는 마지막 버튼만 봤는데, 장면이 4개가 되자 가운데 버튼이
+  // 구간 경계에 착지해 앞 장면이 잡히는 일이 생겼다(03 을 눌렀는데 02 가 활성).
+  for (const index of [1, 2, 3]) {
+    test(`장면 버튼 0${index + 1} 을 누르면 그 장면으로 이동한다`, async ({ page }) => {
+      await page.goto("/about.html", { waitUntil: "load" });
+      await page.locator("[data-vision-jump]").nth(index).click();
+      await expect(page.locator("[data-vision-panel]").nth(index)).toHaveClass(/is-active/, {
+        timeout: 8_000,
+      });
     });
-  });
+  }
 });

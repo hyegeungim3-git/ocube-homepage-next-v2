@@ -80,7 +80,7 @@ export function IndexPage({ lang }: { lang: Lang }): JSX.Element {
                 <T l={lang}>(열린 협업)과</T> <b>CUBE</b>
                 <T l={lang}>(견고한 기술)가 만나 탄생했습니다.</T> <br />
                 <T l={lang}>
-                  고객의 과제를 이해하고 AX · 임베디드 · SI 역량으로 운영 가능한 제품과 시스템을
+                  고객의 니즈를 이해하고 AX · 임베디드 · SI 역량으로 운영 가능한 제품과 시스템을
                   구축합니다.
                 </T>
               </p>{" "}
@@ -390,7 +390,7 @@ export function IndexPage({ lang }: { lang: Lang }): JSX.Element {
                   <div>
                     <dt>DAEGU</dt>
                     <dd>
-                      <T l={lang}>대구광역시 수성구 알파시티1로31길 18 (본사)</T>
+                      <T l={lang}>대구광역시 수성구 알파시티1로 31길 18</T>
                     </dd>
                   </div>
                   <div>

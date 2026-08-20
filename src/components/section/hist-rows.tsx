@@ -17,6 +17,10 @@ export function HistRows({ groups }: { groups: readonly HistoryGroup[] }): JSX.E
           <div className="hist-line" aria-hidden="true">
             <i className="hist-dot"></i>
           </div>
+          <div className="hist-era">
+            <h3>{g.title}</h3>
+            <p>{g.desc}</p>
+          </div>
           <ul className="hist-items">
             {g.items.map((it, j) => (
               <li key={j}>
