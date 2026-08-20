@@ -179,7 +179,11 @@ def head_sig(soup):
     return sorted(unbase(x) for x in sig)
 
 
-def diff(a, b, label, limit=6):
+# 출력 상한. 기본 25건이지만 잘린 목록만 보고 판단하다 회귀를 놓친 적이 있어
+# 환경변수로 풀 수 있게 해 둔다 (VERIFY_LIMIT=0 이면 전부 출력).
+VERIFY_LIMIT = int(__import__("os").environ.get("VERIFY_LIMIT", "25")) or 10**9
+
+def diff(a, b, label, limit=int(__import__("os").environ.get("VERIFY_DIFF_LINES","6"))):
     if a == b:
         return None
     d = [l for l in difflib.unified_diff(a, b, "OLD", "NEW", lineterm="", n=0)
@@ -290,7 +294,7 @@ def main():
         print(f"{f:30} " + " ".join(m.rjust(4) for m in marks))
 
     print(f"\n검사 {len(pages)*12}건 중 통과 {total_ok}건 / 불일치 {len(problems)}건")
-    for p in problems[:25]:
+    for p in problems[:VERIFY_LIMIT]:
         print(f"\n--- {p[0]} :: {p[1]} (차이 {p[2]}줄) ---")
         for l in p[3]:
             print("   ", l[:220])
