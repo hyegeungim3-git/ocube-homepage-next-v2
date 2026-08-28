@@ -127,5 +127,13 @@
   "설비 정지가 곧 손실인 연속 라인": "Continuous lines where a stop is a loss",
   "고장 시점을 미리 알아야 정비 일정을 짤 수 있는 24시간 가동 공장": "Round-the-clock plants that can only schedule maintenance if they know when it will fail",
   "에너지 비용 비중이 큰 공장": "Plants where energy is a large part of the cost",
-  "설비·공정·에너지를 함께 봐야 절감 여지가 보이는 공장": "Where the savings only appear when equipment, process and energy are looked at together"
+  "설비·공정·에너지를 함께 봐야 절감 여지가 보이는 공장": "Where the savings only appear when equipment, process and energy are looked at together",
+  "하이박 AI 브레이징 설비의 사이클과 공정 데이터를 확인하고 AI 에이전트와 대화하는 QFactory 운영 화면": "A QFactory operations screen showing cycle and process data from the AI brazing equipment at Hivac, with an AI agent to ask",
+  "QFactory가 공장의 데이터 통합과 실시간 모니터링, 예지보전, 품질·생산·에너지 관리를 연결하는 모습": "How QFactory connects factory data integration, live monitoring, predictive maintenance and quality, production and energy management",
+  "진공 펌프, 히터, 진동 센서와 온도 센서의 상태를 종합 판정하는 AI 설비 정밀 진단 화면": "AI equipment diagnosis screen judging vacuum pump, heater, vibration sensor and temperature sensor together",
+  "제품과 적재 조건을 입력해 최적 브레이징 온도 프로파일을 생성하고 승인하는 AI 공정 설계 권고 화면": "AI process design screen that builds and approves an optimal brazing temperature profile from product and load conditions",
+  "3차원 설비 화면과 실시간 온도 및 진공도 추이, 시스템 이벤트를 함께 보여주는 공정 관제 화면": "Process monitoring screen with a 3D equipment view alongside live temperature, vacuum trends and system events",
+  "공정 사이클을 초 단위로 재생하며 3차원 설비, 온도, 진공도와 AI 이상 로그를 분석하는 화면": "A screen replaying the process cycle second by second with the 3D equipment view, temperature, vacuum and AI anomaly log",
+  "설비 건강도, 열 침투, 사이클, 수율과 품질 지표의 목표 달성도와 추이를 보여주는 AI 공정 KPI 분석 화면": "AI process KPI screen showing equipment health, heat penetration, cycle, yield and quality against target",
+  "설비 진단, 공정 권고와 실시간 감시 AI 모델의 버전, 성능, 피드백과 재학습을 관리하는 화면": "A screen managing the version, performance, feedback and retraining of the diagnosis, process recommendation and live monitoring models"
 }

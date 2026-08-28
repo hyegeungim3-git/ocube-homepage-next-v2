@@ -71,9 +71,16 @@ export const dictionary: Dictionary = merged;
  *
  * 값 안의 역슬래시+n(예: data-typewriter 의 줄바꿈 표시)은 화면에서 줄바꿈이므로
  * 공백 한 칸으로 보고, 실제 줄바꿈·연속 공백도 하나로 접는다.
+ *
+ * 낱말 이음쇠(U+2060 WORD JOINER)도 걷어낸다. 좁은 화면에서 `·` 이 줄머리로 내려가는 것을
+ * 막으려고 한국어 원문에 넣는 **보이지 않는 글자**인데, 사전 열쇠까지 바꾸면 번역을 못 찾는다.
  */
 export function normalizeKey(text: string): string {
-  return text.replace(/\\n/g, " ").replace(/\s+/g, " ").trim();
+  return text
+    .replace(/\\n/g, " ")
+    .replace(/\u2060/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 /**

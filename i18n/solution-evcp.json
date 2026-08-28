@@ -94,5 +94,13 @@
   "사업 범위를 단계적으로 넓히는 사업자": "Growing the business in stages",
   "필요한 기능부터 추가해 확장하고, 로밍은 이후에 도입하려는 경우": "Adding what is needed now, and leaving roaming for later",
   "자체 브랜드로 운영하려는 기업": "Operating under your own brand",
-  "화면 구성과 요금 정책을 직접 정하고 싶은 조직": "Where you want to decide the screens and the pricing yourself"
+  "화면 구성과 요금 정책을 직접 정하고 싶은 조직": "Where you want to decide the screens and the pricing yourself",
+  "EVCP 화면 — 프로토타입 예시": "EVCP screen — prototype example",
+  "EVCP가 전기차 충전기의 실시간 관제와 사용자·결제·정산·분석·안전 관리를 연결하는 모습": "How EVCP connects live charger monitoring with users, payment, settlement, analytics and safety",
+  "EVCP 충전소 관제 화면 — 지도 기반 운영 충전소·충전기 상태": "EVCP charging station monitoring — operating stations and charger status on a map",
+  "EVCP 다이나믹 대시보드 — 월별 매출·충전량·가동 충전기 수 차트": "EVCP dynamic dashboard — monthly revenue, charged energy and active charger charts",
+  "충전기 상태와 이용 통계를 분석해 이상 징후·수요·에너지 운영을 지원하는 EVCP 구성": "How EVCP analyses charger status and usage to support fault detection, demand and energy operations",
+  "EVCP 실시간 이벤트 관제 — 충전기 상태 이벤트 목록과 지도 표시": "EVCP live event monitoring — charger status events listed and shown on a map",
+  "EVCP 지도 기반 충전소 검색 — 충전소·충전기 상세 정보와 주소 검색": "EVCP map-based station search — station and charger detail with address search",
+  "EVCP 서비스 구조도 — 클라이언트(WEB·WAS)와 퍼블릭 클라우드의 회원·충전기연동(OCPP)·App·결제·로밍 서비스": "EVCP service architecture — client (web, WAS) and the public cloud services for membership, charger integration (OCPP), app, payment and roaming"
 }

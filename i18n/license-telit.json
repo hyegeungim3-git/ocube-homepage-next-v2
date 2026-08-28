@@ -26,5 +26,6 @@
   "GPS/GLONASS 결합 위치 추적·관제 단말": "Tracking and monitoring units combining GPS and GLONASS",
   "차량 텔레매틱스": "Vehicle telematics",
   "차량 운행 데이터 수집·전송 — 오큐브 충전 통신 표준(OCPP) 임베디드 모듈에 실적용": "Collecting and sending vehicle data — already used in OCUBE's embedded OCPP charging module",
-  "오큐브는 통신 모듈 공급 경험을 바탕으로 제품 선정, 안테나 설계와 적용 국가의 통신사 인증 준비를 함께 지원합니다.": "Drawing on our experience supplying cellular modules, OCUBE helps choose the product, design the antenna and prepare for carrier certification in the country of use."
+  "오큐브는 통신 모듈 공급 경험을 바탕으로 제품 선정, 안테나 설계와 적용 국가의 통신사 인증 준비를 함께 지원합니다.": "Drawing on our experience supplying cellular modules, OCUBE helps choose the product, design the antenna and prepare for carrier certification in the country of use.",
+  "Telit Cinterion M2M·IoT 통신 모듈": "Telit Cinterion M2M and IoT communication modules"
 }

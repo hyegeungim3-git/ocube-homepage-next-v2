@@ -17,7 +17,7 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
         title={t(lang, "회사소개 — 오큐브(주)")}
         description={t(
           lang,
-          "오큐브(주) 회사소개 — CEO 인사말, 비전 2026과 기업 미션·핵심가치, CI 안내.",
+          "오큐브(주) 회사소개 — CEO 인사말, 비전 2030과 기업 미션·핵심가치, CI 안내.",
         )}
         shareImageSize={false}
       />
@@ -49,7 +49,7 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
           </div>
           <div className="wrap about-hero-copy">
             {" "}
-            <span className="hero-badge">COMPANY · ABOUT</span>{" "}
+            <span className="hero-badge">About Ocube</span>{" "}
             <h1 className="about-hero-title">
               {" "}
               <span>
@@ -452,7 +452,7 @@ export function AboutPage({ lang }: { lang: Lang }): JSX.Element {
                 <dt>Identity</dt>
                 <dd>
                   <b>
-                    <T l={lang}>OCUBE는 Open과 Cube의 합성어로, 미지의 세상(Cube)을 연다(Open)</T>
+                    <T l={lang}>OCUBE는 Open과 Cube의 합성어로, 미지의 세상⁠(Cube)을 연다⁠(Open)</T>
                   </b>
                   <T l={lang}>는 뜻으로, O와 C를 큐브 형태로 형상화했습니다.</T>
                 </dd>

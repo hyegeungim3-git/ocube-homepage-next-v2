@@ -211,29 +211,30 @@ JSX 는 줄바꿈에 붙은 공백을 지운다. 그래서 `<b>설립</b> (2007.
 
 ## 데이터로 뺀 것
 
-| 파일                         | 내용                                                                     |
-| ---------------------------- | ------------------------------------------------------------------------ |
-| `src/config/site.ts`         | 배포 주소. canonical·og:url·og:image·JSON-LD·sitemap·robots 가 모두 참조 |
-| `src/config/navigation.ts`   | GNB 4개 대메뉴 + 20개 중메뉴(라벨·주소·설명)                             |
-| `src/data/site.ts`           | 거점 3곳 · 푸터 링크 4컬럼 · 로고 · 법적 표기                            |
-| `src/data/heroes.ts`         | 서브페이지 히어로 9개 (배지·제목·리드·핵심 포인트)                       |
-| `src/i18n/`                  | 사전(`dictionary`)·화면 글 번역(`<T>`·`t`)·데이터 번역(`localized`)      |
-| `src/data/cards.ts`          | 제목+설명 카드 14섹션 55장                                               |
-| `src/data/features.ts`       | 라벨+설명 항목 10목록 39항목                                             |
-| `src/data/steps.ts`          | What We Do 3목록 18단계 (일러스트·불릿 3개 포함)                         |
-| `src/data/cases.ts`          | 구축 사례 — 프로젝트 9장 + 홈 마퀴 4장                                   |
-| `src/data/refs.ts`           | references 카드 14장 (배지·발주처·분야·설명)                             |
-| `src/data/solution-intro.ts` | 솔루션 7쪽 이동 문구 (배지·제품명·2줄 설명)                              |
-| `src/data/cta.ts`            | 푸터 CTA 밴드 문구 16쪽 (킥커·헤드라인·리드·버튼)                        |
-| `src/data/subnav.ts`         | 솔루션 서브 내비 7쪽 (앵커·라벨)                                         |
-| `src/data/sec-heads.ts`      | 섹션 머리 표준형 36곳 (킥커·제목·부제)                                   |
-| `src/data/applications.ts`   | 비즈니스 적용 분야 카드 16장 + EVCP 스탯 4                               |
-| `src/data/contact.ts`        | 문의 유형 옵션 7개                                                       |
-| `src/data/history.ts`        | 연혁 타임라인 7그룹 28항목                                               |
-| `src/data/logos.ts`          | 고객사·기술 파트너 로고 11장                                             |
-| `src/data/home-hero.ts`      | 홈 히어로 슬라이드 4장 (영상·이미지·타자기 문구)                         |
-| `src/styles/_*.scss`         | 화면별 29개 SCSS partial. `site.scss` 가 캐스케이드 순서대로 불러온다    |
-| `src/components/behavior/`   | 화면 동작 — 예전 `site2.js` 25개 모듈이 옮겨 온 곳                       |
+| 파일                             | 내용                                                                     |
+| -------------------------------- | ------------------------------------------------------------------------ |
+| `src/config/site.ts`             | 배포 주소. canonical·og:url·og:image·JSON-LD·sitemap·robots 가 모두 참조 |
+| `src/config/navigation.ts`       | GNB 4개 대메뉴 + 20개 중메뉴(라벨·주소·설명)                             |
+| `src/data/site.ts`               | 거점 3곳 · 푸터 링크 4컬럼 · 로고 · 법적 표기                            |
+| `src/data/heroes.ts`             | 서브페이지 히어로 9개 (배지·제목·리드·핵심 포인트)                       |
+| `src/i18n/`                      | 사전(`dictionary`)·화면 글 번역(`<T>`·`t`)·데이터 번역(`localized`)      |
+| `src/data/cards.ts`              | 제목+설명 카드 14섹션 55장                                               |
+| `src/data/features.ts`           | 라벨+설명 항목 10목록 39항목                                             |
+| `src/data/steps.ts`              | What We Do 3목록 18단계 (일러스트·불릿 3개 포함)                         |
+| `src/data/cases.ts`              | 구축 사례 — 프로젝트 9장 + 홈 마퀴 6장(카테고리별)                       |
+| `src/data/refs.ts`               | references 카드 14장 (배지·발주처·분야·설명)                             |
+| `src/data/solution-intro.ts`     | 솔루션 7쪽 이동 문구 (배지·제품명·2줄 설명)                              |
+| `src/data/cta.ts`                | 푸터 CTA 밴드 문구 16쪽 (킥커·헤드라인·리드·버튼)                        |
+| `src/data/subnav.ts`             | 솔루션 서브 내비 7쪽 (앵커·라벨)                                         |
+| `src/data/sec-heads.ts`          | 섹션 머리 표준형 36곳 (킥커·제목·부제)                                   |
+| `src/data/applications.ts`       | 비즈니스 적용 분야 카드 16장 + EVCP 스탯 4                               |
+| `src/data/contact.ts`            | 문의 유형 옵션 6개 (key + 라벨)                                          |
+| `src/data/enquiry-recipients.ts` | 문의 유형별 담당자 — 브라우저에서도 읽으므로 import 를 두지 않는다       |
+| `src/data/history.ts`            | 연혁 타임라인 7그룹 28항목                                               |
+| `src/data/logos.ts`              | 고객사 13장 · 기술 파트너 6장 로고                                       |
+| `src/data/home-hero.ts`          | 홈 히어로 슬라이드 4장 (영상·이미지·타자기 문구)                         |
+| `src/styles/_*.scss`             | 화면별 29개 SCSS partial. `site.scss` 가 캐스케이드 순서대로 불러온다    |
+| `src/components/behavior/`       | 화면 동작 — 예전 `site2.js` 25개 모듈이 옮겨 온 곳                       |
 
 실도메인이 정해지면 `NEXT_PUBLIC_SITE_URL` 환경변수 하나로 전체 주소를 바꿀 수 있다.
 

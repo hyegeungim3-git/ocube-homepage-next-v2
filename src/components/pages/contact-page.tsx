@@ -73,11 +73,12 @@ export function ContactPage({ lang }: { lang: Lang }): JSX.Element {
                 <label htmlFor="f-type">
                   <T l={lang}>문의 유형</T>
                 </label>{" "}
+                {/* value 는 담당자를 찾는 key (번역되지 않는다), 보이는 글자는 label */}
                 <select id="f-type" name="inquiryType" required>
-                  {enquiryTypes[lang].map((t) => (
-                    <Fragment key={t}>
+                  {enquiryTypes[lang].map((opt) => (
+                    <Fragment key={opt.key}>
                       {" "}
-                      <option>{t}</option>
+                      <option value={opt.key}>{opt.label}</option>
                     </Fragment>
                   ))}
                 </select>{" "}

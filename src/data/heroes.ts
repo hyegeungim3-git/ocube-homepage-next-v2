@@ -29,7 +29,7 @@ const heroesKo: Record<string, HeroData> = {
         hidden: false,
       },
     ],
-    badge: "COMPANY · HISTORY",
+    badge: "History",
     title: "연혁",
     lead: [
       "2007년 설립부터 현재까지, 오큐브의 사업 확장과 기술 파트너십, 주요 인증·수상 이력을 연도별로 정리했습니다.",
@@ -278,7 +278,7 @@ const heroesKo: Record<string, HeroData> = {
         kind: "veil",
       },
     ],
-    badge: "COMPANY · LOCATION",
+    badge: "Locations",
     title: "오시는 길",
     lead: [
       "서울·",
@@ -315,7 +315,7 @@ const heroesKo: Record<string, HeroData> = {
         kind: "veil",
       },
     ],
-    badge: "REFERENCES",
+    badge: "Use Cases",
     title: "주요 구축 사례",
     lead: [
       "제조·에너지·모빌리티·공공·금융·홈 AIoT·기업서비스 분야의 프로젝트를 정리했습니다.",

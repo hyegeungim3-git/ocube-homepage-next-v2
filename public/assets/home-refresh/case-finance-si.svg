@@ -1,0 +1,26 @@
+<svg width="480" height="260" viewBox="0 0 480 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="fi_bg" x1="480" y1="0" x2="60" y2="260" gradientUnits="userSpaceOnUse">
+<stop stop-color="#3B3FE0"/>
+<stop offset="0.5" stop-color="#2A48DE"/>
+<stop offset="1" stop-color="#1B2C9E"/>
+</linearGradient>
+<linearGradient id="fi_arc" x1="120" y1="30" x2="420" y2="250" gradientUnits="userSpaceOnUse">
+<stop stop-color="#ffffff" stop-opacity="0.46"/>
+<stop offset="1" stop-color="#ffffff" stop-opacity="0.06"/>
+</linearGradient>
+<radialGradient id="fi_glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(110 44) rotate(62) scale(206)">
+<stop stop-color="#9FB6FF" stop-opacity="0.55"/>
+<stop offset="1" stop-color="#9FB6FF" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="fi_clip"><rect width="480" height="260" rx="8"/></clipPath>
+</defs>
+<g clip-path="url(#fi_clip)">
+<rect width="480" height="260" rx="8" fill="url(#fi_bg)"/>
+<circle cx="110" cy="44" r="206" fill="url(#fi_glow)"/>
+<path d="M20 250a170 170 0 0 1 170-170" stroke="url(#fi_arc)" stroke-width="34" stroke-linecap="round" fill="none"/>
+<path d="M104 254a170 170 0 0 1 170-170" stroke="url(#fi_arc)" stroke-width="26" stroke-linecap="round" fill="none" opacity="0.8"/>
+<path d="M192 258a170 170 0 0 1 170-170" stroke="url(#fi_arc)" stroke-width="18" stroke-linecap="round" fill="none" opacity="0.6"/>
+<circle cx="404" cy="206" r="74" fill="#ffffff" opacity="0.1"/>
+</g>
+</svg>

@@ -29,5 +29,9 @@
   "OTT · 스트리밍": "OTT and streaming",
   "지원되는 모바일·PC·스마트TV·셋톱박스 환경에 맞춘 스트리밍 재생": "Streaming playback fitted to the supported mobile, PC, smart TV and set-top box environments",
   "방송 · 디바이스": "Broadcast and devices",
-  "스마트TV·셋톱박스 등 임베디드 기기용 미디어 재생 소프트웨어": "Media playback software for embedded devices such as smart TVs and set-top boxes"
+  "스마트TV·셋톱박스 등 임베디드 기기용 미디어 재생 소프트웨어": "Media playback software for embedded devices such as smart TVs and set-top boxes",
+  "OnStream MediaPlayer+ 멀티 디바이스 재생": "OnStream MediaPlayer+ playing across devices",
+  "ExoPlayer+ / AVPlayer+ 구성": "ExoPlayer+ / AVPlayer+ setup",
+  "VisualOn 재생 분석 대시보드": "VisualOn playback analytics dashboard",
+  "차량 클러스터와 인포테인먼트(IVI) 화면에서 동작하는 VisualOn 재생 소프트웨어": "VisualOn playback software running on vehicle cluster and infotainment (IVI) displays"
 }

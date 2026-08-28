@@ -157,5 +157,22 @@
   "중요 판단에 사람의 확인이 필요한 조직": "Where important calls still need a person",
   "안전·품질·비용처럼 AI의 근거를 확인하고 담당자가 최종 승인해야 하는 업무": "Safety, quality, cost — work where someone must see the reasoning and sign it off",
   "데이터 반출이 제한된 조직": "Where data cannot leave",
-  "엣지·사내 구축형·폐쇄망 등 보안 규정에 맞는 처리 위치와 배포 방식이 필요한 환경": "Edge, on-premises or an isolated network — the rules decide where processing may happen"
+  "엣지·사내 구축형·폐쇄망 등 보안 규정에 맞는 처리 위치와 배포 방식이 필요한 환경": "Edge, on-premises or an isolated network — the rules decide where processing may happen",
+  "Cubeon 메인 — 통합 플랫폼 플로우와 코어 모듈 상태, 거버넌스 현황": "Cubeon home — platform flow, core module status and governance",
+  "Cubeon 기업 AI 지식·Agent 통합 플랫폼 구성 — 기업 데이터 연결부터 지식화·AI Agent·모델 운영·업무 자동화·보안 권한까지": "Cubeon enterprise AI knowledge and agent platform — from connecting enterprise data through knowledge building, AI agents, model operations, work automation and access control",
+  "Cubeon 기업 데이터 통합 — 데이터 소스 현황과 정제 파이프라인, 데이터 품질 지표": "Cubeon enterprise data integration — data sources, the cleansing pipeline and data quality",
+  "Cubeon 온톨로지 기반 지식화 — 지식 그래프 탐색과 시맨틱 모델, 지식 품질 지표": "Cubeon ontology-based knowledge building — knowledge graph, semantic model and knowledge quality",
+  "Cubeon 지식 기반 AI Agent — 대화 워크스페이스와 작업 실행 파이프라인, 에이전트 디렉터리": "Cubeon knowledge-based AI agents — conversation workspace, task execution pipeline and agent directory",
+  "Cubeon AI Model Hub — 모델 인벤토리와 게이트웨이 라우팅, 배포 토폴로지": "Cubeon AI Model Hub — model inventory, gateway routing and deployment topology",
+  "Cubeon 업무 자동화 및 실행 — 워크플로 파이프라인과 승인 대기함, 연결 시스템 현황": "Cubeon work automation and execution — workflow pipeline, approval queue and connected systems",
+  "Cubeon AI 보안·권한·운영관리 — 역할 기반 접근 제어와 감사 로그, 지식·모델 버전 관리": "Cubeon AI security, access and operations — role-based access control, audit logs and knowledge and model versioning",
+  "Cubeon Connect — 이기종 데이터 연결 콘솔 개념 화면(소스·프로토콜 어댑터·태그 표준 매핑)": "Cubeon Connect — concept screen for connecting mixed data sources (sources, protocol adapters, tag mapping)",
+  "Cubeon Fabric — 데이터 처리 흐름 개념 화면(수집→임시 저장→정제→저장→활용)": "Cubeon Fabric — concept screen for the data flow (collect, buffer, cleanse, store, serve)",
+  "의미 표준화·지식 관리 프로토타입 화면": "Semantic standardisation and knowledge management — prototype screen",
+  "모델 레지스트리·거버넌스 프로토타입 화면": "Model registry and governance — prototype screen",
+  "AI 에이전트 허브 프로토타입 화면": "AI agent hub — prototype screen",
+  "노코드 에이전트 빌더·서비스 조정 프로토타입 화면": "No-code agent builder and service orchestration — prototype screen",
+  "통합 관제·인프라 콘솔 프로토타입 화면": "Unified operations and infrastructure console — prototype screen",
+  "업무 코파일럿·자연어 질의 프로토타입 화면": "Work copilot and plain-language query — prototype screen",
+  "Cubeon 운영 자동화 단계": "Cubeon operational automation steps"
 }

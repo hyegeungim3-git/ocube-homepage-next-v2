@@ -40,6 +40,15 @@ describe("사전 위생", () => {
     expect(en).toContain("nothing published");
   });
 
+  it("낱말 이음쇠가 섞여 있어도 번역을 찾는다", () => {
+    // 좁은 화면에서 `·` 이 줄머리로 내려가지 않도록 한국어 원문에 U+2060 을 넣는다.
+    // 보이지 않는 글자라 사전 열쇠에는 없다 — normalizeKey 가 걷어내야 조회가 성립한다.
+    const plain = "문자 인식(OCR)과 음성 인식(STT)";
+    const joined = "문자 인식(OCR)\u2060과 음성 인식(STT)";
+    expect(t("en", plain)).not.toBe(plain);
+    expect(t("en", joined)).toBe(t("en", plain));
+  });
+
   it("번역이 없으면 원문을 그대로 돌려준다", () => {
     expect(t("en", "사전에 없는 문장")).toBe("사전에 없는 문장");
     expect(t("ko", "선택한 분야에 아직 공개된 사례가 없습니다.")).toBe(

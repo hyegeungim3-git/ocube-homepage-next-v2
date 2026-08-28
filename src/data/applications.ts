@@ -162,8 +162,8 @@ const appCardsKo: Record<string, readonly AppCard[]> = {
 const evcpStatsKo: readonly { value: readonly RichToken[]; label: readonly RichToken[] }[] = [
   { value: ["OCPP 1.6J"], label: ["충전기 연동·", "wbr", "관제 운영 경험"] },
   { value: ["OCPP 2.0.1"], label: ["사업 요건별 기능 적용"] },
-  { value: ["확장 표준"], label: ["충전 로밍 표준(OCPI) · 차량 충전 통신(ISO 15118) 연계 설계"] },
-  { value: ["LTE Cat M1"], label: ["자체 통신 모듈(2025)"] },
+  { value: ["확장 표준"], label: ["충전 로밍 표준⁠(OCPI) · 차량 충전 통신(ISO 15118) 연계 설계"] },
+  { value: ["LTE Cat M1"], label: ["자체 통신 모듈⁠(2025)"] },
 ];
 
 // 두 언어. 화면에서는 appCards[lang] 처럼 언어로 먼저 고른다.

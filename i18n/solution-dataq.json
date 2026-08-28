@@ -143,5 +143,12 @@
   "기술 문서가 흩어져 있는 기업": "Where technical documents are scattered",
   "작업표준서·점검일지·설비 매뉴얼이 문서로만 쌓여 있어, 필요한 근거를 빠르게 찾아 활용하기 어려운 조직": "Work standards, inspection logs and equipment manuals pile up as documents, and the evidence you need is slow to find",
   "폐쇄망·망분리 요건이 있는 기관": "Where the network is closed or separated",
-  "외부 반출이 불가능한 데이터를 내부에 둔 채로 표준화와 AI 활용 기반을 갖춰야 하는 공공·에너지 성격의 환경": "Public sector and energy settings that must build standardisation and AI on data which is never allowed to leave"
+  "외부 반출이 불가능한 데이터를 내부에 둔 채로 표준화와 AI 활용 기반을 갖춰야 하는 공공·에너지 성격의 환경": "Public sector and energy settings that must build standardisation and AI on data which is never allowed to leave",
+  "QData 데이터 소스 연계 화면 — 프로토타입 예시": "QData data source connection screen — prototype example",
+  "QData가 ERP·MES·데이터베이스·센서·문서·이미지 데이터를 AI 활용 데이터로 연결하는 과정": "How QData turns ERP, MES, database, sensor, document and image data into data an AI can use",
+  "데이터 처리 현황 화면": "Data processing status screen",
+  "청크 품질 관리 화면": "Chunk quality management screen",
+  "임베딩 품질 관리 화면": "Embedding quality management screen",
+  "재처리 큐 화면": "Reprocessing queue screen",
+  "지식 폴더·권한 관리 화면": "Knowledge folder and permission management screen"
 }

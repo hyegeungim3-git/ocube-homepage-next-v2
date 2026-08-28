@@ -8,6 +8,8 @@ import { HomeHero } from "@/components/section/home-hero";
 import { SiteHeader } from "@/components/layout/site-header";
 import { MobilePanel } from "@/components/layout/mobile-panel";
 import { HomeCaseLinks } from "@/components/section/bcase-cards";
+import { PclMarquee } from "@/components/section/pcl-marquee";
+import { logoGroups } from "@/data/logos";
 import { homeCases } from "@/data/cases";
 import { T, localizeLd, t } from "@/i18n/translate";
 
@@ -332,6 +334,12 @@ export function IndexPage({ lang }: { lang: Lang }): JSX.Element {
             </div>
           </div>
         </section>
+        {/* PARTNERS & CLIENTS — 2026-08-26 리뷰로 Business 에서 여기로 옮겼다 */}
+        <PclMarquee
+          lang={lang}
+          items={logoGroups[lang]["clients"]}
+          label={t(lang, "파트너 및 고객사")}
+        />
         {/* CONTACT */}
       </main>
       <footer id="contact" className="contact">
@@ -349,7 +357,7 @@ export function IndexPage({ lang }: { lang: Lang }): JSX.Element {
                     견적까지 안내드립니다.
                   </T>
                 </p>{" "}
-                <a className="contact-button" href="mailto:sales@ocube.co.kr">
+                <a className="contact-button" href="contact.html">
                   <T l={lang}>문의하기</T>
                 </a>{" "}
               </div>
@@ -436,10 +444,10 @@ export function IndexPage({ lang }: { lang: Lang }): JSX.Element {
                 </div>
               </nav>
             </div>
+            {/* 푸터에는 연락처·메일 주소를 두지 않는다 (2026-08-26 리뷰) */}
             <div className="contact-legal">
               {" "}
               <span>Copyright © OCUBE Co., Ltd. All rights reserved.</span>{" "}
-              <a href="mailto:sales@ocube.co.kr">sales@ocube.co.kr</a>{" "}
               <a href="privacy.html">Privacy Policy</a>{" "}
             </div>
           </div>

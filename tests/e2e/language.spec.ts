@@ -57,6 +57,33 @@ test.describe("언어 전환", () => {
     expect(failed).toEqual([]);
   });
 
+  // 사전은 못 찾으면 원문을 그대로 돌려준다 — 그래서 번역 누락은 오류 없이 조용히 남는다.
+  // 화면 글자뿐 아니라 alt·aria-label 처럼 **보조기술이 읽는 글자**까지 훑는다.
+  // (한 번에 131건이 이렇게 숨어 있었다. docs/pitfalls.md 3절 참고)
+  test("영어 화면에 한국어가 남아 있지 않다", async ({ page }) => {
+    const HANGUL = /[가-힣]/;
+    for (const slug of SITE_SLUGS) {
+      await page.goto(`/en/${slug}.html`, { waitUntil: "load" });
+      const found = await page.evaluate(() => {
+        const out: string[] = [];
+        const body = document.body;
+        for (const el of body.querySelectorAll("[alt],[aria-label],[title],[placeholder]")) {
+          for (const name of ["alt", "aria-label", "title", "placeholder"]) {
+            const v = el.getAttribute(name);
+            if (v) out.push(`${name}="${v}"`);
+          }
+        }
+        out.push(body.innerText);
+        return out;
+      });
+      const leaks = found
+        .flatMap((chunk) => chunk.split("\n"))
+        .map((line) => line.trim())
+        .filter((line) => line && HANGUL.test(line));
+      expect(leaks, `${slug}: 영어 화면에 한국어`).toEqual([]);
+    }
+  });
+
   test("모든 화면에 두 언어를 잇는 hreflang 이 있다", async ({ page }) => {
     for (const slug of SITE_SLUGS) {
       await page.goto(`/${slug}.html`);

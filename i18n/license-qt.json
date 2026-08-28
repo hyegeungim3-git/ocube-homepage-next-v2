@@ -36,5 +36,7 @@
   "시스템 에어컨 모니터링 SW": "Monitoring software for a system air conditioner",
   "산업용 칠러 장비 HMI": "HMI for an industrial chiller",
   "오디오 매트릭스 컨트롤러 모바일 앱": "Mobile app for an audio matrix controller",
-  "Qt 자세히 보기": "More about Qt"
+  "Qt 자세히 보기": "More about Qt",
+  "Qt Framework 필수 모듈과 Add-on 모듈 구성도": "Qt Framework — essential modules and add-on modules",
+  "Qt Creator IDE 화면": "Qt Creator IDE screen"
 }

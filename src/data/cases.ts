@@ -163,6 +163,8 @@ const projectCardsKo: Record<string, readonly BcaseItem[]> = {
   ],
 };
 
+// 홈 마퀴 — 카테고리별 대표 사례 (2026-08-26 리뷰에서 6건으로 확정).
+// 제조 2 · 에너지 1 · 모빌리티 1 · 금융 1 · 홈 AIoT 1. 문구는 references 카드에서 검증된 것을 쓴다.
 const homeCasesKo: readonly HomeCase[] = [
   {
     image: {
@@ -172,51 +174,33 @@ const homeCasesKo: readonly HomeCase[] = [
       height: "260",
     },
     cat: "AX · SMART MANUFACTURING",
-    title: ["Factory Insight AI — 조립 라인 이상 조기감지"],
-    sum: ["설비 신호의 이상을 발생 시점에 포착하는 제조 AI 시스템"],
+    title: ["AI Smart Optimizer — 열처리 조건 최적화"],
+    sum: ["열처리 상태를 진단해 이상을 감지하고, 제조 조건까지 함께 권고하는 제조 AI"],
     bullets: [
-      ["로봇·설비 시계열 데이터 통합"],
-      ["이상 징후 조기 감지와 원인 구간 추적"],
-      ["업무 흐름·알람 화면 연계"],
+      ["설비 신호 실시간 수집과 이상 감지"],
+      ["열질량 추정 기반 제조 조건 권고"],
+      ["숙련자의 판단 기준을 데이터로 축적"],
     ],
     href: "business-ax.html",
-    ariaLabel: "Factory Insight AI — 조립 라인 이상 조기감지 자세히 보기",
+    ariaLabel: "AI Smart Optimizer — 열처리 조건 최적화 자세히 보기",
   },
   {
     image: {
-      src: "assets/home-refresh/case-vehicle-hmi.svg",
+      src: "assets/home-refresh/case-paper-ai.svg",
       alt: "",
       width: "480",
       height: "260",
     },
-    cat: "EMBEDDED · AUTOMOTIVE",
-    title: ["Global OEM 차량 화면·", "wbr", "미들웨어 개발"],
-    sum: ["차량 환경에 최적화된 사용자 화면(HMI) 소프트웨어 개발과 양산 검증"],
+    cat: "AX · AUTONOMOUS OPERATION",
+    title: ["제지 공정 AI-OT 자율운영"],
+    sum: ["설비·에너지·품질·안전 상태를 하나로 연결한 공정 자율운영 플랫폼"],
     bullets: [
-      ["Qt·QML 기반 차량용 UI 개발"],
-      ["Linux·QNX·차량용 Android(AAOS) 플랫폼 적용과 검증"],
-      ["양산 품질 기준의 테스트와 검증"],
+      ["흩어진 공정 데이터를 하나의 기준으로 통합"],
+      ["에너지 사용과 다운타임 절감"],
+      ["설비 교체 시점 예측"],
     ],
-    href: "business-embedded.html",
-    ariaLabel: "Global OEM 차량 화면·미들웨어 개발 자세히 보기",
-  },
-  {
-    image: {
-      src: "assets/home-refresh/case-thinq-webos.svg",
-      alt: "",
-      width: "480",
-      height: "260",
-    },
-    cat: "SI · CONNECTED SERVICE",
-    title: ["ThinQ 홈 AIoT · webOS · 기업용 클라우드"],
-    sum: ["다양한 디바이스와 서비스를 하나의 경험으로 연결한 글로벌 플랫폼"],
-    bullets: [
-      ["사용자·관리자·업무 시스템 통합 구축"],
-      ["다국가·다기기 운영 환경 대응"],
-      ["안정적인 B2B 서비스 아키텍처"],
-    ],
-    href: "business-si.html",
-    ariaLabel: "ThinQ 홈 AIoT · webOS · 기업용 클라우드 자세히 보기",
+    href: "business-ax.html",
+    ariaLabel: "제지 공정 AI-OT 자율운영 자세히 보기",
   },
   {
     image: {
@@ -235,6 +219,60 @@ const homeCasesKo: readonly HomeCase[] = [
     ],
     href: "solution-evcp.html",
     ariaLabel: "EV 충전 플랫폼 구축 자세히 보기",
+  },
+  {
+    image: {
+      src: "assets/home-refresh/case-vehicle-hmi.svg",
+      alt: "",
+      width: "480",
+      height: "260",
+    },
+    cat: "EMBEDDED · AUTOMOTIVE",
+    title: ["차량 IVI CarPlay·", "wbr", "AndroidAuto 개발·", "wbr", "인증"],
+    sum: ["유무선 CarPlay·AndroidAuto를 개발하고 인증까지 마친 차량 인포테인먼트 소프트웨어"],
+    bullets: [
+      ["유무선 CarPlay · AndroidAuto 개발"],
+      ["완성차 규격에 맞춘 통합 검증"],
+      ["인증 절차 대응과 양산 공급"],
+    ],
+    href: "business-embedded.html",
+    ariaLabel: "차량 IVI CarPlay·AndroidAuto 개발·인증 자세히 보기",
+  },
+  {
+    image: {
+      src: "assets/home-refresh/case-finance-si.svg",
+      alt: "",
+      width: "480",
+      height: "260",
+    },
+    cat: "SI · FINANCIAL SERVICE",
+    title: ["통합 금융 SI · 그룹 소통앱"],
+    sum: ["모바일 선불카드부터 계열 8개사 소통앱까지, 다년간 함께한 금융 그룹 SI"],
+    bullets: [
+      ["계열사 금융 앱·모바일 서비스 구축"],
+      ["그룹 소통앱 운영과 고도화"],
+      ["다년간 운영·확장 대응"],
+    ],
+    href: "business-si.html",
+    ariaLabel: "통합 금융 SI · 그룹 소통앱 자세히 보기",
+  },
+  {
+    image: {
+      src: "assets/home-refresh/case-thinq-webos.svg",
+      alt: "",
+      width: "480",
+      height: "260",
+    },
+    cat: "SI · HOME AIoT",
+    title: ["ThinQ 홈 AIoT · webOS · 기업용 클라우드"],
+    sum: ["다양한 디바이스와 서비스를 하나의 경험으로 연결한 글로벌 플랫폼"],
+    bullets: [
+      ["사용자·관리자·업무 시스템 통합 구축"],
+      ["다국가·다기기 운영 환경 대응"],
+      ["안정적인 B2B 서비스 아키텍처"],
+    ],
+    href: "business-si.html",
+    ariaLabel: "ThinQ 홈 AIoT · webOS · 기업용 클라우드 자세히 보기",
   },
 ];
 

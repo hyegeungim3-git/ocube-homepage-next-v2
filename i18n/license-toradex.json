@@ -44,5 +44,7 @@
   "Toradex 기술 문서·글로벌 지원 채널 + 오큐브 국내 1차 엔지니어링 지원": "Toradex documentation and global support, with OCUBE as first-line engineering support in Korea",
   "Yocto 보드 지원 패키지(BSP)": "Yocto board support package",
   "Torizon 컨테이너(OCI)": "Torizon containers (OCI)",
-  "원격 업데이트(OTA) · 차량·산업 통신(CAN/Modbus)": "Over-the-air updates · vehicle and industrial buses (CAN/Modbus)"
+  "원격 업데이트(OTA) · 차량·산업 통신(CAN/Modbus)": "Over-the-air updates · vehicle and industrial buses (CAN/Modbus)",
+  "Toradex System on Module 구조": "Toradex System on Module structure",
+  "SoM과 캐리어 보드 관계도": "How a SoM works with a carrier board"
 }

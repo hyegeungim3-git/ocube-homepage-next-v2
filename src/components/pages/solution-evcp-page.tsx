@@ -581,7 +581,7 @@ export function SolutionEvcpPage({ lang }: { lang: Lang }): JSX.Element {
                 </h3>
                 <p className="csi">
                   <T l={lang}>
-                    Mini PCI LTE Cat M1 통신 모듈(2025) 자체 개발 — 충전 통신 하드웨어까지 직접
+                    Mini PCI LTE Cat M1 통신 모듈⁠(2025) 자체 개발 — 충전 통신 하드웨어까지 직접
                     개발한 경험
                   </T>
                 </p>

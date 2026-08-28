@@ -74,5 +74,9 @@
   "영상정보 보호가 중요한 기관": "Where image data protection matters",
   "원본 영상을 외부로 내보내지 않고,": "The original footage never leaves, and",
   "촬영 지점에서 개인정보를 비식별 처리": "personal data is masked where it is filmed",
-  "해야 하는 환경": ""
+  "해야 하는 환경": "",
+  "QVision — AI 기반 교통 분석·안전 모니터링·스마트 관제 구성": "QVision — AI traffic analysis, safety monitoring and smart control",
+  "QVision AI 비전 기반 교통 분석·안전 솔루션 구성 — 영상 입력원부터 차량 인식·보행자 감지·교통량 분석·이상행동 감지·사고 알림·통합 관제 연계까지": "QVision AI vision traffic and safety solution — from video sources through vehicle recognition, pedestrian detection, traffic analysis, unusual behaviour detection and incident alerts to unified control",
+  "TMS 실시간 교통량 검출 화면 — 차종 분류·통행량 계측": "TMS live traffic detection screen — vehicle classification and traffic counting",
+  "포트홀 실시간 검출 데모 화면 — 차량 영상 인식 모듈과 관제 서버": "Pothole live detection demo — in-vehicle video recognition module and the control server"
 }

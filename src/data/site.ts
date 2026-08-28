@@ -129,13 +129,10 @@ const footerColumnsKo = [
   },
 ] as const;
 
+// 푸터에는 연락처·메일 주소를 두지 않는다 (2026-08-26 리뷰). 문의는 Contact 페이지로 받는다.
 const legalKo = {
   copyright: "Copyright © OCUBE Co., Ltd. All rights reserved.",
   links: [
-    {
-      label: "sales@ocube.co.kr",
-      href: "mailto:sales@ocube.co.kr",
-    },
     {
       label: "Privacy Policy",
       href: "privacy.html",

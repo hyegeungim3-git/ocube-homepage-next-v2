@@ -283,7 +283,7 @@ export function SolutionFactoryqPage({ lang }: { lang: Lang }): JSX.Element {
                 </h3>
                 <p>
                   <T l={lang}>
-                    영상과 설비 이벤트를 결합해 위험 행동·구역 접근·화재·이상 상황을 감지합니다.
+                    영상과 설비 이벤트를 결합해 위험 행동⁠·구역 접근⁠·화재⁠·이상 상황을 감지합니다.
                   </T>
                 </p>
                 <dl>

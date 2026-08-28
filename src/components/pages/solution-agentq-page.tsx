@@ -460,7 +460,7 @@ export function SolutionAgentqPage({ lang }: { lang: Lang }): JSX.Element {
                 </h3>
                 <p>
                   <T l={lang}>
-                    사내 언어모델이 업무 목적에 맞게 요약·분석하고 다음 에이전트에 결과를 전달
+                    사내 언어모델이 업무 목적에 맞게 요약⁠·분석하고 다음 에이전트에 결과를 전달
                   </T>
                 </p>
               </div>

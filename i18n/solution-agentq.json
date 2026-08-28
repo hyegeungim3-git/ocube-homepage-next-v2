@@ -138,5 +138,14 @@
   "외부 반출이 제한되고 통제가 필요한 환경": "Where nothing may leave, and everything must be controlled",
   "사내 소형 언어모델(sLLM)과 지식베이스를 사용하고 접근 권한·보안 등급·이용 기록을": "Running an in-house small language model and knowledge base, with permissions, classification and usage records held",
   "일관되게 관리": "to one consistent standard",
-  "해야 하는 조직": ""
+  "해야 하는 조직": "",
+  "AgentQ 보고서 작성·승인 흐름 시연 영상 — 프로토타입 예시": "AgentQ report writing and approval flow — prototype example video",
+  "AgentQ가 문서·데이터베이스·업무 시스템을 연결해 지식검색·문서이해·데이터분석·보고 업무를 처리하는 구조": "How AgentQ connects documents, databases and business systems to handle knowledge search, document understanding, data analysis and reporting",
+  "AgentQ 지식 검색 에이전트에서 검색 방식과 문서 범위를 선택하는 화면": "AgentQ knowledge search agent — choosing the search method and document scope",
+  "AgentQ 보고서 작성 에이전트에서 보고서 유형과 기본 정보를 입력하는 화면": "AgentQ report writing agent — entering the report type and basic details",
+  "AgentQ 회의록 작성 에이전트에서 음성과 회의 자료를 등록하는 화면": "AgentQ meeting notes agent — uploading audio and meeting material",
+  "AgentQ 문서 사전 검토 에이전트에서 문서와 검토 규정을 선택하는 화면": "AgentQ document pre-review agent — choosing the document and the review rules",
+  "AgentQ 데이터베이스 검색 에이전트에서 자연어로 데이터를 조회하는 화면": "AgentQ database search agent — querying data in plain language",
+  "AgentQ 보안 채팅에서 대화 무저장과 로컬 LLM 처리 상태를 확인하는 화면": "AgentQ secure chat — showing that nothing is stored and a local LLM is handling it",
+  "AgentQ 업무 포털 — 근거 출처와 보안 등급을 확인하며 문서·데이터 업무를 처리하는 화면": "AgentQ work portal — handling document and data work while checking sources and security levels"
 }
