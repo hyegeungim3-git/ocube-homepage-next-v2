@@ -64,10 +64,11 @@ Claude 는 작업 폴더의 **위쪽** 폴더에 있는 `CLAUDE.md` 만 읽는�
 - **PowerShell 에서 한글 파일을 치환하지 않는다** — `Get-Content | -replace | Set-Content` 는 UTF-8 한글을
   깨뜨린다. 편집기나 Claude 의 Edit 도구를 쓴다. 커밋 메시지에 쌍따옴표(") 도 넣지 않는다.
 
-## 2. git 에 없는 것 — 인수인계 묶음
+## 2. git 에 없는 것 — Google Drive 로 옮긴 폴더
 
-다음은 이 저장소에 없고, 이전 PC 의 `C:/오큐브/_인수인계/` 묶음으로 옮긴다
-(복원 방법은 묶음 안 `00_먼저읽기.md`).
+다음은 이 저장소에 없다. 이전 PC 의 `C:/오큐브` 를 (다시 만들 수 있는 폴더만 빼고) Google Drive 에
+폴더째 올려 옮긴다. 새 PC 에서 `C:/오큐브` 로 받은 뒤 `C:/오큐브/_인수인계/00_먼저읽기.md` 를 따른다
+(받은 파일이 온전한지 해시로 확인하는 스크립트와 Claude 설정 설치 스크립트가 거기 있다).
 
 | 무엇                                      | 이전 PC 위치                                | 왜 필요한가                                                    |
 | ----------------------------------------- | ------------------------------------------- | -------------------------------------------------------------- |
@@ -94,14 +95,14 @@ python gen_wireframe_pptx.py && python gen_pptx.py
 
 - **개인 설정** — `~/.claude/CLAUDE.md`(전역 작업 원칙), `guides/`(품질기준-마스터 등 5종),
   `skills/`(quality-gate · screen-spec · proto-demo · ui-design · ux-audit · multi-platform ·
-  ship-github · source-analysis · ppt-design). 묶음의 복원 스크립트가 새 계정의 `~/.claude/` 에 넣는다.
+  ship-github · source-analysis · ppt-design). `_인수인계/설정설치.ps1` 이 새 계정의 `~/.claude/` 에 넣는다.
 - **플러그인** — harness · humanize-korean · pm-skills 등은 새 계정에서 다시 켠다.
-  pm-skills 는 로컬 마켓플레이스(`C:/pm-skills-main`)라 그 폴더도 묶음에 들어 있다.
+  pm-skills 는 로컬 마켓플레이스(`C:/pm-skills-main`)라 그 폴더도 `_인수인계/Claude개인설정/` 에 들어 있다.
 - **커넥터·아티팩트** — Notion·Figma·Google Drive 같은 커넥터 연결과 claude.ai 에 발행한 페이지는
   계정에 묶여 있어 옮겨지지 않는다. 필요하면 새 계정에서 다시 연결한다.
 - **대화 기록·메모리** — 옮기지 않는다. 이어받을 내용은 전부 `C:/오큐브/CLAUDE.md`·이 문서·`AGENTS.md` 에 있다.
 - **로그인 정보** — `gh`, Cloudflare `wrangler`, Claude 로그인은 새 PC 에서 각자 다시 한다.
-  토큰·자격 증명 파일은 묶음에 넣지 않았다.
+  토큰·자격 증명 파일은 옮기는 폴더에 넣지 않았다.
 
 ## 4. 열려 있는 일
 
