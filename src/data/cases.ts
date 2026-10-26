@@ -94,7 +94,7 @@ const projectCardsKo: Record<string, readonly BcaseItem[]> = {
       sum: ["ASPICE 프로세스 준수"],
       bullets: [
         ["AAOS · Linux · QNX"],
-        ["CarPlay · AndroidAuto 개발·인증"],
+        ["CarPlay · Android Auto 개발·인증"],
         ["Connectivity (Telematics · BT · WiFi)"],
       ],
     },
@@ -228,15 +228,15 @@ const homeCasesKo: readonly HomeCase[] = [
       height: "260",
     },
     cat: "EMBEDDED · AUTOMOTIVE",
-    title: ["차량 IVI CarPlay·", "wbr", "AndroidAuto 개발·", "wbr", "인증"],
-    sum: ["유무선 CarPlay·AndroidAuto를 개발하고 인증까지 마친 차량 인포테인먼트 소프트웨어"],
+    title: ["차량 IVI CarPlay·", "wbr", "Android Auto 개발·", "wbr", "인증"],
+    sum: ["유무선 CarPlay·Android Auto를 개발하고 인증까지 마친 차량 인포테인먼트 소프트웨어"],
     bullets: [
-      ["유무선 CarPlay · AndroidAuto 개발"],
+      ["유무선 CarPlay · Android Auto 개발"],
       ["완성차 규격에 맞춘 통합 검증"],
       ["인증 절차 대응과 양산 공급"],
     ],
     href: "business-embedded.html",
-    ariaLabel: "차량 IVI CarPlay·AndroidAuto 개발·인증 자세히 보기",
+    ariaLabel: "차량 IVI CarPlay·Android Auto 개발·인증 자세히 보기",
   },
   {
     image: {
