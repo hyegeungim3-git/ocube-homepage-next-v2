@@ -42,7 +42,8 @@
 - 공개 주소(정본): https://hyegeungim3-git.github.io/ocube-homepage-next-v2/
 - 보관본: `ocube-homepage-next` (읽기 전용, 갱신하지 않는다). 2026-08-26 비공개 전환으로 공개 주소는 404
 - 구버전(참고용, 수정하지 않음): `codex` 저장소(`ocube-homepage-final`) `public/` — 역시 비공개, 공개 주소 404
-- ⚠️ `src/config/site.ts` 의 기본 주소가 아직 보관본을 가리킨다 — `docs/handover.md` 4절 1번
+- `src/config/site.ts` 의 기본 주소는 404 가 된 보관본을 가리키지만 **실도메인이 정해질 때까지 그대로 둔다**
+  (2026-10-26 사용자 결정 — 버그로 보고 임의로 고치지 말 것). `docs/handover.md` 4절 1번
 - 다른 PC·다른 계정에서 이어받기: `docs/handover.md`
 - 구조 문서: `docs/architecture.md`
 - 회귀 기준선: `baseline/` · 검사 도구: `scripts/verify-fidelity.py`

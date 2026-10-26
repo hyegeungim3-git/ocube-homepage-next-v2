@@ -105,10 +105,11 @@ python gen_wireframe_pptx.py && python gen_pptx.py
 
 ## 4. 열려 있는 일
 
-1. **사이트 기준 주소가 보관본을 가리킨다** — `src/config/site.ts` 의 기본값이
-   `…/ocube-homepage-next/` 인데, 그 저장소가 2026-08-26 비공개로 바뀌어 주소가 404 다.
-   48쪽의 canonical · hreflang · og:url · sitemap · 구조화 데이터가 죽은 주소를 가리키는 상태.
-   정본 주소(또는 실도메인)로 바꾸고, `verify` 불일치가 head·ld 뿐인지 읽은 뒤 기준선을 갱신한다.
+1. **사이트 기준 주소는 실도메인이 정해지면 바꾼다 — 그때까지 그대로 둔다 (2026-10-26 사용자 결정).**
+   `src/config/site.ts` 의 기본값이 `…/ocube-homepage-next/` 라, 그 저장소가 2026-08-26 비공개로
+   바뀐 뒤로 48쪽의 canonical · hreflang · og:url · sitemap · 구조화 데이터가 404 주소를 가리킨다.
+   알고 둔 상태이니 **임의로 고치지 않는다.** 도메인이 정해지면 `NEXT_PUBLIC_SITE_URL`(또는 기본값)을
+   바꾸고, `verify` 불일치가 head · ld 뿐인지 읽은 뒤 기준선을 갱신한다.
 2. **구축 사례 배지** — '대구 어르신 통합무임 교통카드'(발주처 대구광역시)가 `B2B` 다.
    다른 지자체 사례는 `B2G` 라 확인이 필요하다 (`src/data/refs.ts`).
 3. **결정 대기 3건** — 문의 폼 실제 전송 방식(지금은 메일 앱 열기) · 404 전용 화면 · 대표이사 영문 표기.
